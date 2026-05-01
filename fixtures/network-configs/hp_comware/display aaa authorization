@@ -1,0 +1,17 @@
+Authorization scheme: hwtacacs-scheme
+  Primary Authorization Server: 10.10.10.11
+  Server Status: Active
+  Server Port: 49
+  Shared Key: Configured
+  Timeout: 5 seconds
+
+Authorization scheme: local
+  Method: Local
+  Status: Active
+
+Domain: netops.local
+  Default authorization scheme: hwtacacs-scheme (primary), local (fallback)
+  Login authorization scheme: hwtacacs-scheme
+  Command authorization: Enabled
+  Command authorization scheme: hwtacacs-scheme
+  Super password: Set (level 3)

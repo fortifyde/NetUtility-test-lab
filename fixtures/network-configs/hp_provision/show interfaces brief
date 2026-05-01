@@ -1,0 +1,55 @@
+
+Status and Counters - Port Status
+                                  |  Intrusion                           MDI   
+  Port   Type      |  Alarm  Auth  |  Label         | Agg   Mode   | Status
+  ------ --------- + ------ ------ + -------------- + ----- ------ + ----------
+  1      10/100/1G |  No     No    | Data-Port-1    |       Auto   | Up       
+  2      10/100/1G |  No     No    | Data-Port-2    |       Auto   | Up       
+  3      10/100/1G |  No     No    | Data-Port-3    |       Auto   | Down     
+  4      10/100/1G |  No     No    | Data-Port-4    |       Auto   | Down     
+  5      10/100/1G |  No     No    | Data-Port-5    |       Auto   | Up       
+  6      10/100/1G |  No     No    | Data-Port-6    |       Auto   | Up       
+  7      10/100/1G |  No     No    | Data-Port-7    |       Auto   | Down     
+  8      10/100/1G |  No     No    | Data-Port-8    |       Auto   | Down     
+  9      10/100/1G |  No     No    | Data-Port-9    |       Auto   | Up       
+  10     10/100/1G |  No     No    | Data-Port-10   |       Auto   | Up       
+  11     10/100/1G |  No     No    | Data-Port-11   |       Auto   | Down     
+  12     10/100/1G |  No     No    | Data-Port-12   |       Auto   | Down     
+  13     10/100/1G |  No     No    | Data-Port-13   |       Auto   | Up       
+  14     10/100/1G |  No     No    | Data-Port-14   |       Auto   | Up       
+  15     10/100/1G |  No     No    | Data-Port-15   |       Auto   | Down     
+  16     10/100/1G |  No     No    | Data-Port-16   |       Auto   | Down     
+  17     10/100/1G |  No     No    | Data-Port-17   |       Auto   | Up       
+  18     10/100/1G |  No     No    | Data-Port-18   |       Auto   | Up       
+  19     10/100/1G |  No     No    | Data-Port-19   |       Auto   | Down     
+  20     10/100/1G |  No     No    | Data-Port-20   |       Auto   | Down     
+  21     10/100/1G |  No     No    | Data-Port-21   |       Auto   | Up       
+  22     10/100/1G |  No     No    | Data-Port-22   |       Auto   | Up       
+  23     10/100/1G |  No     No    | Data-Port-23   |       Auto   | Down     
+  24     10/100/1G |  No     No    | Data-Port-24   |       Auto   | Down     
+  25     10/100/1G |  No     No    | Data-Port-25   |       Auto   | Down     
+  26     10/100/1G |  No     No    | Data-Port-26   |       Auto   | Down     
+  27     10/100/1G |  No     No    | Data-Port-27   |       Auto   | Down     
+  28     10/100/1G |  No     No    | Data-Port-28   |       Auto   | Down     
+  29     10/100/1G |  No     No    | Data-Port-29   |       Auto   | Down     
+  30     10/100/1G |  No     No    | Data-Port-30   |       Auto   | Down     
+  31     10/100/1G |  No     No    | Data-Port-31   |       Auto   | Down     
+  32     10/100/1G |  No     No    | Data-Port-32   |       Auto   | Down     
+  33     10/100/1G |  No     No    | Data-Port-33   |       Auto   | Down     
+  34     10/100/1G |  No     No    | Data-Port-34   |       Auto   | Down     
+  35     10/100/1G |  No     No    | Data-Port-35   |       Auto   | Down     
+  36     10/100/1G |  No     No    | Data-Port-36   |       Auto   | Down     
+  37     10/100/1G |  No     No    | Data-Port-37   |       Auto   | Down     
+  38     10/100/1G |  No     No    | Data-Port-38   |       Auto   | Down     
+  39     10/100/1G |  No     No    | Data-Port-39   |       Auto   | Down     
+  40     10/100/1G |  No     No    | Data-Port-40   |       Auto   | Down     
+  41     10/100/1G |  No     No    | Data-Port-41   |       Auto   | Down     
+  42     10/100/1G |  No     No    | Data-Port-42   |       Auto   | Down     
+  43     10/100/1G |  No     No    | Data-Port-43   |       Auto   | Down     
+  44     10/100/1G |  No     No    | Data-Port-44   |       Auto   | Down     
+  45     10/100/1G |  No     No    | Trk1-Member    | Trk1  Auto   | Up       
+  46     10/100/1G |  No     No    | Trk1-Member    | Trk1  Auto   | Up       
+  47     10/100/1G |  No     No    | Trk2-Member    | Trk2  Auto   | Up       
+  48     10/100/1G |  No     No    | Trk2-Member    | Trk2  Auto   | Up       
+  Trk1  Trunk      |  No     No    | Uplink-Trk1    |       Auto   | Up       
+  Trk2  Trunk      |  No     No    | Uplink-Trk2    |       Auto   | Up       

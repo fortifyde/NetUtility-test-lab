@@ -1,0 +1,39 @@
+System Information
+------------------
+Hostname                           : ARUBA-CX-01
+Switch Type                        : Aruba 6300M 48G 4SFP56
+Product Model                      : JL658A
+Product Name                       : Aruba 6300M 48G PoE+ 4SFP56 Switch
+Serial Number                      : CN4BLHP02M
+ArubaOS-CX Version                 : 10.10.1010
+Base MAC Address                   : 00:9c:1a:b2:3c:50
+System MAC Address                 : 00:9c:1a:b2:3c:50
+Management MAC Address             : 00:9c:1a:b2:3c:51
+Uptime                             : 87 days, 14 hours, 32 minutes
+Boot Time                          : 2026-01-31 09:15:22
+Current Time                       : 2026-04-28 15:47:22
+Timezone                           : EST
+Name Server                        : 10.10.10.1, 10.10.10.2
+Domain Name                        : mil.local
+Default Gateway                    : 10.10.10.1
+System Contact                     : NetSec Team - netsec@mil.local
+System Location                    : Bldg 200 - Comm Closet 3A
+
+Power Status
+------------
+Power Supply 1: Present, OK (500W)
+Power Supply 2: Present, OK (500W)
+Total Power Budget: 1000W
+Power Consumed: 312W
+PoE Power Consumed: 85W
+
+Fan Status
+----------
+Fan Tray 1: Present, OK (Speed: 45%)
+Fan Tray 2: Present, OK (Speed: 42%)
+
+Temperature Status
+------------------
+Sensor 1 (CPU): 52C (Warning: 90C, Critical: 100C)
+Sensor 2 (Board): 41C (Warning: 80C, Critical: 90C)
+Sensor 3 (ASIC): 58C (Warning: 95C, Critical: 105C)

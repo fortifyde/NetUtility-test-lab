@@ -1,0 +1,19 @@
+
+AAA Configuration
+
+  Authentication:
+    Login  : Local
+    Enable : Local
+    SSH Login : Public-key, Local
+    SSH Enable: Local
+    Console Login: Local
+    Console Enable: Local
+    Login Privilege Mode: Enabled
+
+  Authorization: Not configured
+
+  Accounting: 
+    Exec Accounting    : Enabled (see show accounting)
+    Command Accounting : Enabled (see show accounting)
+
+  Authentication Fail Logging: Enabled

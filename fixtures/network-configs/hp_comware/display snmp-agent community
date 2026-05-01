@@ -1,0 +1,11 @@
+Community name: public
+  Group name: public
+  Access level: read-only
+  Storage type: nonVolatile
+  ACL: 3001
+
+Community name: private
+  Group name: private
+  Access level: read-write
+  Storage type: nonVolatile
+  ACL: 3001

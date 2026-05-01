@@ -1,0 +1,13 @@
+
+SNTP Status
+
+  Time Sync Mode  : SNTP
+  SNTP Mode       : Unicast
+  Current Time    : Mon Apr 28 15:42:00 2026
+  Last Update     : Mon Apr 28 15:41:58 2026
+  Polling Interval: 720 seconds
+  Clock Stratum   : 3
+
+  SNTP Server Status:
+    10.10.10.100  : Synchronized  (Stratum 2, Offset +0.002s)
+    10.10.10.101  : Available     (Stratum 2, Offset +0.003s)

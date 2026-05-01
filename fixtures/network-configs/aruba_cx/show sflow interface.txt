@@ -1,0 +1,20 @@
+sFlow Interface Configuration
+-----------------------------
+Interface  Sampling  Sampling Direction  Polling  Polling Direction
+---------  --------  ------------------  -------  ----------------
+1/1/1      Enabled   Ingress,Egress      Enabled  Ingress
+1/1/2      Enabled   Ingress,Egress      Enabled  Ingress
+1/1/5      Enabled   Ingress,Egress      Enabled  Ingress
+1/1/6      Enabled   Ingress,Egress      Enabled  Ingress
+1/1/9      Enabled   Ingress,Egress      Enabled  Ingress
+1/1/10     Enabled   Ingress,Egress      Enabled  Ingress
+1/1/13     Enabled   Ingress,Egress      Enabled  Ingress
+1/1/16     Enabled   Ingress,Egress      Enabled  Ingress
+1/1/21     Enabled   Ingress,Egress      Enabled  Ingress
+1/1/25     Enabled   Ingress,Egress      Enabled  Ingress
+1/1/26     Enabled   Ingress,Egress      Enabled  Ingress
+1/1/45     Enabled   Ingress,Egress      Enabled  Ingress
+1/1/46     Enabled   Ingress,Egress      Enabled  Ingress
+1/1/47     Enabled   Ingress,Egress      Enabled  Ingress
+
+Total interfaces with sFlow: 14

@@ -1,0 +1,17 @@
+IP ARP Table
+
+IP Address      MAC Address        Port    Type     TTL
+--------------  -----------------  ------  -------  ---
+10.10.10.1      a0:d3:c1:ff:12:34  1       Dynamic  1200
+10.10.10.100    00:1a:2b:3c:55:01  VLAN 10 Dynamic  856
+10.10.10.101    00:1a:2b:3c:55:02  VLAN 10 Dynamic  932
+10.10.10.102    00:1a:2b:3c:55:03  VLAN 10 Dynamic  1042
+10.10.10.103    00:1a:2b:3c:55:04  VLAN 10 Dynamic  1100
+10.10.10.200    00:1a:2b:3c:66:01  VLAN 10 Dynamic  780
+10.10.10.201    00:1a:2b:3c:66:02  VLAN 10 Dynamic  895
+10.10.10.210    00:1a:2b:3c:77:01  VLAN 10 Dynamic  654
+10.10.10.250    00:1a:2b:3c:88:01  VLAN 10 Dynamic  1180
+10.10.20.10     00:1a:2b:3c:4d:50  2       Dynamic  720
+10.10.20.11     00:1a:2b:3c:4d:51  3       Dynamic  645
+
+Total Entries: 11

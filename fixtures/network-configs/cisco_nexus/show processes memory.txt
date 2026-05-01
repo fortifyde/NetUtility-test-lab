@@ -1,0 +1,18 @@
+Total      : 3293728
+Used       : 1148116
+Free       : 2145612
+
+PID    MemAlloc    MemLimit   Process
+-----  ----------  ---------  -----------
+ 1234  128456 KB   524288 KB  bgp
+ 2345   98432 KB   524288 KB  ospf
+ 3456   45678 KB   262144 KB  spanning_tree
+ 4567   32145 KB   262144 KB  lldp
+ 5678   28456 KB   262144 KB  cdp
+ 6789   24567 KB   131072 KB  snmp
+ 7890   12345 KB   131072 KB  aclqos
+ 8901   10234 KB    65536 KB  arp
+ 9012    8123 KB    65536 KB  igmp
+  123    5678 KB    65536 KB  sysmgr
+
+Memory Allocation: 34.8% (1148116 KB of 3293728 KB)

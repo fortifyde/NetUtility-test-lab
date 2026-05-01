@@ -1,0 +1,30 @@
+Interface    Status    MTU    RX Packets    TX Packets    Description
+-----------  --------  -----  ------------  ------------  -----------
+eth0         up        1500   15234567      12849302      Uplink to ISP
+eth1         up        1500   48291035      51023489      Internal LAN
+eth2         down      1500   0             0             DMZ
+lo           up        65536  2845102       2845102       loopback
+
+eth0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet 203.0.113.2  netmask 255.255.255.252  broadcast 203.0.113.3
+        ether 00:1c:42:a3:b7:d0  txqueuelen 1000
+        RX packets 15234567  bytes 8234567890 (7.7 GiB)
+        TX packets 12849302  bytes 2345678901 (2.2 GiB)
+
+eth1: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet 10.10.0.1  netmask 255.255.255.0  broadcast 10.10.0.255
+        ether 00:1c:42:a3:b7:d1  txqueuelen 1000
+        RX packets 48291035  bytes 23456789012 (21.8 GiB)
+        TX packets 51023489  bytes 18901234567 (17.6 GiB)
+
+eth2: flags=4098<BROADCAST,MULTICAST>  mtu 1500
+        inet 172.16.50.1  netmask 255.255.255.0  broadcast 172.16.50.255
+        ether 00:1c:42:a3:b7:d2  txqueuelen 1000
+        RX packets 0  bytes 0 (0.0 B)
+        TX packets 0  bytes 0 (0.0 B)
+
+lo: flags=73<UP,LOOPBACK,RUNNING>  mtu 65536
+        inet 127.0.0.1  netmask 255.0.0.0
+        loop  txqueuelen 1000
+        RX packets 2845102  bytes 345678901 (329.7 MiB)
+        TX packets 2845102  bytes 345678901 (329.7 MiB)

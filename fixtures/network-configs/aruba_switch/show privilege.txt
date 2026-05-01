@@ -1,0 +1,12 @@
+Privilege Levels
+
+Default Privilege Level: operator (0)
+
+Local Accounts:
+  Username    Privilege Level
+  ----------  ---------------
+  admin       manager (3)
+
+Privilege Levels:
+  Level 0 (operator): Read-only access
+  Level 3 (manager) : Full read-write access

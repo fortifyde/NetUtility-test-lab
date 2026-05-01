@@ -1,0 +1,21 @@
+
+SNTP Configuration
+
+  Time Sync Mode  : SNTP
+  SNTP Mode       : Unicast
+  SNTP Polling    : 720 seconds
+
+  SNTP Servers:
+    Server Address     : 10.10.10.100
+    Server Stratum     : 2
+    Server Status      : OK
+    Last Response      : Mon Apr 28 15:41:58 2026
+    Offset             : +0.002 seconds
+
+    Server Address     : 10.10.10.101
+    Server Stratum     : 2
+    Server Status      : OK
+    Last Response      : Mon Apr 28 15:41:55 2026
+    Offset             : +0.003 seconds
+
+  SNTP Authentication : Disabled (see show sntp authentication)

@@ -1,0 +1,8 @@
+Login Banner (MOTD)
+
+*******************************************************************
+*  NOTICE: This is a U.S. Government computer system.            *
+*  Unauthorized access is prohibited by Public Law 99-474.       *
+*  (The Computer Fraud and Abuse Act of 1986).                   *
+*  All activities are monitored and recorded.                     *
+*******************************************************************

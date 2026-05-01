@@ -1,0 +1,6 @@
+Authen type=DEFAULT, service=LOGIN
+  List="default": group radius (fallback to local)
+Authen type=DEFAULT, service=ENABLE
+  List="default": group radius (fallback to enable)
+Authen type=DEFAULT, service=LOGIN
+  List="CONSOLE": local

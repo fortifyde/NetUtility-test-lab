@@ -1,0 +1,12 @@
+
+LLDP Remote Devices Information
+
+  Local Port  | Chassis ID        | Port ID          | System Name         | System Description
+  ------------+-------------------+------------------+---------------------+------------------------------------
+  Trk1        | 00:1A:2B:3C:4D:01 | 00:1A:2B:3C:4D:01| CORE-SW-01          , HP 5406R zl2 Switch, revision KB.16.10.0017
+  Trk2        | 00:1A:2B:3C:4D:02 | 00:1A:2B:3C:4D:02| CORE-SW-02          , HP 5406R zl2 Switch, revision KB.16.10.0017
+  1           | AA:BB:CC:11:22:33 | AA:BB:CC:11:22:33| WKSTN-A-01          , Dell OptiPlex 7090
+  2           | AA:BB:CC:11:22:44 | AA:BB:CC:11:22:44| WKSTN-A-02          , Dell OptiPlex 7090
+  5           | AA:BB:CC:33:44:55 | AA:BB:CC:33:44:55| PRINTER-BLDG-A      , HP LaserJet Pro M404n
+
+Total remote devices: 5

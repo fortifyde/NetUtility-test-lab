@@ -1,0 +1,20 @@
+
+ARP Protection Configuration
+
+  ARP Protect      : Enabled
+  ARP Protect VLANs: 20
+
+  Trusted Ports    : Trk1, Trk2
+  Static ARP Entries: 0
+
+  Port      ARP Protection  Trusted
+  --------- --------------- --------
+  1-24      Enabled         No
+  25-44     Disabled        No
+  Trk1      Enabled         Yes
+  Trk2      Enabled         Yes
+
+  ARP Protect Statistics:
+    Valid ARP Packets   : 45,231
+    Invalid ARP Packets : 0
+    Dropped Packets     : 0

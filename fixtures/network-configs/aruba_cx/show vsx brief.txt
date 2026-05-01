@@ -1,0 +1,29 @@
+VSX Brief Information
+---------------------
+Local Switch
+  Role: Primary
+  System MAC: 00:9c:1a:b2:3c:50
+  Status: Online
+  ISL Status: Up
+  Keepalive Status: Up
+  Software Version: 10.10.1010
+
+Peer Switch
+  Role: Secondary
+  System MAC: 00:9c:1a:b3:4d:60
+  Status: Online
+  ISL Status: Up
+  Keepalive Status: Up
+  Software Version: 10.10.1010
+
+VSX Configuration
+-----------------
+ISL Interface: lag1
+ISL Status: Up
+Keepalive Peer: 10.0.255.2
+Keepalive Source: 10.0.255.1
+Keepalive VRF: default
+Active Forwarding: Enabled
+Hold Discovery Timer: 60 seconds
+Split-Recovery Timer: Disabled
+Traffic Class: Normal

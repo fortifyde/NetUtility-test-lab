@@ -1,0 +1,12 @@
+Member  New     IRF     IRF      Port    Link
+  ID    Priority  Port  Port  Status
+  1     32       1     disable   DOWN   No peer member
+  1     32       2     GE1/1/1   UP     Member 2
+  2     1        1     GE2/1/1   UP     Member 1
+  2     1        2     disable   DOWN   No peer member
+
+IRF-port bindings:
+  IRF-port 1/2:
+    Ten-GigabitEthernet1/1/1
+  IRF-port 2/1:
+    Ten-GigabitEthernet2/1/1

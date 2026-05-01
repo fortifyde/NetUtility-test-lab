@@ -1,0 +1,8 @@
+
+DHCP Relay Configuration
+
+  DHCP Relay    : Disabled
+  DHCP Option 82: Disabled
+
+  DHCP Relay Servers: None configured
+  DHCP Relay VLANs : None configured

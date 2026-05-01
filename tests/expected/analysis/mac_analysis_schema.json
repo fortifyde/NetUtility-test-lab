@@ -1,0 +1,98 @@
+{
+  "description": "Expected output schema for mac_analysis.sh — MAC address intelligence with OUI vendor lookup",
+  "type": "object",
+  "required": ["report_file"],
+  "properties": {
+    "report_file": {
+      "type": "object",
+      "required": ["filename"],
+      "properties": {
+        "filename": {
+          "type": "string",
+          "pattern": "^mac_analysis_.+_\\d{8}_\\d{6}\\.txt$",
+          "description": "Timestamped MAC analysis report under analysis/"
+        },
+        "sections": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "ALL MAC ADDRESSES",
+              "MAC ADDRESS ANALYSIS",
+              "VENDOR DISTRIBUTION",
+              "SECURITY ANALYSIS",
+              "MAC RANDOMIZATION DETECTION"
+            ]
+          }
+        }
+      }
+    },
+    "mac_entries": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["mac_address", "vendor"],
+        "properties": {
+          "mac_address": {
+            "type": "string",
+            "description": "Full MAC address (colon-separated hex)"
+          },
+          "oui_prefix": {
+            "type": "string",
+            "description": "First 3 octets used for OUI lookup"
+          },
+          "vendor": {
+            "type": "string",
+            "description": "Vendor name from OUI database lookup (or 'Unknown')"
+          },
+          "device_type": {
+            "type": "string",
+            "description": "Categorized device type (Network Infrastructure, Virtual Machine, etc.)"
+          }
+        }
+      }
+    },
+    "vendor_distribution": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["vendor", "count"],
+        "properties": {
+          "vendor": {
+            "type": "string"
+          },
+          "count": {
+            "type": "integer",
+            "description": "Number of unique MACs from this vendor"
+          },
+          "percentage": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "security_findings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "finding": {
+            "type": "string",
+            "enum": [
+              "multicast_mac",
+              "broadcast_mac",
+              "locally_administered",
+              "randomized_mac"
+            ]
+          },
+          "mac_address": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

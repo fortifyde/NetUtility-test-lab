@@ -1,0 +1,31 @@
+HWTACACS scheme: tac_primary
+  Primary authentication server:
+    IP address: 10.10.10.11
+    Port: 49
+    Status: Active
+    Shared key: Configured
+  Primary authorization server:
+    IP address: 10.10.10.11
+    Port: 49
+    Status: Active
+    Shared key: Configured
+  Primary accounting server:
+    IP address: 10.10.10.11
+    Port: 49
+    Status: Active
+    Shared key: Configured
+  Secondary servers: Not configured
+  Username format: without-domain
+  Traffic-unit: B
+  NAS-IP: Not configured
+
+HWTACACS scheme statistics:
+  Authentication requests: 15420
+  Authentication successes: 15380
+  Authentication failures: 40
+  Authorization requests: 15380
+  Authorization successes: 15375
+  Authorization failures: 5
+  Accounting starts: 15375
+  Accounting stops: 15320
+  Accounting updates: 76650

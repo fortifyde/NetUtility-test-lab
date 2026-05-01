@@ -1,0 +1,18 @@
+Logging console:                disabled
+Logging monitor:                enabled (Severity: warning)
+Logging logfile:                enabled (Severity: informational)
+  Name: messages
+  Size: 4194304 bytes
+Logging server:                 enabled
+  10.10.10.50                   (Severity: debugging, Facility: local7)
+  10.10.10.51                   (Severity: debugging, Facility: local7)
+Logging timestamp:              milliseconds
+Logging event trunk status:     enabled
+Logging event port link-status: enabled
+
+Last 5 log entries:
+2026 Mar 25 08:44:12.345 N9K-CORE-01 %SYSMGR-2-SERVICE_CRASHED: Service "radius" crashed 0 times.
+2026 Mar 25 08:43:55.123 N9K-CORE-01 %VSHD-5-VSHD_SYSLOG_CONFIG_I: Configured from vty by admin on 10.10.10.5
+2026 Mar 25 08:42:30.456 N9K-CORE-01 %ACLLOG-5-ACLLOG_FLOW_INTERVAL: Src-Vlan: 10, Src-IP: 10.10.10.100, Dst-IP: 10.10.20.10
+2026 Mar 25 08:41:15.789 N9K-CORE-01 %PORT-IF-5-IF_DOWN_LINK_FAILURE: Interface Ethernet1/16 is down (Link failure)
+2026 Mar 25 08:40:02.012 N9K-CORE-01 %STP-5-PORTMOVE: Vlan10 port Po10 moved to forwarding

@@ -1,0 +1,122 @@
+Total VLANs: 9
+
+VLAN ID: 1
+  VLAN type: Static
+  Route interface: Not configured
+  Description: VLAN 0001
+  Name: VLAN 0001
+  Tagged ports: None
+  Untagged ports:
+    GigabitEthernet1/0/4    GigabitEthernet1/0/7
+    GigabitEthernet1/0/8    GigabitEthernet1/0/11
+    GigabitEthernet1/0/12   GigabitEthernet1/0/15
+    GigabitEthernet1/0/17   GigabitEthernet1/0/18
+    GigabitEthernet1/0/21   GigabitEthernet1/0/22
+    GigabitEthernet1/0/23   GigabitEthernet1/0/25
+    GigabitEthernet1/0/26   GigabitEthernet1/0/27
+    GigabitEthernet1/0/29   GigabitEthernet1/0/30
+    GigabitEthernet1/0/31   GigabitEthernet1/0/32
+    GigabitEthernet1/0/33   GigabitEthernet1/0/34
+    GigabitEthernet1/0/35   GigabitEthernet1/0/36
+    GigabitEthernet1/0/37   GigabitEthernet1/0/38
+    GigabitEthernet1/0/39   GigabitEthernet1/0/40
+    GigabitEthernet1/0/41   GigabitEthernet1/0/42
+    GigabitEthernet1/0/43   GigabitEthernet1/0/44
+    GigabitEthernet1/0/45   GigabitEthernet1/0/46
+    GigabitEthernet1/0/47
+
+VLAN ID: 10
+  VLAN type: Static
+  Route interface: Configured
+  IP address: 10.10.10.3
+  Subnet mask: 255.255.255.0
+  Description: MANAGEMENT_VLAN
+  Name: MGMT
+  Tagged ports:
+    GigabitEthernet1/0/1    GigabitEthernet2/0/1
+    Ten-GigabitEthernet1/1/1 Ten-GigabitEthernet2/1/1
+    Bridge-Aggregation1
+  Untagged ports: None
+
+VLAN ID: 20
+  VLAN type: Static
+  Route interface: Configured
+  IP address: 10.10.20.1
+  Subnet mask: 255.255.255.0
+  Description: USERS_VLAN
+  Name: USERS
+  Tagged ports:
+    GigabitEthernet1/0/1    GigabitEthernet1/0/2
+    GigabitEthernet2/0/1    Bridge-Aggregation1
+  Untagged ports:
+    GigabitEthernet1/0/3    GigabitEthernet1/0/4
+    GigabitEthernet1/0/7    GigabitEthernet1/0/8
+    GigabitEthernet1/0/9    GigabitEthernet1/0/10
+    GigabitEthernet1/0/13   GigabitEthernet1/0/14
+    GigabitEthernet1/0/19   GigabitEthernet1/0/20
+    GigabitEthernet1/0/24   GigabitEthernet1/0/28
+    GigabitEthernet2/0/2    GigabitEthernet2/0/3
+    GigabitEthernet2/0/4    GigabitEthernet2/0/6
+
+VLAN ID: 30
+  VLAN type: Static
+  Route interface: Configured
+  IP address: 10.10.30.1
+  Subnet mask: 255.255.255.0
+  Description: SERVERS_VLAN
+  Name: SERVERS
+  Tagged ports:
+    GigabitEthernet1/0/1    GigabitEthernet2/0/1
+    Bridge-Aggregation1
+  Untagged ports:
+    GigabitEthernet1/0/5    GigabitEthernet1/0/6
+    GigabitEthernet2/0/5
+
+VLAN ID: 40
+  VLAN type: Static
+  Route interface: Not configured
+  Description: PRINTERS_VLAN
+  Name: PRINTERS
+  Tagged ports:
+    GigabitEthernet1/0/1    GigabitEthernet2/0/1
+  Untagged ports:
+    GigabitEthernet1/0/16
+
+VLAN ID: 50
+  VLAN type: Static
+  Route interface: Not configured
+  Description: CAMERAS_VLAN
+  Name: CAMERAS
+  Tagged ports:
+    GigabitEthernet1/0/1    GigabitEthernet2/0/1
+  Untagged ports:
+    GigabitEthernet1/0/48
+
+VLAN ID: 99
+  VLAN type: Static
+  Route interface: Not configured
+  Description: NATIVE_VLAN
+  Name: NATIVE
+  Tagged ports: None
+  Untagged ports: None
+
+VLAN ID: 100
+  VLAN type: Static
+  Route interface: Configured
+  IP address: 10.10.100.1
+  Subnet mask: 255.255.255.0
+  Description: GUEST_VLAN
+  Name: GUEST
+  Tagged ports:
+    GigabitEthernet1/0/1    GigabitEthernet1/0/2
+    GigabitEthernet2/0/1
+  Untagged ports: None
+
+VLAN ID: 200
+  VLAN type: Static
+  Route interface: Not configured
+  Description: OUT_OF_BAND_MGMT
+  Name: MANAGEMENT
+  Tagged ports:
+    GigabitEthernet1/0/1    GigabitEthernet2/0/1
+  Untagged ports: None

@@ -1,0 +1,98 @@
+{
+  "description": "Expected output schema for web_screenshot.sh — web service screenshot capture using gowitness",
+  "type": "object",
+  "required": ["session_dir", "screenshots", "jsonl_metadata", "report"],
+  "properties": {
+    "session_dir": {
+      "type": "string",
+      "pattern": "^\\d{8}_\\d{6}$",
+      "description": "Timestamped session directory under captures/screenshots/"
+    },
+    "screenshots": {
+      "type": "object",
+      "required": ["format"],
+      "properties": {
+        "format": {
+          "type": "string",
+          "const": "jpeg"
+        },
+        "pattern": {
+          "type": "string",
+          "description": "*.jpeg files — one per captured URL"
+        },
+        "items": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "filename": {
+                "type": "string",
+                "description": "Gowitness-generated JPEG filename (hash-based)"
+              },
+              "url": {
+                "type": "string",
+                "description": "Original URL captured"
+              },
+              "status_code": {
+                "type": "integer",
+                "description": "HTTP status code (filtered to 200 only)"
+              }
+            }
+          }
+        }
+      }
+    },
+    "jsonl_metadata": {
+      "type": "object",
+      "required": ["filename"],
+      "properties": {
+        "filename": {
+          "type": "string",
+          "const": "gowitness.jsonl"
+        },
+        "format": {
+          "type": "string",
+          "const": "jsonl",
+          "description": "One JSON object per line with screenshot metadata"
+        },
+        "fields": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Per-entry fields: file_name, url, status_code, title, technologies, etc."
+        }
+      }
+    },
+    "gowitness_log": {
+      "type": "object",
+      "properties": {
+        "filename": {
+          "type": "string",
+          "const": "gowitness_output.txt"
+        },
+        "description": {
+          "type": "string",
+          "description": "Stdout/stderr from gowitness execution"
+        }
+      }
+    },
+    "report": {
+      "type": "object",
+      "required": ["filename"],
+      "properties": {
+        "filename": {
+          "type": "string",
+          "const": "screenshot_report.txt"
+        },
+        "sections": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Summary with total URLs processed, screenshots captured, session directory location"
+        }
+      }
+    }
+  }
+}

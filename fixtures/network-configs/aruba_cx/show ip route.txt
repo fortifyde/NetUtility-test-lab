@@ -1,0 +1,27 @@
+Displaying ipv4 routes for VRF default
+
+Displaying ipv4 routes for default
+
+Destination       Gateway         Type  Sub-Type  Metric  Dist  Age       Interface
+----------------- --------------  ----  --------  ------  ----  --------  -----------
+0.0.0.0/0         10.0.1.1        OSPF  Inter     10      110   87d14h    1/1/1
+10.0.1.0/30       10.0.1.2        local local     0       0     87d14h    1/1/1
+10.0.1.4/30       10.0.1.6        local local     0       0     87d14h    1/1/2
+10.0.1.8/30       10.0.1.1        OSPF  Inter     20      110   87d14h    1/1/1
+10.0.2.0/24       10.0.1.1        OSPF  Inter     20      110   87d14h    1/1/1
+10.0.2.0/24       10.0.1.5        OSPF  Inter     20      110   87d14h    1/1/2
+10.0.3.0/24       10.0.1.1        OSPF  Inter     30      110   87d14h    1/1/1
+10.0.4.0/24       10.0.1.1        OSPF  Inter     30      110   87d14h    1/1/1
+10.0.5.0/24       10.0.1.5        OSPF  Inter     20      110   87d14h    1/1/2
+10.10.10.0/24     10.10.10.5      local local     0       0     87d14h    mgmt
+10.10.10.5/32     10.10.10.5      local local     0       0     87d14h    loopback0
+10.10.10.50/32    10.0.1.1        OSPF  Inter     20      110   87d14h    1/1/1
+10.10.10.51/32    10.0.1.1        OSPF  Inter     20      110   87d14h    1/1/1
+10.10.10.100/32   10.0.1.1        OSPF  Inter     20      110   87d14h    1/1/1
+10.10.10.101/32   10.0.1.1        OSPF  Inter     20      110   87d14h    1/1/1
+10.0.255.0/30     10.0.255.1      local local     0       0     87d14h    1/1/4
+172.16.0.0/16     10.0.1.1        OSPF  Inter     20      110   87d14h    1/1/1
+172.16.0.0/16     10.0.1.5        OSPF  Inter     20      110   87d14h    1/1/2
+192.168.1.0/24    10.0.1.1        OSPF  Inter     30      110   87d14h    1/1/1
+
+Total Route Count: 19

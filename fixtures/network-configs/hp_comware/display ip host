@@ -1,0 +1,11 @@
+Host                 Age  Flags  Address
+core-switch-01       --   S      10.10.10.1
+ntp-server           --   S      10.10.10.2
+syslog-server        --   S      10.10.10.2
+dhcp-server          --   S      10.10.10.5
+radius-server        --   S      10.10.10.10
+tacacs-server        --   S      10.10.10.11
+
+Total host entries: 6
+
+S = Static

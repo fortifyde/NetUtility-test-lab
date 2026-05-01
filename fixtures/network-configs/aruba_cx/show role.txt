@@ -1,0 +1,21 @@
+RBAC Roles
+----------
+Role: administrators
+  Description: Full system administrators
+  Permissions: All (read-write)
+  Members: admin
+
+Role: operators
+  Description: Network operators with limited access
+  Permissions: show, clear, ping, traceroute, configure (limited)
+  Members: netop
+
+Role: auditors
+  Description: Read-only access for audit purposes
+  Permissions: show (read-only)
+  Members: (none)
+
+Role: mgmt-users
+  Description: Management users
+  Permissions: show, configure (interface only)
+  Members: (none)

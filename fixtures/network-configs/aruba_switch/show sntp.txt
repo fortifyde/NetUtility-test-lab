@@ -1,0 +1,11 @@
+SNTP Configuration
+
+SNTP Mode: Unicast
+
+SNTP Servers:
+  Priority  Address        Status
+  --------  -------------  ------
+  1         10.10.10.200   Up
+  2         10.10.10.201   Up
+
+Poll Interval: 64 seconds

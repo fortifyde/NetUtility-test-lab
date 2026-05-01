@@ -1,0 +1,21 @@
+Authentication Configuration
+
+Login Authentication Methods:
+  Default: radius, local
+  Fallback: local
+
+Enable Authentication Methods:
+  Default: radius, local
+  Fallback: local
+
+Local Users:
+  admin (manager privilege)
+
+Console Authentication:
+  Login: radius, local
+
+SSH Authentication:
+  Login: radius, local
+
+Telnet Authentication:
+  Telnet server is disabled.

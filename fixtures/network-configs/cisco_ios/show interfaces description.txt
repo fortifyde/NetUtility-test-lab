@@ -1,0 +1,29 @@
+Interface         Status   Protocol Description
+Gi1/0/1           up       up       Uplink to DIST-SW-01 Gi1/0/1
+Gi1/0/2           up       up       Uplink to DIST-SW-02 Gi1/0/2
+Gi1/0/3           up       up       Workstation Port - DATA and VOICE
+Gi1/0/4           up       up       Workstation Port - DATA and VOICE
+Gi1/0/5           up       up       Workstation Port - DATA and VOICE
+Gi1/0/6           up       up       Workstation Port - DATA and VOICE
+Gi1/0/7           up       down
+Gi1/0/8           down     down
+Gi1/0/9           down     down
+Gi1/0/10          down     down
+Gi1/0/11          down     down
+Gi1/0/12          down     down
+Gi1/0/13          admin    down
+Gi1/0/14          admin    down
+Gi1/0/15          admin    down
+Gi1/0/16          admin    down
+Gi1/0/17          admin    down
+Gi1/0/18          admin    down
+Gi1/0/19          admin    down
+Gi1/0/20          admin    down
+Gi1/0/21          down     down
+Gi1/0/22          down     down
+Gi1/0/23          down     down
+Gi1/0/24          down     down
+Gi1/0/47          admin    down     *** Unused - Shutdown ***
+Gi1/0/48          admin    down     *** Unused - Shutdown ***
+Te1/0/1           down     down
+Te1/0/2           down     down

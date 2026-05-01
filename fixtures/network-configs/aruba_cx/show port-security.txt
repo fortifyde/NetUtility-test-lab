@@ -1,0 +1,39 @@
+Port Security Status
+--------------------
+Global Status: Enabled
+Violation Mode: Protect
+MAC Address Aging: Enabled
+MAC Address Aging Time: 3600 seconds
+
+Port        Security  Max  Current  Violation  Sticky  Last Violation
+---------   --------  ---  -------  ---------  ------  --------------
+1/1/5       Enabled   2    1        Protect    No      Never
+1/1/6       Enabled   2    1        Protect    No      Never
+1/1/7       Disabled  --   --       --         --      --
+1/1/8       Disabled  --   --       --         --      --
+1/1/9       Disabled  --   --       --         --      --
+1/1/10      Disabled  --   --       --         --      --
+1/1/11      Disabled  --   --       --         --      --
+1/1/12      Disabled  --   --       --         --      --
+1/1/13      Disabled  --   --       --         --      --
+1/1/14      Disabled  --   --       --         --      --
+1/1/15      Disabled  --   --       --         --      --
+1/1/16      Disabled  --   --       --         --      --
+1/1/17      Disabled  --   --       --         --      --
+1/1/18      Disabled  --   --       --         --      --
+1/1/19      Disabled  --   --       --         --      --
+1/1/20      Disabled  --   --       --         --      --
+1/1/21      Disabled  --   --       --         --      --
+1/1/22      Disabled  --   --       --         --      --
+1/1/23      Disabled  --   --       --         --      --
+1/1/24      Disabled  --   --       --         --      --
+1/1/25      Disabled  --   --       --         --      --
+1/1/26      Disabled  --   --       --         --      --
+1/1/27-44   Disabled  --   --       --         --      --
+
+Port Security MAC Addresses
+---------------------------
+Port      VLAN  MAC Address       Type
+--------  ----  ----------------  --------
+1/1/5     20    a4:b5:c6:d7:e8:f9 Dynamic
+1/1/6     20    a4:b5:c6:d7:e8:fa Dynamic

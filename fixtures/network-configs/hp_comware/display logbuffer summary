@@ -1,0 +1,28 @@
+Log buffer size: 1024
+Log buffer current entries: 247
+
+Log level summary:
+  Emergencies   : 0
+  Alerts        : 0
+  Critical      : 2
+  Errors        : 5
+  Warnings      : 12
+  Notifications : 45
+  Informational : 178
+  Debugging     : 5
+
+Oldest entry: Apr 22 08:15:03 2026
+Newest entry: Apr 28 15:45:00 2026
+
+Top sources:
+  IFNET   : 89 entries
+  STP     : 32 entries
+  ARP     : 28 entries
+  LLDP    : 22 entries
+  SHELL   : 18 entries
+  SNMP    : 15 entries
+  NTP     : 14 entries
+  DHCP    : 12 entries
+  IRF     : 8 entries
+  SSH     : 5 entries
+  Other   : 4 entries

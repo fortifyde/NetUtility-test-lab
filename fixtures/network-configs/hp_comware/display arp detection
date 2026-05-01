@@ -1,0 +1,14 @@
+ARP detection status:
+  Global: Enabled
+  VLAN 20: Enabled
+  VLAN 30: Enabled
+  VLAN 100: Enabled
+
+ARP detection trusted ports:
+  Interface           Trusted
+  GE1/0/1             Yes
+  GE2/0/1             Yes
+  BAGG1               Yes
+
+ARP detection rules:
+  None configured

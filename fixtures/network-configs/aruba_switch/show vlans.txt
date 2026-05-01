@@ -1,0 +1,19 @@
+Status and Counters - VLAN Information
+
+  VLAN ID Name                 | Status  Jumbo  Voice
+  ------- -------------------- + ------- ------ -----
+  1       DEFAULT_VLAN         | Up      No     No
+  10      MGMT                 | Up      No     No
+  20      SERVERS              | Up      No     No
+  30      USERS                | Up      No     No
+  40      GUEST                | Up      No     No
+  100     NATIVE_MIGRATION     | Down    No     No
+
+  VLAN ID Ports
+  ------- -----
+  1       (forbidden on all ports)
+  10      1 Untagged, Trk1 Tagged
+  20      2-3 Untagged, Trk1 Tagged
+  30      4-24 Untagged, Trk1 Tagged
+  40      25-48 Untagged, Trk1 Tagged
+  100     Trk1 Tagged

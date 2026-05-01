@@ -1,0 +1,7 @@
+AAA Service: 
+  Authentication:    enabled
+  Authorization:     enabled
+  Accounting:        enabled
+  Session-id:        common
+  Formatter:         disabled
+ ipseckey-history:   disabled

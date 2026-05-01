@@ -1,0 +1,4 @@
+NAME     LINE         TIME         IDLE    PID    COMMENT
+admin    pts/0        Mar 25 08:30 00:05   12345  10.10.10.5
+admin    pts/1        Mar 25 08:42 00:00   12389  10.10.10.5
+netop    pts/2        Mar 25 08:15 00:30   12401  10.10.10.100

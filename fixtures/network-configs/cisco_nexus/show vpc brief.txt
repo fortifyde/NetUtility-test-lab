@@ -1,0 +1,21 @@
+vPC domain id                       : 10
+Peer status                         : peer adjacency formed ok
+vPC keep-alive status               : peer is alive
+Configuration consistency status    : success
+Per-vlan consistency status         : success
+Type-2 consistency status           : success
+vPC role                            : primary
+Number of vPCs configured           : 1
+Peer Gateway                        : Enabled
+Dual-active excluded VLANs          : -
+Graceful Consistency Check          : Enabled
+
+vPC Peer-link
+---------------------------------------------------------------------
+id  Port   Status  Active vlans
+1   Po10   up      1,10,20,30,40,50,99,100,200
+
+vPC
+---------------------------------------------------------------------
+id  Port   Status  Active vlans
+20  Po20   up      1,10,20,30,40,50,99,100,200

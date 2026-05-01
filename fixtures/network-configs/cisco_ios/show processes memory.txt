@@ -1,0 +1,17 @@
+Processor Pool Total:    195088360 Used:    42152336 Free:   152936024
+      I/O Pool Total:     16777216 Used:     2359296 Free:    14417920
+
+ PID TTY  Allocated      Freed    Holding  Getbufs  Retbufs Process
+   1   0        180          0       7276        0        0 Chunk Manager
+   2   0        196       3408       6964        0        0 Load Meter
+   3   0    2464784       2504     269292        0        0 Spanning Tree
+   4   0          0          0       6860        0        0 Deferred Events
+   5   0          0          0       6860        0        0 SpanTree Helper
+   6   0   16384112   16380720      92780     1284        0 Check heaps
+   7   0          0          0       6860        0        0 Pool Manager
+   8   0        192        192       6860        0        0 Timers
+  11   0        344          0       7252        0        0 TACACS+
+  12   0     515680     493084      23052       84        0 ARP Input
+  14   0      21532      10964      17424        0        0 CDP Protocol
+
+Total:  21963052, Total Allocated: 195088360, Total Freed: 183044556

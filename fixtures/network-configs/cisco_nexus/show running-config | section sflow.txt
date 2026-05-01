@@ -1,0 +1,6 @@
+sflow run
+sflow sampling-rate 4096
+sflow counter-poll-interval 60
+sflow collector 10.10.10.200 vrf default
+sflow agent-ip 10.10.10.2
+sflow data-source interface Vlan10

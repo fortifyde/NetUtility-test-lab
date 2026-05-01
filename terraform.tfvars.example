@@ -1,0 +1,49 @@
+# Path to the NetUtility project (for auto-deploy to Kali)
+# netutil_source_dir = "../NetUtility"
+
+# NetUtility Test Lab Configuration
+# Copy this file to terraform.tfvars and customize
+
+# Lab name prefix for all resources
+lab_name = "netutil-lab"
+
+# OVS bridge name (must match setup-ovs.sh)
+bridge_name = "ovs-br0"
+
+# Network CIDRs
+mgmt_network = "192.168.100.0/24"  # Management (NAT)
+vlan10_cidr  = "10.10.10.0/24"     # Corporate
+vlan20_cidr  = "10.10.20.0/24"     # Servers
+vlan30_cidr  = "10.10.30.0/24"     # DMZ
+
+# VM IP addresses (on VLAN networks)
+kali_ip   = "10.10.10.5"
+debian_ip = "10.10.10.10"
+ubuntu_ip = "10.10.10.20"
+windows_ip = "10.10.10.30"
+dmz_ip    = "10.10.30.10"
+
+# VM resource sizing
+kali_ram_mb   = 4096
+target_ram_mb = 1024
+kali_vcpu     = 4
+target_vcpu   = 2
+
+# Image directory (relative to lab root)
+images_dir = "images"
+
+# SSH key (leave empty to auto-generate)
+ssh_public_key = ""
+
+# SSH private key path (for auto-deploying files to Kali VM)
+# ssh_private_key_path = "~/.ssh/id_rsa"
+
+# SNMP communities for target VMs
+snmp_community_ro = "public"
+snmp_community_rw = "private"
+
+# DNS domain
+domain = "test.local"
+
+# Windows target (requires manual ISO + virtio drivers)
+enable_windows = false

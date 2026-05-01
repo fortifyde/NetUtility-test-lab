@@ -1,0 +1,27 @@
+IRF stack information:
+  Stack topology: Ring
+  Stack management VLAN: 1
+  Stack MAC address: 00:1A:2B:3C:4D:50
+  MAC persistence: Timer (8 minutes)
+
+Member  Role    Priority  CPU-MAC            Status
+  1     Master  32        001a-2b3c-4d50    Normal
+  2     Standby 1         001a-2b3c-4d60    Normal
+
+IRF Port Information:
+  Member 1:
+    IRF Port 1:
+      Link status: DOWN
+      Peer member: --
+    IRF Port 2:
+      Link status: UP
+      Peer member: 2
+      Bind interface: Ten-GigabitEthernet1/1/1
+  Member 2:
+    IRF Port 1:
+      Link status: UP
+      Peer member: 1
+      Bind interface: Ten-GigabitEthernet2/1/1
+    IRF Port 2:
+      Link status: DOWN
+      Peer member: --

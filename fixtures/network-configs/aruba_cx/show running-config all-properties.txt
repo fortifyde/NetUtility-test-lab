@@ -1,0 +1,342 @@
+; ArubaOS-CX 10.10.1010
+; Build: 10.10.1010-76434
+; Timestamp: 2026-04-28 10:22:15 UTC
+; All Properties Configuration
+
+hostname ARUBA-CX-01
+ntp server 10.10.10.1
+ntp server 10.10.10.2
+ntp enable
+ntp authentication-key 1 md5-hash $1$NtpK3y$h4sh
+ntp trusted-key 1
+ntp authenticate
+time timezone EST
+time daylight-saving-rule continental-us
+
+dns server 10.10.10.1
+dns server 10.10.10.2
+dns domain-name mil.local
+dns source-interface mgmt
+
+user admin group administrators password-hash $6$rounds=656000$xK8vQmN2jH5gRfSu$eL1kQ6wY8nP3mBvDcGsJhKoTfU2xRpAnW9iCsK4bL6zDhN2pE7vR3gMkSoXtYaBfU5iWnDqH8lCsGeJpTrMwA1
+user admin ssh-key ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDk0b7x2qT/3eJrK5mW9bN0pQ8vR2gMfT1yL6hK4jP7aS8nB0cW3xZ9dF2eG5iH8kL6mN3oQ1rS4tU7vW9xB2cY5fD8gH0jK3lM6nP2qR4sT1wX8yB5dG7hF3kL9mN2oP6qR8sT4vW1xB3cY5fD8gH0jK3lM6nP2qR4sT1wX8yB5dG7hF3kL9mN2oP6q admin@mil.local
+user netop group operators password-hash $6$rounds=656000$yL2wRnN4kJ6hSgTv$fM2lR7xZ9oQ1pBwEcHtJiKpVfU3ySpBnX0iDtL5cM7zEhN2qF8vR4gMkTpYtZbCfU6jWoEqI9mDsHeKqUsNxB2
+
+ssh server vrf mgmt
+ssh server vrf default
+ssh server version 2
+ssh server port 22
+ssh server key-exchange-algorithm ecdh-sha2-nistp384
+ssh server key-exchange-algorithm ecdh-sha2-nistp256
+ssh server host-key-algorithm rsa
+ssh server host-key-algorithm ecdsa
+ssh server host-key size 4096
+ssh server login-timeout 60
+ssh server max-auth-retries 3
+ssh server allow-from 10.10.10.0/24
+ssh server allow-from 172.16.0.0/16
+ssh server idle-timeout 300
+ssh server authentication-retries 3
+ssh server authentication-methods publickey
+ssh server authentication-methods password
+ssh server rekey-interval 3600
+
+telnet server disable
+
+http server vrf mgmt
+http server port 80
+no http server enable
+https server vrf mgmt
+https server port 443
+https server enable
+https server ssl-protocol tls1.2
+https server ssl-protocol tls1.3
+
+banner motd "
+******************************************************************
+* WARNING: This is a U.S. Government computer system.           *
+* Unauthorized access is prohibited by Public Law 99-474.        *
+* The Computer Fraud and Abuse Act of 1986.                      *
+******************************************************************
+"
+
+vlan 1
+    name DEFAULT_VLAN
+vlan 10
+    name MGMT
+vlan 20
+    name USERS
+vlan 30
+    name SERVERS
+vlan 40
+    name VOICE
+vlan 99
+    name NATIVE
+vlan 100
+    name GUEST
+vlan 200
+    name SECURITY
+
+interface mgmt
+    ip address 10.10.10.5/24
+    ip default-gateway 10.10.10.1
+    no shutdown
+
+interface 1/1/1
+    description Uplink-to-Core-SW-1
+    no shutdown
+    routing
+    ip address 10.0.1.2/30
+    ip ospf 1 area 0.0.0.0
+    ip ospf cost 10
+    ip ospf hello-interval 10
+    ip ospf dead-interval 40
+    flow-control
+    speed 10G
+    mtu 9216
+
+interface 1/1/2
+    description Uplink-to-Core-SW-2
+    no shutdown
+    routing
+    ip address 10.0.1.6/30
+    ip ospf 1 area 0.0.0.0
+    ip ospf cost 10
+    ip ospf hello-interval 10
+    ip ospf dead-interval 40
+    flow-control
+    speed 10G
+    mtu 9216
+
+interface 1/1/3
+    description VSX-ISL-to-ARUBA-CX-02
+    no shutdown
+    speed 10G
+    lag 1
+    mtu 9216
+
+interface 1/1/4
+    description VSX-Keepalive
+    no shutdown
+    routing
+    ip address 10.0.255.1/30
+
+interface 1/1/5
+    description Access-Port-Floor1-Bldg200
+    no shutdown
+    vlan access 20
+    spanning-tree port-type admin-edge
+    loop-protect
+    port-security
+    port-security maximum 2
+    port-security violation-mode protect
+
+interface 1/1/6
+    description Access-Port-Floor1-Bldg200
+    no shutdown
+    vlan access 20
+    spanning-tree port-type admin-edge
+    loop-protect
+
+interface 1/1/7-1/1/24
+    description Access-Port
+    no shutdown
+    vlan access 20
+    spanning-tree port-type admin-edge
+    loop-protect
+
+interface 1/1/25
+    description Server-Web-01
+    no shutdown
+    vlan access 30
+    spanning-tree port-type admin-edge
+
+interface 1/1/26
+    description Server-DB-01
+    no shutdown
+    vlan access 30
+    spanning-tree port-type admin-edge
+
+interface 1/1/27-1/1/44
+    description Access-Port
+    no shutdown
+    vlan access 20
+    spanning-tree port-type admin-edge
+    loop-protect
+
+interface 1/1/45
+    description AP-Floor1-01
+    no shutdown
+    vlan trunk native 99
+    vlan trunk allowed 20,40
+    spanning-tree port-type admin-edge
+
+interface 1/1/46
+    description AP-Floor1-02
+    no shutdown
+    vlan trunk native 99
+    vlan trunk allowed 20,40
+    spanning-tree port-type admin-edge
+
+interface 1/1/47
+    description Camera-VLAN-200
+    no shutdown
+    vlan access 200
+    spanning-tree port-type admin-edge
+
+interface 1/1/48
+    description Guest-Access-VLAN100
+    no shutdown
+    vlan access 100
+    spanning-tree port-type admin-edge
+
+interface lag 1
+    description VSX-ISL
+    no shutdown
+    vlan trunk native 99
+    vlan trunk allowed all
+    lacp mode active
+    lacp rate fast
+    vsx-sync active-forwarding
+    vsx-sync active-forwarding include-v2
+    mtu 9216
+
+vsx
+    role primary
+    inter-switch-link lag 1
+    keepalive peer 10.0.255.2 source 10.0.255.1 vrf default
+    keepalive hello-interval 3
+    keepalive dead-interval 15
+    system-mac 00:9c:1a:b2:3c:50
+    vsx-sync vlan
+    vsx-sync spanning-tree
+    vsx-sync igmp-snooping
+    hold-discovery-timer 60
+    vsx-sync copp-policy
+
+router ospf 1
+    router-id 10.10.10.5
+    passive-interface default
+    no passive-interface 1/1/1
+    no passive-interface 1/1/2
+    area 0.0.0.0
+    spf-delay initial 50 hold 200 maximum-hold 5000
+    max-metric router-lsa administrative
+    redistribute connected
+
+interface loopback 0
+    ip address 10.10.10.5/32
+    ip ospf 1 area 0.0.0.0
+
+spanning-tree
+spanning-tree mode rstp
+spanning-tree priority 0
+spanning-tree vlan 10 priority 0
+spanning-tree vlan 20 priority 0
+spanning-tree vlan 30 priority 0
+spanning-tree vlan 99 priority 0
+spanning-tree bpdu-guard
+spanning-tree bpdu-guard timeout 300
+
+snmp-server community SecStr1ng! ro
+snmp-server community Pr1v4teR0! rw
+snmp-server host 10.10.10.100 community SecStr1ng! version 2c
+snmp-server host 10.10.10.101 community SecStr1ng! version 2c
+snmp-server host 10.10.10.100 informs community SecStr1ng! version 2c
+snmp-server enable traps
+snmp-server enable traps link-up
+snmp-server enable traps link-down
+snmp-server enable traps authentication
+snmp-server enable traps cold-start
+snmp-server enable traps warm-start
+snmp-server contact "NetSec Team - netsec@mil.local"
+snmp-server location "Bldg 200 - Comm Closet 3A"
+
+aaa authentication login default group radius local
+aaa authentication enable default group radius local
+aaa authorization commands default group radius local
+aaa accounting exec default start-stop group radius
+aaa accounting commands default start-stop group radius
+aaa accounting system default start-stop group radius
+
+radius-server host 10.10.10.50
+radius-server key RadiusS3cret!
+radius-server timeout 5
+radius-server retransmit 3
+radius-server deadtime 15
+radius-server source-ip 10.10.10.5
+
+tacacs-server host 10.10.10.51
+tacacs-server key T4c4csS3cret!
+tacacs-server timeout 5
+tacacs-server deadtime 15
+
+logging 10.10.10.100
+logging 10.10.10.101
+logging facility local6
+logging severity warning
+
+syslog server 10.10.10.100 facility local6 severity warning vrf default
+syslog server 10.10.10.101 facility local6 severity warning vrf default
+
+access-list ip MGMT-ACL
+    10 permit ip 10.10.10.0/24 any
+    20 permit ip 172.16.0.0/16 any
+    30 deny ip any any log
+
+access-list ip SNMP-ACL
+    10 permit ip 10.10.10.100/32 any
+    20 permit ip 10.10.10.101/32 any
+    30 deny ip any any log
+
+access-list ip NTP-ACL
+    10 permit ip 10.10.10.1/32 any
+    20 permit ip 10.10.10.2/32 any
+    30 deny ip any any log
+
+port-security
+port-security violation-mode protect
+port-security mac-address aging
+port-security mac-address aging-time 3600
+
+dhcp-snooping
+dhcp-snooping vlan 10,20,30
+dhcp-snooping trust interface 1/1/1
+dhcp-snooping trust interface 1/1/2
+
+arp inspection
+arp inspection vlan 10,20,30
+arp inspection trust interface 1/1/1
+arp inspection trust interface 1/1/2
+
+ip source-guard
+ip source-guard vlan 10,20
+
+password-complexity
+password-complexity minimum-length 15
+password-complexity minimum-uppercase 1
+password-complexity minimum-lowercase 1
+password-complexity minimum-numeric 1
+password-complexity minimum-special 1
+password-complexity history 12
+password-complexity expiry 90
+password-complexity expiry-warning 14
+
+sflow collector 10.10.10.100 vrf default
+sflow collector 10.10.10.101 vrf default
+sflow sampling-rate 512
+sflow polling-interval 30
+sflow agent-address 10.10.10.5
+
+copp-policy strict
+
+vrrp 10
+    ip address 10.0.1.1
+    priority 110
+    preempt
+    authentication text VRRP-P@ss!
+
+igmp-snooping
+igmp-snooping vlan 10
+igmp-snooping vlan 20
+igmp-snooping vlan 30

@@ -1,0 +1,8 @@
+Default domain is mil.local
+Name/address lookup uses domain service
+Name servers are 10.10.10.5, 10.10.10.6, vrf Mgmt-vrf
+
+Host                     Port  Flags      Age   Type   Address(es)
+DIST-SW-01               None  (temp, OK) 0     IP    10.10.30.2
+DIST-SW-02               None  (temp, OK) 0     IP    10.10.30.3
+SW-ACCESS-01             None  (perm, OK) 0     IP    10.10.30.1

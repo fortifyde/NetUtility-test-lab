@@ -1,0 +1,17 @@
+SNMPv3 Configuration and Status
+
+SNMPv3 : Enabled
+
+Users:
+  Username       Auth Protocol  Priv Protocol  Access Level
+  snmpv3user     SHA            AES            manager
+
+Engine ID: 0x80001f88a0d3c1b2f4e0
+
+Views: Default view active
+
+Groups:
+  Group Name     Security Model  Read View  Write View
+  -------------- --------------- ---------- -----------
+  default_ro     v3              default    none
+  default_rw     v3              default    default

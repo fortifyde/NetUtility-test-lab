@@ -1,0 +1,58 @@
+Spanning Tree Status: Enabled
+Spanning Tree Mode: RSTP
+Spanning Tree Priority: 0
+
+Bridge Information
+------------------
+Bridge ID (hex)    : 000000:9c:1a:b2:3c:50
+Bridge Priority    : 0
+Bridge MAC Address : 00:9c:1a:b2:3c:50
+Designated Root    : 000000:9c:1a:b2:3c:50
+Root Port          : --
+Root Path Cost     : 0
+Topology Changes   : 23
+Last Topology Change: 12 days, 3 hours, 15 minutes
+Hello Time         : 2 seconds
+Max Age            : 20 seconds
+Forward Delay      : 15 seconds
+
+VLAN 10 (MGMT)
+  Bridge Priority: 0
+  Bridge ID: 000a00:9c:1a:b2:3c:50
+  Root Bridge: This switch is the root
+  Root Path Cost: 0
+
+VLAN 20 (USERS)
+  Bridge Priority: 0
+  Bridge ID: 001400:9c:1a:b2:3c:50
+  Root Bridge: This switch is the root
+  Root Path Cost: 0
+
+VLAN 30 (SERVERS)
+  Bridge Priority: 32768
+  Bridge ID: 801e00:9c:1a:b2:3c:50
+  Root Bridge: This switch is the root
+  Root Path Cost: 0
+
+VLAN 99 (NATIVE)
+  Bridge Priority: 0
+  Bridge ID: 806300:9c:1a:b2:3c:50
+  Root Bridge: This switch is the root
+  Root Path Cost: 0
+
+Port Information
+----------------
+Port       VLAN  Role          State      Cost   Priority  Type
+---------  ----  ------------  ---------  -----  --------  ---------
+1/1/1      *     Designated    Forwarding 20000  128       Point-to-Point
+1/1/2      *     Designated    Forwarding 20000  128       Point-to-Point
+1/1/5      *     Designated    Forwarding 200000 128       Admin-Edge
+1/1/6      *     Designated    Forwarding 200000 128       Admin-Edge
+1/1/25     *     Designated    Forwarding 200000 128       Admin-Edge
+1/1/26     *     Designated    Forwarding 200000 128       Admin-Edge
+1/1/45     *     Designated    Forwarding 200000 128       Admin-Edge
+1/1/46     *     Designated    Forwarding 200000 128       Admin-Edge
+lag1       *     Designated    Forwarding 20000  128       Point-to-Point
+
+BPDU Guard: Enabled
+BPDU Guard Timeout: 300 seconds

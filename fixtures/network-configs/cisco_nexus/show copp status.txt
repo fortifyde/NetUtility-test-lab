@@ -1,0 +1,4 @@
+COPP is enabled
+COPP policy: copp-system-policy
+COPP profile: strict
+COPP micro-burst policing: disabled

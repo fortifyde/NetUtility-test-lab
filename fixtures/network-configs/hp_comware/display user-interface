@@ -1,0 +1,39 @@
+  Idx  Type    Tx/Rx      Modem  Auth  Int
+  0    AUX 0   9600/9600  -      S     -
+  1    VTY 0   -          -      S     -
+  2    VTY 1   -          -      S     -
+  3    VTY 2   -          -      S     -
+  4    VTY 3   -          -      S     -
+  5    VTY 4   -          -      S     -
+  6    VTY 5   -          -      S     -
+  7    VTY 6   -          -      S     -
+  8    VTY 7   -          -      S     -
+  9    VTY 8   -          -      S     -
+  10   VTY 9   -          -      S     -
+  11   VTY 10  -          -      S     -
+  12   VTY 11  -          -      S     -
+  13   VTY 12  -          -      S     -
+  14   VTY 13  -          -      S     -
+  15   VTY 14  -          -      S     -
+  16   VTY 15  -          -      S     -
+
+  Idx  Type    Auth  Idle Timeout  Proc Input
+  AUX 0       S     --          --  --
+  VTY 0       S     10          0   SSH Telnet
+  VTY 1       S     10          0   SSH Telnet
+  VTY 2       S     10          0   SSH Telnet
+  VTY 3       S     10          0   SSH Telnet
+  VTY 4       S     10          0   SSH Telnet
+  VTY 5       S     10          0   SSH
+  VTY 6       S     10          0   SSH
+  VTY 7       S     10          0   SSH
+  VTY 8       S     10          0   SSH
+  VTY 9       S     10          0   SSH
+  VTY 10      S     10          0   SSH
+  VTY 11      S     10          0   SSH
+  VTY 12      S     10          0   SSH
+  VTY 13      S     10          0   SSH
+  VTY 14      S     10          0   SSH
+  VTY 15      S     10          0   SSH
+
+  S = Scheme, N = None, P = Password, L = Local

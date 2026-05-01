@@ -1,0 +1,15 @@
+
+IP ARP Table
+
+  IP Address      MAC Address       Port  TTL   Type
+  --------------- ----------------- ----- ----- -----
+  10.10.10.1      001a2b-3c4d01     Trk1  1200  Dynamic
+  10.10.10.50     001a2b-3c4d50     Trk1  1020  Dynamic
+  10.10.10.60     001a2b-3c4d60     Trk1  980   Dynamic
+  10.10.10.100    001a2b-3c4d64     Trk1  1150  Dynamic
+  10.10.10.101    001a2b-3c4d65     Trk1  1140  Dynamic
+  10.10.99.1      001a2b-3c4d99     Trk1  1180  Dynamic
+  10.10.99.10     aabbcc-112233     1     600   Dynamic
+  10.10.99.11     aabbcc-112244     2     540   Dynamic
+
+Total ARP entries: 8

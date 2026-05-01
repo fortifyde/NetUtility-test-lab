@@ -1,0 +1,9 @@
+
+Active Users
+
+  Session  Line          User        Idle     Location
+  -------- ------------- ----------- -------- ----------------
+  1        Console 0     -           00:05:12 Console
+  2        SSH 1         admin       00:00:00 10.10.10.100
+
+Total active users: 2

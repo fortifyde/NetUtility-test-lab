@@ -1,0 +1,25 @@
+Syslog Configuration
+--------------------
+Syslog Status: Enabled
+
+Remote Syslog Servers:
+  Server: 10.10.10.100
+    Facility: local6
+    Severity: warning
+    Protocol: UDP
+    Port: 514
+    VRF: default
+    Status: Connected
+
+  Server: 10.10.10.101
+    Facility: local6
+    Severity: warning
+    Protocol: UDP
+    Port: 514
+    VRF: default
+    Status: Connected
+
+Statistics:
+  Messages Sent: 45623
+  Messages Dropped: 0
+  Messages Queued: 0

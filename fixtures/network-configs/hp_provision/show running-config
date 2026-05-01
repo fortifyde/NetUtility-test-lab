@@ -1,0 +1,137 @@
+
+; J9726A Configuration Editor; Created on release #WB.16.10.0017
+; Ver #14:01.44.00.00.00.00.00.00.00.00.00.00.00.00.00.00.00.00.00.00.00.00.00
+; Last configuration change at Mon Apr 28 10:15:00 2026 by manager
+
+hostname "HP-PROV-01"
+module 1 type J9726A
+include-credentials
+password manager user-name "admin" sha1 "a3f7c9e2b1d4f6a8c0e2b4d6f8a0c2e4b6d8f0a2"
+password operator user-name "operator" sha1 "b4d6f8a0c2e4b6d8f0a2c4e6b8d0f2a4c6e8b0d2"
+
+banner "UNAUTHORIZED ACCESS TO THIS NETWORK DEVICE IS PROHIBITED. You must have explicit permission to access or configure this device. All activities may be monitored and reported."
+
+max-vlans 256
+time timezone -300
+time daylight-time-rule continental-us-and-canada
+
+no stack
+no telnet-server
+ip ssh
+ip ssh version 2
+ip ssh filetransfer
+ip ssh cipher aes256-ctr aes192-ctr aes128-ctr
+ip ssh mac hmac-sha2-512 hmac-sha2-256
+ip ssh key-strength 2048
+
+aaa authentication ssh login public-key local
+aaa authentication ssh enable local
+aaa authentication console login local
+aaa authentication console enable local
+aaa authentication login privilege-mode
+
+snmp-server community "SNMPv3_Only" unrestricted
+no snmp-server enable
+snmpv3 enable
+snmpv3 only
+snmpv3 restricted-access
+snmpv3 user "netmon" auth sha "authPass123" priv aes "privPass123"
+
+logging 10.10.10.50
+logging severity warning
+logging facility local6
+
+sntp server 10.10.10.100
+sntp server 10.10.10.101
+timesync sntp
+sntp unicast
+
+ip default-gateway 10.10.10.1
+ip routing
+vlan 1
+   name "DEFAULT_VLAN"
+   no ip address
+   no untagged 1-48
+   exit
+vlan 10
+   name "MGMT_VLAN"
+   untagged 47-48
+   ip address 10.10.10.4 255.255.255.0
+   exit
+vlan 20
+   name "DATA_VLAN"
+   untagged 1-24
+   no ip address
+   exit
+vlan 30
+   name "VOICE_VLAN"
+   tagged 1-24
+   no ip address
+   exit
+vlan 99
+   name "SECURITY_MGMT"
+   ip address 10.10.99.4 255.255.255.0
+   tagged Trk1,Trk2
+   exit
+
+spanning-tree
+spanning-tree mode rapid-pvst
+spanning-tree vlan 10 priority 4096
+spanning-tree vlan 20 priority 8192
+
+trunk 45-46 trk1 trunk
+trunk 47-48 trk2 lacp
+
+interface Trk1
+   trunk
+   tagged vlan 10,20,30,99
+   exit
+interface Trk2
+   lacp
+   tagged vlan 10,20,30,99
+   exit
+
+port-security 1-24 learn-mode continuous action send-alarm untagged-vlan 20
+port-security 1-24 violation-action send-alarm
+port-security 1-24 mac-limit 2
+dhcp-snooping
+dhcp-snooping vlan 20
+dhcp-snooping trust Trk1,Trk2
+arp-protect
+arp-protect vlan 20
+arp-protect trust Trk1,Trk2
+
+ip route 0.0.0.0 0.0.0.0 10.10.10.1
+ip route 10.10.99.0 255.255.255.0 10.10.99.1
+
+vrrp vrid 10
+   owner
+   ip address 10.10.10.4
+   priority 110
+   exit
+
+access-list "MGMT-ACCESS" permit ip 10.10.10.0 0.0.0.255 10.10.10.4 0.0.0.0
+access-list "MGMT-ACCESS" permit ip 10.10.99.0 0.0.0.255 10.10.99.4 0.0.0.0
+access-list "MGMT-ACCESS" deny ip any any
+
+ip authorized-managers 10.10.10.0 255.255.255.0 access manager
+ip authorized-managers 10.10.99.0 255.255.255.0 access manager
+
+sflow 1 destination 10.10.10.60 6343
+sflow 1 sampling 1-48 256
+sflow 1 polling 1-48 30
+sflow enable
+
+front-panel-security lock
+front-panel-security clear-password-recovery
+front-panel-security factory-reset-protection
+
+console inactivity-timer 10
+console baud-rate 9600
+
+ip dns server-address 10.10.10.100
+ip dns server-address 10.10.10.101
+ip dns domain-name mil.local
+
+show arp-protect
+show source-filter

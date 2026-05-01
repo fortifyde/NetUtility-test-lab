@@ -1,0 +1,5 @@
+Port Access Configuration
+
+Port Access Control: Not configured (802.1X not enabled)
+
+No authenticator ports configured.

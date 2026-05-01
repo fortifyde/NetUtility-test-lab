@@ -1,0 +1,10 @@
+IP Routing - Status and Counters
+
+Dest Net/Subnet    Gateway           Type   Distance  Metric  VLAN
+-----------------  ----------------  -----  --------  ------  ------
+0.0.0.0/0          10.10.10.1        static 1         1       
+10.0.0.0/8         10.10.10.1        static 1         1       
+10.10.10.0/24      10.10.10.6        direct 0         0       VLAN 10
+224.0.0.0/4        (multicast)              0         0       
+
+Total Routes: 4

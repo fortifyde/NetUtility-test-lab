@@ -1,0 +1,13 @@
+Management Interface Configuration
+
+Management VLAN: 10
+
+Web Management: Disabled
+Telnet Server: Disabled
+SSH Server: Enabled (v2)
+
+SNMP: Disabled (SNMPv3 enabled)
+Oobm: Not available on this platform
+
+Management Access:
+  Source Interface: VLAN 10 (10.10.10.6)

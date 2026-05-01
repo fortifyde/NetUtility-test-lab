@@ -1,0 +1,13 @@
+
+DNS Configuration
+
+  DNS Client : Enabled
+  Domain Name: mil.local
+  Name Servers:
+    10.10.10.100
+    10.10.10.101
+
+  DNS Resolution: Available
+  DNS Cache Size: 100 entries
+  DNS Cache Hits: 12,453
+  DNS Cache Misses: 231

@@ -1,0 +1,11 @@
+DHCP Relay Configuration
+
+DHCP Relay: Enabled
+
+VLAN Relay Configuration:
+  VLAN 10 (MGMT)     : No relay servers configured
+  VLAN 20 (SERVERS)  : No relay servers configured
+  VLAN 30 (USERS)    : No relay servers configured
+  VLAN 40 (GUEST)    : No relay servers configured
+
+Option 82: Disabled

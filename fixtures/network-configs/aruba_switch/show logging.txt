@@ -1,0 +1,22 @@
+Logging Configuration
+
+Syslog Servers:
+  10.10.10.250
+
+Logging Facility     : local6
+Logging Severity     : warning
+Console Logging      : Enabled
+Buffered Logging     : Enabled (1024 entries)
+
+Log Buffer (last 20 entries):
+
+I 04/28/26 10:05:32 00431 system: Configuration saved by manager from 10.10.10.100
+I 04/28/26 09:45:12 00413 ports: Port 25 is now on-line
+I 04/28/26 09:45:12 00413 ports: Port 26 is now on-line
+I 04/28/26 09:30:01 00401 snmp: SNMP authentication failure from 10.10.40.15
+W 04/28/26 08:15:44 00512 stp: Topology change detected on VLAN 30
+I 04/28/26 08:00:00 00400 ntp: SNTP synchronized to 10.10.10.200
+I 04/27/26 23:59:59 00431 system: Daily log rotation
+I 04/27/26 22:30:15 00413 ports: Port 11 is now off-line
+I 04/27/26 14:20:33 00500 security: Login attempt failed from 10.10.40.99
+I 04/27/26 12:00:00 00400 ntp: SNTP synchronized to 10.10.10.200

@@ -1,0 +1,4 @@
+AAA Authentication: default login is tacacs+, local
+AAA Authentication: console login is local
+AAA Authentication: default enable is tacacs+, enable
+AAA Authentication: dot1x is disabled

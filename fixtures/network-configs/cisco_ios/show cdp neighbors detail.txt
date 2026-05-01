@@ -1,0 +1,33 @@
+-------------------------
+Device ID: DIST-SW-01(FOC2347X9A1)
+Entry address(es): 
+  IP address: 10.10.30.2
+Platform: cisco WS-C3850-48P,  Capabilities: Switch IGMP 
+Interface: GigabitEthernet1/0/1,  Port ID (outgoing port): GigabitEthernet1/0/1
+Holdtime : 164 sec
+Version :
+Cisco IOS Software, WS-C3850 Software (CAT3K_CAA-UNIVERSALK9-M), Version 16.6.9, RELEASE SOFTWARE (fc2)
+advertisement version: 2
+Protocol Hello:  OUI=0x00000C, Protocol ID=0x0112; payload len=27, value=00000000FFFFFFFF010221FF000000000001A2B3C4D5101000C0000000
+VTP Management Domain: 'MIL-NET' 
+Native VLAN: 99
+Duplex: full
+Management address(es):
+  IP address: 10.10.30.2
+
+-------------------------
+Device ID: DIST-SW-02(FOC2347X9B2)
+Entry address(es): 
+  IP address: 10.10.30.3
+Platform: cisco WS-C3850-48P,  Capabilities: Switch IGMP 
+Interface: GigabitEthernet1/0/2,  Port ID (outgoing port): GigabitEthernet1/0/2
+Holdtime : 155 sec
+Version :
+Cisco IOS Software, WS-C3850 Software (CAT3K_CAA-UNIVERSALK9-M), Version 16.6.9, RELEASE SOFTWARE (fc2)
+advertisement version: 2
+Native VLAN: 99
+Duplex: full
+Management address(es):
+  IP address: 10.10.30.3
+
+Total cdp entries displayed = 2

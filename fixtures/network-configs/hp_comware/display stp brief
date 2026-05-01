@@ -1,0 +1,23 @@
+STP Mode       : RSTP
+Bridge Priority: 4096
+MAC Address    : 00:1A:2B:3C:4D:50
+Hello Time     : 2 sec
+Max Age        : 20 sec
+Forward Delay  : 15 sec
+Bridge Max Hops: 20
+
+Port             Role   State   Cost   Edge  Port Protection
+GE1/0/1          ROOT   FORWARD 200000 DIS    NONE
+GE1/0/2          DESI   FORWARD 200000 DIS    NONE
+GE1/0/3          DESI   FORWARD 200000 EN     NONE
+GE1/0/4          DISBL  DISCARD 200000 EN     NONE
+GE1/0/5          DESI   FORWARD 200000 DIS    NONE
+GE1/0/6          DESI   FORWARD 200000 DIS    NONE
+GE1/0/7          DISBL  DISCARD 200000 EN     NONE
+GE1/0/16         DESI   FORWARD 200000 DIS    NONE
+GE1/0/48         DESI   FORWARD 200000 DIS    NONE
+GE2/0/1          ALTE   DISCARD 200000 DIS    NONE
+GE2/0/5          DESI   FORWARD 200000 DIS    NONE
+TGE1/1/1         DESI   FORWARD 2000   DIS    NONE
+TGE2/1/1         DESI   FORWARD 2000   DIS    NONE
+BAGG1            DESI   FORWARD 200000 DIS    NONE

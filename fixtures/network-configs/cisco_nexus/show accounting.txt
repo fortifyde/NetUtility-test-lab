@@ -1,0 +1,4 @@
+AAA Accounting: exec default: start-stop group tacacs+
+AAA Accounting: commands default: start-stop group tacacs+
+AAA Accounting: system default: disabled
+AAA Accounting: update newinfo: disabled

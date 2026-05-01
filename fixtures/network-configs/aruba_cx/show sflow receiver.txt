@@ -1,0 +1,19 @@
+sFlow Receiver Configuration
+-----------------------------
+Receiver 1:
+  IP Address: 10.10.10.100
+  Port: 6343
+  VRF: default
+  Status: Up
+  Datagram Size: 1400 bytes
+  Packets Sent: 1,234,567
+  Last Sent: 2026-04-28 15:47:22
+
+Receiver 2:
+  IP Address: 10.10.10.101
+  Port: 6343
+  VRF: default
+  Status: Up
+  Datagram Size: 1400 bytes
+  Packets Sent: 1,111,111
+  Last Sent: 2026-04-28 15:47:22

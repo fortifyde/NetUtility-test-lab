@@ -1,0 +1,173 @@
+{
+  "description": "Expected output schema for port_service_scan.sh — nmap-based port scanning with service version detection",
+  "type": "object",
+  "required": ["session_dir", "nmap_xml", "nmap_gnmap", "nmap_normal", "report"],
+  "properties": {
+    "session_dir": {
+      "type": "string",
+      "pattern": "^.+_\\d{8}_\\d{6}$",
+      "description": "Timestamped session directory under scans/port_service/. Prefix is sanitized target label"
+    },
+    "nmap_xml": {
+      "type": "object",
+      "required": ["filename"],
+      "properties": {
+        "filename": {
+          "type": "string",
+          "const": "scan_results.xml"
+        },
+        "root_element": {
+          "type": "string",
+          "const": "nmaprun"
+        },
+        "structure": {
+          "type": "object",
+          "required": ["host"],
+          "properties": {
+            "host": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": ["address", "ports"],
+                "properties": {
+                  "address": {
+                    "type": "object",
+                    "required": ["addr", "addrtype"],
+                    "properties": {
+                      "addr": {
+                        "type": "string",
+                        "description": "IP address"
+                      },
+                      "addrtype": {
+                        "type": "string",
+                        "const": "ipv4"
+                      }
+                    }
+                  },
+                  "ports": {
+                    "type": "object",
+                    "required": ["port"],
+                    "properties": {
+                      "port": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "required": ["portid", "protocol", "state", "service"],
+                          "properties": {
+                            "portid": {
+                              "type": "string",
+                              "description": "Port number"
+                            },
+                            "protocol": {
+                              "type": "string",
+                              "enum": ["tcp", "udp"]
+                            },
+                            "state": {
+                              "type": "object",
+                              "required": ["state"],
+                              "properties": {
+                                "state": {
+                                  "type": "string",
+                                  "enum": ["open", "closed", "filtered", "open|filtered"]
+                                }
+                              }
+                            },
+                            "service": {
+                              "type": "object",
+                              "properties": {
+                                "name": {
+                                  "type": "string"
+                                },
+                                "product": {
+                                  "type": "string"
+                                },
+                                "version": {
+                                  "type": "string"
+                                },
+                                "extrainfo": {
+                                  "type": "string"
+                                },
+                                "method": {
+                                  "type": "string"
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "os": {
+                    "type": "object",
+                    "description": "OS fingerprint data if -O flag used",
+                    "properties": {
+                      "osmatch": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "name": {
+                              "type": "string"
+                            },
+                            "accuracy": {
+                              "type": "string"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "nmap_gnmap": {
+      "type": "object",
+      "required": ["filename"],
+      "properties": {
+        "filename": {
+          "type": "string",
+          "const": "scan_results.gnmap"
+        },
+        "description": {
+          "type": "string",
+          "description": "Grepable nmap output with per-host port/state/service lines"
+        }
+      }
+    },
+    "nmap_normal": {
+      "type": "object",
+      "required": ["filename"],
+      "properties": {
+        "filename": {
+          "type": "string",
+          "const": "scan_results.nmap"
+        },
+        "description": {
+          "type": "string",
+          "description": "Human-readable nmap output"
+        }
+      }
+    },
+    "report": {
+      "type": "object",
+      "required": ["filename"],
+      "properties": {
+        "filename": {
+          "type": "string",
+          "const": "port_service_report.txt"
+        },
+        "sections": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Scan summary, per-host open ports, service inventory"
+        }
+      }
+    }
+  }
+}

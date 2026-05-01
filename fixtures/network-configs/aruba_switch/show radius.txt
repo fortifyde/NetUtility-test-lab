@@ -1,0 +1,16 @@
+RADIUS Server Configuration
+
+Server Address   Auth Port  Acct Port  Status   Retries  Timeout
+---------------  ---------  ---------  -------- -------- -------
+10.10.10.100     1812       1813       Up       3        5
+10.10.10.101     1812       1813       Up       3        5
+
+Dead Time: 0 minutes
+Source Interface: VLAN 10
+
+Authentication Statistics (10.10.10.100):
+  Access Requests   : 2,4531
+  Access Accepts    : 2,429
+  Access Rejects    : 98
+  Access Challenges : 4
+  Timeouts          : 2

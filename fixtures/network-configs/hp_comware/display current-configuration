@@ -1,0 +1,242 @@
+ version 7.1.070, Release 2428P02
+ sysname HP-ACCESS-01
+ irf mac-address persistent timer
+ irf auto-update enable
+ irf member 1 priority 32
+ irf member 2 priority 1
+ irf-domain 10
+ password-recovery enable
+#
+ vlan 1
+#
+ vlan 10
+ name MGMT
+#
+ vlan 20
+ name USERS
+#
+ vlan 30
+ name SERVERS
+#
+ vlan 40
+ name PRINTERS
+#
+ vlan 50
+ name CAMERAS
+#
+ vlan 99
+ name NATIVE
+#
+ vlan 100
+ name GUEST
+#
+ vlan 200
+ name MANAGEMENT
+#
+ telnet server enable
+ ssh server enable
+ ssh server compatible-ssh1x enable
+#
+ irf-port 1/2
+  port group interface Ten-GigabitEthernet1/1/1 mode normal
+#
+ irf-port 2/1
+  port group interface Ten-GigabitEthernet2/1/1 mode normal
+#
+ interface Bridge-Aggregation1
+ description IRF_PE_LINK
+ port link-type trunk
+ port trunk permit vlan 1 10 20 30 40 50 99 100 200
+#
+ interface LoopBack0
+ ip address 10.10.10.3 255.255.255.255
+#
+ interface Vlan-interface10
+ description MANAGEMENT_VLAN
+ ip address 10.10.10.3 255.255.255.0
+#
+ interface Vlan-interface20
+ description USERS_VLAN
+ ip address 10.10.20.1 255.255.255.0
+ dhcp select relay
+ dhcp relay server-address 10.10.10.5
+#
+ interface Vlan-interface30
+ description SERVERS_VLAN
+ ip address 10.10.30.1 255.255.255.0
+#
+ interface Vlan-interface100
+ description GUEST_VLAN
+ ip address 10.10.100.1 255.255.255.0
+ dhcp select relay
+ dhcp relay server-address 10.10.10.5
+#
+ interface GigabitEthernet1/0/1
+ description UPLINK-TO-CORE
+ port link-mode bridge
+ port link-type trunk
+ port trunk permit vlan 1 10 20 30 40 50 99 100 200
+ spanning-tree edged-port
+#
+ interface GigabitEthernet1/0/2
+ description AP-FLOOR1-01
+ port link-mode bridge
+ port link-type trunk
+ port trunk pvid vlan 99
+ port trunk permit vlan 20 100
+ poe enable
+#
+ interface GigabitEthernet1/0/3
+ description WORKSTATION-PORT
+ port link-mode bridge
+ port link-type access
+ port access vlan 20
+ stp edged-port
+#
+ interface GigabitEthernet1/0/4
+ port link-mode bridge
+ port link-type access
+ port access vlan 20
+ stp edged-port
+#
+ interface GigabitEthernet1/0/5
+ description SERVER-01
+ port link-mode bridge
+ port link-type access
+ port access vlan 30
+#
+ interface GigabitEthernet1/0/6
+ port link-mode bridge
+ port link-type access
+ port access vlan 30
+#
+ interface GigabitEthernet1/0/7 to GigabitEthernet1/0/24
+ port link-mode bridge
+ port link-type access
+ port access vlan 20
+ stp edged-port
+#
+ interface GigabitEthernet1/0/25 to GigabitEthernet1/0/48
+ port link-mode bridge
+ port link-type access
+ port access vlan 20
+ stp edged-port
+#
+ interface GigabitEthernet2/0/1
+ description UPLINK-TO-CORE-2
+ port link-mode bridge
+ port link-type trunk
+ port trunk permit vlan 1 10 20 30 40 50 99 100 200
+#
+ interface GigabitEthernet2/0/2 to GigabitEthernet2/0/48
+ port link-mode bridge
+ port link-type access
+ port access vlan 20
+ stp edged-port
+#
+ interface Ten-GigabitEthernet1/1/1
+ description IRF-LINK
+#
+ interface Ten-GigabitEthernet1/1/2
+#
+ interface Ten-GigabitEthernet2/1/1
+ description IRF-LINK
+#
+ interface Ten-GigabitEthernet2/1/2
+#
+ interface NULL0
+#
+ management-vlan 10
+#
+ stp mode rstp
+ stp priority 4096
+ stp enable
+#
+ dhcp snooping enable
+ dhcp snooping vlan 20 100
+#
+ ip route-static 0.0.0.0 0.0.0.0 10.10.10.1
+ ip route-static 10.10.0.0 255.255.0.0 10.10.10.1
+#
+ ntp-service enable
+ ntp-service unicast-server 10.10.10.2
+ ntp-service authentication enable
+ ntp-service authentication-keyid 1 authentication-mode md5 cipher $c$3$abcdef1234567890
+ ntp-service trusted authentication-keyid 1
+#
+ snmp-agent
+ snmp-agent local-engineid 800063A280001A2B3C4D50
+ snmp-agent community readcipher $c$3$publ1cR3ad public
+ snmp-agent community writecipher $c$3$r1vat3Wr1te private
+ snmp-agent sys-info version v3
+ snmp-agent group v3 netops privacy read iso write iso notify iso
+ snmp-agent usm-user v3 snmpv3user netops authentication-mode sha $c$3$authp4ss privacy-mode aes128 $c$3$pr1vp4ss
+ snmp-agent target-host trap address udp-domain 10.10.10.2 params securityname snmpv3user v3 privacy
+ snmp-agent trap enable
+#
+ radius scheme rad_primary
+ primary authentication 10.10.10.10
+ primary accounting 10.10.10.10
+ key authentication cipher $c$3$r4d1usk3y
+ key accounting cipher $c$3$r4d1usk3y
+ user-name-format without-domain
+#
+ hwtacacs scheme tac_primary
+ primary authentication 10.10.10.11
+ primary authorization 10.10.10.11
+ primary accounting 10.10.10.11
+ key authentication cipher $c$3$t4c4csk3y
+ key authorization cipher $c$3$t4c4csk3y
+ key accounting cipher $c$3$t4c4csk3y
+#
+ domain default enable netops.local
+#
+ domain netops.local
+ authentication default hwtacacs-scheme tac_primary local
+ authorization default hwtacacs-scheme tac_primary local
+ accounting default hwtacacs-scheme tac_primary local
+#
+ local-user admin class manage
+ password hash $h$6$abcdef1234567890$hashvaluehere
+ service-type ssh telnet terminal
+ authorization-attribute level 3
+#
+ local-user netop class manage
+ password hash $h$6$xyz7890123456789$hashvaluehere
+ service-type ssh
+ authorization-attribute level 2
+#
+ local-user operator class manage
+ password hash $h$6$lmn4567890123456$hashvaluehere
+ service-type ssh
+ authorization-attribute level 1
+#
+ user-interface aux 0
+ authentication-mode scheme
+ user-interface vty 0 4
+ authentication-mode scheme
+ protocol inbound ssh telnet
+ user-interface vty 5 15
+ authentication-mode scheme
+ protocol inbound ssh
+#
+ header login %
+******************************************************************
+* WARNING: Unauthorized access to this system is prohibited.     *
+* All connections are monitored and recorded.                     *
+* Disconnect IMMEDIATELY if you are not an authorized user.       *
+******************************************************************
+%
+ header shell %
+******************************************************************
+* HP-ACCESS-01 - HPE 5130-48G EI Access Switch                  *
+* Location: Building A, Floor 1, MDF                              *
+* Contact: network-admin@example.mil                              *
+******************************************************************
+%
+#
+ info-center loghost 10.10.10.2 facility local7
+ info-center timestamp loghost date
+ info-center source default channel loghost log level informational
+#
+ return

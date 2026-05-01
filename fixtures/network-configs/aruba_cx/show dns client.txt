@@ -1,0 +1,20 @@
+DNS Client Configuration
+-----------------------
+Status: Enabled
+Domain Name: mil.local
+Source Interface: mgmt
+
+Name Servers:
+  Server: 10.10.10.1
+    Status: Up
+    Queries: 12456
+    Timeouts: 0
+  Server: 10.10.10.2
+    Status: Up
+    Queries: 9876
+    Timeouts: 0
+
+DNS Cache:
+  Entries: 45
+  Hits: 234567
+  Misses: 12345

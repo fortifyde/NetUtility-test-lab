@@ -1,0 +1,4 @@
+Port-Security is not enabled on any interface.
+
+To enable port-security on an interface, use:
+  switchport port-security

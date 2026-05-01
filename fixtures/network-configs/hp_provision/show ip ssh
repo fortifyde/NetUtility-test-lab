@@ -1,0 +1,28 @@
+
+SSH Configuration
+
+  SSH Server       : Enabled
+  SSH Version      : 2
+  SSH File Transfer : Enabled
+  SSH Key Strength : 2048 bits
+  SSH Timeout      : 120 seconds
+  SSH Auth Retries : 3
+
+  SSH Ciphers:
+    aes256-ctr
+    aes192-ctr
+    aes128-ctr
+
+  SSH MACs:
+    hmac-sha2-512
+    hmac-sha2-256
+
+  SSH Host Keys:
+    RSA  : 2048 bits (SHA256:fingerprint)
+    DSA  : Not configured
+    ECDSA: Not configured
+
+  SSH Active Sessions:
+    Session  User    Client IP      Version  Cipher       MAC
+    -------- ------- -------------- -------- ------------ ----------
+    1        admin   10.10.10.100   2.0      aes256-ctr   hmac-sha2-256

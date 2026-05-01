@@ -1,0 +1,18 @@
+IP Source Guard Configuration
+-----------------------------
+Status: Enabled
+VLANs: 10, 20
+Filter Type: IP+MAC
+
+Port        VLAN  Filter Mode  Source IP       Source MAC        Status
+----------  ----  -----------  --------------  ----------------  --------
+1/1/5       20    IP+MAC       10.0.2.101      a4:b5:c6:d7:e8:f9 Active
+1/1/6       20    IP+MAC       10.0.2.102      a4:b5:c6:d7:e8:fa Active
+1/1/9       20    IP+MAC       10.0.2.103      a4:b5:c6:d7:e8:fb Active
+1/1/10      20    IP+MAC       10.0.2.104      a4:b5:c6:d7:e8:fc Active
+1/1/13      20    IP+MAC       10.0.2.105      a4:b5:c6:d7:e8:fd Active
+1/1/16      20    IP+MAC       10.0.2.106      a4:b5:c6:d7:e8:fe Active
+1/1/21      20    IP+MAC       10.0.2.107      a4:b5:c6:d7:e8:ff Active
+
+Total entries: 7
+Dropped packets: 89

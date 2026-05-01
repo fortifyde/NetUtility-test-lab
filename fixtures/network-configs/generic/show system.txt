@@ -1,0 +1,40 @@
+System: net-gw-01
+Vendor: Generic Linux
+OS: NetOS 3.2.1
+Kernel: 6.1.0-generic
+Architecture: x86_64
+
+Hostname: net-gw-01
+Domain: example.net
+Uptime: 45 days, 12 hours, 33 minutes
+
+CPU:
+  Model: Intel(R) Celeron(R) J4125 @ 2.00GHz
+  Cores: 4
+  Load: 0.12, 0.08, 0.05
+
+Memory:
+  Total: 3906 MB
+  Used: 2148 MB
+  Free: 1758 MB
+  Buffers/Cache: 512 MB
+
+Disk:
+  Filesystem     Size  Used  Avail  Use%  Mounted on
+  /dev/sda1      32G   4.2G  26G    14%   /
+  tmpfs          2.0G  0     2.0G   0%    /tmp
+
+Processes: 127 running, 2 zombie
+
+Network:
+  Interfaces: 4 (3 physical, 1 loopback)
+  Active links: 2
+  Total RX: 31.5 GiB
+  Total TX: 19.8 GiB
+
+Services:
+  ssh: active
+  ntp: active
+  syslog: active
+  snmp: active
+  dhcp-server: active

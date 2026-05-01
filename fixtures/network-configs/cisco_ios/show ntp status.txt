@@ -1,0 +1,7 @@
+Clock is synchronized, stratum 2, reference is .GPS.
+nominal freq is 250.0000 Hz, actual freq is 249.9987 Hz, precision is 2**18
+reference time is E2345678.9ABCDEF4 (14:20:01.234 UTC Mon Apr 28 2026)
+clock offset is -0.2345 msec, root delay is 12.34 msec
+root dispersion is 5.67 msec, peer dispersion is 3.42 msec
+loopfilter state is 'CTRL' (Normal Controlled Loop), drift is -0.000005234 s/s
+system poll interval is 128, last update was 34 sec ago.

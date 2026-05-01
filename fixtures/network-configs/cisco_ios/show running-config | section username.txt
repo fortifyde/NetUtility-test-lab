@@ -1,0 +1,2 @@
+username admin privilege 15 secret 5 $1$mERr$H5RxD8EMxK7PcGyV0nLoG.
+username monitor privilege 5 secret 5 $1$NfGH$iJKlMnOpQrStUvWxYz012.

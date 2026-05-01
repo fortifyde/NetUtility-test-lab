@@ -1,0 +1,17 @@
+CPU utilization for five seconds:  12%/1%;  one minute:  8%;  five minutes: 6%
+
+PID    Runtime(ms)  Invoked   uSecs  1Sec    Process
+-----  -----------  --------  -----  ------  -----------
+ 1234    54823420    8923412    6146   2.0%   bgp
+ 2345    48123451    6523412    7375   1.5%   ospf
+ 3456    12340123    4512341    2734   0.5%   spanning_tree
+ 4567     8234123    3123451    2636   0.3%   lldp
+ 5678     5123451    2341234    2188   0.2%   cdp
+ 6789     3123451    1234512    2531   0.1%   snmp
+ 7890     1234512     512345    2409   0.0%   aclqos
+ 8901      512345     234123    2188   0.0%   arp
+ 9012      234123     123451    1896   0.0%   igmp
+  123      123451      51234    2409   0.0%   sysmgr
+
+CPU util  : avg2(12%), avg5(8%), avg15(6%)
+Memory    : 3293728 KB(total), 2145612 KB(free), 1148116 KB(used)

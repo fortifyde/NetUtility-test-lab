@@ -1,0 +1,53 @@
+LLDP neighbor-information of port 1[GigabitEthernet1/0/1]:
+  Neighbor index   : 1
+  Update time      : 0 days, 2 hours, 14 minutes, 32 seconds
+  Chassis ID       : 00:1B:2C:3D:4E:5F
+  Port ID          : GigabitEthernet1/0/24
+  Port description : DOWNLINK-TO-ACCESS-01
+  System name      : CORE-SWITCH-01
+  System description : HP Comware Platform Software, Release 2428P02
+  System capabilities supported : Bridge, Router
+  System capabilities enabled   : Bridge, Router
+  Management address  : 10.10.10.1
+  VLAN ID          : 10
+  VLAN name        : MGMT
+
+LLDP neighbor-information of port 2[GigabitEthernet1/0/2]:
+  Neighbor index   : 2
+  Update time      : 0 days, 1 hours, 45 minutes, 12 seconds
+  Chassis ID       : 00:2C:3D:4E:5F:6A
+  Port ID          : eth0
+  Port description : AP-MGMT
+  System name      : AP-FLOOR1-01
+  System description : ArubaOS 8.10.0
+  System capabilities supported : Bridge, WLAN Access Point
+  System capabilities enabled   : Bridge, WLAN Access Point
+  Management address  : 10.10.20.50
+  VLAN ID          : 20
+  VLAN name        : USERS
+
+LLDP neighbor-information of port 49[Ten-GigabitEthernet1/1/1]:
+  Neighbor index   : 3
+  Update time      : 127 days, 14 hours, 28 minutes, 5 seconds
+  Chassis ID       : 00:1A:2B:3C:4D:60
+  Port ID          : Ten-GigabitEthernet2/1/1
+  Port description : IRF-LINK
+  System name      : HP-ACCESS-01
+  System description : HP Comware Platform Software, Release 2428P02
+  System capabilities supported : Bridge, Router
+  System capabilities enabled   : Bridge, Router
+  Management address  : 10.10.10.3
+
+LLDP neighbor-information of port 50[GigabitEthernet2/0/1]:
+  Neighbor index   : 4
+  Update time      : 0 days, 2 hours, 14 minutes, 28 seconds
+  Chassis ID       : 00:1B:2C:3D:4E:5F
+  Port ID          : GigabitEthernet1/0/25
+  Port description : DOWNLINK-TO-ACCESS-01-B
+  System name      : CORE-SWITCH-01
+  System description : HP Comware Platform Software, Release 2428P02
+  System capabilities supported : Bridge, Router
+  System capabilities enabled   : Bridge, Router
+  Management address  : 10.10.10.1
+  VLAN ID          : 10
+  VLAN name        : MGMT

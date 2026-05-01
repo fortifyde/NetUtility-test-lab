@@ -1,0 +1,9 @@
+Community: S3cur3Str!ng
+  Group: network-operator
+  Access: Read-Only
+  ACL: --
+
+Community: Pr1vat3K3y
+  Group: network-admin
+  Access: Read-Write
+  ACL: --

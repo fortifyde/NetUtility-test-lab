@@ -1,0 +1,13 @@
+NTP service is enabled.
+Clock status: synchronized
+Clock stratum: 3
+Reference clock ID: 10.10.10.2
+Nominal frequency: 100.0000 Hz
+Actual frequency: 100.0000 Hz
+Clock precision: 2^-18
+Reference time: e4a2b3c4.d5e6f789  (Tue Apr 28 09:15:03 2026)
+Clock offset: 0.0034 ms
+Root delay: 12.543 ms
+Root dispersion: 5.678 ms
+Peer dispersion: 1.234 ms
+Poll interval: 64 s

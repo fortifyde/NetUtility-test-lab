@@ -1,0 +1,10 @@
+SSH Server Status
+
+SSH Server: Enabled (v2 only)
+
+Active Sessions:
+  Session  User    Client Address     Version  Cipher       Auth
+  -------  ------  -----------------  -------  -----------  ------
+  1        admin   10.10.10.100       2.0      aes256-ctr   password
+
+Total Sessions: 1

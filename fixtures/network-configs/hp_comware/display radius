@@ -1,0 +1,24 @@
+RADIUS scheme: rad_primary
+  Primary authentication server:
+    IP address: 10.10.10.10
+    Port: 1812
+    Status: Active
+    Shared key: Configured
+  Primary accounting server:
+    IP address: 10.10.10.10
+    Port: 1813
+    Status: Active
+    Shared key: Configured
+  Secondary servers: Not configured
+  Username format: without-domain
+  Retry count: 3
+  Retry timeout: 5 seconds
+  NAS-IP: Not configured
+  Service type: Extended
+
+RADIUS scheme statistics:
+  Authentication requests: 0
+  Authentication successes: 0
+  Authentication failures: 0
+  Accounting starts: 0
+  Accounting stops: 0

@@ -1,0 +1,21 @@
+AAA Configuration
+
+Authentication:
+  Login Authentication : radius, local
+  Enable Authentication: radius, local
+  Privilege Mode       : Enabled
+
+Authorization:
+  No authorization configured.
+
+Accounting:
+  Exec Accounting      : start-stop radius
+  Commands Accounting  : start-stop radius
+
+Server Groups:
+  RADIUS Servers:
+    10.10.10.100 (auth-port 1812, acct-port 1813)
+    10.10.10.101 (auth-port 1812, acct-port 1813)
+  TACACS Servers:
+    10.10.10.102 (port 49)
+    10.10.10.103 (port 49)

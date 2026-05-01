@@ -1,0 +1,16 @@
+ssh server is enabled
+version 2 is enabled
+RSA   key pair is present (2048 bits)
+DSA   key pair is present (1024 bits)
+ECDSA key pair is present (521 bits)
+ED25519 key pair is present
+
+SSH service uses the following login authentication methods:
+  Keyboard-interactive
+  Password
+
+SSH server login attempts: 3
+SSH server authentication-retries: 3
+SSH server timeout: 60 seconds
+SSH server rate-limit: 60
+Telnet server is disabled

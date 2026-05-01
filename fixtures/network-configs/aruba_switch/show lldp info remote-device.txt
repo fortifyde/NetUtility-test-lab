@@ -1,0 +1,12 @@
+LLDP Remote Devices Information
+
+Local Port  Chassis ID          Port ID          System Name          TTL
+----------- ------------------- ---------------- -------------------- -----
+1           a0:d3:c1:ff:12:34   a0:d3:c1:ff:12:34 CORE-SW-01          120
+Trk1        a0:d3:c1:ff:12:35   Trk1             CORE-SW-01          120
+2           00:1a:2b:3c:4d:50   eth0             SRV-WEB-01          120
+3           00:1a:2b:3c:4d:51   eth0             SRV-DB-01           120
+25          a0:d3:c1:aa:bb:cc   1                AP-FLOOR3-01        120
+26          a0:d3:c1:aa:bb:cd   1                AP-FLOOR3-02        120
+
+Total Remote Devices: 6

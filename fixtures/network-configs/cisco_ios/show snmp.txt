@@ -1,0 +1,25 @@
+Chassis: FOC2347X8K2
+Contact: network_operations@mil.local
+Location: Building_A_Floor_1_Rack_03
+0 SNMP packets input
+    0 Bad SNMP version errors
+    0 Unknown community name
+    0 Illegal operation for community name supplied
+    0 Encoding errors
+    23456 Number of requested variables
+    0 Number of altered variables
+    0 Get-request PDUs
+    12345 Get-next PDUs
+    11111 Set-request PDUs
+0 SNMP packets output
+    0 Too big errors (Maximum packet size 1500)
+    0 No such name errors
+    0 Bad values errors
+    0 General errors
+    0 Response PDUs
+    0 Trap PDUs
+SNMP logging: enabled
+    Logging to 10.10.30.10.162, 0/10, 12 PKTS.
+SNMP Manager-role output packets
+    Inform PDUs            : 0
+    Response PDUs          : 0

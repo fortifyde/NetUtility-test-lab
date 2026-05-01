@@ -1,0 +1,16 @@
+Accounting scheme: hwtacacs-scheme
+  Primary Accounting Server: 10.10.10.11
+  Server Status: Active
+  Server Port: 49
+  Shared Key: Configured
+  Timeout: 5 seconds
+  Realtime accounting interval: 15 minutes
+
+Accounting scheme: local
+  Method: Local
+  Status: Active
+
+Domain: netops.local
+  Default accounting scheme: hwtacacs-scheme (primary), local (fallback)
+  Login accounting scheme: hwtacacs-scheme
+  Command accounting: Enabled

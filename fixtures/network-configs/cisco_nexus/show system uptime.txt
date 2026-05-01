@@ -1,0 +1,5 @@
+System uptime is 142 days, 7 hours, 32 minutes, 18 seconds
+Last reset at 2024-Nov-12 03:15:22
+  Reason: Reset Requested by CLI command reload
+  System version: 10.2(3)
+  Service:

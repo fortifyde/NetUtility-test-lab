@@ -1,0 +1,23 @@
+sFlow Configuration
+-------------------
+sFlow Status: Enabled
+Agent Address: 10.10.10.5
+Sampling Rate: 512
+Polling Interval: 30 seconds
+Source Interface: mgmt
+
+sFlow Collectors:
+  Collector: 10.10.10.100
+    VRF: default
+    Port: 6343
+    Status: Up
+
+  Collector: 10.10.10.101
+    VRF: default
+    Port: 6343
+    Status: Up
+
+sFlow Statistics:
+  Samples Sent: 2,345,678
+  Packets Sampled: 1,234,567
+  Counter Samples: 1,111,111

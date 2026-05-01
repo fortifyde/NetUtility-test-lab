@@ -1,0 +1,3 @@
+AAA Authorization: commands default: local
+AAA Authorization: exec default: if-authenticated
+AAA Authorization: config-commands default: local

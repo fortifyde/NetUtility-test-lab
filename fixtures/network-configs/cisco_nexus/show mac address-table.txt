@@ -1,0 +1,24 @@
+Legend:
+        * - primary entry, G - Gateway MAC, (R) - Routed MAC, O - Overlay MAC
+        age - seconds since last seen,+ - primary entry using vPC Peer-Link,
+        (T) - True, (F) - False, ~ -Inactive timer is running
+   VLAN     MAC Address      Type      age     Secure NTFY Ports
+---------+-----------------+--------+---------+------+----+------------------
+*  10     aabb.cc00.1000    dynamic   120       F    F    Eth1/5
+*  10     aabb.cc00.1001    dynamic   300       F    F    Eth1/6
+*  20     aabb.cc00.2001    dynamic   60        F    F    Eth1/7
+*  20     aabb.cc00.2002    dynamic   180       F    F    Eth1/8
+*  30     aabb.cc00.3001    dynamic   90        F    F    Eth1/11
+*  30     aabb.cc00.3002    dynamic   240       F    F    Eth1/12
+*  40     aabb.cc00.4001    dynamic   45        F    F    Eth1/9
+*  40     aabb.cc00.4002    dynamic   150       F    F    Eth1/10
+*  50     aabb.cc00.5001    dynamic   30        F    F    Eth1/13
+*  50     aabb.cc00.5002    dynamic   200       F    F    Eth1/14
+* 200     aabb.cc00.c801    dynamic   75        F    F    Eth1/15
+*  30     aabb.cc00.1700    dynamic   110       F    F    Eth1/17
+*  30     aabb.cc00.1800    dynamic   95        F    F    Eth1/18
+G   10    0026.9800.0000    static    0         F    F    sup-eth1(R)
+G   20    0026.9800.0000    static    0         F    F    sup-eth1(R)
+G   30    0026.9800.0000    static    0         F    F    sup-eth1(R)
++  10     0026.9800.0002    dynamic   300       F    F    Po10
++  20     0026.9800.0002    dynamic   180       F    F    Po10

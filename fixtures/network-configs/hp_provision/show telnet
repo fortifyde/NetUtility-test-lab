@@ -1,0 +1,7 @@
+
+Telnet Server Configuration
+
+  Telnet Server : Disabled
+
+  Telnet was explicitly disabled per security policy.
+  Use SSH for remote management access.

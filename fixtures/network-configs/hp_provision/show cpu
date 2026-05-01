@@ -1,0 +1,17 @@
+
+Status and Counters - CPU Utilization
+
+  CPU Utilization over:
+    5 sec  : 4%
+    1 min  : 3%
+    5 min  : 3%
+
+  Process               Utilization
+  ---------------------- -----------
+  Routing                  1%
+  Spanning Tree            0%
+  Port Security            0%
+  SNMP                     1%
+  LLDP                     0%
+  DHCP Snooping            0%
+  sFlow                    1%

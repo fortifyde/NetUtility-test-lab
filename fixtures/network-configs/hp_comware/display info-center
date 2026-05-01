@@ -1,0 +1,30 @@
+Information Center: Enabled
+Log host:
+  10.10.10.2 (facility: local7, port: 514, source interface: Vlan-interface10)
+  Channel: loghost
+  Log level: Informational
+Console logging:
+  Channel: console
+  Log level: Informational
+Monitor logging:
+  Channel: monitor
+  Log level: Debugging
+Log buffer:
+  Channel: logbuffer
+  Log level: Informational
+  Buffer size: 1024
+  Current entries: 247
+Trap buffer:
+  Channel: trapbuffer
+  Log level: Informational
+  Buffer size: 256
+  Current entries: 45
+SNMP logging:
+  Channel: snmpagent
+  Log level: Informational
+Timestamp format:
+  Log host: Date
+  Console: Date
+  Monitor: Date
+  Log buffer: Date
+  Trap buffer: Date

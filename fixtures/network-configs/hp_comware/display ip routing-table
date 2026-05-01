@@ -1,0 +1,15 @@
+Destinations : 12        Routes : 12
+
+Destination/Mask  Proto  Pre  Cost  NextHop         Interface
+0.0.0.0/0         Static 60   0     10.10.10.1      Vlan10
+10.10.0.0/16      Static 60   0     10.10.10.1      Vlan10
+10.10.10.0/24     Direct 0    0     10.10.10.3      Vlan10
+10.10.10.3/32     Direct 0    0     127.0.0.1       InLoop0
+10.10.20.0/24     Direct 0    0     10.10.20.1      Vlan20
+10.10.20.1/32     Direct 0    0     127.0.0.1       InLoop0
+10.10.30.0/24     Direct 0    0     10.10.30.1      Vlan30
+10.10.30.1/32     Direct 0    0     127.0.0.1       InLoop0
+10.10.100.0/24    Direct 0    0     10.10.100.1     Vlan100
+10.10.100.1/32    Direct 0    0     127.0.0.1       InLoop0
+127.0.0.0/8       Direct 0    0     127.0.0.1       InLoop0
+127.0.0.1/32      Direct 0    0     127.0.0.1       InLoop0

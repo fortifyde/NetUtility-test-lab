@@ -1,0 +1,24 @@
+
+Cryptographic Configuration
+
+  SSH:
+    SSH Server      : Enabled (v2)
+    SSH Ciphers     : aes256-ctr, aes192-ctr, aes128-ctr
+    SSH MACs        : hmac-sha2-512, hmac-sha2-256
+    SSH Key Strength: 2048 bits
+    Weak Ciphers    : None (DES, 3DES, RC4 disabled)
+    Weak MACs       : None (MD5, SHA1 HMAC disabled)
+
+  TLS/SSL:
+    Web Management  : Disabled
+    TLS Version     : N/A
+
+  SNMPv3:
+    Auth Protocols  : SHA
+    Priv Protocols  : AES
+    Weak Protocols  : None (MD5, DES disabled)
+
+  Certificate Information:
+    Self-Signed Cert: Installed
+    CA Certificate  : None
+    Cert Expiry     : N/A

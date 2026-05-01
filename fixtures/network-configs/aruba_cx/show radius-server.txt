@@ -1,0 +1,22 @@
+RADIUS Server Configuration
+---------------------------
+Server: 10.10.10.50
+  Auth Port: 1812
+  Acct Port: 1813
+  Timeout: 5 seconds
+  Retransmit: 3
+  Deadtime: 15 minutes
+  Source IP: 10.10.10.5
+  Key: (configured)
+  Status: Up
+  Round Trip Time: 12ms
+
+RADIUS Statistics:
+  Auth Requests: 12456
+  Auth Retransmissions: 23
+  Auth Accepts: 12345
+  Auth Rejects: 88
+  Auth Timeouts: 23
+  Acct Requests: 9876
+  Acct Retransmissions: 12
+  Acct Responses: 9864

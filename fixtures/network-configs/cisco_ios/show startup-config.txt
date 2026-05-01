@@ -1,0 +1,226 @@
+Using 8542 out of 524288 bytes
+!
+! Last configuration change at 14:23:17 UTC Mon Apr 28 2026 by admin
+! NVRAM config last updated at 14:23:17 UTC Mon Apr 28 2026 by admin
+!
+version 15.2
+no service pad
+service timestamps debug datetime msec localtime show-timezone
+service timestamps log datetime msec localtime show-timezone
+service password-encryption
+service configure-terminal
+!
+hostname SW-ACCESS-01
+!
+boot-start-marker
+boot system flash:/c2960x-universalk9-mz.152-7.E6/c2960x-universalk9-mz.152-7.E6.bin
+boot-end-marker
+!
+!
+vrf definition Mgmt-vrf
+ !
+ address-family ipv4
+ exit-address-family
+!
+enable secret 5 $1$mERr$H5RxD8EMxK7PcGyV0nLoG.
+!
+aaa new-model
+!
+!
+aaa authentication login default group radius local
+aaa authentication login CONSOLE local
+aaa authentication enable default group radius enable
+aaa authorization exec default group radius local
+aaa authorization commands 15 default group radius local
+aaa accounting exec default start-stop group radius
+aaa accounting commands 15 default start-stop group radius
+!
+!
+!
+!
+!
+!
+aaa session-id common
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+ip domain name mil.local
+ip name-server vrf Mgmt-vrf 10.10.10.5
+ip name-server vrf Mgmt-vrf 10.10.10.6
+!
+!
+!
+login delay 3
+!
+!
+!
+!
+!
+!
+!
+!
+spanning-tree mode rapid-pvst
+spanning-tree extend system-id
+spanning-tree vlan 1-4094 priority 32768
+!
+vlan internal allocation policy ascending
+!
+vlan 10
+ name DATA
+!
+vlan 20
+ name VOICE
+!
+vlan 30
+ name MANAGEMENT
+!
+vlan 99
+ name PARKING
+!
+!
+!
+interface FastEthernet0
+ vrf forwarding Mgmt-vrf
+ ip address 10.10.10.1 255.255.255.0
+ no ip redirects
+ no ip proxy-arp
+!
+interface GigabitEthernet1/0/1
+ description Uplink to DIST-SW-01 Gi1/0/1
+ switchport mode trunk
+ switchport trunk allowed vlan 10,20,30,99
+ switchport trunk native vlan 99
+ spanning-tree portfast trunk
+!
+interface GigabitEthernet1/0/2
+ description Uplink to DIST-SW-02 Gi1/0/2
+ switchport mode trunk
+ switchport trunk allowed vlan 10,20,30,99
+ switchport trunk native vlan 99
+ spanning-tree portfast trunk
+!
+interface GigabitEthernet1/0/3
+ description Workstation Port - DATA and VOICE
+ switchport access vlan 10
+ switchport mode access
+ switchport voice vlan 20
+ switchport port-security
+ switchport port-security maximum 2
+ switchport port-security violation restrict
+ switchport port-security mac-address sticky
+ spanning-tree portfast
+!
+interface GigabitEthernet1/0/4
+ description Workstation Port - DATA and VOICE
+ switchport access vlan 10
+ switchport mode access
+ switchport voice vlan 20
+ switchport port-security
+ switchport port-security maximum 2
+ switchport port-security violation restrict
+ switchport port-security mac-address sticky
+ spanning-tree portfast
+!
+interface GigabitEthernet1/0/5
+ description Workstation Port - DATA and VOICE
+ switchport access vlan 10
+ switchport mode access
+ switchport voice vlan 20
+ switchport port-security
+ switchport port-security maximum 2
+ switchport port-security violation restrict
+ switchport port-security mac-address sticky
+ spanning-tree portfast
+!
+interface GigabitEthernet1/0/6
+ description Workstation Port - DATA and VOICE
+ switchport access vlan 10
+ switchport mode access
+ switchport voice vlan 20
+ switchport port-security
+ switchport port-security maximum 2
+ switchport port-security violation restrict
+ switchport port-security mac-address sticky
+ spanning-tree portfast
+!
+interface GigabitEthernet1/0/47
+ description *** Unused - Shutdown ***
+ shutdown
+!
+interface GigabitEthernet1/0/48
+ description *** Unused - Shutdown ***
+ shutdown
+!
+interface Vlan10
+ description DATA VLAN
+ ip address 10.10.10.1 255.255.255.0
+ ip helper-address 10.10.10.5
+!
+interface Vlan30
+ description MANAGEMENT VLAN
+ ip address 10.10.30.1 255.255.255.0
+!
+interface Vlan99
+ description PARKING VLAN
+ no ip address
+ shutdown
+!
+!
+ip http server
+ip http authentication local
+ip http secure-server
+!
+ip snmp-server community public RO
+ip snmp-server community pr1v4t3 RW
+snmp-server group SNMPv3Group v3 priv
+snmp-server user snmpv3user SNMPv3Group v3 auth sha AuthP@ss1234 priv aes 128 PrivP@ss1234
+snmp-server host 10.10.30.10 version 3 priv snmpv3user
+snmp-server location Building_A_Floor_1_Rack_03
+snmp-server contact network_operations@mil.local
+!
+logging host 10.10.30.10
+logging host 10.10.30.11
+logging trap informational
+logging source-interface Vlan30
+!
+!
+!
+banner login ^C
+******************************************************************
+*  WARNING: This is a U.S. Government computing system.          *
+*  Unauthorized access is prohibited by Public Law 99-474.       *
+*  Use of this system constitutes consent to monitoring.         *
+******************************************************************
+^C
+banner motd ^C
+******************************************************************
+*  AUTHORIZED ACCESS ONLY                                        *
+*  All activity is logged and monitored.                         *
+*  Disconnect IMMEDIATELY if you are not an authorized user.     *
+******************************************************************
+^C
+!
+line con 0
+ login authentication CONSOLE
+line vty 0 4
+ transport input ssh
+ transport output ssh
+line vty 5 15
+ transport input ssh
+ transport output ssh
+!
+ntp authentication-key 1 md5 151102011F0825 7
+ntp authenticate
+ntp trusted-key 1
+ntp server 10.10.30.20 key 1
+ntp server 10.10.30.21 key 1 prefer
+!
+end

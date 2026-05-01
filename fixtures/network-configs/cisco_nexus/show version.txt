@@ -1,0 +1,36 @@
+Cisco Nexus Operating System (NX-OS) Software
+TAC support: http://www.cisco.com/tac
+Copyright (c) 2002-2024, Cisco Systems, Inc. All rights reserved.
+The copyrights to certain works contained in this software are
+owned by other third parties and used and distributed under license.
+
+Software
+  BIOS:      version 07.65
+  loader:    version N/A
+  kickstart: version 10.2(3)
+  system:    version 10.2(3)
+  BIOS compile time:       01/12/2024
+  kickstart image file is: bootflash:///nxos.10.2.3.bin
+  kickstart compile time:  02/15/2024 12:00:00 [02/15/2024 20:31:42]
+  system image file is:    bootflash:///nxos.10.2.3.bin
+  system compile time:     02/15/2024 12:00:00 [02/15/2024 19:17:23]
+
+Hardware
+  cisco Nexus 9396PX (Intel(R) Xeon(R) CPU @ 1.80GHz)
+  Intel(R) Xeon(R) CPU with 16400012 kB of memory.
+  Processor Board ID SAL1929K5QP
+
+  Device name: N9K-CORE-01
+  bootflash:    53298504 kB
+
+Kernel uptime is 142 days, 7 hours, 32 minutes, 18 seconds
+
+Last reset at 2024-Nov-12 03:15:22
+  Reason: Reset Requested by CLI command reload
+  System version: 10.2(3)
+  Service: 
+
+plugin
+  Core Plugin, Ethernet Plugin
+
+Active Package(s):

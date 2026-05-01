@@ -1,0 +1,20 @@
+
+Management and Security Configuration
+
+  Management VLAN    : VLAN 10 (MGMT_VLAN)
+  Management IP      : 10.10.10.4
+  Management Subnet  : 255.255.255.0
+
+  Access Methods:
+    Telnet Server  : Disabled
+    SSH Server     : Enabled (v2)
+    Web Management : Disabled
+    SNMP Management: SNMPv3 Only
+
+  Authorized Managers:
+    Network             Access Level  Mask
+    ------------------- ------------- ---------------
+    10.10.10.0          manager       255.255.255.0
+    10.10.99.0          manager       255.255.255.0
+
+  Control Plane Policing: Not configured

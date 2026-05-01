@@ -1,0 +1,20 @@
+
+Accounting Configuration
+
+  Exec Accounting    : Enabled
+  Command Accounting : Enabled
+  Accounting Method  : Local
+  Accounting Log     : Enabled
+
+  Exec Accounting Records:
+    User       Source IP      Login Time              Duration
+    ---------- -------------- ----------------------- --------
+    admin      10.10.10.100   Mon Apr 28 10:15:00     Active
+    operator   10.10.99.10    Mon Apr 28 09:30:00     00:45:00
+
+  Command Accounting Records (recent):
+    User       Command                   Time
+    ---------- ------------------------- -----------------------
+    admin      show running-config       Mon Apr 28 10:15:05
+    admin      show port-security        Mon Apr 28 10:15:10
+    admin      write memory              Mon Apr 28 10:15:30

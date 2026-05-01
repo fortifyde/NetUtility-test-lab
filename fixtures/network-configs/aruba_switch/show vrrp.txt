@@ -1,0 +1,10 @@
+VRRP Configuration
+
+VRRP VLAN 10 Group 10:
+  State           : Master
+  Virtual IP      : 10.10.10.6 (owner)
+  Priority        : 110
+  Advertisement   : 1 second
+  Preempt         : Enabled
+  Master Router   : 10.10.10.6 (local)
+  Auth Type       : None

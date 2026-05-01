@@ -1,0 +1,191 @@
+{
+  "description": "Expected output schema for snmp_interrogate.sh — SNMP device interrogation with system, interface, ARP, VLAN, and route data",
+  "type": "object",
+  "required": ["session_dir", "raw_output", "xml_output", "summary_output"],
+  "properties": {
+    "session_dir": {
+      "type": "string",
+      "pattern": "^snmp_\\d{8}_\\d{6}$",
+      "description": "Timestamped session directory under scans/snmp/"
+    },
+    "raw_output": {
+      "type": "object",
+      "required": ["filename"],
+      "properties": {
+        "filename": {
+          "type": "string",
+          "const": "snmp_walk_output.txt"
+        },
+        "content": {
+          "type": "string",
+          "description": "Raw snmpwalk output organized per host with OID results"
+        }
+      }
+    },
+    "xml_output": {
+      "type": "object",
+      "required": ["filename"],
+      "properties": {
+        "filename": {
+          "type": "string",
+          "const": "snmp_device_info.xml"
+        },
+        "root_element": {
+          "type": "string",
+          "const": "snmp_results"
+        },
+        "devices": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["ip"],
+            "properties": {
+              "ip": {
+                "type": "string",
+                "description": "Device IP address"
+              },
+              "error": {
+                "type": "string",
+                "description": "Error message if SNMP query failed"
+              },
+              "system": {
+                "type": "object",
+                "properties": {
+                  "description": {
+                    "type": "string",
+                    "description": "sysDescr (1.3.6.1.2.1.1.1.0)"
+                  },
+                  "uptime": {
+                    "type": "string",
+                    "description": "sysUpTime in timeticks"
+                  },
+                  "hostname": {
+                    "type": "string",
+                    "description": "sysName (1.3.6.1.2.1.1.5.0)"
+                  },
+                  "contact": {
+                    "type": "string"
+                  },
+                  "location": {
+                    "type": "string"
+                  }
+                }
+              },
+              "interfaces": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "index": {
+                      "type": "integer"
+                    },
+                    "name": {
+                      "type": "string",
+                      "description": "ifDescr"
+                    },
+                    "type": {
+                      "type": "string",
+                      "description": "ifType description"
+                    },
+                    "status": {
+                      "type": "string",
+                      "enum": ["up", "down", "testing"],
+                      "description": "ifOperStatus"
+                    },
+                    "speed_mbps": {
+                      "type": "integer",
+                      "description": "ifHighSpeed in Mbps"
+                    },
+                    "mtu": {
+                      "type": "integer"
+                    },
+                    "mac_address": {
+                      "type": "string"
+                    },
+                    "in_octets": {
+                      "type": "integer"
+                    },
+                    "out_octets": {
+                      "type": "integer"
+                    }
+                  }
+                }
+              },
+              "arp_table": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "ip": {
+                      "type": "string"
+                    },
+                    "mac": {
+                      "type": "string"
+                    },
+                    "interface": {
+                      "type": "string"
+                    }
+                  }
+                }
+              },
+              "vlans": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "vlan_id": {
+                      "type": "integer"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "string"
+                    }
+                  }
+                }
+              },
+              "routes": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "destination": {
+                      "type": "string"
+                    },
+                    "mask": {
+                      "type": "string"
+                    },
+                    "gateway": {
+                      "type": "string"
+                    },
+                    "interface": {
+                      "type": "string"
+                    },
+                    "type": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "summary_output": {
+      "type": "object",
+      "required": ["filename"],
+      "properties": {
+        "filename": {
+          "type": "string",
+          "const": "snmp_summary.txt"
+        },
+        "description": {
+          "type": "string",
+          "description": "Human-readable summary of interrogated devices"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,19 @@
+
+Logging and Debugging
+
+  Logging Destination : Syslog
+  Syslog Server       : 10.10.10.50
+  Logging Severity    : Warning
+  Logging Facility    : local6
+  Logging Source IP   : 10.10.10.4
+  Console Logging     : Disabled
+  Buffer Logging      : Enabled (Buffer Size: 1000)
+
+  Log Entries (most recent):
+  I 04/28/26 10:15:00 00631: System config saved by manager from 10.10.10.100
+  W 04/28/26 09:42:11 00123: Port security violation on port 3, MAC ddeeff-001122
+  W 04/28/26 09:42:11 00123: Port security violation on port 7, MAC ddeeff-002233
+  I 04/28/26 08:00:00 00001: SNMPv3 authentication failure from 10.10.10.200
+  I 04/27/26 00:00:01 00001: NTP synchronization completed
+  I 04/26/26 12:00:00 00456: DHCP snooping binding deleted - port 4
+  W 04/25/26 16:22:18 00123: Port security violation on port 23, MAC ddeeff-005566

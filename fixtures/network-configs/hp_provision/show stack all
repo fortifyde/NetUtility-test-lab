@@ -1,0 +1,18 @@
+
+Stack Status - All Members
+
+  Stack Mode    : Disabled
+  Stack Topology: Standalone
+
+  Member 1 (Commander):
+    Model           : HP 2920-48G (J9726A)
+    Serial Number   : CN4B8GP01M
+    MAC Address     : 70E48C-4A2B00
+    Firmware        : WB.16.10.0017
+    Priority        : 128
+    Status          : Active
+    Uptime          : 142 days, 7 hours, 23 minutes
+    CPU Utilization : 4%
+    Memory Free     : 195,412 KB / 262,020 KB
+
+  No other stack members detected.

@@ -1,0 +1,12 @@
+
+Console Configuration
+
+  Console Baud Rate     : 9600
+  Console Data Bits     : 8
+  Console Parity        : None
+  Console Stop Bits     : 1
+  Console Flow Control  : None
+  Console Inactivity Timer: 10 minutes
+  Console Password      : Configured
+  Console Login         : Local
+  Console Enable        : Local

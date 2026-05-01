@@ -1,0 +1,9 @@
+sFlow Receiver Configuration
+
+Receiver 1:
+  Destination IP  : 10.10.10.210
+  Destination Port: 6343
+  Protocol        : UDP
+  Status          : Active
+  Packets Sent    : 124,523
+  Samples Sent    : 87,234

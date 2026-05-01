@@ -1,0 +1,16 @@
+SNMP Server Configuration
+
+SNMP Server Enabled: No
+
+System Contact    : NetOps Team - netops@example.mil
+System Location   : Building 12, Floor 3, Rack A14
+
+Community Strings:
+  Community Name    Access Level
+  r0Str1ngC0mm      unrestricted (read-only)
+  pr1vat3C0mm       manager (read-write)
+
+SNMP Traps: Disabled
+SNMP Inform: Disabled
+
+SNMPv3: Enabled

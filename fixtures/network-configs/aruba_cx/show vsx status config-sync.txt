@@ -1,0 +1,21 @@
+VSX Configuration Synchronization Status
+-----------------------------------------
+Local Switch: ARUBA-CX-01 (Primary)
+Peer Switch: ARUBA-CX-02 (Secondary)
+
+Sync Status: In Sync
+Last Sync Time: 2026-04-28 10:22:15
+
+Synchronized Features:
+  VLAN: In Sync
+  Spanning-Tree: In Sync
+  IGMP Snooping: In Sync
+  Active Forwarding: In Sync
+
+Failed Sync Operations: 0
+Pending Sync Operations: 0
+
+VSX Sync History:
+  2026-04-28 10:22:15 - Full sync completed successfully
+  2026-04-15 08:30:12 - Full sync completed successfully
+  2026-04-01 12:00:00 - VLAN sync triggered by config change

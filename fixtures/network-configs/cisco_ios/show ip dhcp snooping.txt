@@ -1,0 +1,17 @@
+Switch DHCP snooping is disabled
+DHCP snooping is configured on following VLANs:
+none
+DHCP snooping is operational on following VLANs:
+none
+Smartlog is not configured for DHCP snooping
+DHCP snooping is configured on the following L3 Interfaces:
+
+Insertion of option 82 is enabled
+   circuit_id default format: vlan-mod-port
+   remote_id default format: MAC
+Option 82 on untrusted port is not allowed
+Verification of hwaddr field is enabled
+DHCP snooping trust/rate is configured on the following Interfaces:
+
+Interface                    Trusted     Rate limit (pps)
+-----------------------     -------     ----------------

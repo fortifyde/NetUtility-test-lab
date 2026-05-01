@@ -1,0 +1,19 @@
+Control-Plane Policing (CoPP) Policy
+Profile: strict
+
+Policy Map: copp-system-policy
+  Class: copp-system-critical
+    Policer: cir 59000 bps, bc 5920 bytes
+    Conform: transmit, Exceed: transmit
+  Class: copp-system-important
+    Policer: cir 38000 bps, bc 3800 bytes
+    Conform: transmit, Exceed: transmit
+  Class: copp-system-management
+    Policer: cir 120000 bps, bc 12000 bytes
+    Conform: transmit, Exceed: drop
+  Class: copp-system-normal
+    Policer: cir 10000 bps, bc 1000 bytes
+    Conform: transmit, Exceed: drop
+  Class: copp-system-redirect
+    Policer: cir 120000 bps, bc 12000 bytes
+    Conform: transmit, Exceed: drop

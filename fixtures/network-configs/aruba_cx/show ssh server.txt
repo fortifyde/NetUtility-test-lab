@@ -1,0 +1,28 @@
+SSH Server Configuration
+------------------------
+SSH Server: Enabled
+SSH Version: 2
+SSH Port: 22
+VRF: mgmt, default
+Login Timeout: 60 seconds
+Max Auth Retries: 3
+Idle Timeout: 300 seconds
+Rekey Interval: 3600 seconds
+
+Host Key Algorithms:
+  rsa (4096-bit)
+  ecdsa
+
+Key Exchange Algorithms:
+  ecdh-sha2-nistp384
+  ecdh-sha2-nistp256
+
+Authentication Methods:
+  publickey
+  password
+
+Access Control:
+  Allow from: 10.10.10.0/24
+  Allow from: 172.16.0.0/16
+
+Active Sessions: 2

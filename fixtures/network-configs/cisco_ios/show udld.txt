@@ -1,0 +1,26 @@
+Interface Gi1/0/1
+---
+Port enable administrative configuration setting: Enabled / in aggressive mode
+Port enable operational state: Enabled / in aggressive mode
+Current bidirectional state: Bidirectional
+Current operational state: Advertisement - Single neighbor detected
+Message interval: 15
+Time out interval: 5
+    Entry 1
+    ---
+    Expiration time: 342
+    Cache Device index: 1
+    Current neighbor state: Bidirectional
+    Device ID: 1
+    Port ID: Gi1/0/1
+    Neighbor echo 1 device: FOC2347X8K2
+    Neighbor echo 1 port: Gi1/0/1
+
+Interface Gi1/0/2
+---
+Port enable administrative configuration setting: Enabled / in aggressive mode
+Port enable operational state: Enabled / in aggressive mode
+Current bidirectional state: Bidirectional
+Current operational state: Advertisement - Single neighbor detected
+Message interval: 15
+Time out interval: 5

@@ -1,0 +1,20 @@
+Server group radius
+    Shared secret: xxxxxxxxxx
+    Server: 10.10.30.20
+        Authens: 52341  Author: 41230  Acct: 38901
+        Current shared secret: xxxxxxxxxx
+        Transactions (Authen/Authez/Acct): 52341/41230/38901
+        Retransmissions: 231
+        Timeouts: 45
+        Bad authenticators: 0
+        Malformed responses: 0
+        Round-trip time (avg): 3ms
+    Server: 10.10.30.21
+        Authens: 41230  Author: 35678  Acct: 32145
+        Current shared secret: xxxxxxxxxx
+        Transactions (Authen/Authez/Acct): 41230/35678/32145
+        Retransmissions: 189
+        Timeouts: 32
+        Bad authenticators: 0
+        Malformed responses: 0
+        Round-trip time (avg): 4ms

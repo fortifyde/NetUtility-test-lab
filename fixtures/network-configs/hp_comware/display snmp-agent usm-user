@@ -1,0 +1,8 @@
+User name: snmpv3user
+  Engine ID: 800063A280001A2B3C4D50
+  Storage type: nonVolatile
+  Active status: Active
+  Authentication: SHA
+  Privacy: AES128
+  Group: netops
+  ACL: --

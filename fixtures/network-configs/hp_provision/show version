@@ -1,0 +1,28 @@
+
+Image: Primary ( PRI)
+Active Boot ROM: Primary
+
+Software revision : WB.16.10.0017
+ROM Version : WB.16.01.0009
+
+Serial Number     : CN4B8GP01M
+Product Model     : HP 2920-48G Switch
+Product Brand     : Aruba
+MAC Address       : 70E48C-4A2B00
+System Contact    : netadmin@mil.local
+System Location   : BLDG-A, Floor 3, Rack 14
+
+Module Type       : J9726A  HP 2920-48G Switch
+
+Up Time           : 142 days, 7 hours, 23 minutes
+CPU Utilization   : 4%
+Memory - Total    : 262,020 KB
+Memory - Free     : 195,412 KB
+
+Firmware Version  : 16.10.0017
+
+Passive Boot ROM: Secondary
+Passive Image    : SEC
+
+Boot ROM Primary   : WB.16.01.0009
+Boot ROM Secondary : WB.15.18.0005

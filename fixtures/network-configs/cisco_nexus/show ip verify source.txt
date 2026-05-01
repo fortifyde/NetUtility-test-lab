@@ -1,0 +1,12 @@
+IP Source Guard is enabled on the following VLANs: 10,20,30
+
+Interface         Filter Mode  IP Address       MAC Address       VLAN
+----------------  -----------  ---------------  ----------------  ----
+Ethernet1/5       IP-MAC       10.10.10.5       aabb.cc00.1000    10
+Ethernet1/6       IP-MAC       10.10.10.6       aabb.cc00.1001    10
+Ethernet1/7       IP-MAC       10.10.20.10      aabb.cc00.2001    20
+Ethernet1/8       IP-MAC       10.10.20.11      aabb.cc00.2002    20
+Ethernet1/11      IP-MAC       10.10.30.100     aabb.cc00.3001    30
+Ethernet1/12      IP-MAC       active           --                30
+
+Total entries: 6

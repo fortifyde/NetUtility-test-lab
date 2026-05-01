@@ -1,0 +1,5 @@
+ Session  Client IP       Client Port  Version  Authentication  Username  State
+ 1        10.10.10.100    52431        2.0      password        admin     Established
+ 2        10.10.10.2      49152        2.0      publickey       netsight  Established
+
+Total sessions: 2

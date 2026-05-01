@@ -1,0 +1,8 @@
+
+IP Helper Address Configuration
+
+  VLAN  Interface          Helper Address      UDP Ports
+  ---- ------------------- ------------------- ----------------
+  20   DATA_VLAN           10.10.10.100        bootps, dns, tftp
+
+  No other IP helper addresses configured.

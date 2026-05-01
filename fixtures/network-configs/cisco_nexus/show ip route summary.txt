@@ -1,0 +1,25 @@
+IP Route Summary for VRF "default"
+VRF route count is 19, shared route count is 0
+
+Address space usage:
+  IPv4       routes: 19      prefixes: 14      multicasts: 0
+
+Route Source        Best Routes   Non-best Routes  Deleted
+connected                   8                0        0
+static                      2                0        0
+ospf-1                      3                0        0
+bgp-65200                   3                0        0
+
+Total routes: 19, paths: 19
+
+IP Route Summary for VRF "management"
+VRF route count is 2, shared route count is 0
+
+Address space usage:
+  IPv4       routes: 2       prefixes: 2       multicasts: 0
+
+Route Source        Best Routes   Non-best Routes  Deleted
+connected                   1                0        0
+static                      1                0        0
+
+Total routes: 2, paths: 2

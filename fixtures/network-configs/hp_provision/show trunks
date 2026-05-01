@@ -1,0 +1,23 @@
+
+Trunk Configuration
+
+  Port  Trunk Group  Trunk Type  LACP Status
+  ----- ------------ ----------- ------------
+  45    Trk1         Trunk       N/A
+  46    Trk1         Trunk       N/A
+  47    Trk2         LACP        Active
+  48    Trk2         LACP        Active
+
+  Trunk Group : Trk1
+    Type      : Trunk (static)
+    Members   : 45-46
+    VLANs Tagged   : 10, 20, 30, 99
+
+  Trunk Group : Trk2
+    Type      : LACP
+    Members   : 47-48
+    VLANs Tagged   : 10, 20, 30, 99
+    LACP System ID : 70E48C-4A2B00
+    LACP System Priority: 32768
+
+Total trunk groups: 2

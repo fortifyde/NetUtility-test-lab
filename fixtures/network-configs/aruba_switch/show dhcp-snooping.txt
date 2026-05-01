@@ -1,0 +1,22 @@
+DHCP Snooping Configuration and Status
+
+DHCP Snooping: Enabled
+
+Snooping VLANs: 10, 20, 30, 40
+
+Trusted Ports: Trk1
+
+DHCP Snooping Binding Table:
+  MAC Address        IP Address      VLAN  Port  Lease
+  -----------------  --------------  ----  ----  -----
+  00:1a:2b:44:55:01  10.10.30.101    30    4     86400
+  00:1a:2b:44:55:02  10.10.30.102    30    5     86400
+  00:1a:2b:44:55:03  10.10.30.103    30    6     86400
+  00:1a:2b:44:55:04  10.10.30.104    30    7     86400
+  00:1a:2b:44:55:05  10.10.30.105    30    8     86400
+  00:1a:2b:44:55:06  10.10.30.106    30    9     86400
+  00:1a:2b:44:55:07  10.10.30.107    30    10    86400
+  a0:d3:c1:aa:bb:cc  10.10.40.201    40    25    43200
+  a0:d3:c1:aa:bb:cd  10.10.40.202    40    26    43200
+
+Total Bindings: 9

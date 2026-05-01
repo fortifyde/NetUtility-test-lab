@@ -1,0 +1,35 @@
+Control Plane Policing (CoPP) Policy
+-------------------------------------
+Policy: strict
+Status: Active
+
+Class Map: copp-system-default
+  Match: Protocol (OSPF, BGP, ARP, ICMP, SSH, SNMP, NTP, DNS, HTTP, HTTPS)
+  Police: cir 1000000 bps, bc 10000 bytes
+  Conform: transmit
+  Exceed: drop
+  Violate: drop
+
+Class Map: copp-system-icmp
+  Match: Protocol ICMP
+  Police: cir 500000 bps, bc 5000 bytes
+  Conform: transmit
+  Exceed: drop
+
+Class Map: copp-system-ssh
+  Match: Protocol SSH (TCP/22)
+  Police: cir 2000000 bps, bc 20000 bytes
+  Conform: transmit
+  Exceed: drop
+
+Class Map: copp-system-snmp
+  Match: Protocol SNMP (UDP/161-162)
+  Police: cir 1000000 bps, bc 10000 bytes
+  Conform: transmit
+  Exceed: drop
+
+Statistics:
+  Total Packets: 12,456,789
+  Conformed: 12,456,123
+  Exceeded: 666
+  Dropped: 0

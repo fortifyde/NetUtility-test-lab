@@ -1,0 +1,7 @@
+username admin password 5 $5$SALT$rounds=535000$KrGpMDdBLjFvA3QGJBzTqNr9lxAJB1/ hash
+username admin role network-admin
+username admin passphrase lifetime 99999 warntime 14
+username netop password 5 $5$SALT$rounds=535000$2vKnTZwLxNpMr4hJLT3qG  hash
+username netop role network-operator
+username secadmin password 5 $5$SALT$rounds=535000$qHnF8rYKcjwmLBD4K  hash
+username secadmin role priv-5

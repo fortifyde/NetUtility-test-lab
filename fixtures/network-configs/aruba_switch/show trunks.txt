@@ -1,0 +1,12 @@
+Trunk Port Information
+
+Port  Type       Group Type     Active Ports
+---- ---------  ----- --------  ------------
+Trk1  LACP(Active) 1         49,50
+
+Trunk Details:
+  Trk1 - Name: UPLINK-TO-CORE
+    Type: LACP Active
+    Member Ports: 49, 50
+    Active Ports: 49, 50
+    LACP Partner: a0:d3:c1:ff:12:35

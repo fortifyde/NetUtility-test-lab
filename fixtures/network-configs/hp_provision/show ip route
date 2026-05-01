@@ -1,0 +1,11 @@
+
+IP Route Entries
+
+  Destination     Gateway         VLAN       Type      Sub-Type   Metric  Distance
+  --------------- --------------- ---------- --------- ---------- ------- --------
+  0.0.0.0/0       10.10.10.1      VLAN 10    static               1       1
+  10.10.10.0/24   10.10.10.4      VLAN 10    connected           1       0
+  10.10.99.0/24   10.10.99.4      VLAN 99    connected           1       0
+  10.10.99.0/24   10.10.99.1      VLAN 99    static               1       1
+
+Total IP route entries: 4

@@ -1,0 +1,73 @@
+LLDP Neighbor Detail Information
+---------------------------------
+
+Local Interface: 1/1/1
+  Neighbor: Core-SW-01
+  Remote Chassis ID: 00:1a:2b:3c:4d:50
+  Remote Port ID: 1/1/1
+  System Name: CORE-SW-01
+  System Description: ArubaOS-CX 10.10.1010 Aruba 6400M 48G 6SFP56 Switch
+  Management Address: 10.10.10.1
+  TTL: 120
+  Port Description: Downlink-to-ARUBA-CX-01
+  Capability: Bridge, Router
+  IEEE 802.1 VLAN Name: MGMT (VLAN ID 10)
+  IEEE 802.3 MAC/PHY: Autoneg (Enabled), 10GbaseT (FD)
+  IEEE 802.3 Power via MDI: Supported, PD, PSE
+  Link Aggregation: Supported, 802.3ad (Aggregation not enabled)
+
+Local Interface: 1/1/2
+  Neighbor: Core-SW-02
+  Remote Chassis ID: 00:1a:2b:3c:4d:60
+  Remote Port ID: 1/1/1
+  System Name: CORE-SW-02
+  System Description: ArubaOS-CX 10.10.1010 Aruba 6400M 48G 6SFP56 Switch
+  Management Address: 10.10.10.2
+  TTL: 120
+  Port Description: Downlink-to-ARUBA-CX-01
+  Capability: Bridge, Router
+  IEEE 802.1 VLAN Name: MGMT (VLAN ID 10)
+  IEEE 802.3 MAC/PHY: Autoneg (Enabled), 10GbaseT (FD)
+  Link Aggregation: Supported, 802.3ad (Aggregation not enabled)
+
+Local Interface: 1/1/5
+  Neighbor: WS-PC-01
+  Remote Chassis ID: a4:b5:c6:d7:e8:f9
+  Remote Port ID: eth0
+  System Name: WS-PC-01
+  System Description: Microsoft Windows 11 Pro 10.0.22631
+  Management Address: --
+  TTL: 120
+  Port Description: Intel(R) Ethernet Connection
+  Capability: Station Only
+  IEEE 802.1 VLAN Name: --
+  IEEE 802.3 MAC/PHY: Autoneg (Enabled), 1000baseT (FD)
+
+Local Interface: 1/1/25
+  Neighbor: WEB-SVR-01
+  Remote Chassis ID: 00:50:56:ab:cd:01
+  Remote Port ID: eth0
+  System Name: WEB-SVR-01
+  System Description: Linux Ubuntu 22.04 LTS 5.15.0-91-generic
+  Management Address: 10.0.2.10
+  TTL: 120
+  Port Description: ens160
+  Capability: Station Only
+  IEEE 802.1 VLAN Name: --
+  IEEE 802.3 MAC/PHY: Autoneg (Enabled), 1000baseT (FD)
+
+Local Interface: 1/1/45
+  Neighbor: AP-Floor1-01
+  Remote Chassis ID: 00:24:6c:ab:cd:01
+  Remote Port ID: ge0
+  System Name: AP-FLOOR1-01
+  System Description: ArubaOS 8.11.0 AP-535
+  Management Address: 10.10.10.200
+  TTL: 120
+  Port Description: ge0
+  Capability: Wlan Access Point
+  IEEE 802.1 VLAN Name: MGMT (VLAN ID 10)
+  IEEE 802.3 MAC/PHY: Autoneg (Enabled), 1000baseT (FD)
+  IEEE 802.3 Power via MDI: Supported, PD, Class 4
+
+Total neighbors: 8

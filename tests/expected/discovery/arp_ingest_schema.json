@@ -1,0 +1,87 @@
+{
+  "description": "Expected output schema for arp_ingest.sh — ARP table ingestion and correlation",
+  "type": "object",
+  "required": ["session_dir", "raw_output", "xml_output", "summary_output"],
+  "properties": {
+    "session_dir": {
+      "type": "string",
+      "pattern": "^arp_ingest_\\d{8}_\\d{6}$",
+      "description": "Timestamped session directory under discovery/arp/"
+    },
+    "raw_output": {
+      "type": "object",
+      "required": ["filename", "content"],
+      "properties": {
+        "filename": {
+          "type": "string",
+          "const": "arp_raw.txt"
+        },
+        "content": {
+          "type": "string",
+          "description": "Raw arp command output with IP, MAC, interface columns"
+        }
+      }
+    },
+    "xml_output": {
+      "type": "object",
+      "required": ["filename"],
+      "properties": {
+        "filename": {
+          "type": "string",
+          "const": "arp_results.xml"
+        },
+        "root_element": {
+          "type": "string",
+          "const": "arp_results"
+        },
+        "entries": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["ip", "mac", "interface"],
+            "properties": {
+              "ip": {
+                "type": "string",
+                "description": "IPv4 address",
+                "pattern": "^\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}$"
+              },
+              "mac": {
+                "type": "string",
+                "description": "MAC address (colon-separated hex)"
+              },
+              "interface": {
+                "type": "string",
+                "description": "Network interface name"
+              },
+              "state": {
+                "type": "string",
+                "description": "ARP entry state if available"
+              }
+            }
+          }
+        }
+      }
+    },
+    "summary_output": {
+      "type": "object",
+      "required": ["filename"],
+      "properties": {
+        "filename": {
+          "type": "string",
+          "const": "arp_summary.txt"
+        },
+        "sections": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "Per-Interface Summary",
+              "Per-State Summary",
+              "Total Entries"
+            ]
+          }
+        }
+      }
+    }
+  }
+}

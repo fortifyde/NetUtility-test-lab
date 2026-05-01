@@ -1,0 +1,14 @@
+
+Access Control Lists
+
+  ACL Name          Type    Applied To
+  ----------------- ------- ----------
+  MGMT-ACCESS       Standard  IP
+
+  ACL: MGMT-ACCESS (Standard)
+    10 permit ip 10.10.10.0 0.0.0.255 10.10.10.4 0.0.0.0
+    20 permit ip 10.10.99.0 0.0.0.255 10.10.99.4 0.0.0.0
+    30 deny ip any any
+
+Total ACLs: 1
+Total ACEs: 3

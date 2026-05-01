@@ -1,0 +1,16 @@
+sFlow Configuration
+
+sFlow Status: Enabled
+
+Agent IP: 10.10.10.6
+Agent Address Type: IPv4
+
+Sampling:
+  Port Range  Rate
+  ----------  -----
+  1-48        512
+
+Polling:
+  Port Range  Interval
+  ----------  --------
+  1-48        60 seconds

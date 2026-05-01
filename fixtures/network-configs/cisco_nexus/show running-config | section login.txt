@@ -1,0 +1,2 @@
+aaa authentication login default group tacacs+ local
+aaa authentication login console local

@@ -1,0 +1,6 @@
+
+SNMPv3 Enable Status
+
+  SNMPv3 : Enabled
+  SNMPv3 Only : Enabled (SNMPv1/v2c disabled)
+  SNMPv3 Restricted Access : Enabled

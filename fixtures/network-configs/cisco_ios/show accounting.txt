@@ -1,0 +1,7 @@
+Active Accounted actions on tty0, User admin Priv 15
+ Task ID 1, EXEC Accounting record, 00:12:34 Elapsed
+ task_id=1 start_time=14:11:11 UTC Mon Apr 28 2026 timezone=UTC service=shell
+
+Active Accounted actions on tty1, User monitor Priv 5
+ Task ID 2, EXEC Accounting record, 00:05:12 Elapsed
+ task_id=2 start_time=14:18:33 UTC Mon Apr 28 2026 timezone=UTC service=shell

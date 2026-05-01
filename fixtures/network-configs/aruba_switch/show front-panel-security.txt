@@ -1,0 +1,9 @@
+Front Panel Security Configuration
+
+Front Panel Security: Enabled
+
+USB Port      : Disabled
+TFTP Client   : Disabled
+TFTP Server   : Disabled
+USB File Copy : Disabled
+Password Reset: Disabled (clear button disabled)

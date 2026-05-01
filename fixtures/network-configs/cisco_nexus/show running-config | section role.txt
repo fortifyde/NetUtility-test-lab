@@ -1,0 +1,5 @@
+role name priv-5
+  description Custom security admin role
+  rule 1 permit read-write feature security
+  rule 2 permit read feature snmp
+  rule 3 permit read feature logging

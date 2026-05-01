@@ -1,0 +1,44 @@
+Device management users:
+  Username: admin
+    State: Active
+    Service types: SSH, Telnet, Terminal
+    Access limit: Enabled (Max 3 sessions)
+    Current sessions: 1
+    Authorization attributes:
+      Level: 3 (network-admin)
+      VLAN: --
+      Interface: --
+    Password aging: 90 days
+    Password last set: 2026-Mar-15 14:30:00
+    Password expires: 2026-Jun-13 14:30:00
+    Account expires: Never
+
+  Username: netop
+    State: Active
+    Service types: SSH
+    Access limit: Enabled (Max 2 sessions)
+    Current sessions: 1
+    Authorization attributes:
+      Level: 2
+      VLAN: --
+      Interface: --
+    Password aging: 90 days
+    Password last set: 2026-Mar-20 09:00:00
+    Password expires: 2026-Jun-18 09:00:00
+    Account expires: Never
+
+  Username: operator
+    State: Active
+    Service types: SSH
+    Access limit: Enabled (Max 1 session)
+    Current sessions: 0
+    Authorization attributes:
+      Level: 1
+      VLAN: --
+      Interface: --
+    Password aging: 90 days
+    Password last set: 2026-Apr-01 08:00:00
+    Password expires: 2026-Jun-30 08:00:00
+    Account expires: Never
+
+Total local users: 3

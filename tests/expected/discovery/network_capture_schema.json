@@ -1,0 +1,90 @@
+{
+  "description": "Expected output schema for network_capture.sh — packet capture with VLAN and security analysis",
+  "type": "object",
+  "required": ["pcap_file"],
+  "properties": {
+    "pcap_file": {
+      "type": "object",
+      "required": ["filename", "format"],
+      "properties": {
+        "filename": {
+          "type": "string",
+          "pattern": "^capture_.+_\\d{8}_\\d{6}\\.pcap$",
+          "description": "Timestamped PCAP file under captures/"
+        },
+        "format": {
+          "type": "string",
+          "const": "pcap",
+          "description": "Standard pcap format readable by tshark/wireshark"
+        },
+        "description": {
+          "type": "string",
+          "description": "Raw tshark capture from selected interface"
+        }
+      }
+    },
+    "vlan_list": {
+      "type": "object",
+      "properties": {
+        "filename": {
+          "type": "string",
+          "pattern": "^vlans_.+_\\d{8}_\\d{6}\\.txt$"
+        },
+        "content": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "description": "Unique VLAN IDs sorted numerically"
+          }
+        }
+      }
+    },
+    "security_analysis": {
+      "type": "object",
+      "properties": {
+        "filename": {
+          "type": "string",
+          "pattern": "^security_analysis_.+_\\d{8}_\\d{6}\\.txt$"
+        },
+        "sections": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "protocol": {
+                "type": "string",
+                "description": "Protocol checked (HTTP, FTP, Telnet, SNMP)"
+              },
+              "hosts": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "description": "Hosts detected using cleartext protocol"
+              },
+              "count": {
+                "type": "integer"
+              }
+            }
+          }
+        }
+      }
+    },
+    "capture_metadata": {
+      "type": "object",
+      "properties": {
+        "interface": {
+          "type": "string",
+          "description": "Capture interface name"
+        },
+        "duration_seconds": {
+          "type": "integer"
+        },
+        "timestamp": {
+          "type": "string",
+          "description": "ISO-ish timestamp of capture start"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,54 @@
+Status and Counters - Port Status
+
+                                                          Intrusion
+Port         Type       | Mode  | VLAN | Speed  | Status  | Alert
+-------------------- ---- ------ ----- ------- --------- ---------
+1/1/1        10G        rout   --    10G     Up         No
+1/1/2        10G        rout   --    10G     Up         No
+1/1/3        10G        lacp   --    10G     Up         No
+1/1/4        10G        rout   --    10G     Up         No
+1/1/5        1G         access 20    1G      Up         No
+1/1/6        1G         access 20    1G      Up         No
+1/1/7        1G         access 20    1G      Down       No
+1/1/8        1G         access 20    1G      Down       No
+1/1/9        1G         access 20    1G      Up         No
+1/1/10       1G         access 20    1G      Up         No
+1/1/11       1G         access 20    1G      Down       No
+1/1/12       1G         access 20    1G      Down       No
+1/1/13       1G         access 20    1G      Up         No
+1/1/14       1G         access 20    1G      Down       No
+1/1/15       1G         access 20    1G      Down       No
+1/1/16       1G         access 20    1G      Up         No
+1/1/17       1G         access 20    1G      Down       No
+1/1/18       1G         access 20    1G      Down       No
+1/1/19       1G         access 20    1G      Down       No
+1/1/20       1G         access 20    1G      Down       No
+1/1/21       1G         access 20    1G      Up         No
+1/1/22       1G         access 20    1G      Down       No
+1/1/23       1G         access 20    1G      Down       No
+1/1/24       1G         access 20    1G      Down       No
+1/1/25       1G         access 30    1G      Up         No
+1/1/26       1G         access 30    1G      Up         No
+1/1/27       1G         access 20    1G      Down       No
+1/1/28       1G         access 20    1G      Down       No
+1/1/29       1G         access 20    1G      Down       No
+1/1/30       1G         access 20    1G      Down       No
+1/1/31       1G         access 20    1G      Down       No
+1/1/32       1G         access 20    1G      Down       No
+1/1/33       1G         access 20    1G      Down       No
+1/1/34       1G         access 20    1G      Down       No
+1/1/35       1G         access 20    1G      Down       No
+1/1/36       1G         access 20    1G      Down       No
+1/1/37       1G         access 20    1G      Down       No
+1/1/38       1G         access 20    1G      Down       No
+1/1/39       1G         access 20    1G      Down       No
+1/1/40       1G         access 20    1G      Down       No
+1/1/41       1G         access 20    1G      Down       No
+1/1/42       1G         access 20    1G      Down       No
+1/1/43       1G         access 20    1G      Down       No
+1/1/44       1G         access 20    1G      Down       No
+1/1/45       1G         trunk  99    1G      Up         No
+1/1/46       1G         trunk  99    1G      Up         No
+1/1/47       1G         access 200   1G      Up         No
+1/1/48       1G         access 100   1G      Down       No
+lag1         20G        trunk  99    20G     Up         No

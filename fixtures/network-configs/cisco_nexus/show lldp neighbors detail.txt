@@ -1,0 +1,36 @@
+----------------------------------------
+Capability codes:
+  (R) Router, (B) Bridge, (T) Telephone, (C) DOCSIS Cable Device
+  (W) WLAN Access Point, (P) Repeater, (S) Station, (O) Other
+
+System Name: N9K-CORE-02
+Chassis ID: 0026.9800.0002
+Port ID: Ethernet1/1
+Port Description: UPLINK-TO-CORE-01-ETH1/1
+System Description: Cisco NX-OS(tm) n9000, Software (n9000-dk9), Version 10.2(3)
+Time remaining: 104 seconds
+System Capabilities: B,R
+Enabled Capabilities: B,R
+Management Address: 10.10.10.3
+VLAN ID: 1
+----------------------------------------
+System Name: BORDER-RT-01
+Chassis ID: 0026.9800.0abc
+Port ID: GigabitEthernet0/0
+Port Description: Link to N9K-CORE-01
+System Description: Cisco IOS Software [Fuji], ISR Software Version 16.9.7
+Time remaining: 112 seconds
+System Capabilities: B,R
+Enabled Capabilities: B,R
+Management Address: 10.10.10.254
+----------------------------------------
+System Name: AP-BLDG2400-01
+Chassis ID: 005c.a100.1234
+Port ID: GigabitEthernet0
+Port Description: AP-BLDG2400-01
+System Description: Cisco IOS Software, AP Software Version 8.10.162
+Time remaining: 98 seconds
+System Capabilities: B,W
+Enabled Capabilities: B,W
+----------------------------------------
+Total entries displayed: 3

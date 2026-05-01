@@ -1,0 +1,35 @@
+Slot 1:
+Board Type        : HPE 5130-48G-PoE+ EI Switch
+Hardware Version  : 106
+CPLD Version      : 002
+PCB A Version     : 003
+PCB B Version     : 003
+Boot ROM Version  : 127
+Software Version  : Release 2428P02
+Status            : Normal
+Type              : Main Board
+Max Power (W)     : 370
+
+Slot 2:
+Board Type        : HPE 5130-48G-PoE+ EI Switch
+Hardware Version  : 106
+CPLD Version      : 002
+PCB A Version     : 003
+PCB B Version     : 003
+Boot ROM Version  : 127
+Software Version  : Release 2428P02
+Status            : Normal
+Type              : Main Board
+Max Power (W)     : 370
+
+Fan Tray 1:
+Status            : Normal
+Fan Type          : Fan Tray
+
+Power Supply 1:
+Status            : Normal
+Type              : AC
+
+Power Supply 2:
+Status            : Normal
+Type              : AC

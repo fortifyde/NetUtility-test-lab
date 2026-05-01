@@ -1,0 +1,66 @@
+ version 7.1.070, Release 2428P02
+ sysname HP-ACCESS-01
+ irf mac-address persistent timer
+ irf auto-update enable
+ irf member 1 priority 32
+ irf member 2 priority 1
+ irf-domain 10
+ password-recovery enable
+#
+ vlan 1
+#
+ vlan 10
+ name MGMT
+#
+ vlan 20
+ name USERS
+#
+ vlan 30
+ name SERVERS
+#
+ vlan 40
+ name PRINTERS
+#
+ vlan 50
+ name CAMERAS
+#
+ vlan 99
+ name NATIVE
+#
+ vlan 100
+ name GUEST
+#
+ vlan 200
+ name MANAGEMENT
+#
+ telnet server enable
+ ssh server enable
+ ssh server compatible-ssh1x enable
+#
+ interface Vlan-interface10
+ description MANAGEMENT_VLAN
+ ip address 10.10.10.3 255.255.255.0
+#
+ interface Vlan-interface20
+ description USERS_VLAN
+ ip address 10.10.20.1 255.255.255.0
+ dhcp select relay
+ dhcp relay server-address 10.10.10.5
+#
+ interface Vlan-interface30
+ description SERVERS_VLAN
+ ip address 10.10.30.1 255.255.255.0
+#
+ interface Vlan-interface100
+ description GUEST_VLAN
+ ip address 10.10.100.1 255.255.255.0
+ dhcp select relay
+ dhcp relay server-address 10.10.10.5
+#
+ stp mode rstp
+ stp priority 4096
+ stp enable
+#
+ ip route-static 0.0.0.0 0.0.0.0 10.10.10.1
+#
+ return

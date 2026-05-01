@@ -1,0 +1,12 @@
+Internet (IP) Address
+
+VLAN        IP Address        Subnet Mask        Status
+----        ----------        -----------        ------
+VLAN 10     10.10.10.6        255.255.255.0      Up
+VLAN 20     unassigned                           Up
+VLAN 30     unassigned                           Up
+VLAN 40     unassigned                           Up
+VLAN 100    unassigned                           Down
+
+Default Gateway     : 10.10.10.1
+IP Routing          : Enabled

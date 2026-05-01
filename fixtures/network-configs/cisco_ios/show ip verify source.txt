@@ -1,0 +1,6 @@
+Interface  Filter-type  Filter-mode  IP-address       Mac-address        Vlan
+---------  -----------  -----------  ---------------  -----------------  ----
+Gi1/0/3    ip           active       10.10.10.101     00:0C:29:12:34:56  10
+Gi1/0/4    ip           active       10.10.10.102     00:0C:29:12:AB:CD  10
+Gi1/0/5    ip           active       10.10.10.103     00:0C:29:12:EF:01  10
+Gi1/0/6    ip           active       10.10.10.104     00:0C:29:12:23:45  10

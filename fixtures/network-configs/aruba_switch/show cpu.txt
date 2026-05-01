@@ -1,0 +1,16 @@
+CPU Utilization - ARUBA-SW-01
+
+  5 sec avg:  3%
+  1 min avg:  5%
+  5 min avg:  4%
+
+  CPU Utilization by Process:
+  Process            %CPU
+  -----------------  -----
+  bcmRX              1.2
+  bcmL2RX            0.5
+  snmpd              0.3
+  sshd               0.2
+  lldpd              0.1
+  stpd               0.1
+  OTHER              1.1

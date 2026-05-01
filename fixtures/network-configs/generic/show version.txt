@@ -1,0 +1,22 @@
+Linux version 6.1.0-generic (build@builder) (gcc 12.2.0) #1 SMP PREEMPT_DYNAMIC
+Kernel: 6.1.0-generic
+Distribution: NetOS 3.2.1
+Build: 20240315-rel1
+Architecture: x86_64
+
+Device: net-gw-01
+Uptime: 45 days, 12 hours, 33 minutes
+Load average: 0.12, 0.08, 0.05
+
+CPU: Intel(R) Celeron(R) J4125 @ 2.00GHz (4 cores)
+Memory: 3906 MB total, 2148 MB used, 1758 MB free
+
+Interfaces:
+  eth0: up (link)
+  eth1: up (link)
+  eth2: down
+  lo: up (loopback)
+
+Firmware: BIOS 1.4.2
+Serial: GNR-2024-00421
+MAC Address: 00:1C:42:A3:B7:D0

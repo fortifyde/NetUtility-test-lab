@@ -1,0 +1,23 @@
+VRRP Configuration
+------------------
+VRID: 10
+  Interface: 1/1/1
+  Virtual IP: 10.0.1.1
+  Primary IP: 10.0.1.2
+  Priority: 110
+  Preempt: Enabled
+  Advertisement Interval: 1 second
+  State: Master
+  Authentication: Text
+  Master Down Interval: 3.6 seconds
+  Skew Time: 0.36 seconds
+  Last State Change: 87 days, 14 hours, 28 minutes
+ Advertisements Sent: 7563241
+ Advertisements Received: 7563240
+
+VRRP Statistics:
+  Become Master: 1
+  Advertise Received: 7563240
+  Advertise Sent: 7563241
+  Auth Failures: 0
+  Timer Expired: 0

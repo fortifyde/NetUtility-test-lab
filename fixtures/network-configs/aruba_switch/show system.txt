@@ -1,0 +1,29 @@
+Status and Counters - General System Information
+
+  System Name        : ARUBA-SW-01
+  System Contact     : NetOps Team - netops@example.mil
+  System Location    : Building 12, Floor 3, Rack A14
+
+  MAC Address        : a0-d3-c1-b2-f4-e0
+  Serial Number      : CN8BG6R01K
+
+  Product Model      : JL262A Aruba 2930F 48G 4SFP+ Switch
+  Product Revision   : AB
+  Product Age (days) : 342
+
+  Firmware Version   : 16.11.0023
+  Firmware Date      : 10/15/2021
+  Boot ROM Version   : WB.16.06.0004
+
+  Base MAC Address   : a0-d3-c1-b2-f4-e0
+  Module Type        : JL262A
+
+  Up Time            : 87 days, 14 hours, 32 minutes
+  CPU Utilization    : 5%
+  Total Memory       : 524,288 KB
+  Free Memory        : 412,736 KB
+
+  Fan Status         : OK
+  Power Supply 1     : OK
+  Power Supply 2     : OK
+  Temperature        : 42C (Normal)

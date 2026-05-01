@@ -1,0 +1,7 @@
+Type: D-Dynamic S-Static
+  Server IP Address    Type
+  10.10.10.2           S
+  10.10.10.1           S
+
+DNS resolve mode: Manual
+DNS source interface: Vlan-interface10

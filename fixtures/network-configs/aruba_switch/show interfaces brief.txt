@@ -1,0 +1,58 @@
+Status and Counters - Port Status for ARUBA-SW-01
+
+                                                              Intrusion
+Port   Type      | VLAN   Name            Status       Mode    Alert
+------ --------- + ------ --------------- ------------ ------- -----
+1      100/1000T | 10     MGMT-UPLINK     Up           Untag   None
+2      100/1000T | 20     SRV-WEB-01      Up           Untag   None
+3      100/1000T | 20     SRV-DB-01       Up           Untag   None
+4      100/1000T | 30                     Up           Untag   None
+5      100/1000T | 30                     Up           Untag   None
+6      100/1000T | 30                     Up           Untag   None
+7      100/1000T | 30                     Up           Untag   None
+8      100/1000T | 30                     Up           Untag   None
+9      100/1000T | 30                     Up           Untag   None
+10     100/1000T | 30                     Up           Untag   None
+11     100/1000T | 30                     Down         Untag   None
+12     100/1000T | 30                     Down         Untag   None
+13     100/1000T | 30                     Down         Untag   None
+14     100/1000T | 30                     Down         Untag   None
+15     100/1000T | 30                     Down         Untag   None
+16     100/1000T | 30                     Down         Untag   None
+17     100/1000T | 30                     Down         Untag   None
+18     100/1000T | 30                     Down         Untag   None
+19     100/1000T | 30                     Down         Untag   None
+20     100/1000T | 30                     Down         Untag   None
+21     100/1000T | 30                     Down         Untag   None
+22     100/1000T | 30                     Down         Untag   None
+23     100/1000T | 30                     Down         Untag   None
+24     100/1000T | 30                     Down         Untag   None
+25     100/1000T | 40                     Up           Untag   None
+26     100/1000T | 40                     Up           Untag   None
+27     100/1000T | 40                     Down         Untag   None
+28     100/1000T | 40                     Down         Untag   None
+29     100/1000T | 40                     Down         Untag   None
+30     100/1000T | 40                     Down         Untag   None
+31     100/1000T | 40                     Down         Untag   None
+32     100/1000T | 40                     Down         Untag   None
+33     100/1000T | 40                     Down         Untag   None
+34     100/1000T | 40                     Down         Untag   None
+35     100/1000T | 40                     Down         Untag   None
+36     100/1000T | 40                     Down         Untag   None
+37     100/1000T | 40                     Down         Untag   None
+38     100/1000T | 40                     Down         Untag   None
+39     100/1000T | 40                     Down         Untag   None
+40     100/1000T | 40                     Down         Untag   None
+41     100/1000T | 40                     Down         Untag   None
+42     100/1000T | 40                     Down         Untag   None
+43     100/1000T | 40                     Down         Untag   None
+44     100/1000T | 40                     Down         Untag   None
+45     100/1000T | 40                     Down         Untag   None
+46     100/1000T | 40                     Down         Untag   None
+47     100/1000T | 40                     Down         Untag   None
+48     100/1000T | 40                     Down         Untag   None
+49     SFP+      | 10,20,30,40,100        Down         Tag     None
+50     SFP+      | 10,20,30,40,100        Down         Tag     None
+51     SFP+      | 10,20,30,40,100        Down         Tag     None
+52     SFP+      | 10,20,30,40,100        Down         Tag     None
+Trk1  Trunk      | 10,20,30,40,100 UPLINK Up           Tag     None

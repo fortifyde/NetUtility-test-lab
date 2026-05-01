@@ -1,0 +1,7 @@
+
+SNTP Associations
+
+  Address          Ref ID           Stratum  Mode     Last Poll  Offset   Status
+  ---------------- ---------------- -------- -------- ---------- --------- --------
+  10.10.10.100     10.0.0.1         2        Unicast  15:41:58   +0.002s   Sync
+  10.10.10.101     10.0.0.2         2        Unicast  15:41:55   +0.003s   Avail

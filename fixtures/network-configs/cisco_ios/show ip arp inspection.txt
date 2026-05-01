@@ -1,0 +1,15 @@
+Source Mac Validation      : Disabled
+Destination Mac Validation : Disabled
+IP Address Validation      : Disabled
+
+Vlan   Configuration    Operation   ACL Match         Static ACL
+----   -------------    ---------   ----------        ----------
+  10     Enabled         Active
+  20     Enabled         Active
+  30     Enabled         Active
+
+Vlan   ACL Logging      DHCP Logging      Probe Logging
+----   -----------      ------------      -------------
+  10   Deny             Deny              Off
+  20   Deny             Deny              Off
+  30   Deny             Deny              Off

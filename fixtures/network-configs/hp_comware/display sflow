@@ -1,0 +1,26 @@
+sFlow is enabled.
+
+sFlow agent:
+  IP address: 10.10.10.3
+  Source address: Vlan-interface10
+
+sFlow collector:
+  Collector 1:
+    IP address: 10.10.10.2
+    Port: 6343
+    Datagram size: 1400 bytes
+    Interval: 20 seconds
+    Packets sent: 15420
+    Status: Active
+
+sFlow sampling:
+  Interface          Rate  Direction  Counter interval
+  GE1/0/1            1000  Both       30
+  GE1/0/2            500   Both       30
+  GE1/0/3            1000  Both       30
+
+sFlow counter:
+  Interface          Counter interval  Status
+  GE1/0/1            30                Active
+  GE1/0/2            30                Active
+  GE1/0/3            30                Active

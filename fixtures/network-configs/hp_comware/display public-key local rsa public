@@ -1,0 +1,20 @@
+=============================================
+Key name: hostkey
+Key type: RSA
+Key cipher: Public
+Key code:
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC7VjdJ3z5mF8K2vN1rG9pQ4xLmHtY3eR8v
+Wk2nB7jQ1pF6sA0dI9oL2kE8rT3vY7wN4bJ6cH2mP9qR5sK1fL8tA3vE6wY9dB2nG4jK7pQ
+1sR8mN5vB3yF6cL2kE9rT4wA7xJ0dP6sH2nB9qK5fR8mE4vL3yA6cN1pS7tJ0dQ9wB2xF4v
+K8rM6nH3pY1sE5tL9wA7cR2vN4bK6qF8mP1sT3yE5wD9rJ7cL2kH4nB6qS8vP1xR3tY5wE9
+ hostkey@HP-ACCESS-01
+
+=============================================
+Key name: serverkey
+Key type: RSA
+Key cipher: Public
+Key code:
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDx4kP2mN7vR1sQ8wB3tY6cL9fK2nE5rH8p
+J4vA7qS1dM6xR3tY9wB2nF5cK8rE4vL7pQ1sH6mN3yT9wA0dB5vK2rJ8cF4qE7xL1sP6nR
+3tY9vM5wB2kH8qJ4cR7xE1sN6pL3tA9vF5wB2rK8mH4qJ7cE1xS6nP3tY9vR5wL2kH8qB4
+ serverkey@HP-ACCESS-01

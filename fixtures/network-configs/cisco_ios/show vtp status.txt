@@ -1,0 +1,12 @@
+VTP Version capable             : 1 to 3
+Configuration revision          : 0
+Maximum VLANs supported locally : 1005
+Number of existing VLANs        : 9
+VTP Operating Mode              : Transparent
+VTP Domain Name                 : 
+VTP Pruning Mode                : Disabled
+VTP V2 Mode                     : Disabled
+VTP Traps Generation            : Disabled
+MD5 digest                      : 0x57 0xCD 0x00 0x05 0x63 0x59 0x33 0xBE 
+                            0x56 0x91 0x4B 0x2E 0x7A 0x50 0x37 0xC8
+Configuration last modified by 0.0.0.0 at 0-0-00 00:00:00

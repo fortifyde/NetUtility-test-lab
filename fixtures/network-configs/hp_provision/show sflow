@@ -1,0 +1,17 @@
+
+sFlow Configuration
+
+  sFlow Status      : Enabled
+  sFlow Agent IP    : 10.10.10.4
+  sFlow Polling     : Enabled (30 second interval)
+  sFlow Sampling    : Enabled (1-in-256 packets)
+
+  sFlow Receivers:
+    Receiver  Address          Port  Status
+    -------- ---------------- ----- --------
+    1         10.10.10.60     6343  Connected
+
+  sFlow Interfaces:
+    Interface  Sampling Rate  Polling Interval
+    ---------- -------------- ----------------
+    1-48       256            30 seconds

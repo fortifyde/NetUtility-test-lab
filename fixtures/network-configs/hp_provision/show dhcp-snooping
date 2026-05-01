@@ -1,0 +1,25 @@
+
+DHCP Snooping Configuration
+
+  DHCP Snooping         : Enabled
+  DHCP Snooping VLANs   : 20
+  Option 82 Remote ID   : Disabled
+  Option 82 Circuit ID  : Disabled
+  Store Lease Database  : Enabled
+
+  Trusted Ports: Trk1, Trk2
+
+  Port      Trusted    DHCP Snooping
+  --------- ---------- -------------
+  1-24      No         Enabled
+  25-44     No         Disabled
+  45-46     No         Disabled (Trk1 member)
+  47-48     No         Disabled (Trk2 member)
+  Trk1      Yes        Enabled
+  Trk2      Yes        Enabled
+
+  DHCP Snooping Statistics:
+    DHCP Packets Received   : 2,341
+    DHCP Packets Forwarded  : 2,340
+    DHCP Packets Dropped    : 1
+    Invalid DHCP Packets    : 0

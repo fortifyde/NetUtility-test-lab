@@ -1,0 +1,19 @@
+Port security is enabled globally.
+
+AutoLearn aging time: 0 minutes
+Intrusion protection trap: Disabled
+Intrusion protection mode: Disabled
+
+Interface                  Port Security  Mode          Max Secure  Current
+                                          Mode          MAC Addrs   MAC Addrs
+GE1/0/3                    Enabled        AutoLearn     1           1
+GE1/0/5                    Enabled        AutoLearn     2           1
+GE1/0/6                    Enabled        AutoLearn     2           1
+GE2/0/5                    Enabled        AutoLearn     2           1
+
+Secure MAC addresses:
+  Interface    VLAN  MAC Address      Type
+  GE1/0/3      20    002c-3d4e-5f6c   Dynamic
+  GE1/0/5      30    003d-4e5f-6a7b   Dynamic
+  GE1/0/6      30    003d-4e5f-6a7c   Dynamic
+  GE2/0/5      30    003d-4e5f-6a7d   Dynamic

@@ -1,0 +1,19 @@
+Dynamic ARP Inspection Configuration
+------------------------------------
+Status: Enabled
+VLANs: 10, 20, 30
+Validation: Enabled (IP, MAC, Source-MAC)
+
+Trusted Interfaces:
+  Interface 1/1/1 (Up)
+  Interface 1/1/2 (Up)
+
+ARP Inspection Statistics:
+  Packets Received: 23456
+  Packets Forwarded: 23101
+  Packets Dropped: 355
+  DHCP Binding Match: 22890
+  ACL Match: 211
+
+ARP Inspection Log Buffer:
+  (empty)

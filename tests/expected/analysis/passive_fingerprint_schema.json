@@ -1,0 +1,122 @@
+{
+  "description": "Expected output schema for passive_fingerprint.sh — passive OS/device fingerprinting via p0f, MAC OUI, and port patterns",
+  "type": "object",
+  "required": ["session_dir", "xml_output"],
+  "properties": {
+    "session_dir": {
+      "type": "string",
+      "pattern": "^fingerprint_\\d{8}_\\d{6}$",
+      "description": "Timestamped session directory under discovery/fingerprint/"
+    },
+    "xml_output": {
+      "type": "object",
+      "required": ["filename"],
+      "properties": {
+        "filename": {
+          "type": "string",
+          "const": "fingerprint_results.xml"
+        },
+        "root_element": {
+          "type": "string",
+          "const": "fingerprint_results"
+        },
+        "metadata": {
+          "type": "object",
+          "properties": {
+            "timestamp": {
+              "type": "string",
+              "description": "ISO timestamp"
+            },
+            "pcap_source": {
+              "type": "string",
+              "description": "Path to source PCAP file"
+            },
+            "session_dir": {
+              "type": "string"
+            },
+            "host_count": {
+              "type": "integer"
+            }
+          }
+        },
+        "hosts": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["ip"],
+            "properties": {
+              "ip": {
+                "type": "string",
+                "description": "Host IP address"
+              },
+              "mac": {
+                "type": "string",
+                "description": "MAC address or 'unknown'"
+              },
+              "os_guess": {
+                "type": "string",
+                "description": "Inferred OS (e.g., 'Linux 3.x', 'Cisco IOS', 'Windows', 'Unknown')"
+              },
+              "device_type": {
+                "type": "string",
+                "description": "Inferred device type (e.g., 'switch', 'router', 'AP', 'unknown')"
+              },
+              "confidence": {
+                "type": "string",
+                "enum": ["high", "medium", "low"],
+                "description": "Confidence based on number of evidence sources"
+              },
+              "evidence": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "source": {
+                      "type": "string",
+                      "enum": ["p0f", "oui", "ports"],
+                      "description": "Evidence source"
+                    },
+                    "value": {
+                      "type": "string",
+                      "description": "Evidence data (p0f result, vendor name, or port list)"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "p0f_output": {
+      "type": "object",
+      "properties": {
+        "filename": {
+          "type": "string",
+          "const": "p0f_output.txt"
+        },
+        "description": {
+          "type": "string",
+          "description": "Raw p0f analysis output"
+        }
+      }
+    },
+    "summary": {
+      "type": "object",
+      "required": ["filename"],
+      "properties": {
+        "filename": {
+          "type": "string",
+          "const": "fingerprint_summary.txt"
+        },
+        "columns": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Tabular columns: IP Address, MAC Address, OS Guess, Device Type, Confidence"
+        }
+      }
+    }
+  }
+}

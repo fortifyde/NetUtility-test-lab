@@ -1,0 +1,17 @@
+TACACS+ Server Configuration
+----------------------------
+Server: 10.10.10.51
+  Port: 49
+  Timeout: 5 seconds
+  Deadtime: 15 minutes
+  Key: (configured)
+  Status: Up
+  Round Trip Time: 8ms
+
+TACACS+ Statistics:
+  Auth Requests: 5678
+  Auth Accepts: 5612
+  Auth Rejects: 45
+  Auth Timeouts: 21
+  Acct Requests: 3456
+  Acct Responses: 3450

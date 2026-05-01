@@ -1,0 +1,92 @@
+
+Status and Counters - Port Counters
+
+Port  : 1
+Mode  : 1000T
+Type  : 10/100/1G
+Intrusion Alert  : No
+Admin/Link State : Enabled / Up
+MAC Address      : 70e48c-4a2b01
+Connection Status: Connected
+Pause (full/half): No / No
+Flow Control     : Disabled
+Auto-Negotiation : Enabled
+Port Security    : Enabled
+  Learn Mode     : Continuous
+  MAC Limit      : 2
+  Actions        : Send Alarm
+
+Total Rx Frames  : 14,523,891
+Total Tx Frames  : 9,871,204
+Rx Errors        : 0
+Tx Errors        : 0
+Rx Collisions    : 0
+Tx Collisions    : 0
+Rx FCS Errors    : 0
+
+Port  : 2
+Mode  : 1000T
+Type  : 10/100/1G
+Intrusion Alert  : No
+Admin/Link State : Enabled / Up
+MAC Address      : 70e48c-4a2b02
+Connection Status: Connected
+Port Security    : Enabled
+  Learn Mode     : Continuous
+  MAC Limit      : 2
+
+Total Rx Frames  : 8,234,112
+Total Tx Frames  : 6,102,887
+Rx Errors        : 0
+Tx Errors        : 0
+
+Port  : 5
+Mode  : 100T
+Type  : 10/100/1G
+Intrusion Alert  : No
+Admin/Link State : Enabled / Up
+MAC Address      : 70e48c-4a2b05
+Port Security    : Enabled
+  Learn Mode     : Continuous
+  MAC Limit      : 2
+
+Total Rx Frames  : 3,421,098
+Total Tx Frames  : 2,198,443
+Rx Errors        : 0
+Tx Errors        : 0
+
+Port  : 45
+Mode  : 1000T
+Type  : 10/100/1G
+Admin/Link State : Enabled / Up
+Trunk Group      : Trk1
+
+Port  : 46
+Mode  : 1000T
+Type  : 10/100/1G
+Admin/Link State : Enabled / Up
+Trunk Group      : Trk1
+
+Port  : 47
+Mode  : 1000T
+Type  : 10/100/1G
+Admin/Link State : Enabled / Up
+Trunk Group      : Trk2
+
+Port  : 48
+Mode  : 1000T
+Type  : 10/100/1G
+Admin/Link State : Enabled / Up
+Trunk Group      : Trk2
+
+Port  : Trk1
+Type  : Trunk
+Admin/Link State : Enabled / Up
+Trunk Type       : Trunk
+Member Ports     : 45-46
+
+Port  : Trk2
+Type  : Trunk
+Admin/Link State : Enabled / Up
+Trunk Type       : LACP
+Member Ports     : 47-48

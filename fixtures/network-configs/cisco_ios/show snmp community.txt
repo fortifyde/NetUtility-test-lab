@@ -1,0 +1,8 @@
+Community name: public
+Community Index: cisco0
+Community SecurityName: public
+storage-type: nonvolatile       active access-list: SNMP-ACL
+Community name: pr1v4t3
+Community Index: cisco1
+Community SecurityName: pr1v4t3
+storage-type: nonvolatile       active

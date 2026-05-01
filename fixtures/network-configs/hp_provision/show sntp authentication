@@ -1,0 +1,7 @@
+
+SNTP Authentication
+
+  SNTP Authentication : Disabled
+
+  Note: SNTP authentication should be enabled per STIG requirements.
+  Recommended: Enable SNTP authentication with symmetric keys.

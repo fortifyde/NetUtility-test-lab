@@ -1,0 +1,22 @@
+Switch is in rapid-pvst mode
+Root bridge for: VLAN0001, VLAN0010, VLAN0020, VLAN0030, VLAN0040, VLAN0050
+VLAN0099, VLAN0100, VLAN0200, VLAN0999
+
+Port Type Default                        Edge BPDU Guard Default
+------------------------------------     ----------------------------
+Network                                 Enable
+
+STP-Lite                                Disabled
+Bridge Assurance                        Enabled
+Loop Guard                              Disabled
+
+Name                 Blocking Listening Learning Forwarding STP Active
+-------------------- -------- --------- -------- ---------- ----------
+VLAN0001                   0         0        0          3          3
+VLAN0010                   0         0        0          3          3
+VLAN0020                   0         0        0          3          3
+VLAN0030                   0         0        0          3          3
+VLAN0040                   0         0        0          3          3
+VLAN0050                   0         0        0          3          3
+-------------------- -------- --------- -------- ---------- ----------
+6 vlans                    0         0        0         18         18

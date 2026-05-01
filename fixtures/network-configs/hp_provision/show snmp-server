@@ -1,0 +1,25 @@
+
+SNMP Configuration
+
+  SNMP Access       : Disabled
+  SNMP Community     : "SNMPv3_Only" (unrestricted)
+  SNMPv3 Only Mode  : Enabled
+  SNMPv3 Restricted : Enabled
+
+  SNMP Communities:
+    Community Name   Access   MIB View
+    ---------------- -------- --------
+    SNMPv3_Only      unread   default
+
+  SNMPv3 Users:
+    User Name        Auth Protocol  Priv Protocol  Access Level
+    ---------------- -------------- -------------- ------------
+    netmon           SHA            AES            read-only
+
+  SNMPv3 Groups:
+    Group Name       Security Model  Access Level
+    ---------------- --------------- ------------
+    ReadOnlyGroup    v3              read-only
+
+  SNMP Traps: Disabled
+  SNMP Trap Receivers: None

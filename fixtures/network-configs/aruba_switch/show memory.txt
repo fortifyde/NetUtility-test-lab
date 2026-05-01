@@ -1,0 +1,17 @@
+Memory Information - ARUBA-SW-01
+
+  Total Memory:    524,288 KB
+  Free Memory:     412,736 KB
+  Used Memory:     111,552 KB
+  Utilization:     21%
+
+  Memory by Process:
+  Process            Memory (KB)
+  -----------------  -----------
+  bcmUSER            24,576
+  snmpd              12,288
+  lldpd              8,192
+  stpd               6,144
+  sshd               4,096
+  webmgmt            3,072
+  OTHER              53,184

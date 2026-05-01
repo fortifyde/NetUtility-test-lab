@@ -1,0 +1,23 @@
+Group name: public
+  Security model: v1
+  Read view: ViewDefault
+  Write view: <no write view>
+  Notify view: <no notify view>
+  Storage type: nonVolatile
+  ACL: 3001
+
+Group name: private
+  Security model: v1
+  Read view: ViewDefault
+  Write view: ViewDefault
+  Notify view: <no notify view>
+  Storage type: nonVolatile
+  ACL: 3001
+
+Group name: netops
+  Security model: v3 (AuthPriv)
+  Read view: iso
+  Write view: iso
+  Notify view: iso
+  Storage type: nonVolatile
+  ACL: --

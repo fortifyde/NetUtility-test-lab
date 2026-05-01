@@ -1,0 +1,11 @@
+IP source guard entries:
+  Interface          IP Address      MAC Address     VLAN  Type    State
+  GE1/0/3            10.10.20.100    002c-3d4e-5f6c  20   Dynamic  Active
+  GE1/0/9            10.10.20.101    002c-3d4e-5f6d  20   Dynamic  Active
+  GE1/0/10           10.10.20.102    002c-3d4e-5f6e  20   Dynamic  Active
+  GE1/0/13           10.10.20.150    002c-3d4e-5f6f  20   Dynamic  Active
+  GE1/0/5            10.10.30.10     003d-4e5f-6a7b  30   Static   Active
+  GE1/0/6            10.10.30.20     003d-4e5f-6a7c  30   Static   Active
+  GE2/0/5            10.10.30.50     003d-4e5f-6a7d  30   Static   Active
+
+Total entries: 7

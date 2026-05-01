@@ -1,0 +1,152 @@
+{
+  "description": "Expected output schema for multi_phase_discovery.sh — 8-phase network discovery session",
+  "type": "object",
+  "required": ["session_dir", "meta", "evidence", "hostfiles"],
+  "properties": {
+    "session_dir": {
+      "type": "string",
+      "description": "Session directory under discovery/. Name varies by mode: vlan{ID}_{timestamp}, main_network_{timestamp}, routed_{sanitized_cidr}_{timestamp}",
+      "pattern": "^(vlan\\d+|main_network|routed_.+)_(\\d{8}_\\d{6})$"
+    },
+    "meta": {
+      "type": "object",
+      "required": ["discovery_report"],
+      "properties": {
+        "discovery_report": {
+          "type": "object",
+          "required": ["filename"],
+          "properties": {
+            "filename": {
+              "type": "string",
+              "const": "meta/discovery_report.txt"
+            },
+            "description": {
+              "type": "string",
+              "description": "Main discovery session report with phase results"
+            }
+          }
+        },
+        "evidence_manifest": {
+          "type": "object",
+          "properties": {
+            "filename": {
+              "type": "string",
+              "const": "meta/EVIDENCE_MANIFEST.txt"
+            },
+            "description": {
+              "type": "string",
+              "description": "SHA256 checksum inventory of all evidence files"
+            }
+          }
+        },
+        "service_inventory": {
+          "type": "object",
+          "properties": {
+            "filename": {
+              "type": "string",
+              "const": "meta/comprehensive_service_inventory.csv"
+            },
+            "columns": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "description": "CSV columns: IP, Port, Protocol, State, Service, Version, Flags"
+            }
+          }
+        },
+        "service_summary": {
+          "type": "object",
+          "properties": {
+            "filename": {
+              "type": "string",
+              "const": "meta/service_summary.txt"
+            },
+            "description": {
+              "type": "string",
+              "description": "Per-service-type host counts (DNS, Web, SMB, etc.)"
+            }
+          }
+        },
+        "session_metadata": {
+          "type": "object",
+          "properties": {
+            "filename": {
+              "type": "string",
+              "const": "meta/session_metadata.txt"
+            },
+            "fields": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "description": "Session ID, interface, mode, timestamp"
+            }
+          }
+        }
+      }
+    },
+    "evidence": {
+      "type": "object",
+      "description": "Per-phase evidence directories",
+      "properties": {
+        "pattern": {
+          "type": "string",
+          "description": "evidence/*/raw_scans/*.txt and *.nmap files"
+        },
+        "phase_dirs": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "phase_name": {
+                "type": "string"
+              },
+              "raw_scans": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "description": "nmap output files (.txt, .nmap)"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "hostfiles": {
+      "type": "object",
+      "description": "Categorized host lists",
+      "properties": {
+        "pattern": {
+          "type": "string",
+          "const": "hostfiles/*.txt"
+        },
+        "possible_files": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "description": "Files like all_hosts.txt, live_hosts.txt, etc."
+          }
+        }
+      }
+    },
+    "service_targets": {
+      "type": "object",
+      "description": "Per-service-type target lists",
+      "properties": {
+        "pattern": {
+          "type": "string",
+          "const": "service_targets/*_targets.txt"
+        },
+        "possible_files": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": ["web_targets.txt", "snmp_targets.txt", "dns_targets.txt", "smb_targets.txt"]
+          }
+        }
+      }
+    }
+  }
+}

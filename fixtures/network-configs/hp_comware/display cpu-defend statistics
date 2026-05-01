@@ -1,0 +1,35 @@
+CPU defend statistics for slot 1:
+  Protocol    Passed    Dropped   Last 10s (pass/drop)
+  ARP         245830    342       125/0
+  ARP-REPLY   198500    56        98/0
+  ICMP        45230     1205      22/0
+  ICMPV6      2300      15        1/0
+  IGMP        12400     0         6/0
+  DHCP        8900      23        4/0
+  OSPF        145000    0         72/0
+  BGP         98000     0         48/0
+  SNMP        32400     156       16/0
+  SSH         12400     0         6/0
+  TELNET      5600      12        2/0
+  NTP         8200      0         4/0
+  DNS         3400      0         1/0
+  HTTP        0         245       0/0
+  HTTPS       0         120       0/0
+
+CPU defend statistics for slot 2:
+  Protocol    Passed    Dropped   Last 10s (pass/drop)
+  ARP         198200    285       100/0
+  ARP-REPLY   165300    42        82/0
+  ICMP        38400     980       18/0
+  ICMPV6      1800      12        0/0
+  IGMP        10200     0         5/0
+  DHCP        7600      18        3/0
+  OSPF        145000    0         72/0
+  BGP         98000     0         48/0
+  SNMP        28900     134       14/0
+  SSH         11200     0         5/0
+  TELNET      4800      8         2/0
+  NTP         7800      0         3/0
+  DNS         3100      0         1/0
+  HTTP        0         198       0/0
+  HTTPS       0         95        0/0

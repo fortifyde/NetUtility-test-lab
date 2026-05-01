@@ -1,0 +1,12 @@
+
+Stack Status
+
+  Stack Mode    : Disabled
+  Stack Topology: Standalone
+  Stack Member  : 1 (Commander)
+
+  Member  MAC Address      Model           Priority  Status
+  ------- --------------- --------------- --------- --------
+  1       70E48C-4A2B00   HP 2920-48G     128       Active
+
+  Stack Links: N/A (standalone)

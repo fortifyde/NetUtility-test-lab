@@ -1,0 +1,19 @@
+IP DNS Configuration
+--------------------
+DNS Client: Enabled
+Domain Name: mil.local
+Domain Lookup: Enabled
+Source Interface: mgmt
+
+Name Servers:
+  10.10.10.1 (primary)
+  10.10.10.2 (secondary)
+
+Search List:
+  mil.local
+
+DNS Cache:
+  Enabled
+  Size: 100 entries
+  TTL: 3600 seconds
+  Current Entries: 45

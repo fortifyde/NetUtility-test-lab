@@ -1,0 +1,31 @@
+ARP detection statistics:
+  VLAN 20:
+    Received ARP packets: 45230
+    Valid ARP packets: 45100
+    Invalid ARP packets: 130
+      Invalid MAC address: 45
+      Invalid IP address: 35
+      Non-ARP packet: 0
+      Exceed rate limit: 50
+    Dropped ARP packets: 130
+    Forwarded ARP packets: 45100
+  VLAN 30:
+    Received ARP packets: 12300
+    Valid ARP packets: 12295
+    Invalid ARP packets: 5
+      Invalid MAC address: 2
+      Invalid IP address: 3
+      Non-ARP packet: 0
+      Exceed rate limit: 0
+    Dropped ARP packets: 5
+    Forwarded ARP packets: 12295
+  VLAN 100:
+    Received ARP packets: 8200
+    Valid ARP packets: 8190
+    Invalid ARP packets: 10
+      Invalid MAC address: 4
+      Invalid IP address: 6
+      Non-ARP packet: 0
+      Exceed rate limit: 0
+    Dropped ARP packets: 10
+    Forwarded ARP packets: 8190

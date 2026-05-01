@@ -1,0 +1,5 @@
+TTY: Type: "vt100"
+Length: 24 lines, Width: 80 columns
+Session timeout: 0 minutes
+Event Manager CLI event logging: disabled
+Terminal monitor: disabled

@@ -1,0 +1,11 @@
+Flow Monitor FLOW-MONITOR-1:
+  Description:              Monitor ingress traffic
+  Flow Record:              FLOW-RECORD-1
+  Flow Exporter:            FLOW-EXPORTER-1
+  Cache:
+    Type:                   normal
+    Status:                 allocated
+    Size:                   4096 entries
+    Inactive Timeout:       15 secs
+    Active Timeout:         60 secs
+    Update Timeout:         1800 secs

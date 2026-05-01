@@ -1,0 +1,21 @@
+SNMP is enabled.
+SNMP agent version: v3
+SNMP agent local engine ID: 800063A280001A2B3C4D50
+
+Community:
+  Community name: public (read-only)
+  Community name: private (read-write)
+  ACL: 3001
+
+Target host:
+  Target host V1/V2c: 10.10.10.2
+  Target host V3: 10.10.10.2
+  Security name: snmpv3user
+  Security model: v3
+  Security level: AuthPriv
+
+Trap:
+  Trap is enabled.
+  Trap source interface: Vlan-interface10
+  Trap queue length: 100
+  Trap timeout: 10 seconds

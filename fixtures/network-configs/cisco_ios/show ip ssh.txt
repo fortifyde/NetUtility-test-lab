@@ -1,0 +1,11 @@
+SSH Enabled - version 2.0
+Authentication methods:publickey,keyboard-interactive,password
+Authentication publickey algorithms:rsa-sha2-512,rsa-sha2-256,ssh-rsa
+Hostkey algorithms:rsa-sha2-512,rsa-sha2-256,ssh-rsa
+Encryption algorithms:aes128-ctr,aes192-ctr,aes256-ctr
+MAC algorithms:hmac-sha2-256,hmac-sha1
+KEX algorithms:diffie-hellman-group14-sha1,diffie-hellman-group-exchange-sha256
+Authentication timeout: 120 secs; Authentication retries: 3
+Minimum expected Diffie Hellman key size : 2048 bits
+IOS Keys in SECSH format(ssh-rsa,1024-bit):
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAAAgQDkSUK+4eGHFMF4iGvhUP6aLl9yQC4F

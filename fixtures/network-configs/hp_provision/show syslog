@@ -1,0 +1,17 @@
+
+Syslog Configuration
+
+  Syslog Server     : 10.10.10.50
+  Syslog Severity   : Warning
+  Syslog Facility   : local6
+  Syslog Source IP  : 10.10.10.4
+  Syslog Transport  : UDP (port 514)
+
+  Syslog Message Format: Standard
+  Syslog Timestamp  : Enabled
+
+  Remote Syslog Status: Connected
+  Messages Sent     : 1,234
+  Messages Dropped  : 0
+
+  Local Log Buffer  : Enabled (1000 entries)

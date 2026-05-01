@@ -1,0 +1,14 @@
+Accounting Configuration
+
+Exec Accounting:
+  Method: start-stop
+  Server: radius
+
+Commands Accounting:
+  Method: start-stop
+  Server: radius
+
+Accounting Statistics:
+  Start Records Sent   : 1,256
+  Stop Records Sent    : 1,198
+  Watchdog Records     : 0

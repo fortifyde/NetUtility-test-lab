@@ -1,0 +1,30 @@
+MAC Address Table
+-----------------
+
+VLAN  MAC Address       Type       Port      Age
+----  ----------------  ---------  --------  ---------
+1     00:1a:2b:3c:4d:50  Dynamic   lag1      300
+10    00:1a:2b:3c:4d:50  Dynamic   1/1/1     300
+10    00:1a:2b:3c:4d:60  Dynamic   1/1/2     300
+20    a4:b5:c6:d7:e8:f9  Dynamic   1/1/5     300
+20    a4:b5:c6:d7:e8:fa  Dynamic   1/1/6     300
+20    a4:b5:c6:d7:e8:fb  Dynamic   1/1/9     300
+20    a4:b5:c6:d7:e8:fc  Dynamic   1/1/10    300
+20    a4:b5:c6:d7:e8:fd  Dynamic   1/1/13    120
+20    a4:b5:c6:d7:e8:fe  Dynamic   1/1/16    300
+20    a4:b5:c6:d7:e8:ff  Dynamic   1/1/21    300
+20    00:50:56:ab:cd:01  Dynamic   lag1      300
+20    00:50:56:ab:cd:02  Dynamic   lag1      300
+30    00:50:56:ab:cd:01  Dynamic   1/1/25    300
+30    00:50:56:ab:cd:02  Dynamic   1/1/26    300
+40    00:24:6c:ab:cd:01  Dynamic   1/1/45    300
+40    00:24:6c:ab:cd:02  Dynamic   1/1/46    300
+99    00:1a:2b:3c:4d:50  Dynamic   lag1      300
+99    00:9c:1a:b3:4d:60  Dynamic   lag1      300
+100   b4:c5:d6:e7:f8:01  Dynamic   1/1/48    120
+200   b4:c5:d6:e7:f8:01  Dynamic   1/1/47    300
+200   b4:c5:d6:e7:f8:02  Dynamic   1/1/47    300
+
+Total MAC Addresses: 21
+Dynamic: 21
+Static: 0

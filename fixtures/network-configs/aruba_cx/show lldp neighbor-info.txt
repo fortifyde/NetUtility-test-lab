@@ -1,0 +1,84 @@
+LLDP Neighbor Information
+-------------------------
+
+Local Interface: 1/1/1
+  Neighbor: Core-SW-01
+  Remote Interface: 1/1/1
+  Remote Chassis ID: 00:1a:2b:3c:4d:50
+  Remote Port ID: 1/1/1
+  System Name: CORE-SW-01
+  System Description: ArubaOS-CX 10.10.1010 Aruba 6400M 48G 6SFP56
+  Management Address: 10.10.10.1
+  TTL: 120
+
+Local Interface: 1/1/2
+  Neighbor: Core-SW-02
+  Remote Interface: 1/1/1
+  Remote Chassis ID: 00:1a:2b:3c:4d:60
+  Remote Port ID: 1/1/1
+  System Name: CORE-SW-02
+  System Description: ArubaOS-CX 10.10.1010 Aruba 6400M 48G 6SFP56
+  Management Address: 10.10.10.2
+  TTL: 120
+
+Local Interface: 1/1/5
+  Neighbor: WS-PC-01
+  Remote Interface: eth0
+  Remote Chassis ID: a4:b5:c6:d7:e8:f9
+  Remote Port ID: eth0
+  System Name: WS-PC-01
+  System Description: Microsoft Windows 11 Pro
+  Management Address: --
+  TTL: 120
+
+Local Interface: 1/1/6
+  Neighbor: WS-PC-02
+  Remote Interface: eth0
+  Remote Chassis ID: a4:b5:c6:d7:e8:fa
+  Remote Port ID: eth0
+  System Name: WS-PC-02
+  System Description: Microsoft Windows 11 Pro
+  Management Address: --
+  TTL: 120
+
+Local Interface: 1/1/25
+  Neighbor: WEB-SVR-01
+  Remote Interface: eth0
+  Remote Chassis ID: 00:50:56:ab:cd:01
+  Remote Port ID: eth0
+  System Name: WEB-SVR-01
+  System Description: Linux Ubuntu 22.04 LTS
+  Management Address: 10.0.2.10
+  TTL: 120
+
+Local Interface: 1/1/26
+  Neighbor: DB-SVR-01
+  Remote Interface: eth0
+  Remote Chassis ID: 00:50:56:ab:cd:02
+  Remote Port ID: eth0
+  System Name: DB-SVR-01
+  System Description: Linux Ubuntu 22.04 LTS
+  Management Address: 10.0.2.20
+  TTL: 120
+
+Local Interface: 1/1/45
+  Neighbor: AP-Floor1-01
+  Remote Interface: ge0
+  Remote Chassis ID: 00:24:6c:ab:cd:01
+  Remote Port ID: ge0
+  System Name: AP-FLOOR1-01
+  System Description: Aruba AP-535
+  Management Address: 10.10.10.200
+  TTL: 120
+
+Local Interface: 1/1/46
+  Neighbor: AP-Floor1-02
+  Remote Interface: ge0
+  Remote Chassis ID: 00:24:6c:ab:cd:02
+  Remote Port ID: ge0
+  System Name: AP-FLOOR1-02
+  System Description: Aruba AP-535
+  Management Address: 10.10.10.201
+  TTL: 120
+
+Total neighbors: 8

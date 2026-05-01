@@ -1,0 +1,38 @@
+Slot 1:
+Board Type        : HPE 5130-48G-PoE+ EI Switch
+Manufacturer      : HPE
+Manufacturing Date: 2021-08-15
+Vendor Name       : Hewlett Packard Enterprise
+Serial Number     : CN4D8WT01R
+Part Number       : JL266A
+Product Model     : HPE 5130-48G-PoE+ EI
+MAC Address       : 00:1A:2B:3C:4D:50
+CLEI Code         : CMM1A00ARC
+Firmware Version  : Release 2428P02
+
+Slot 2:
+Board Type        : HPE 5130-48G-PoE+ EI Switch
+Manufacturer      : HPE
+Manufacturing Date: 2021-09-22
+Vendor Name       : Hewlett Packard Enterprise
+Serial Number     : CN4D8WT02S
+Part Number       : JL266A
+Product Model     : HPE 5130-48G-PoE+ EI
+MAC Address       : 00:1A:2B:3C:4D:60
+CLEI Code         : CMM1A00ARD
+Firmware Version  : Release 2428P02
+
+Power Supply 1:
+Manufacturer      : HPE
+Part Number       : 872434-B21
+Serial Number     : 5CGRB012345
+
+Power Supply 2:
+Manufacturer      : HPE
+Part Number       : 872434-B21
+Serial Number     : 5CGRB012346
+
+Fan Tray 1:
+Manufacturer      : HPE
+Part Number       : 872435-B21
+Serial Number     : 5CFAN012345

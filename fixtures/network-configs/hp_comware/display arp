@@ -1,0 +1,22 @@
+  Type: S-Static   D-Dynamic   O-Openflow   R-Rule   M-Multiport  I-Invalid
+
+IP Address       MAC Address     VLAN/VSI Name  Interface            Aging   Type
+10.10.10.1       001b-2c3d-4e5f  10             GE1/0/1              20 min  D
+10.10.10.2       001b-2c3d-4e60  10             GE1/0/1              18 min  D
+10.10.10.5       001b-2c3d-4e61  10             GE1/0/1              15 min  D
+10.10.10.10      001b-2c3d-4e62  10             GE1/0/1              12 min  D
+10.10.10.11      001b-2c3d-4e63  10             GE1/0/1              10 min  D
+10.10.10.254     001b-2c3d-4e64  10             GE1/0/1              8 min   D
+10.10.20.5       002c-3d4e-5f6a  20             GE1/0/2              20 min  D
+10.10.20.50      002c-3d4e-5f6b  20             GE1/0/2              14 min  D
+10.10.20.100     002c-3d4e-5f6c  20             GE1/0/3              20 min  D
+10.10.20.101     002c-3d4e-5f6d  20             GE1/0/9              17 min  D
+10.10.20.102     002c-3d4e-5f6e  20             GE1/0/10             19 min  D
+10.10.20.150     002c-3d4e-5f6f  20             GE1/0/13             11 min  D
+10.10.30.10      003d-4e5f-6a7b  30             GE1/0/5              20 min  D
+10.10.30.20      003d-4e5f-6a7c  30             GE1/0/6              20 min  D
+10.10.30.50      003d-4e5f-6a7d  30             GE2/0/5              15 min  D
+10.10.100.10     004e-5f6a-7b8c  100            GE1/0/2              20 min  D
+10.10.100.20     004e-5f6a-7b8d  100            GE1/0/2              12 min  D
+
+Total entries: 17

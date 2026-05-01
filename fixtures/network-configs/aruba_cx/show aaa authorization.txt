@@ -1,0 +1,7 @@
+AAA Authorization Configuration
+--------------------------------
+Authorization Type: Commands
+  Method: default group radius local
+  Status: Enabled
+
+Authorization for all commands is performed via RADIUS server group with local fallback.

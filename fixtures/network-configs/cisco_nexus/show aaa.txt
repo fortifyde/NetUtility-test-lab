@@ -1,0 +1,15 @@
+AAA administration status:
+  AAA feature is enabled
+
+  AAA configurations:
+    Authentication: login default: group tacacs+ local
+    Authentication: login console: local
+    Authentication: enable default: group tacacs+ enable
+    Authorization: commands default: local
+    Authorization: exec default: if-authenticated
+    Accounting: exec default: start-stop group tacacs+
+    Accounting: commands default: start-stop group tacacs+
+
+  TACACS+ Servers:
+    10.10.10.100 (configured, alive)
+    10.10.10.101 (configured, alive)

@@ -1,0 +1,52 @@
+Vlan1 is administratively down, line protocol is down 
+  Hardware is EtherSVI, address is 001a.2b3c.4d50 (bia 001a.2b3c.4d50)
+  MTU 1500 bytes, BW 1000000 Kbit/sec, DLY 10 usec, 
+     reliability 255/255, txload 1/255, rxload 1/255
+  Encapsulation ARPA, loopback not set
+  Last input never, output never, output hang never
+  Last clearing of "show interface" counters never
+
+Vlan10 is up, line protocol is up 
+  Hardware is EtherSVI, address is 001a.2b3c.4d50 (bia 001a.2b3c.4d50)
+  Internet address is 10.10.10.1/24
+  MTU 1500 bytes, BW 1000000 Kbit/sec, DLY 10 usec, 
+     reliability 255/255, txload 1/255, rxload 1/255
+  Encapsulation ARPA, loopback not set
+  Last input 00:00:01, output 00:00:02, output hang never
+  Last clearing of "show interface" counters never
+
+GigabitEthernet1/0/1 is up, line protocol is up (connected)
+  Hardware is Gigabit Ethernet, address is 001a.2b3c.4d51 (bia 001a.2b3c.4d51)
+  MTU 1500 bytes, BW 1000000 Kbit/sec, DLY 10 usec, 
+     reliability 255/255, txload 1/255, rxload 1/255
+  Encapsulation ARPA, loopback not set
+  Full-duplex, 1000Mb/s, media type is 10/100/1000BaseTX
+  Last input 00:00:00, output 00:00:00, output hang never
+  Last clearing of "show interface" counters 5d12h
+  Input queue: 0/75/0/0 (size/max/drops/flushes); Total output drops: 0
+  5 minute input rate 45000 bits/sec, 32 packets/sec
+  5 minute output rate 52000 bits/sec, 38 packets/sec
+     2345678 packets input, 345678901 bytes, 0 no buffer
+     Received 12345 broadcasts (1234 multicasts)
+     0 runts, 0 giants, 0 throttles
+     0 input errors, 0 CRC, 0 frame, 0 overrun, 0 ignored
+     0 watchdog, 1234 multicast, 0 pause input
+     3456789 packets output, 456789012 bytes, 0 underruns
+     0 output errors, 0 collisions, 0 interface resets
+
+GigabitEthernet1/0/3 is up, line protocol is up (connected)
+  Hardware is Gigabit Ethernet, address is 001a.2b3c.4d53 (bia 001a.2b3c.4d53)
+  MTU 1500 bytes, BW 1000000 Kbit/sec, DLY 10 usec, 
+     reliability 255/255, txload 1/255, rxload 1/255
+  Encapsulation ARPA, loopback not set
+  Full-duplex, 1000Mb/s, media type is 10/100/1000BaseTX
+  Last input 00:00:01, output 00:00:00, output hang never
+  5 minute input rate 12000 bits/sec, 8 packets/sec
+  5 minute output rate 8000 bits/sec, 5 packets/sec
+
+GigabitEthernet1/0/13 is administratively down, line protocol is down (disabled)
+  Hardware is Gigabit Ethernet, address is 001a.2b3c.4d5d (bia 001a.2b3c.4d5d)
+  MTU 1500 bytes, BW 100000 Kbit/sec, DLY 100 usec, 
+     reliability 255/255, txload 1/255, rxload 1/255
+  Encapsulation ARPA, loopback not set
+  Half-duplex, 100Mb/s, media type is 10/100/1000BaseTX

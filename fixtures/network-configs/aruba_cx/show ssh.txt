@@ -1,0 +1,23 @@
+SSH Sessions
+------------
+Session 1:
+  User: admin
+  Client: 10.10.10.100
+  Version: 2
+  Cipher: aes256-ctr
+  MAC: hmac-sha2-256
+  Key Exchange: ecdh-sha2-nistp384
+  Started: 2026-04-28 09:15:00
+  Duration: 6h 32m
+
+Session 2:
+  User: netop
+  Client: 10.10.10.101
+  Version: 2
+  Cipher: aes256-ctr
+  MAC: hmac-sha2-256
+  Key Exchange: ecdh-sha2-nistp384
+  Started: 2026-04-28 14:30:00
+  Duration: 1h 17m
+
+Total active sessions: 2

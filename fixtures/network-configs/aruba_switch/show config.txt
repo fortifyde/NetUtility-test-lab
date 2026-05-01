@@ -1,0 +1,135 @@
+; ArubaOS (ArubaSwitch) 16.11.0023
+; JL262A Aruba 2930F 48G 4SFP+ Switch
+; Startup configuration
+;
+hostname "ARUBA-SW-01"
+module 1 type jl262a
+snmp-server contact "NetOps Team - netops@example.mil"
+snmp-server location "Building 12, Floor 3, Rack A14"
+interface 1
+   name "MGMT-UPLINK"
+   untagged vlan 10
+   exit
+interface 2
+   name "SRV-WEB-01"
+   untagged vlan 20
+   exit
+interface 3
+   name "SRV-DB-01"
+   untagged vlan 20
+   exit
+interface 4-24
+   untagged vlan 30
+   exit
+interface 25-48
+   untagged vlan 40
+   exit
+interface Trk1
+   name "UPLINK-TO-CORE"
+   tagged vlan 10,20,30,40,100
+   lacp active
+   exit
+vlan 1
+   name "DEFAULT_VLAN"
+   no ip address
+   forbid 1-48,Trk1
+   exit
+vlan 10
+   name "MGMT"
+   tagged Trk1
+   untagged 1
+   ip address 10.10.10.6 255.255.255.0
+   exit
+vlan 20
+   name "SERVERS"
+   tagged Trk1
+   untagged 2-3
+   exit
+vlan 30
+   name "USERS"
+   tagged Trk1
+   untagged 4-24
+   exit
+vlan 40
+   name "GUEST"
+   tagged Trk1
+   untagged 25-48
+   exit
+vlan 100
+   name "NATIVE_MIGRATION"
+   tagged Trk1
+   no ip address
+   exit
+spanning-tree
+spanning-tree mode rapid-pvst
+spanning-tree vlan 10 priority 32768
+spanning-tree vlan 20 priority 16384
+spanning-tree vlan 30 priority 32768
+spanning-tree vlan 40 priority 32768
+ip routing
+ip route 0.0.0.0 0.0.0.0 10.10.10.1
+ip route 10.0.0.0 255.0.0.0 10.10.10.1
+no ip icmp redirects
+no ip source-route
+no ip directed-broadcast
+password manager
+password operator
+aaa authentication login privilege-mode
+aaa authentication login default radius local
+aaa authentication enable default radius local
+aaa accounting exec default start-stop radius
+aaa accounting commands default start-stop radius
+radius-server host 10.10.10.100 key "MySecretRadiusKey123!"
+radius-server host 10.10.10.101 key "MySecretRadiusKey123!"
+tacacs-server host 10.10.10.102 key "MySecretTacacsKey456!"
+tacacs-server host 10.10.10.103 key "MySecretTacacsKey456!"
+sntp server 10.10.10.200
+sntp server 10.10.10.201
+time timezone -300
+time daylight-time-rule continental-us-and-canada
+snmp-server community "r0Str1ngC0mm" unrestricted
+no snmp-server enable
+snmpv3 enable
+logging 10.10.10.250
+logging facility local6
+logging severity warning
+console baud-rate 115200
+console inactivity-timer 10
+no telnet-server
+no web-management
+ip ssh
+ip ssh filetransfer
+ip ssh version 2
+banner motd "
+*******************************************************************
+*  NOTICE: This is a U.S. Government computer system.            *
+*  Unauthorized access is prohibited by Public Law 99-474.       *
+*  (The Computer Fraud and Abuse Act of 1986).                   *
+*  All activities are monitored and recorded.                     *
+*******************************************************************
+"
+port-security 1-24 learn-mode continuous address-limit 2
+port-security 25-48 learn-mode continuous address-limit 4
+dhcp-snooping
+dhcp-snooping vlan 10,20,30,40
+dhcp-snooping trust Trk1
+arp-protect
+arp-protect vlan 10,20
+arp-protect trust Trk1
+loop-protect 1-48
+loop-protect vlan 10,20,30,40
+dhcp-relay
+ip authorized-managers 10.10.10.0 255.255.255.0 access manager
+ip authorized-managers 10.10.20.0 255.255.255.0 access operator
+front-panel-security
+mac-lockout-timer 300
+cdp run
+lldp run
+sflow 1 destination 10.10.10.210 6343
+sflow 1 sampling 1-48 512
+sflow 1 polling 1-48 60
+sflow enable
+no ip dns server
+ip dns 10.10.10.200
+ip dns 10.10.10.201
+write memory

@@ -1,0 +1,13 @@
+
+Status and Counters - Memory Utilization
+
+  Total Memory      : 262,020 KB
+  Free Memory       : 195,412 KB
+  Used Memory       : 66,608 KB
+  Memory Utilization: 25.4%
+
+  Memory Pool        Total       Free        Used
+  ------------------ ----------- ----------- -----------
+  System             131,010 KB  98,200 KB   32,810 KB
+  Packet Buffer      65,505 KB  48,906 KB   16,599 KB
+  Management         65,505 KB  48,306 KB   17,199 KB

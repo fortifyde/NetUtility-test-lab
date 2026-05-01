@@ -1,0 +1,30 @@
+DHCP Snooping Configuration
+---------------------------
+Status: Enabled
+VLANs: 10, 20, 30
+Violation Mode: Drop
+
+Trusted Interfaces:
+  Interface 1/1/1 (Up)
+  Interface 1/1/2 (Up)
+
+DHCP Snooping Statistics:
+  Packets Received: 45623
+  Packets Forwarded: 44521
+  Packets Dropped: 1102
+  Binding Entries: 15
+
+DHCP Snooping Bindings:
+  MAC Address        IP Address     VLAN  Port    Lease          Type
+  -----------------  -------------  ----  ------  -------------  --------
+  a4:b5:c6:d7:e8:f9 10.0.2.101     20    1/1/5   86400          Dynamic
+  a4:b5:c6:d7:e8:fa 10.0.2.102     20    1/1/6   86400          Dynamic
+  a4:b5:c6:d7:e8:fb 10.0.2.103     20    1/1/9   86400          Dynamic
+  a4:b5:c6:d7:e8:fc 10.0.2.104     20    1/1/10  86400          Dynamic
+  a4:b5:c6:d7:e8:fd 10.0.2.105     20    1/1/13  86400          Dynamic
+  a4:b5:c6:d7:e8:fe 10.0.2.106     20    1/1/16  86400          Dynamic
+  a4:b5:c6:d7:e8:ff 10.0.2.107     20    1/1/21  86400          Dynamic
+  00:50:56:ab:cd:01 10.0.3.10      30    1/1/25  86400          Dynamic
+  00:50:56:ab:cd:02 10.0.3.20      30    1/1/26  86400          Dynamic
+
+Total bindings: 9

@@ -1,0 +1,11 @@
+Console Configuration
+---------------------
+Console: Enabled
+Baud Rate: 9600
+Data Bits: 8
+Parity: None
+Stop Bits: 1
+Flow Control: None
+Idle Timeout: 600 seconds
+
+Console Logging: Disabled

@@ -1,0 +1,11 @@
+DHCP server: 10.10.10.5
+    Leases:   1
+    Offers:   1
+    Requests: 1
+    Acks:     1
+    Naks:     0
+    Declines: 0
+    Releases: 0
+    Bad:      0
+    TFTP Server Name: 10.10.30.10
+    Boot File Name: pxelinux.0

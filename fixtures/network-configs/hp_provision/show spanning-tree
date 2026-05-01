@@ -1,0 +1,54 @@
+
+Status and Counters - Spanning Tree Information
+
+  STP Version    : Rapid PVST+
+  STP Enabled    : Yes
+
+  VLAN 10 - MGMT_VLAN
+    Spanning Tree Status : Enabled
+    Root Priority        : 4096
+    Root Path Cost       : 0
+    Designated Root      : 70E48C-4A2B00
+    Bridge Priority      : 4096
+    Bridge MAC           : 70E48C-4A2B00
+    Hello Time           : 2 seconds
+    Max Age              : 20 seconds
+    Forward Delay        : 15 seconds
+    Topology Changes     : 23
+
+    Port      Role        State      Cost      Priority
+    --------- ----------- ---------- --------- --------
+    47        Designated  Forwarding 4         128
+    48        Designated  Forwarding 4         128
+    Trk1      Designated  Forwarding 20000     128
+    Trk2      Designated  Forwarding 20000     128
+
+  VLAN 20 - DATA_VLAN
+    Spanning Tree Status : Enabled
+    Root Priority        : 8192
+    Root Path Cost       : 0
+    Designated Root      : 70E48C-4A2B00
+    Bridge Priority      : 8192
+    Bridge MAC           : 70E48C-4A2B00
+
+    Port      Role        State      Cost      Priority
+    --------- ----------- ---------- --------- --------
+    1         Designated  Forwarding 4         128
+    2         Designated  Forwarding 4         128
+    5         Designated  Forwarding 4         128
+    6         Designated  Forwarding 4         128
+    Trk1      Designated  Forwarding 20000     128
+    Trk2      Designated  Forwarding 20000     128
+
+  VLAN 30 - VOICE_VLAN
+    Spanning Tree Status : Enabled
+    Root Priority        : 32768
+    Root Path Cost       : 20000
+    Designated Root      : 00:1A:2B:3C:4D:01
+    Bridge Priority      : 32768
+    Bridge MAC           : 70E48C-4A2B00
+
+    Port      Role        State      Cost      Priority
+    --------- ----------- ---------- --------- --------
+    Trk1      Root        Forwarding 20000     128
+    Trk2      Alternate   Discarding 20000     128

@@ -1,0 +1,24 @@
+MAC Address      VLAN ID  State      Port/Nickname       Aging
+001b-2c3d-4e5f   10       Learned    GE1/0/1             Y
+002c-3d4e-5f6a   20       Learned    GE1/0/2             Y
+002c-3d4e-5f6b   20       Learned    GE1/0/2             Y
+002c-3d4e-5f6c   20       Learned    GE1/0/3             Y
+002c-3d4e-5f6d   20       Learned    GE1/0/9             Y
+002c-3d4e-5f6e   20       Learned    GE1/0/10            Y
+002c-3d4e-5f6f   20       Learned    GE1/0/13            Y
+003d-4e5f-6a7b   30       Learned    GE1/0/5             Y
+003d-4e5f-6a7c   30       Learned    GE1/0/6             Y
+003d-4e5f-6a7d   30       Learned    GE2/0/5             Y
+004e-5f6a-7b8c   100      Learned    GE1/0/2             Y
+004e-5f6a-7b8d   100      Learned    GE1/0/2             Y
+005f-6a7b-8c9d   40       Learned    GE1/0/16            Y
+006a-7b8c-9d0e   50       Learned    GE1/0/48            Y
+001a-2b3c-4d50   1        Learned    BAGG1               Y
+001a-2b3c-4d60   1        Learned    TGE1/1/1            Y
+001b-2c3d-4e60   10       Learned    GE1/0/1             Y
+001b-2c3d-4e61   10       Learned    GE1/0/1             Y
+001b-2c3d-4e62   10       Learned    GE1/0/1             Y
+001b-2c3d-4e63   10       Learned    GE1/0/1             Y
+001b-2c3d-4e64   10       Learned    GE1/0/1             Y
+
+Total items: 21

@@ -1,0 +1,152 @@
+{
+  "description": "Expected output schema for advanced_packet_analysis.sh — deep protocol analysis with statistical reports",
+  "type": "object",
+  "required": ["report_file"],
+  "properties": {
+    "report_file": {
+      "type": "object",
+      "required": ["filename"],
+      "properties": {
+        "filename": {
+          "type": "string",
+          "pattern": "^advanced_analysis_.+_\\d{8}_\\d{6}\\.txt$",
+          "description": "Timestamped analysis report under analysis/"
+        },
+        "sections": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["section_name"],
+            "properties": {
+              "section_name": {
+                "type": "string",
+                "enum": [
+                  "VLAN ANALYSIS",
+                  "IPv4 ENDPOINT ANALYSIS",
+                  "PROTOCOL STATISTICS",
+                  "WINDOWS PROXY AUTO-DISCOVERY (WPAD) ANALYSIS",
+                  "WINDOWS DOMAIN/WORKGROUP ANALYSIS (BROWSER)",
+                  "SIMPLE SERVICE DISCOVERY PROTOCOL (SSDP)",
+                  "SPANNING TREE PROTOCOL (STP)",
+                  "SECURITY ASSESSMENT"
+                ]
+              },
+              "content_type": {
+                "type": "string",
+                "description": "Description of section content format"
+              }
+            }
+          }
+        }
+      }
+    },
+    "protocol_statistics": {
+      "type": "object",
+      "description": "Protocol hierarchy breakdown from tshark io,phs",
+      "properties": {
+        "source": {
+          "type": "string",
+          "description": "Section within report file containing tshark protocol hierarchy output"
+        },
+        "protocols": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "protocol": {
+                "type": "string",
+                "description": "Protocol name (eth, ip, tcp, udp, http, dns, etc.)"
+              },
+              "frames": {
+                "type": "integer",
+                "description": "Number of frames"
+              },
+              "bytes": {
+                "type": "integer",
+                "description": "Number of bytes"
+              }
+            }
+          }
+        }
+      }
+    },
+    "endpoint_analysis": {
+      "type": "object",
+      "properties": {
+        "endpoints": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["ip"],
+            "properties": {
+              "ip": {
+                "type": "string",
+                "description": "IPv4 endpoint address"
+              },
+              "flags": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "enum": ["apipa", "multicast", "invalid"]
+                },
+                "description": "Security flags detected for this endpoint"
+              }
+            }
+          }
+        }
+      }
+    },
+    "vlan_analysis": {
+      "type": "object",
+      "properties": {
+        "vlan_ids": {
+          "type": "array",
+          "items": {
+            "type": "integer"
+          },
+          "description": "Unique VLAN IDs detected"
+        },
+        "vlan_ip_correlations": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "vlan_id": {
+                "type": "integer"
+              },
+              "ip_addresses": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "security_assessment": {
+      "type": "object",
+      "properties": {
+        "wpad_hosts": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "browser_domains": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "ssdp_devices": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

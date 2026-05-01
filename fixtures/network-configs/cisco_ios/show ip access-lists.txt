@@ -1,0 +1,13 @@
+Standard IP access list 10
+    10 permit 10.10.10.0, wildcard bits 0.0.0.255
+    20 permit 10.10.30.0, wildcard bits 0.0.0.255
+Standard IP access list 23
+    10 permit 10.10.30.0, wildcard bits 0.0.0.255
+Extended IP access list MANAGEMENT-ACL
+    10 permit tcp 10.10.30.0 0.0.0.255 any eq 22
+    20 permit udp 10.10.30.0 0.0.0.255 any eq snmp
+    30 deny ip any any log
+Extended IP access list SNMP-ACL
+    10 permit udp host 10.10.30.10 any eq snmp
+    20 permit udp host 10.10.30.11 any eq snmp
+    30 deny udp any any eq snmp log

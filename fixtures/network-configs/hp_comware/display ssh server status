@@ -1,0 +1,35 @@
+Stelnet server: Enable
+SFTP server: Disable
+SCP server: Disable
+SSH version: 2.0
+SSH server key exchange algorithm:
+  diffie-hellman-group14-sha1
+  diffie-hellman-group-exchange-sha256
+  ecdh-sha2-nistp256
+  ecdh-sha2-nistp384
+SSH server public key algorithm:
+  rsa
+  dsa
+  ecdsa-sha2-nistp256
+  ecdsa-sha2-nistp384
+SSH server encryption algorithm:
+  aes128-ctr
+  aes256-ctr
+  aes128-gcm@openssh.com
+  aes256-gcm@openssh.com
+SSH server MAC algorithm:
+  hmac-sha2-256
+  hmac-sha2-512
+SSH server authentication-retries: 5
+SSH server authentication-timeout: 60 seconds
+SSH server compatible-ssh1x: Enable
+SSH server ipv4 dscp priority: 48
+SSH server ipv6 dscp priority: 48
+SSH server port: 22
+SSH server key-re-update interval: 0 (disabled)
+SSH server login-timeout: 60 seconds
+SSH server max-session: 32
+SSH server rekey-interval: 0 (disabled)
+SSH server minimum key-size:
+  RSA minimum key size: 2048 bits
+  DSA minimum key size: 1024 bits

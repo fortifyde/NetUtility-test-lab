@@ -1,0 +1,7 @@
+Module  Ports    Model                  Serial No.   MAC addresses  Hw Ver.       Sw Ver.
+------  -----    -----                  ---------    -------------  --------      --------
+1       54       WS-C2960X-48TS-L       FOC2347X8K2  001a.2b3c.4d50  B0           15.2(7)E6
+
+Mod  MAC addresses                    Hw    Fw           Sw               Status
+---  -------------                    --    --           --               -----
+1    001a.2b3c.4d50 to 001a.2b3c.4d8f 1.0   15.2(7)E1    15.2(7)E6        ok

@@ -1,0 +1,17 @@
+Feature Name          Instance  State
+--------------------  --------  --------
+bgp                   1         enabled
+bfd                   1         enabled
+dhcp                  1         enabled
+eigrp                 1         enabled
+hsrp                  1         disabled
+igmp                  1         enabled
+interface-vlan        1         enabled
+lacp                  1         enabled
+netflow               1         enabled
+nv overlay            1         enabled
+ospf                  1         enabled
+pim                   1         enabled
+telnet                1         enabled
+vpc                   1         enabled
+vn-segment-vlan-based 1         enabled

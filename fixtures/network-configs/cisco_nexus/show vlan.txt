@@ -1,0 +1,33 @@
+VLAN Name                             Status    Ports
+---- -------------------------------- --------- -------------------------------
+1    default                          active    Eth1/19, Eth1/20
+10   MANAGEMENT                       active    Eth1/5, Eth1/6
+20   SERVERS                          active    Eth1/7, Eth1/8
+30   USERS                            active    Eth1/11, Eth1/12, Eth1/17, Eth1/18
+40   DATABASE                         active    Eth1/9, Eth1/10
+50   DMZ                              active    Eth1/13, Eth1/14
+99   NATIVE                           active
+100  MGMT_NATIVE                      active
+200  BACKUP_NET                       active    Eth1/15
+999  QUARANTINE                       active    Eth1/16
+
+VLAN Type         Vlan-mode
+---- -----        ----------
+1    enet         CE
+10   enet         CE
+20   enet         CE
+30   enet         CE
+40   enet         CE
+50   enet         CE
+99   enet         CE
+100  enet         CE
+200  enet         CE
+999  enet         CE
+
+Remote SPAN VLANs
+-------------------------------------------------------------------------------
+None
+
+Primary  Secondary Type             Ports
+------- --------- ---------------   --------------------------
+None

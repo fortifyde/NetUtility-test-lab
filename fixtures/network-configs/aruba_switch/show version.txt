@@ -1,0 +1,25 @@
+ArubaOS (ArubaSwitch) 16.11.0023
+(c) Copyright 2021 Hewlett Packard Enterprise Development LP
+
+Image: Primary
+
+Active Boot ROM: 16.11.0023
+Active OS Image: Primary
+
+Hostname: ARUBA-SW-01
+Module: JL262A Aruba 2930F 48G 4SFP+ Switch
+Serial Number: CN8BG6R01K
+MAC Address: a0:d3:c1:b2:f4:e0
+Firmware Version: 16.11.0023
+Base MAC Addr: a0:d3:c1:b2:f4:e0
+ROM Version: WB.16.06.0004
+
+Uptime: 87 days, 14 hours, 32 minutes
+
+CPU Utilization (%): 5
+Memory - Total: 524,288 KB
+Memory - Free: 412,736 KB
+Packet Buffer - Total: 8,192 KB
+Packet Buffer - Free: 6,144 KB
+
+Platform: JL262A Aruba 2930F 48G 4SFP+ Switch

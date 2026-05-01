@@ -1,0 +1,11 @@
+
+IP Authorized Managers
+
+  Network Address    Mask               Access Level  Position
+  ------------------ ------------------ ------------- --------
+  10.10.10.0         255.255.255.0      manager       1
+  10.10.99.0         255.255.255.0      manager       2
+
+  Authorized Manager Match Action: Deny non-matching
+
+Total authorized managers: 2

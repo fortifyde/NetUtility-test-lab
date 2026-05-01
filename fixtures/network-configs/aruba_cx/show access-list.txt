@@ -1,0 +1,38 @@
+Access Control Lists
+--------------------
+
+ACL Name: MGMT-ACL
+  Type: IPv4
+  Entries: 3
+  Applied: None
+
+  10 permit ip 10.10.10.0/24 any
+      match-count: 145623
+  20 permit ip 172.16.0.0/16 any
+      match-count: 23456
+  30 deny ip any any log
+      match-count: 8901
+
+ACL Name: SNMP-ACL
+  Type: IPv4
+  Entries: 3
+  Applied: None
+
+  10 permit ip 10.10.10.100/32 any
+      match-count: 56234
+  20 permit ip 10.10.10.101/32 any
+      match-count: 56210
+  30 deny ip any any log
+      match-count: 234
+
+ACL Name: NTP-ACL
+  Type: IPv4
+  Entries: 3
+  Applied: None
+
+  10 permit ip 10.10.10.1/32 any
+      match-count: 12000
+  20 permit ip 10.10.10.2/32 any
+      match-count: 11950
+  30 deny ip any any log
+      match-count: 0

@@ -1,0 +1,11 @@
+
+Internet (IP) Service
+
+  IP Routing : Enabled
+
+  Default Gateway : 10.10.10.1
+
+  VLAN                        IP Address         Subnet Mask        Status
+  ----                        ----------         -----------        ------
+  VLAN 10 (MGMT_VLAN)         10.10.10.4         255.255.255.0      Up
+  VLAN 99 (SECURITY_MGMT)     10.10.99.4         255.255.255.0      Up

@@ -1,0 +1,10 @@
+Cryptographic Information
+
+SSH Host Keys:
+  RSA Key: 2048-bit (Fingerprint: SHA256:xM3hR9vK2pQ1nB5wL8yT4uF7gA0cD6eJ2kH3mN5oP6q)
+
+SSL/TLS:
+  Certificate: Self-signed RSA 2048-bit
+  Expiration: Mon Jan 01 00:00:00 2027
+
+FIPS Mode: Not enabled

@@ -1,0 +1,9 @@
+SNMPv3 Status
+
+SNMPv3 : Enabled
+
+Users:
+  Username       Auth Protocol  Priv Protocol
+  snmpv3user     SHA            AES
+
+Engine ID: 0x80001f88a0d3c1b2f4e0

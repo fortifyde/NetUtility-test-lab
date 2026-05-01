@@ -1,0 +1,8 @@
+IP Authorized Managers
+
+IP Address/Mask         Access Level
+----------------------  ------------
+10.10.10.0/24           manager
+10.10.20.0/24           operator
+
+Access Control: Enabled

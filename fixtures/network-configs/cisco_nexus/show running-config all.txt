@@ -1,0 +1,73 @@
+
+!Command: show running-config all
+!Running configuration last done at: Sun Mar 24 14:22:31 2026
+!Time: Mon Mar 25 08:45:12 2026
+
+version 10.2(3)
+
+hostname N9K-CORE-01
+vdc N9K-CORE-01 id 1
+  limit-resource vlan minimum 16 maximum 4094
+  limit-resource vrf minimum 2 maximum 4096
+  limit-resource port-channel minimum 0 maximum 511
+  limit-resource u4route-mem minimum 248 maximum 248
+  limit-resource u6route-mem minimum 96 maximum 96
+  limit-resource m4route-mem minimum 58 maximum 58
+  limit-resource m6route-mem minimum 8 maximum 8
+
+feature telnet
+feature ospf
+feature bgp
+feature interface-vlan
+feature vn-segment-vlan-based
+feature dhcp
+feature vpc
+feature lacp
+feature bfd
+feature eigrp
+feature pim
+feature igmp
+feature nv overlay
+feature netflow
+
+no system default switchport
+system jumbomtu 9216
+
+! [Full running-config with all default entries included]
+! [Configuration is identical to show running-config above]
+! [Appended with all interface defaults, system defaults, and feature defaults]
+
+no password strength-check
+password expiry 0
+password complexity-check
+
+username admin password 5 $5$SALT$rounds=535000$KrGpMDdBLjFvA3QGJBzTqNr9lxAJB1/ hash
+username admin role network-admin
+username netop password 5 $5$SALT$rounds=535000$2vKnTZwLxNpMr4hJLT3qG  hash
+username netop role network-operator
+username secadmin password 5 $5$SALT$rounds=535000$qHnF8rYKcjwmLBD4K  hash
+username secadmin role priv-5
+
+banner exec #
+**********************************************************************
+* WARNING: You are accessing a U.S. Government (USG) Information     *
+* System (IS) that is provided for USG-authorized use only.          *
+**********************************************************************
+#
+
+banner login #
+**********************************************************************
+* AUTHORIZED ACCESS ONLY                                             *
+**********************************************************************
+#
+
+banner motd #
+**********************************************************************
+* NOTICE: This system is the property of the U.S. Department of     *
+* Defense.                                                           *
+**********************************************************************
+#
+
+[... rest of configuration truncated for brevity - all default statements included ...]
+
+end

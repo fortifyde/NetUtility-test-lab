@@ -1,0 +1,9 @@
+aaa new-model
+aaa authentication login default group radius local
+aaa authentication login CONSOLE local
+aaa authentication enable default group radius enable
+aaa authorization exec default group radius local
+aaa authorization commands 15 default group radius local
+aaa accounting exec default start-stop group radius
+aaa accounting commands 15 default start-stop group radius
+aaa session-id common

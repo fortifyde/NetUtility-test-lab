@@ -1,0 +1,30 @@
+VSX Status
+----------
+Role: Primary
+System MAC: 00:9c:1a:b2:3c:50
+Inter-Switch Link: lag1 (Up)
+Keepalive Status: Up
+Keepalive Peer IP: 10.0.255.2
+Keepalive Source IP: 10.0.255.1
+Keepalive VRF: default
+Keepalive Hello Interval: 3 seconds
+Keepalive Dead Interval: 15 seconds
+Hold Discovery Timer: 60 seconds
+
+VSX Synchronization
+-------------------
+VLAN: Enabled
+Spanning-Tree: Enabled
+IGMP Snooping: Enabled
+Active Forwarding: Enabled
+
+VSX Peer Information
+--------------------
+Peer MAC: 00:9c:1a:b3:4d:60
+Peer Role: Secondary
+Peer Status: Online
+Peer Uptime: 87 days, 14 hours, 28 minutes
+Peer Software Version: 10.10.1010
+Peer Product Model: JL658A
+Peer Inter-Switch Link: Up
+Peer Keepalive Status: Up

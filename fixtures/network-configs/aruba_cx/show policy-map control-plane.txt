@@ -1,0 +1,44 @@
+Policy Map: control-plane
+--------------------------
+Status: Active
+Direction: Inbound
+
+Class: copp-system-default
+  Match: default
+  Police: cir 1000000 bps, bc 10000 bytes
+  Conform Action: transmit
+  Exceed Action: drop
+  Conformed Packets: 8,234,567
+  Exceeded Packets: 234
+
+Class: copp-system-icmp
+  Match: protocol icmp
+  Police: cir 500000 bps, bc 5000 bytes
+  Conform Action: transmit
+  Exceed Action: drop
+  Conformed Packets: 1,234,567
+  Exceeded Packets: 89
+
+Class: copp-system-ssh
+  Match: protocol tcp destination-port 22
+  Police: cir 2000000 bps, bc 20000 bytes
+  Conform Action: transmit
+  Exceed Action: drop
+  Conformed Packets: 456,789
+  Exceeded Packets: 12
+
+Class: copp-system-snmp
+  Match: protocol udp destination-port 161-162
+  Police: cir 1000000 bps, bc 10000 bytes
+  Conform Action: transmit
+  Exceed Action: drop
+  Conformed Packets: 2,345,678
+  Exceeded Packets: 331
+
+Class: copp-system-routing
+  Match: protocol ospf, bgp
+  Police: cir 5000000 bps, bc 50000 bytes
+  Conform Action: transmit
+  Exceed Action: drop
+  Conformed Packets: 185,188
+  Exceeded Packets: 0

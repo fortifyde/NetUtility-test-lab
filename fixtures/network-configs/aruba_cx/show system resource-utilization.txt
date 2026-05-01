@@ -1,0 +1,47 @@
+System Resource Utilization
+---------------------------
+
+CPU Utilization
+---------------
+  5 sec average: 8%
+  1 min average: 6%
+  5 min average: 5%
+
+CPU Utilization by Process
+---------------------------
+Process                 CPU%  Memory%
+----------------------  ----  -------
+hal_ms                  2.1   3.2
+sysmgr                  1.3   2.1
+frr_bgpd                0.8   1.5
+frr_ospfd               0.5   1.2
+lldpd                   0.3   0.8
+snmpd                   0.2   0.6
+ntpd                    0.1   0.3
+syslogd                 0.1   0.4
+cli                     0.0   0.2
+
+Memory Utilization
+------------------
+  Total: 8192 MB
+  Used: 2456 MB (30%)
+  Free: 5736 MB (70%)
+
+Flash Utilization
+-----------------
+  Total: 4096 MB
+  Used: 1248 MB (30%)
+  Free: 2848 MB (70%)
+
+Buffer Utilization
+------------------
+  Packet Buffer Total: 8192 KB
+  Packet Buffer Used: 2456 KB (30%)
+  Packet Buffer Free: 5736 KB (70%)
+
+TCAM Utilization
+----------------
+  IPv4 Routes: 19/65536 (0.03%)
+  IPv6 Routes: 0/32768 (0.00%)
+  ACL Entries: 15/2048 (0.73%)
+  MAC Entries: 21/65536 (0.03%)

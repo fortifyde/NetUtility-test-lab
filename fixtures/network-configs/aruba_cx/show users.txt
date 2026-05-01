@@ -1,0 +1,8 @@
+Active Users
+------------
+Line          User     Host               Idle    Location
+------------  -------  -----------------  ------  --------
+ssh           admin    10.10.10.100       0:05    10.10.10.100
+ssh           netop    10.10.10.101       0:00    10.10.10.101
+
+Total active users: 2

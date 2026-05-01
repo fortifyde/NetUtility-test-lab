@@ -1,0 +1,30 @@
+CPU defend policy: default
+  Rate limit:
+    Protocol    Rate (pps)  Action
+    ARP         200         Pass
+    ARP-REPLY   300         Pass
+    ICMP        100         Pass
+    ICMPV6      50          Pass
+    IGMP        100         Pass
+    DHCP        100         Pass
+    OSPF        200         Pass
+    BGP         200         Pass
+    LDP         100         Pass
+    SNMP        50          Pass
+    SSH         20          Pass
+    TELNET      20          Pass
+    TFTP        50          Pass
+    NTP         50          Pass
+    DNS         50          Pass
+    HTTP        50          Drop
+    HTTPS       50          Drop
+
+  Blacklist:
+    None configured
+
+  Whitelist:
+    None configured
+
+  Apply status:
+    Slot 1: Applied
+    Slot 2: Applied

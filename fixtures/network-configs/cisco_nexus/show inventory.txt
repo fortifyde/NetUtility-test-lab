@@ -1,0 +1,20 @@
+NAME: "Chassis",  DESCR: "Nexus 9396PX Chassis"
+PID: N9K-C9396PX,  VID: V02,  SN: SAL1929K5QP
+
+NAME: "Slot 1",  DESCR: "48x10GE SFP+ 6x40GE QSFP Line Card"
+PID: N9K-C9396PX,  VID: V02,  SN: SAL1929K5QP
+
+NAME: "Slot 2",  DESCR: "Supervisor Module"
+PID: N9K-C9396PX,  VID: V02,  SN: SAL1929K5QP
+
+NAME: "Power Supply 1",  DESCR: "AC 950W Power Supply"
+PID: N9K-PAC-950W,  VID: V01,  SN: DTN1929A01P
+
+NAME: "Power Supply 2",  DESCR: "AC 950W Power Supply"
+PID: N9K-PAC-950W,  VID: V01,  SN: DTN1929A02P
+
+NAME: "Fan 1",  DESCR: "Fan Tray Module"
+PID: N9K-C9300-FAN,  VID: V01,  SN: NONE
+
+NAME: "Fan 2",  DESCR: "Fan Tray Module"
+PID: N9K-C9300-FAN,  VID: V01,  SN: NONE

@@ -1,0 +1,50 @@
+Port Security Detailed Status - All Ports
+
+Port: 1  Name: MGMT-UPLINK
+  Learn Mode       : Continuous
+  Address Limit    : 2
+  Action           : None
+  Intrusion Alert  : None
+  MAC Addresses    : a0:d3:c1:ff:12:34
+
+Port: 2  Name: SRV-WEB-01
+  Learn Mode       : Continuous
+  Address Limit    : 2
+  Action           : None
+  Intrusion Alert  : None
+  MAC Addresses    : 00:1a:2b:3c:4d:50
+
+Port: 3  Name: SRV-DB-01
+  Learn Mode       : Continuous
+  Address Limit    : 2
+  Action           : None
+  Intrusion Alert  : None
+  MAC Addresses    : 00:1a:2b:3c:4d:51
+
+Port: 4  Name: (unset)
+  Learn Mode       : Continuous
+  Address Limit    : 2
+  Action           : None
+  Intrusion Alert  : None
+  MAC Addresses    : 00:1a:2b:44:55:01
+
+Port: 5  Name: (unset)
+  Learn Mode       : Continuous
+  Address Limit    : 2
+  Action           : None
+  Intrusion Alert  : None
+  MAC Addresses    : 00:1a:2b:44:55:02
+
+Port: 25  Name: (unset)
+  Learn Mode       : Continuous
+  Address Limit    : 4
+  Action           : None
+  Intrusion Alert  : None
+  MAC Addresses    : a0:d3:c1:aa:bb:cc
+
+Port: 26  Name: (unset)
+  Learn Mode       : Continuous
+  Address Limit    : 4
+  Action           : None
+  Intrusion Alert  : None
+  MAC Addresses    : a0:d3:c1:aa:bb:cd

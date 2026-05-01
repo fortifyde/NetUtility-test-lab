@@ -1,0 +1,23 @@
+
+Authentication Configuration
+
+  Login Authentication:
+    Console : Local
+    SSH     : Public-key, Local
+    Telnet  : Disabled
+
+  Enable Authentication:
+    Console : Local
+    SSH     : Local
+
+  Login Privilege Mode: Enabled
+
+  Password Configuration:
+    Manager Password : Configured (sha1 hash)
+    Operator Password: Configured (sha1 hash)
+
+  RADIUS Servers: None configured
+  TACACS+ Servers: None configured
+
+  SSH Public Key Authentication: Enabled
+  SSH Key Type: RSA 2048-bit

@@ -1,0 +1,15 @@
+Banner Configuration
+--------------------
+
+MOTD Banner: Configured
+"
+******************************************************************
+* WARNING: This is a U.S. Government computer system.           *
+* Unauthorized access is prohibited by Public Law 99-474.        *
+* The Computer Fraud and Abuse Act of 1986.                      *
+******************************************************************
+"
+
+Exec Banner: Not configured
+Incoming Banner: Not configured
+Login Banner: Not configured

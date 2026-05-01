@@ -1,0 +1,4 @@
+ip domain name mil.local
+ip name-server vrf Mgmt-vrf 10.10.10.5
+ip name-server vrf Mgmt-vrf 10.10.10.6
+ip domain lookup

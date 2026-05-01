@@ -1,0 +1,32 @@
+------------------------------------------------
+Local Intf: Gi1/0/1
+Chassis id: 001a.2b3c.9a10
+Port id:     Gi1/0/1
+Port Description: GigabitEthernet1/0/1
+System Name: DIST-SW-01
+System Description: Cisco IOS Software, WS-C3850 Software (CAT3K_CAA-UNIVERSALK9-M), Version 16.6.9
+Time remaining: 108 seconds
+System Capabilities: B,R
+Enabled Capabilities: B,R
+Management Addresses:
+  IP: 10.10.30.2
+Auto Negotiation: not supported
+Physical media capabilities: Unknown
+Vlan ID: 99
+
+------------------------------------------------
+Local Intf: Gi1/0/2
+Chassis id: 001a.2b3c.9b20
+Port id:     Gi1/0/2
+Port Description: GigabitEthernet1/0/2
+System Name: DIST-SW-02
+System Description: Cisco IOS Software, WS-C3850 Software (CAT3K_CAA-UNIVERSALK9-M), Version 16.6.9
+Time remaining: 112 seconds
+System Capabilities: B,R
+Enabled Capabilities: B,R
+Management Addresses:
+  IP: 10.10.30.3
+Auto Negotiation: not supported
+Vlan ID: 99
+
+Total entries displayed: 2

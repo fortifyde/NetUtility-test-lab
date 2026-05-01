@@ -1,0 +1,15 @@
+AAA Accounting Configuration
+-----------------------------
+Accounting Type: Exec
+  Method: default start-stop group radius
+  Status: Enabled
+
+Accounting Type: Commands
+  Method: default start-stop group radius
+  Status: Enabled
+
+Accounting Type: System
+  Method: default start-stop group radius
+  Status: Enabled
+
+All accounting records are sent to RADIUS server 10.10.10.50.

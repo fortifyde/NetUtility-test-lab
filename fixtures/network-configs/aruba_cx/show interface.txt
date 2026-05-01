@@ -1,0 +1,140 @@
+Aggregate: 48 interfaces
+
+Interface 1/1/1 is Up
+  Description: Uplink-to-Core-SW-1
+  Type: SFP56
+  Speed: 10G
+  Duplex: Full
+  MTU: 9216
+  VRF: default
+  Routing: Enabled
+  IPv4 Address: 10.0.1.2/30
+  MAC Address: 00:9c:1a:b2:3c:51
+  Admin State: Up
+  Link State: Up
+  Hardware: SFP56
+  Last State Change: 87 days, 14 hours, 30 minutes
+  Input Rate: 2.34 Gbps
+  Output Rate: 1.87 Gbps
+  Inbound Octets: 12,456,789,012
+  Outbound Octets: 8,234,567,890
+  Inbound Unicast Packets: 9,876,543,210
+  Outbound Unicast Packets: 7,654,321,098
+  Inbound Errors: 0
+  Outbound Errors: 0
+  Input Discards: 0
+  Output Discards: 0
+  CRC Errors: 0
+  Flow Control: Enabled
+  OSPF: Enabled (Area 0.0.0.0)
+
+Interface 1/1/2 is Up
+  Description: Uplink-to-Core-SW-2
+  Type: SFP56
+  Speed: 10G
+  Duplex: Full
+  MTU: 9216
+  VRF: default
+  Routing: Enabled
+  IPv4 Address: 10.0.1.6/30
+  MAC Address: 00:9c:1a:b2:3c:52
+  Admin State: Up
+  Link State: Up
+  Hardware: SFP56
+  Last State Change: 87 days, 14 hours, 30 minutes
+  Input Rate: 1.92 Gbps
+  Output Rate: 1.56 Gbps
+  Inbound Octets: 10,234,567,890
+  Outbound Octets: 7,123,456,789
+  Inbound Unicast Packets: 8,234,567,890
+  Outbound Unicast Packets: 6,123,456,789
+  Inbound Errors: 0
+  Outbound Errors: 0
+  Input Discards: 0
+  Output Discards: 0
+  CRC Errors: 0
+  Flow Control: Enabled
+  OSPF: Enabled (Area 0.0.0.0)
+
+Interface 1/1/3 is Up
+  Description: VSX-ISL-to-ARUBA-CX-02
+  Type: SFP56
+  Speed: 10G
+  Duplex: Full
+  MTU: 9216
+  LAG: lag1
+  Admin State: Up
+  Link State: Up
+  Hardware: SFP56
+  Last State Change: 87 days, 14 hours, 30 minutes
+
+Interface 1/1/4 is Up
+  Description: VSX-Keepalive
+  Type: SFP56
+  Speed: 10G
+  Duplex: Full
+  MTU: 1500
+  VRF: default
+  Routing: Enabled
+  IPv4 Address: 10.0.255.1/30
+  MAC Address: 00:9c:1a:b2:3c:54
+  Admin State: Up
+  Link State: Up
+  Hardware: SFP56
+
+Interface 1/1/5 is Up
+  Description: Access-Port-Floor1-Bldg200
+  Type: RJ45
+  Speed: 1G
+  Duplex: Full
+  MTU: 1500
+  VLAN Mode: Access
+  Access VLAN: 20 (USERS)
+  Admin State: Up
+  Link State: Up
+  Hardware: RJ45
+  Last State Change: 12 days, 3 hours, 15 minutes
+  Spanning Tree: Admin-Edge
+  Loop Protect: Enabled
+  Port Security: Enabled (Max: 2)
+
+Interface 1/1/25 is Up
+  Description: Server-Web-01
+  Type: RJ45
+  Speed: 1G
+  Duplex: Full
+  MTU: 1500
+  VLAN Mode: Access
+  Access VLAN: 30 (SERVERS)
+  Admin State: Up
+  Link State: Up
+  Hardware: RJ45
+  Last State Change: 87 days, 12 hours
+
+Interface 1/1/45 is Up
+  Description: AP-Floor1-01
+  Type: RJ45
+  Speed: 1G
+  Duplex: Full
+  MTU: 1500
+  VLAN Mode: Trunk
+  Native VLAN: 99 (NATIVE)
+  Allowed VLANs: 20,40
+  Admin State: Up
+  Link State: Up
+  Hardware: RJ45
+
+Interface lag1 is Up
+  Description: VSX-ISL
+  Type: LAG
+  Speed: 20G
+  Duplex: Full
+  MTU: 9216
+  VLAN Mode: Trunk
+  Native VLAN: 99 (NATIVE)
+  Allowed VLANs: All
+  LACP Mode: Active
+  LACP Rate: Fast
+  Member Ports: 1/1/3
+  Admin State: Up
+  Link State: Up

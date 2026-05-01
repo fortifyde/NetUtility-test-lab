@@ -1,0 +1,11 @@
+Console Configuration
+
+Console Port: Enabled
+Baud Rate   : 115200
+Flow Control: None
+Data Bits   : 8
+Parity      : None
+Stop Bits   : 1
+
+Inactivity Timer: 10 minutes
+Login Authentication: radius, local

@@ -1,0 +1,31 @@
+----------------------------------------
+Device ID: N9K-CORE-02(FOC1929K5QR)
+System Name: N9K-CORE-02
+Interface: Ethernet1/1, Port ID (outgoing port): Ethernet1/1
+Interface: Ethernet1/2, Port ID (outgoing port): Ethernet1/2
+Interface: Ethernet1/3, Port ID (outgoing port): Ethernet1/3
+Interface: Ethernet1/4, Port ID (outgoing port): Ethernet1/4
+Platform: cisco Nexus 9396PX, Capabilities: Switch Supports
+Holdtime: 120 sec
+Version: Cisco Nexus Operating System (NX-OS) Software, Version 10.2(3)
+advertisement version: 2
+Mgmt address: 10.10.10.3
+----------------------------------------
+Device ID: BORDER-RT-01(SAL1929K6AB)
+System Name: BORDER-RT-01
+Interface: Ethernet1/48, Port ID (outgoing port): GigabitEthernet0/0
+Platform: cisco ISR4451, Capabilities: Router Switch IGMP
+Holdtime: 150 sec
+Version: Cisco IOS Software [Fuji], ISR Software Version 16.9.7
+advertisement version: 2
+Mgmt address: 10.10.10.254
+----------------------------------------
+Device ID: IPS-SENSOR-01(ABC1234D5EF)
+System Name: IPS-SENSOR-01
+Interface: Ethernet1/19, Port ID (outgoing port): Management0/0
+Platform: cisco IPS-4355, Capabilities: Switch Supports
+Holdtime: 120 sec
+Version: Cisco IPS Software Version 7.3(5)E4
+advertisement version: 2
+----------------------------------------
+Total cdp entries displayed: 3

@@ -1,0 +1,7 @@
+DHCP snooping trusted ports:
+  Interface           Trusted
+  GE1/0/1             Yes
+  GE2/0/1             Yes
+  BAGG1               Yes
+
+Total trusted ports: 3

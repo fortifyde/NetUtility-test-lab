@@ -1,0 +1,23 @@
+
+Status and Counters - Port Address Table
+
+  MAC Address      Port  VLAN  Type
+  ---------------- ----- ----- --------
+  001a2b-3c4d01    Trk1  10    Dynamic
+  001a2b-3c4d02    Trk2  10    Dynamic
+  001a2b-3c4d50    Trk1  10    Dynamic
+  001a2b-3c4d60    Trk1  10    Dynamic
+  aabbcc-112233    1     20    Dynamic
+  aabbcc-112244    2     20    Dynamic
+  aabbcc-334455    5     20    Dynamic
+  aabbcc-556677    6     20    Dynamic
+  aabbcc-778899    9     20    Dynamic
+  aabbcc-99aabb    10    20    Dynamic
+  ccdd00-112233    13    20    Dynamic
+  ccdd00-334455    14    20    Dynamic
+  ccdd00-556677    17    20    Dynamic
+  ccdd00-778899    18    20    Dynamic
+  ccdd00-99aabb    21    20    Dynamic
+  ccdd00-aabbcc    22    20    Dynamic
+
+Total MAC addresses: 16

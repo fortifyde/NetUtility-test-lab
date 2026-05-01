@@ -1,0 +1,42 @@
+ArubaOS-CX Software Version: 10.10.1010
+Software Image File: primary
+Build Number: 10.10.1010-76434
+License: Base
+
+Switch Type: Aruba 6300M 48G 4SFP56
+Product Model: JL658A
+Product Name: Aruba 6300M 48G PoE+ 4SFP56 Switch
+Serial Number: CN4BLHP02M
+MAC Address: 00:9c:1a:b2:3c:50
+ArubaOS-CX OS Version: 10.10.1010
+Manufacturing Date: 2023-03-15
+Firmware Version: 10.10.1010
+
+Uptime: 87 days, 14 hours, 32 minutes
+Boot Time: 2026-01-31 09:15:22
+
+Current Software Image: primary
+Active Software Image: primary
+Next Boot Software Image: primary
+
+Modules:
+Module 1: Aruba 6300M 48G PoE+ 4SFP56 (JL658A)
+  Status: Up
+  Serial: CN4BLHP02M
+  Part Number: JL658A
+Module 2: Aruba 6300M 4SFP56 Port Module (JL663A)
+  Status: Up
+  Serial: CN5BLHP08Q
+  Part Number: JL663A
+
+Power Supplies:
+Power Supply 1: JL666A (Status: OK, Capacity: 500W)
+Power Supply 2: JL666A (Status: OK, Capacity: 500W)
+
+Fans:
+Fan Tray 1: Status OK
+Fan Tray 2: Status OK
+
+Temperature:
+Sensor 1 (CPU): 52C
+Sensor 2 (Board): 41C

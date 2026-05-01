@@ -1,0 +1,4 @@
+ip domain-lookup
+ip domain-name mil
+ip name-server 10.10.10.200
+ip name-server 10.10.10.201

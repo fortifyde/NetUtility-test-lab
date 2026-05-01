@@ -1,0 +1,17 @@
+SSH Configuration
+
+SSH Server      : Enabled
+SSH Version     : 2
+File Transfer   : Enabled
+
+Ciphers:
+  aes256-ctr
+  aes256-cbc
+
+MAC Algorithms:
+  hmac-sha2-256
+
+Key Types:
+  RSA (2048-bit)
+
+SSH Active Sessions: 1

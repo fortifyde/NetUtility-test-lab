@@ -1,0 +1,10 @@
+ip ssh version 2
+ip ssh authentication-retries 3
+ip ssh time-out 120
+ip ssh dh min size 2048
+line vty 0 4
+ transport input ssh
+ transport output ssh
+line vty 5 15
+ transport input ssh
+ transport output ssh

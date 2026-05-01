@@ -1,0 +1,8 @@
+
+Login Banner
+
+  Banner Text:
+  "UNAUTHORIZED ACCESS TO THIS NETWORK DEVICE IS PROHIBITED. You must have explicit permission to access or configure this device. All activities may be monitored and reported."
+
+  Banner Enabled : Yes
+  Banner Displayed: On login (SSH, Console)

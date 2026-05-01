@@ -1,0 +1,10 @@
+                      Topology Info
+            -------------------------------------------------
+            IRF-Port 1              IRF-Port 2
+  Member 1  disable                 GE1/1/1(U)
+  Member 2  GE2/1/1(U)             disable
+            -------------------------------------------------
+
+IRF-Port Link Status:
+  IRF-Port 1/2: UP (Member 2)
+  IRF-Port 2/1: UP (Member 1)

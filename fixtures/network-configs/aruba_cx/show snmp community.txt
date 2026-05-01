@@ -1,0 +1,9 @@
+SNMP Community Configuration
+---------------------------
+Community: SecStr1ng!
+  Access: Read-Only
+  ACL: None
+
+Community: Pr1v4teR0!
+  Access: Read-Write
+  ACL: None

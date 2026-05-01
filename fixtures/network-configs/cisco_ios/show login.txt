@@ -1,0 +1,3 @@
+A login delay of 3 seconds is applied.
+No login block is configured.
+All successful and failed login attempts are logged.

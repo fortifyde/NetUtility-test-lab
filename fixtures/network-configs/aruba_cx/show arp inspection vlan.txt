@@ -1,0 +1,25 @@
+Dynamic ARP Inspection VLAN Configuration
+------------------------------------------
+VLAN  DAI Status  Validation       Trusted Ports  Drops
+----  ----------  ---------------  -------------  -----
+10    Enabled     IP,MAC,Src-MAC   1/1/1,1/1/2    45
+20    Enabled     IP,MAC,Src-MAC   1/1/1,1/1/2    210
+30    Enabled     IP,MAC,Src-MAC   1/1/1,1/1/2    100
+
+VLAN 10 (MGMT):
+  DAI Status: Enabled
+  Validation: IP, MAC, Source-MAC
+  Log Buffer: 5 entries
+  Trusted Interfaces: 1/1/1, 1/1/2
+
+VLAN 20 (USERS):
+  DAI Status: Enabled
+  Validation: IP, MAC, Source-MAC
+  Log Buffer: 12 entries
+  Trusted Interfaces: 1/1/1, 1/1/2
+
+VLAN 30 (SERVERS):
+  DAI Status: Enabled
+  Validation: IP, MAC, Source-MAC
+  Log Buffer: 3 entries
+  Trusted Interfaces: 1/1/1, 1/1/2

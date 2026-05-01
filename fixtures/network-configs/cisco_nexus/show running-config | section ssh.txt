@@ -1,0 +1,10 @@
+ssh key rsa 2048 force
+ssh key dsa 1024 force
+ssh key ecdsa 521 force
+ssh key ed25519 force
+no telnet server enable
+ssh server enable
+ssh server login-attempts 3
+ssh server authentication-retries 3
+ssh server timeout 60
+ssh server rate-limit 60

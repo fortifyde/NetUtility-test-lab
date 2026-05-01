@@ -1,0 +1,5 @@
+  Idx  Line      Type    User    IP Address        Idle  Time
+  1    VTY 0     SSH     admin   10.10.10.100      00:05:32  Apr 28 10:05:22
+  2    VTY 1     SSH     netop   10.10.10.2        00:45:10  Apr 28 08:30:12
+
+Total users: 2

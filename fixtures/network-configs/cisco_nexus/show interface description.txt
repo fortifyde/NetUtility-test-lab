@@ -1,0 +1,35 @@
+--------------------------------------------------------------------------------
+Port          Type   Speed   Description
+--------------------------------------------------------------------------------
+Eth1/1        eth    10G     UPLINK-TO-CORE-02-ETH1/1
+Eth1/2        eth    10G     UPLINK-TO-CORE-02-ETH1/2
+Eth1/3        eth    10G     VPC-PEER-LINK-TO-CORE-02
+Eth1/4        eth    10G     VPC-PEER-LINK-TO-CORE-02
+Eth1/5        eth    10G     MGMT-SERVER-01
+Eth1/6        eth    10G     MGMT-SERVER-02
+Eth1/7        eth    10G     WEB-SERVER-01
+Eth1/8        eth    10G     WEB-SERVER-02
+Eth1/9        eth    10G     DB-SERVER-01
+Eth1/10       eth    10G     DB-SERVER-02
+Eth1/11       eth    10G     USER-WORKSTATION
+Eth1/12       eth    10G     USER-WORKSTATION
+Eth1/13       eth    10G     DMZ-FIREWALL-01
+Eth1/14       eth    10G     DMZ-PROXY-01
+Eth1/15       eth    10G     BACKUP-SERVER
+Eth1/16       eth    auto    QUARANTINE-PORT
+Eth1/17       eth    1G      ACCESS-POINT-01
+Eth1/18       eth    1G      ACCESS-POINT-02
+Eth1/19       eth    10G     IPS-SENSOR-01
+Eth1/20       eth    10G     NETWORK-MONITOR
+Eth1/47       eth    auto    SPAN-DEST-PORT
+Eth1/48       eth    10G     UPLINK-TO-ROUTER
+Po10          eth    20G     VPC PEER-LINK
+Po20          eth    20G     UPLINK TO CORE-02
+Lo0           lo     --      ROUTER-ID
+Vlan1         vlan   --      --
+Vlan10        vlan   --      MANAGEMENT VLAN
+Vlan20        vlan   --      SERVERS VLAN
+Vlan30        vlan   --      USERS VLAN
+Vlan40        vlan   --      DATABASE VLAN
+Vlan50        vlan   --      DMZ VLAN
+mgmt0         mgmt   1000    MANAGEMENT INTERFACE

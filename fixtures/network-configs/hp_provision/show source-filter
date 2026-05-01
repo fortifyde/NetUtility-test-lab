@@ -1,0 +1,10 @@
+
+Source Filter Configuration
+
+  IP Source Guard  : Disabled
+  Source Filter    : Not configured
+
+  No source filter entries configured.
+
+  Note: Consider enabling IP Source Guard on untrusted ports
+  per STIG network security requirements.

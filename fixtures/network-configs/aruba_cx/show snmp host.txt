@@ -1,0 +1,17 @@
+SNMP Host Configuration
+-----------------------
+Host: 10.10.10.100
+  Community: SecStr1ng!
+  Version: 2c
+  Type: Trap
+  Port: 162
+  VRF: default
+
+Host: 10.10.10.101
+  Community: SecStr1ng!
+  Version: 2c
+  Type: Trap
+  Port: 162
+  VRF: default
+
+Total SNMP hosts: 2

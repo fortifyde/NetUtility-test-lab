@@ -1,0 +1,30 @@
+Syslog logging: enabled (0 messages dropped, 1 messages rate-limited, 
+                0 flushes, 0 overruns, xml disabled, filtering disabled)
+No Active Message Discriminator.
+No Inactive Message Discriminator.
+    Console logging: level debugging, 3425 messages logged, xml disabled
+    Monitor logging: level debugging, 0 messages logged, xml disabled
+    Buffer logging:  level debugging, 23456 messages logged, xml disabled
+    Exception Logging: size (4096 bytes)
+    Count and timestamp logging: disabled
+    Persistent logging: disabled
+No active filter modules.
+    Trap logging: level informational, 12345 message lines logged
+        Logging to 10.10.30.10 (udp port 514, audit disabled,
+            authentication disabled, encryption disabled, link up),
+            6234 message lines logged,
+            0 message lines rate-limited,
+            0 message lines dropped-by-MD,
+            xml disabled, sequence number disabled
+        Logging to 10.10.30.11 (udp port 514, audit disabled,
+            authentication disabled, encryption disabled, link up),
+            6111 message lines logged,
+            0 message lines rate-limited,
+            0 message lines dropped-by-MD,
+            xml disabled, sequence number disabled
+Log Buffer (4096 bytes):
+Apr 28 14:20:01.234: %LINEPROTO-5-UPDOWN: Line protocol on Interface GigabitEthernet1/0/3, changed state to up
+Apr 28 14:19:58.123: %LINK-3-UPDOWN: Interface GigabitEthernet1/0/3, changed state to up
+Apr 28 14:15:02.456: %SEC_LOGIN-5-LOGIN_SUCCESS: Login Success [user: admin] [Source: 10.10.30.100] [localport: 22] at 14:15:02 UTC Mon Apr 28 2026
+Apr 28 13:45:00.789: %SYS-5-CONFIG_I: Configured from console by admin on vty0 (10.10.30.100)
+Apr 28 12:00:01.001: %SNMP-5-LINK_DOWN: Link Down: Interface GigabitEthernet1/0/7

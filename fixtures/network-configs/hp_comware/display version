@@ -1,0 +1,31 @@
+HP Comware Platform Software
+Software Version: Release 2428P02
+Copyright (c) 2010-2023 Hewlett Packard Enterprise Development LP
+HPE 5130-48G-PoE+ EI Switch Hardware Version: 106
+Boot ROM Version: 127
+CPLD Version: 002
+PCB A Version: 003
+PCB B Version: 003
+Software Image: flash:/5130ei-cmw710-boot-r2428p02.bin
+Software Image: flash:/5130ei-cmw710-system-r2428p02.bin
+
+HP-ACCESS-01 uptime is 127 days, 14 hours, 32 minutes, 6 seconds
+
+HP-ACCESS-01 start time is 2025-Dec-22 08:15:03
+
+Slot 1:
+Board Type        : HPE 5130-48G-PoE+ EI
+Hardware Version  : 106
+CPLD Version      : 002
+PCB A Version     : 003
+PCB B Version     : 003
+Boot ROM Version  : 127
+Software Version  : Release 2428P02
+Slot 2:
+Board Type        : HPE 5130-48G-PoE+ EI
+Hardware Version  : 106
+CPLD Version      : 002
+PCB A Version     : 003
+PCB B Version     : 003
+Boot ROM Version  : 127
+Software Version  : Release 2428P02

@@ -1,0 +1,6 @@
+Connection Version Mode Encryption  Hmac         State                 Username
+0          2.0     IN   aes128-ctr  hmac-sha2-256 Session started       admin
+0          2.0     OUT  aes128-ctr  hmac-sha2-256 Session started       admin
+1          2.0     IN   aes256-ctr  hmac-sha1    Session started       monitor
+1          2.0     OUT  aes256-ctr  hmac-sha1    Session started       monitor
+%No SSHv1 server connections running.

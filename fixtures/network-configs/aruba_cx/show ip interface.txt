@@ -1,0 +1,52 @@
+Interface IP Address Subnet Mask VRF Status Method
+----------- ---------------- ------------- ------- --------- --------
+1/1/1       10.0.1.2    255.255.255.252 default Up    manual
+1/1/2       10.0.1.6    255.255.255.252 default Up    manual
+1/1/4       10.0.255.1  255.255.255.252 default Up    manual
+loopback 0  10.10.10.5  255.255.255.255 default Up    manual
+mgmt        10.10.10.5  255.255.255.0   mgmt    Up    manual
+
+Interface 1/1/1
+  IP Address: 10.0.1.2/30
+  VRF: default
+  Status: Up
+  Routing: Enabled
+  Proxy ARP: Disabled
+  Local Proxy ARP: Disabled
+  IP Forwarding: Enabled
+  ICMP Redirects: Disabled
+  ICMP Unreachables: Disabled
+  OSPF: Enabled (Area 0.0.0.0, Network Type: Point-to-Point)
+  VRRP: Configured (VRID 10, Priority 110, State: Master)
+
+Interface 1/1/2
+  IP Address: 10.0.1.6/30
+  VRF: default
+  Status: Up
+  Routing: Enabled
+  Proxy ARP: Disabled
+  IP Forwarding: Enabled
+  ICMP Redirects: Disabled
+  ICMP Unreachables: Disabled
+  OSPF: Enabled (Area 0.0.0.0, Network Type: Point-to-Point)
+
+Interface 1/1/4
+  IP Address: 10.0.255.1/30
+  VRF: default
+  Status: Up
+  Routing: Enabled
+  Proxy ARP: Disabled
+  IP Forwarding: Enabled
+
+Interface loopback 0
+  IP Address: 10.10.10.5/32
+  VRF: default
+  Status: Up
+  Routing: Enabled
+  OSPF: Enabled (Area 0.0.0.0, Network Type: Loopback)
+
+Interface mgmt
+  IP Address: 10.10.10.5/24
+  VRF: mgmt
+  Status: Up
+  Default Gateway: 10.10.10.1

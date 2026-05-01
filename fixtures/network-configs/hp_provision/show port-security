@@ -1,0 +1,32 @@
+
+Status and Counters - Port Security
+
+  Port  | Security  | Learn Mode  | MAC Limit | Action        | Intrusion
+  ------+-----------+-------------+-----------+---------------+----------
+  1     | Enabled   | Continuous  | 2         | Send Alarm    | No
+  2     | Enabled   | Continuous  | 2         | Send Alarm    | No
+  3     | Enabled   | Continuous  | 2         | Send Alarm    | No
+  4     | Enabled   | Continuous  | 2         | Send Alarm    | No
+  5     | Enabled   | Continuous  | 2         | Send Alarm    | No
+  6     | Enabled   | Continuous  | 2         | Send Alarm    | No
+  7     | Enabled   | Continuous  | 2         | Send Alarm    | No
+  8     | Enabled   | Continuous  | 2         | Send Alarm    | No
+  9     | Enabled   | Continuous  | 2         | Send Alarm    | No
+  10    | Enabled   | Continuous  | 2         | Send Alarm    | No
+  11    | Enabled   | Continuous  | 2         | Send Alarm    | No
+  12    | Enabled   | Continuous  | 2         | Send Alarm    | No
+  13    | Enabled   | Continuous  | 2         | Send Alarm    | No
+  14    | Enabled   | Continuous  | 2         | Send Alarm    | No
+  15    | Enabled   | Continuous  | 2         | Send Alarm    | No
+  16    | Enabled   | Continuous  | 2         | Send Alarm    | No
+  17    | Enabled   | Continuous  | 2         | Send Alarm    | No
+  18    | Enabled   | Continuous  | 2         | Send Alarm    | No
+  19    | Enabled   | Continuous  | 2         | Send Alarm    | No
+  20    | Enabled   | Continuous  | 2         | Send Alarm    | No
+  21    | Enabled   | Continuous  | 2         | Send Alarm    | No
+  22    | Enabled   | Continuous  | 2         | Send Alarm    | No
+  23    | Enabled   | Continuous  | 2         | Send Alarm    | No
+  24    | Enabled   | Continuous  | 2         | Send Alarm    | No
+  25-48 | Disabled  | -           | -         | -             | -
+  Trk1  | Disabled  | -           | -         | -             | -
+  Trk2  | Disabled  | -           | -         | -             | -

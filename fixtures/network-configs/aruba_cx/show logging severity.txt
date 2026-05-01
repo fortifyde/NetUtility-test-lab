@@ -1,0 +1,19 @@
+Logging Severity Configuration
+------------------------------
+Console Logging: Disabled
+Buffer Logging: Enabled (Severity: warning)
+Logging Facility: local6
+
+Severity Levels:
+  Emergency (0): Enabled
+  Alert (1): Enabled
+  Critical (2): Enabled
+  Error (3): Enabled
+  Warning (4): Enabled
+  Notice (5): Disabled
+  Informational (6): Disabled
+  Debug (7): Disabled
+
+Remote Syslog Severity:
+  Server 10.10.10.100: warning
+  Server 10.10.10.101: warning

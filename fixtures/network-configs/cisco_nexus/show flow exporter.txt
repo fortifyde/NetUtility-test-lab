@@ -1,0 +1,14 @@
+Flow Exporter: FE_NETFLOW
+  Description:              --
+  Destination:              10.10.10.200
+  VRF:                      default (Interface Vlan10)
+  Source Interface:         Vlan10
+  Transport:                UDP 2055
+  Export Version:           9
+  Template data timeout:    1800 seconds
+  Exporter counters:
+    Packets sent:           458923
+    Bytes sent:             28923456
+    Flow records sent:      1289456
+    Templates sent:         24
+    Option templates sent:  12

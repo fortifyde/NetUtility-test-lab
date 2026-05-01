@@ -1,0 +1,8 @@
+DHCP Snooping Trusted Interfaces
+--------------------------------
+Interface  Status    Trust Reason
+---------  --------  --------------------------
+1/1/1      Up        Trusted (uplink)
+1/1/2      Up        Trusted (uplink)
+
+Total trusted interfaces: 2

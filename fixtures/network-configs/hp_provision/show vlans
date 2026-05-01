@@ -1,0 +1,28 @@
+
+Status and Counters - VLAN Information
+
+  VLAN ID  | VLAN Name        | Status    | Jumbo  | Voice
+  ---------+------------------+----------+--------+------
+  1        | DEFAULT_VLAN     | Port-based| No     | No
+  10       | MGMT_VLAN        | Port-based| No     | No
+  20       | DATA_VLAN        | Port-based| No     | No
+  30       | VOICE_VLAN       | Port-based| No     | Yes
+  99       | SECURITY_MGMT    | Port-based| No     | No
+
+VLAN 1 - DEFAULT_VLAN
+  Port Information: None
+
+VLAN 10 - MGMT_VLAN
+  Untagged Ports: 47-48
+  IP Address: 10.10.10.4/24
+
+VLAN 20 - DATA_VLAN
+  Untagged Ports: 1-24
+  Tagged Ports: Trk1, Trk2
+
+VLAN 30 - VOICE_VLAN
+  Tagged Ports: 1-24, Trk1, Trk2
+
+VLAN 99 - SECURITY_MGMT
+  Tagged Ports: Trk1, Trk2
+  IP Address: 10.10.99.4/24

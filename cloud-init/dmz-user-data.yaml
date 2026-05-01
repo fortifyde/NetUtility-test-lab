@@ -1,0 +1,337 @@
+#cloud-config
+hostname: dmz-web
+manage_etc_hosts: true
+
+bootcmd:
+  - |
+    TRUNK=$(ip -br link show | grep 52:54:00:0d:01:01 | awk '{print $1}')
+    if [ -n "$TRUNK" ]; then
+      ip link set $TRUNK up
+      ip addr add ${dmz_ip}/24 dev $TRUNK
+    fi
+
+users:
+  - name: debian
+    sudo: ALL=(ALL) NOPASSWD:ALL
+    shell: /bin/bash
+    ssh_authorized_keys:
+      - ${ssh_public_key}
+
+packages:
+  - nginx
+  - openssl
+  - curl
+
+write_files:
+  # --- Nginx: port 80 — HTTP with directory listing, server-info/status ---
+  - path: /etc/nginx/sites-available/http-default.conf
+    content: |
+      server {
+          listen 80 default_server;
+          listen [::]:80 default_server;
+          server_name _;
+
+          root /var/www/html;
+          index index.html;
+
+          # Directory listing enabled everywhere
+          autoindex on;
+          autoindex_exact_size off;
+          autoindex_localtime on;
+
+          # Expose server-info and server-status (no access restrictions)
+          location /server-info {
+              stub_status;
+          }
+          location /server-status {
+              stub_status;
+          }
+
+          location / {
+              try_files $uri $uri/ =404;
+          }
+      }
+
+  # --- Nginx: port 443 — HTTPS with valid self-signed cert ---
+  - path: /etc/nginx/sites-available/https-valid.conf
+    content: |
+      server {
+          listen 443 ssl default_server;
+          listen [::]:443 ssl default_server;
+          server_name _;
+
+          ssl_certificate     /etc/nginx/ssl/valid.crt;
+          ssl_certificate_key /etc/nginx/ssl/valid.key;
+          ssl_protocols       TLSv1.2 TLSv1.3;
+
+          root /var/www/html;
+          index index.html;
+
+          autoindex on;
+
+          location / {
+              try_files $uri $uri/ =404;
+          }
+      }
+
+  # --- Nginx: port 8443 — HTTPS with expired certificate ---
+  - path: /etc/nginx/sites-available/https-expired.conf
+    content: |
+      server {
+          listen 8443 ssl;
+          listen [::]:8443 ssl;
+          server_name _;
+
+          ssl_certificate     /etc/nginx/ssl/expired.crt;
+          ssl_certificate_key /etc/nginx/ssl/expired.key;
+          ssl_protocols       TLSv1.2 TLSv1.3;
+
+          root /var/www/html;
+          index index.html;
+
+          autoindex on;
+
+          location / {
+              try_files $uri $uri/ =404;
+          }
+      }
+
+  # --- Nginx: port 8080 — HTTP with intentionally vulnerable headers ---
+  - path: /etc/nginx/sites-available/http-vuln-headers.conf
+    content: |
+      server {
+          listen 8080;
+          listen [::]:8080;
+          server_name _;
+
+          root /var/www/html;
+          index index.html;
+
+          autoindex on;
+
+          # Intentionally NO security headers:
+          # Missing: X-Frame-Options, X-Content-Type-Options, Strict-Transport-Security
+          # Missing: Content-Security-Policy, X-XSS-Protection, Referrer-Policy
+          # Expose server version
+          server_tokens on;
+
+          add_header X-Powered-By "VulnerableServer/1.0" always;
+
+          location / {
+              try_files $uri $uri/ =404;
+          }
+      }
+
+  # --- Web content: main index ---
+  - path: /var/www/html/index.html
+    content: |
+      <!DOCTYPE html>
+      <html>
+      <head><title>DMZ Web Server</title></head>
+      <body>
+      <h1>Welcome to the DMZ Web Server</h1>
+      <p>Internal company web portal - ${domain}</p>
+      <ul>
+          <li><a href="/admin/">Admin Panel</a></li>
+          <li><a href="/uploads/">File Uploads</a></li>
+          <li><a href="/phpmyadmin/">Database Manager</a></li>
+          <li><a href="/docs/">Documents</a></li>
+      </ul>
+      </body>
+      </html>
+
+  # --- Web content: fake admin login ---
+  - path: /var/www/html/admin/index.html
+    content: |
+      <!DOCTYPE html>
+      <html>
+      <head><title>Admin Login</title></head>
+      <body>
+      <h1>Administrator Login</h1>
+      <form method="POST" action="login.php">
+          <label>Username:</label>
+          <input type="text" name="username"><br><br>
+          <label>Password:</label>
+          <input type="password" name="password"><br><br>
+          <input type="submit" value="Login">
+      </form>
+      <!-- TODO: remove default credentials admin:admin123 -->
+      </body>
+      </html>
+
+  # --- Web content: uploads directory with test files ---
+  - path: /var/www/html/uploads/index.html
+    content: |
+      <!DOCTYPE html>
+      <html>
+      <head><title>File Uploads</title></head>
+      <body>
+      <h1>File Upload Area</h1>
+      <form method="POST" enctype="multipart/form-data" action="upload.php">
+          <input type="file" name="file">
+          <input type="submit" value="Upload">
+      </form>
+      <p>Uploaded files:</p>
+      <ul>
+          <li><a href="report.pdf">report.pdf</a></li>
+          <li><a href="notes.txt">notes.txt</a></li>
+          <li><a href="config.json">config.json</a></li>
+      </ul>
+      </body>
+      </html>
+
+  - path: /var/www/html/uploads/report.pdf
+    content: "%PDF-1.4 test pdf content placeholder"
+
+  - path: /var/www/html/uploads/notes.txt
+    content: |
+      Internal network notes
+      ======================
+      DMZ subnet: 10.10.30.0/24
+      Gateway: 10.10.30.1
+      DNS: 10.10.10.1
+      SNMP community: public
+
+  - path: /var/www/html/uploads/config.json
+    content: |
+      {
+          "database": {
+              "host": "10.10.20.5",
+              "port": 3306,
+              "username": "dbadmin",
+              "password": "SuperSecret123!"
+          },
+          "api_key": "sk-1234567890abcdef",
+          "debug": true
+      }
+
+  # --- Web content: fake phpMyAdmin ---
+  - path: /var/www/html/phpmyadmin/index.html
+    content: |
+      <!DOCTYPE html>
+      <html>
+      <head><title>phpMyAdmin</title>
+      <style>
+          body { font-family: Arial, sans-serif; margin: 40px; }
+          .login-box { border: 1px solid #ccc; padding: 20px; max-width: 400px; }
+          input[type=text], input[type=password] { width: 100%; padding: 8px; margin: 8px 0; }
+          input[type=submit] { padding: 10px 20px; }
+      </style>
+      </head>
+      <body>
+      <h1>phpMyAdmin</h1>
+      <div class="login-box">
+          <form method="POST" action="index.php">
+              <label>Username:</label>
+              <input type="text" name="pma_username" value="root"><br>
+              <label>Password:</label>
+              <input type="password" name="pma_password"><br>
+              <label>Server:</label>
+              <input type="text" name="server" value="10.10.20.5"><br>
+              <input type="submit" value="Go">
+          </form>
+      </div>
+      </body>
+      </html>
+
+  # --- Web content: docs directory ---
+  - path: /var/www/html/docs/index.html
+    content: |
+      <!DOCTYPE html>
+      <html>
+      <head><title>Documents</title></head>
+      <body>
+      <h1>Internal Documents</h1>
+      <ul>
+          <li><a href="network-diagram.txt">network-diagram.txt</a></li>
+          <li><a href="credentials.txt">credentials.txt</a></li>
+      </ul>
+      </body>
+      </html>
+
+  - path: /var/www/html/docs/network-diagram.txt
+    content: |
+      Network Diagram - ${domain}
+      ============================
+      Management: 192.168.100.0/24 (NAT)
+      VLAN 10 - Corporate: 10.10.10.0/24
+      VLAN 20 - Server:    10.10.20.0/24
+      VLAN 30 - DMZ:       10.10.30.0/24
+
+  - path: /var/www/html/docs/credentials.txt
+    content: |
+      Default Credentials (DO NOT SHARE)
+      ===================================
+      Web admin:    admin / admin123
+      Database:     dbadmin / SuperSecret123!
+      SSH:          debian / debian
+      FTP:          ftpuser / ftppass123
+
+  # --- Netplan: persistent static IP on ens4 ---
+  - path: /etc/netplan/51-static.yaml
+    content: |
+      network:
+        version: 2
+        ethernets:
+          ens4:
+            dhcp4: false
+            addresses:
+              - ${dmz_ip}/24
+
+runcmd:
+  # Generate SSL certificates
+  - |
+    # Valid self-signed cert (CN=dmz.${domain}, 2048-bit RSA, SHA-256, 365 days)
+    openssl req -x509 -nodes -days 365 -newkey rsa:2048 \
+      -keyout /etc/nginx/ssl/valid.key \
+      -out /etc/nginx/ssl/valid.crt \
+      -subj "/CN=dmz.${domain}/O=Test Lab/C=US" \
+      -sha256
+
+  - |
+    # Expired self-signed cert (already expired)
+    openssl req -x509 -nodes -days 1 -newkey rsa:2048 \
+      -keyout /etc/nginx/ssl/expired.key \
+      -out /etc/nginx/ssl/expired.crt \
+      -subj "/CN=dmz.${domain}/O=Test Lab/C=US" \
+      -sha256
+
+  - |
+    # Weak cert (512-bit RSA, MD5 signing)
+    openssl req -x509 -nodes -days 365 -newkey rsa:512 \
+      -keyout /etc/nginx/ssl/weak.key \
+      -out /etc/nginx/ssl/weak.crt \
+      -subj "/CN=dmz.${domain}/O=Test Lab/C=US" \
+      -md5
+
+  - |
+    # Mismatched cert (CN=wrong.${domain})
+    openssl req -x509 -nodes -days 365 -newkey rsa:2048 \
+      -keyout /etc/nginx/ssl/mismatched.key \
+      -out /etc/nginx/ssl/mismatched.crt \
+      -subj "/CN=wrong.${domain}/O=Wrong Host/C=US" \
+      -sha256
+
+  # Remove default nginx site and enable custom configs
+  - rm -f /etc/nginx/sites-enabled/default
+  - ln -sf /etc/nginx/sites-available/http-default.conf /etc/nginx/sites-enabled/
+  - ln -sf /etc/nginx/sites-available/https-valid.conf /etc/nginx/sites-enabled/
+  - ln -sf /etc/nginx/sites-available/https-expired.conf /etc/nginx/sites-enabled/
+  - ln -sf /etc/nginx/sites-available/http-vuln-headers.conf /etc/nginx/sites-enabled/
+
+  # Fix ownership of web content
+  - chown -R www-data:www-data /var/www/html
+  - chmod -R 755 /var/www/html
+
+  # Test nginx config and restart
+  - nginx -t && systemctl restart nginx
+  - systemctl enable nginx
+
+  # --- Ensure static IP on trunk (fallback if bootcmd failed) ---
+  - |
+    TRUNK=$(ip -br link show | grep 52:54:00:0d:01:01 | awk '{print $1}')
+    if [ -n "$TRUNK" ]; then
+      ip link set $TRUNK up
+      ip addr add ${dmz_ip}/24 dev $TRUNK 2>/dev/null || true
+    fi
+  - netplan apply

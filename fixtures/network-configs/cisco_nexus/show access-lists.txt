@@ -1,0 +1,9 @@
+IP access list ACL_MANAGEMENT
+        10 permit ip 10.10.10.0/24 any
+        20 permit ip 10.10.200.0/24 any
+        30 deny ip any any log
+
+IP access list ACL_SNMP
+        10 permit udp 10.10.10.50/32 any eq 161
+        20 permit udp 10.10.10.51/32 any eq 161
+        30 deny ip any any log

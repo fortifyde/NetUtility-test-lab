@@ -1,0 +1,14 @@
+SNTP Status
+
+SNTP Mode: Unicast
+Last Update: Mon Apr 28 10:30:00 2026
+Stratum   : 3
+Reference : 10.10.10.200
+Offset    : +0.0023 seconds
+Jitter    : 0.0015 seconds
+Poll      : 64 seconds
+
+Server          Stratum  Last Response  Offset
+-------------   -------  -------------  ------
+10.10.10.200    3        120 sec ago    +0.0023
+10.10.10.201    3        118 sec ago    +0.0031

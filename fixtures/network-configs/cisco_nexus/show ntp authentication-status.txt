@@ -1,0 +1,4 @@
+NTP authentication is enabled.
+NTP authentication keys configured: 1
+NTP trusted keys: 1
+NTP authentication status: OK (authenticated)

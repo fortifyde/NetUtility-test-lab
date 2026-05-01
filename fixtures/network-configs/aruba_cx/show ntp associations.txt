@@ -1,0 +1,12 @@
+NTP Associations
+----------------
+Remote           Ref ID          St  T  When  Poll  Reach  Delay     Offset    Jitter
+---------------  --------------  --  -  ----  ----  -----  --------  ---------  -------
+*10.10.10.1      .GPS.            1  u  32    64    377    0.001234  +0.000234  0.000456
++10.10.10.2      .GPS.            1  u  45    64    377    0.002345  +0.001234  0.000567
+
+Authentication Keys:
+  Key 1: Trusted, MD5
+
+Status: Synchronized to 10.10.10.1
+Stratum: 3

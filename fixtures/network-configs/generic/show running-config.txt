@@ -1,0 +1,54 @@
+# NetOS Running Configuration
+# Device: net-gw-01
+# Generated: 2024-11-15 09:23:01 UTC
+#
+hostname net-gw-01
+domain example.net
+
+# Interfaces
+interface eth0
+  description Uplink to ISP
+  ip address 203.0.113.2/30
+  ip gateway 203.0.113.1
+  mtu 1500
+  enabled yes
+
+interface eth1
+  description Internal LAN
+  ip address 10.10.0.1/24
+  mtu 1500
+  enabled yes
+
+interface eth2
+  description DMZ
+  ip address 172.16.50.1/24
+  mtu 1500
+  enabled yes
+
+interface lo
+  ip address 127.0.0.1/8
+  enabled yes
+
+# DNS
+dns server 10.10.0.10
+dns server 10.10.0.11
+dns domain example.net
+
+# Routing
+route 0.0.0.0/0 via 203.0.113.1 dev eth0
+route 10.0.0.0/8 via 10.10.0.254 dev eth1
+route 172.16.0.0/16 via 172.16.50.254 dev eth2
+
+# Services
+service ssh enabled
+service ssh port 22
+service ntp enabled
+service ntp server time.example.net
+service syslog enabled
+service syslog server 10.10.0.5
+
+# Access
+user admin group admin ssh-key "ssh-rsa AAAA..."
+user monitor group readonly password-hash "$6$..."
+
+# End of configuration

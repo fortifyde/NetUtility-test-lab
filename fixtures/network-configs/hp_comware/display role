@@ -1,0 +1,25 @@
+Role: network-admin
+  Description: System-defined role. Can access all features and resources.
+  Permissions: permit (read, write, execute, debug) *
+
+Role: network-operator
+  Description: System-defined role. Can access all read features and resources.
+  Permissions: permit (read, execute) *
+
+Role: level-0
+  Description: System-defined role. Predefined VLAN access.
+  Permissions: permit (read) *
+
+Role: level-1
+  Description: Level 1 role.
+  Permissions: permit (read) *
+
+Role: level-2
+  Description: Level 2 role.
+  Permissions: permit (read, write) *
+
+Role: level-3
+  Description: Level 3 role.
+  Permissions: permit (read, write, execute) *
+
+Total roles: 6

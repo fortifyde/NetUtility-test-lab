@@ -1,0 +1,11 @@
+idx   sess   user@line      Log message
+ 1     1     admin@vty0     !configure terminal
+ 2     1     admin@vty0      hostname SW-ACCESS-01
+ 3     1     admin@vty0      ip ssh version 2
+ 4     2     admin@vty0     !configure terminal
+ 5     2     admin@vty0      interface Gi1/0/3
+ 6     2     admin@vty0       switchport access vlan 10
+ 7     2     admin@vty0       switchport port-security
+ 8     3     admin@vty0     !configure terminal
+ 9     3     admin@vty0      snmp-server community public RO
+10     3     admin@vty0      snmp-server community pr1v4t3 RW

@@ -1,0 +1,19 @@
+Mod  Ports  Module Type                    Model              Status
+---  -----  ----------------------------   ------------------  ----------
+1    54     48x10GE SFP+ 6x40GE QSFP       N9K-C9396PX        ok
+2    0      Supervisor                      N9K-C9396PX        active *
+
+Mod  Sw              Hw      Slot
+---  --------------  ------  --------
+1    10.2(3)         2.0     LC
+2    10.2(3)         2.0     SUP
+
+Mod  MAC-Address(es)                         Serial-Num
+---  --------------------------------------  ----------
+1    0026.9800.0000 to 0026.9800.001f        SAL1929K5QP
+2    0026.9800.0020 to 0026.9800.0023        SAL1929K5QP
+
+Mod  Online Diag Status
+---  -------------------
+1    Pass
+2    Pass

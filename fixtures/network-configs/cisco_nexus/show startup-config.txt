@@ -1,0 +1,34 @@
+
+!Command: show startup-config
+!Startup configuration saved at: Sun Mar 24 14:22:31 2026
+
+version 10.2(3)
+
+hostname N9K-CORE-01
+vdc N9K-CORE-01 id 1
+  limit-resource vlan minimum 16 maximum 4094
+  limit-resource vrf minimum 2 maximum 4096
+  limit-resource port-channel minimum 0 maximum 511
+  limit-resource u4route-mem minimum 248 maximum 248
+  limit-resource u6route-mem minimum 96 maximum 96
+  limit-resource m4route-mem minimum 58 maximum 58
+  limit-resource m6route-mem minimum 8 maximum 8
+
+feature telnet
+feature ospf
+feature bgp
+feature interface-vlan
+feature vn-segment-vlan-based
+feature dhcp
+feature vpc
+feature lacp
+feature bfd
+feature eigrp
+feature pim
+feature igmp
+feature nv overlay
+feature netflow
+
+[... Startup configuration matches running-config ...]
+
+end

@@ -1,0 +1,9 @@
+Access Control Lists Configuration
+
+No IPv4 Access Control Lists configured.
+
+IPv6 Access Control Lists: None configured.
+
+MAC Access Control Lists: None configured.
+
+Extended Access Control Lists: None configured.

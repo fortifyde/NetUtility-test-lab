@@ -1,0 +1,9 @@
+Pool "DATA-POOL" :
+Utilization mark (high/low)    : 100 / 0
+Subnet size (first/next)       : 0 / 0 
+Total addresses                : 254
+Leased addresses               : 45
+Pending event                  : none
+  Subnet          Size    Current   Pool     Client     Client
+                  Count   Index    Range     Count      Range  
+  10.10.10.0      254      0        10.10.10.1   -   10.10.10.254   45     10.10.10.1 - 10.10.10.254

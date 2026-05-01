@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<unattend xmlns="urn:schemas-microsoft-com:unattend"
+          xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State">
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       Windows PE phase — load VirtIO drivers so setup can see disks
+       ═══════════════════════════════════════════════════════════════════ -->
+  <settings pass="windowsPE">
+    <component name="Microsoft-Windows-International-Core-WinPE"
+               language="neutral"
+               processorArchitecture="amd64"
+               publicKeyToken="31bf3856ad364e35"
+               versionScope="nonSxS">
+      <SetupUILanguage>
+        <UILanguage>en-US</UILanguage>
+      </SetupUILanguage>
+      <InputLocale>en-US</InputLocale>
+      <SystemLocale>en-US</SystemLocale>
+      <UILanguage>en-US</UILanguage>
+      <UserLocale>en-US</UserLocale>
+    </component>
+
+    <component name="Microsoft-Windows-Setup"
+               language="neutral"
+               processorArchitecture="amd64"
+               publicKeyToken="31bf3856ad364e35"
+               versionScope="nonSxS"
+               xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State">
+      <DiskConfiguration>
+        <Disk wcm:action="add">
+          <DiskID>0</DiskID>
+          <WillWipeDisk>true</WillWipeDisk>
+          <CreatePartitions>
+            <CreatePartition wcm:action="add">
+              <Order>1</Order>
+              <Size>500</Size>
+              <Type>EFI</Type>
+            </CreatePartition>
+            <CreatePartition wcm:action="add">
+              <Order>2</Order>
+              <Size>128</Size>
+              <Type>MSR</Type>
+            </CreatePartition>
+            <CreatePartition wcm:action="add">
+              <Order>3</Order>
+              <Extend>true</Extend>
+              <Type>Primary</Type>
+            </CreatePartition>
+          </CreatePartitions>
+          <ModifyPartitions>
+            <ModifyPartition wcm:action="add">
+              <Order>1</Order>
+              <PartitionID>1</PartitionID>
+              <Label>System</Label>
+              <Format>FAT32</Format>
+            </ModifyPartition>
+            <ModifyPartition wcm:action="add">
+              <Order>2</Order>
+              <PartitionID>2</PartitionID>
+            </ModifyPartition>
+            <ModifyPartition wcm:action="add">
+              <Order>3</Order>
+              <PartitionID>3</PartitionID>
+              <Label>Windows</Label>
+              <Letter>C</Letter>
+              <Format>NTFS</Format>
+            </ModifyPartition>
+          </ModifyPartitions>
+        </Disk>
+      </DiskConfiguration>
+
+      <ImageInstall>
+        <OSImage>
+          <InstallFrom>
+            <MetaData wcm:action="add">
+              <Key>/IMAGE/INDEX</Key>
+              <Value>2</Value>
+            </MetaData>
+          </InstallFrom>
+          <InstallTo>
+            <DiskID>0</DiskID>
+            <PartitionID>3</PartitionID>
+          </InstallTo>
+        </OSImage>
+      </ImageInstall>
+
+      <UserData>
+        <AcceptEula>true</AcceptEula>
+        <FullName>Lab Admin</FullName>
+        <Organization>NetUtility Test Lab</Organization>
+      </UserData>
+
+    </component>
+
+    <!-- VirtIO drivers from F:\ (virtio-win ISO). Point to specific 2k22\amd64
+         subdirs to avoid scanning incompatible drivers on the ISO root. -->
+    <component name="Microsoft-Windows-PnpCustomizationsWinPE"
+               language="neutral"
+               processorArchitecture="amd64"
+               publicKeyToken="31bf3856ad364e35"
+               versionScope="nonSxS"
+               xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State">
+      <DriverPaths>
+        <PathAndCredentials wcm:action="add" wcm:keyValue="1">
+          <Path>F:\viostor\2k22\amd64</Path>
+        </PathAndCredentials>
+        <PathAndCredentials wcm:action="add" wcm:keyValue="2">
+          <Path>F:\NetKVM\2k22\amd64</Path>
+        </PathAndCredentials>
+        <PathAndCredentials wcm:action="add" wcm:keyValue="3">
+          <Path>F:\vioserial\2k22\amd64</Path>
+        </PathAndCredentials>
+        <PathAndCredentials wcm:action="add" wcm:keyValue="4">
+          <Path>F:\Balloon\2k22\amd64</Path>
+        </PathAndCredentials>
+        <PathAndCredentials wcm:action="add" wcm:keyValue="5">
+          <Path>F:\pvpanic\2k22\amd64</Path>
+        </PathAndCredentials>
+      </DriverPaths>
+    </component>
+  </settings>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       OfflineServicing — install VirtIO drivers into the image
+       ═══════════════════════════════════════════════════════════════════ -->
+  <settings pass="offlineServicing">
+    <component name="Microsoft-Windows-LUA-Server"
+               language="neutral"
+               processorArchitecture="amd64"
+               publicKeyToken="31bf3856ad364e35"
+               versionScope="nonSxS">
+      <EnableLUA>false</EnableLUA>
+    </component>
+  </settings>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       Specialize — computer name, timezone, static IP
+       ═══════════════════════════════════════════════════════════════════ -->
+  <settings pass="specialize">
+    <component name="Microsoft-Windows-Shell-Setup"
+               language="neutral"
+               processorArchitecture="amd64"
+               publicKeyToken="31bf3856ad364e35"
+               versionScope="nonSxS">
+      <ComputerName>WINTARGET</ComputerName>
+      <TimeZone>UTC</TimeZone>
+    </component>
+  </settings>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       oobeSystem — admin password, WinRM, FirstLogonCommands
+       ═══════════════════════════════════════════════════════════════════ -->
+  <settings pass="oobeSystem">
+    <component name="Microsoft-Windows-Shell-Setup"
+               language="neutral"
+               processorArchitecture="amd64"
+               publicKeyToken="31bf3856ad364e35"
+               versionScope="nonSxS">
+      <AutoLogon>
+        <Password>
+          <Value>P@ssw0rdLab!</Value>
+          <PlainText>true</PlainText>
+        </Password>
+        <Enabled>true</Enabled>
+        <Username>Administrator</Username>
+      </AutoLogon>
+      <UserAccounts>
+        <AdministratorPassword>
+          <Value>P@ssw0rdLab!</Value>
+          <PlainText>true</PlainText>
+        </AdministratorPassword>
+      </UserAccounts>
+      <OOBE>
+        <HideEULAPage>true</HideEULAPage>
+        <HideLocalAccountScreen>true</HideLocalAccountScreen>
+        <HideOEMRegistrationScreen>true</HideOEMRegistrationScreen>
+        <HideOnlineAccountScreens>true</HideOnlineAccountScreens>
+        <HideWirelessSetupInOOBE>true</HideWirelessSetupInOOBE>
+      </OOBE>
+      <FirstLogonCommands>
+        <!-- Enable WinRM for remote management -->
+        <SynchronousCommand wcm:action="add">
+          <Order>1</Order>
+          <CommandLine>cmd /c winrm quickconfig -quiet</CommandLine>
+          <Description>Enable WinRM</Description>
+        </SynchronousCommand>
+        <!-- Run the post-install setup script -->
+        <SynchronousCommand wcm:action="add">
+          <Order>2</Order>
+          <CommandLine>cmd /c "powershell -ExecutionPolicy Bypass -File E:\setup-services.ps1"</CommandLine>
+          <Description>Run post-install service setup</Description>
+        </SynchronousCommand>
+      </FirstLogonCommands>
+    </component>
+
+    <component name="Microsoft-Windows-International-Core"
+               language="neutral"
+               processorArchitecture="amd64"
+               publicKeyToken="31bf3856ad364e35"
+               versionScope="nonSxS">
+      <InputLocale>en-US</InputLocale>
+      <SystemLocale>en-US</SystemLocale>
+      <UILanguage>en-US</UILanguage>
+      <UserLocale>en-US</UserLocale>
+    </component>
+  </settings>
+
+</unattend>

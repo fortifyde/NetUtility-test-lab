@@ -1,0 +1,13 @@
+
+sFlow Receiver Information
+
+  Receiver 1:
+    Address         : 10.10.10.60
+    Port            : 6343
+    Protocol        : UDP
+    Status          : Connected
+    Packets Sent    : 142,531
+    Packets Dropped : 0
+    Max Datagram    : 1400 bytes
+
+  No other receivers configured.

@@ -1,0 +1,33 @@
+Domain                           State
+default                          Active
+netops.local                     Active
+
+Total 2 domain(s)
+
+Authentication scheme:
+  Scheme Name           : hwtacacs-scheme
+  Primary Auth Server   : 10.10.10.11
+  Auth Status           : Active
+  Secondary Auth Server : --
+
+  Scheme Name           : local
+  Auth Method           : Local
+  Auth Status           : Active
+
+Authorization scheme:
+  Scheme Name           : hwtacacs-scheme
+  Primary Auth Server   : 10.10.10.11
+  Auth Status           : Active
+
+  Scheme Name           : local
+  Auth Method           : Local
+  Auth Status           : Active
+
+Accounting scheme:
+  Scheme Name           : hwtacacs-scheme
+  Primary Acct Server   : 10.10.10.11
+  Acct Status           : Active
+
+  Scheme Name           : local
+  Acct Method           : Local
+  Acct Status           : Active

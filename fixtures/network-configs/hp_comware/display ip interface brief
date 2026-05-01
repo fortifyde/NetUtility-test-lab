@@ -1,0 +1,8 @@
+Interface            IP Address      Subnet Mask     Physical Status
+InLoop0              127.0.0.1       255.0.0.0       UP      UP
+Loop0                10.10.10.3      255.255.255.255 UP      UP
+NULL0                --              --              UP      UP
+Vlan10               10.10.10.3      255.255.255.0   UP      UP
+Vlan20               10.10.20.1      255.255.255.0   UP      UP
+Vlan30               10.10.30.1      255.255.255.0   UP      UP
+Vlan100              10.10.100.1     255.255.255.0   UP      UP

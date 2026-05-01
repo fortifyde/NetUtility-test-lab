@@ -1,0 +1,18 @@
+
+VRRP Configuration
+
+  VRID  VLAN  Interface    IP Address      Priority  State      Preempt
+  ----  ----  ----------   --------------- --------- ---------- --------
+  10    10    MGMT_VLAN    10.10.10.4      110       Owner      Yes
+
+  VRRP VRID 10:
+    Virtual IP Address : 10.10.10.4
+    VLAN Interface     : VLAN 10 (MGMT_VLAN)
+    Priority           : 110
+    Advertisement Int  : 1 second
+    Preempt Mode       : Yes
+    Current State      : Owner (Master)
+    Master IP Address  : 10.10.10.4
+    Authentication     : None
+
+Total VRRP instances: 1

@@ -1,0 +1,17 @@
+DHCP snooping packet statistics:
+  DHCP packets received: 15420
+    DHCPDISCOVER: 5230
+    DHCPREQUEST: 5180
+    DHCPDECLINE: 2
+    DHCPRELEASE: 5008
+    DHCPINFORM: 0
+  DHCP packets sent:
+    DHCPOFFER: 0 (relayed to server)
+    DHCPACK: 0 (relayed to client)
+    DHCPNAK: 0
+  DHCP packets dropped:
+    Untrusted port drops: 15
+    Invalid VLAN drops: 0
+    Binding mismatch drops: 3
+    Rate limit drops: 0
+    Parse failure drops: 0

@@ -1,0 +1,196 @@
+{
+  "description": "Expected output schema for gather_network_configs.sh — per-device network config gathering via SSH",
+  "type": "object",
+  "required": ["session_dir", "devices"],
+  "properties": {
+    "session_dir": {
+      "type": "string",
+      "pattern": "^gather_\\d{8}_\\d{6}$",
+      "description": "Timestamped session directory under configs/"
+    },
+    "devices": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["device_dir", "version", "running_config", "metadata"],
+        "properties": {
+          "device_dir": {
+            "type": "string",
+            "pattern": "^device_.+$",
+            "description": "Per-device subdirectory (device_{IP})"
+          },
+          "version": {
+            "type": "object",
+            "required": ["filename"],
+            "properties": {
+              "filename": {
+                "type": "string",
+                "const": "version.txt"
+              },
+              "content": {
+                "type": "string",
+                "description": "Device version/show version output, cleaned of ANSI and pagination"
+              }
+            }
+          },
+          "running_config": {
+            "type": "object",
+            "required": ["filename"],
+            "properties": {
+              "filename": {
+                "type": "string",
+                "const": "running_config.txt"
+              },
+              "content": {
+                "type": "string",
+                "description": "Running configuration, cleaned of ANSI and pagination"
+              }
+            }
+          },
+          "running_config_all": {
+            "type": "object",
+            "properties": {
+              "filename": {
+                "type": "string",
+                "const": "running_config_all.txt"
+              },
+              "description": {
+                "type": "string",
+                "description": "Running config with all defaults (show running-config all)"
+              }
+            }
+          },
+          "startup_config": {
+            "type": "object",
+            "properties": {
+              "filename": {
+                "type": "string",
+                "const": "startup_config.txt"
+              },
+              "description": {
+                "type": "string",
+                "description": "Startup/saved configuration"
+              }
+            }
+          },
+          "compliance_commands": {
+            "type": "object",
+            "required": ["filename"],
+            "properties": {
+              "filename": {
+                "type": "string",
+                "const": "compliance_commands.txt"
+              },
+              "content": {
+                "type": "string",
+                "description": "Output from vendor-specific compliance .cmds file, cleaned with command echoes preserved as separators"
+              }
+            }
+          },
+          "metadata": {
+            "type": "object",
+            "required": ["filename"],
+            "properties": {
+              "filename": {
+                "type": "string",
+                "const": "metadata.txt"
+              },
+              "fields": {
+                "type": "object",
+                "properties": {
+                  "ip": {
+                    "type": "string",
+                    "description": "Device IP address"
+                  },
+                  "vendor_os": {
+                    "type": "string",
+                    "description": "Detected vendor/OS (e.g., cisco_ios, hp_comware, aruba_cx)"
+                  },
+                  "timestamp": {
+                    "type": "string",
+                    "description": "Gather timestamp"
+                  },
+                  "username": {
+                    "type": "string",
+                    "description": "SSH username used"
+                  },
+                  "hostname": {
+                    "type": "string",
+                    "description": "Device hostname"
+                  }
+                }
+              }
+            }
+          },
+          "connection_log": {
+            "type": "object",
+            "properties": {
+              "filename": {
+                "type": "string",
+                "const": "connection.log"
+              },
+              "entries": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "timestamp": {
+                      "type": "string"
+                    },
+                    "event": {
+                      "type": "string",
+                      "description": "Connection event (SUCCESS, FAILURE, etc.)"
+                    },
+                    "details": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "session_summary": {
+      "type": "object",
+      "properties": {
+        "filename": {
+          "type": "string",
+          "const": "session_summary.txt"
+        },
+        "description": {
+          "type": "string",
+          "description": "Session-level summary with device counts, success/failure status"
+        }
+      }
+    },
+    "failures": {
+      "type": "object",
+      "properties": {
+        "filename": {
+          "type": "string",
+          "const": "failures.txt"
+        },
+        "format": {
+          "type": "string",
+          "const": "csv",
+          "description": "CSV format: device_ip,error_code,description"
+        }
+      }
+    },
+    "retry_script": {
+      "type": "object",
+      "properties": {
+        "filename": {
+          "type": "string",
+          "const": "retry_failures.sh"
+        },
+        "description": {
+          "type": "string",
+          "description": "Auto-generated expect script to retry failed device connections"
+        }
+      }
+    }
+  }
+}

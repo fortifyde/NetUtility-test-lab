@@ -1,0 +1,19 @@
+Role: network-admin
+  Description: Predefined network admin role has access to all commands
+  Rule  Perm  Type        Scope         Entity
+  ----  ----  -----------  ------------  ----------------------------
+  1     permit read-write
+
+Role: network-operator
+  Description: Predefined network operator role has access to all read commands
+  Rule  Perm  Type        Scope         Entity
+  ----  ----  -----------  ------------  ----------------------------
+  1     permit read
+
+Role: priv-5
+  Description: Custom security admin role
+  Rule  Perm  Type        Scope         Entity
+  ----  ----  -----------  ------------  ----------------------------
+  1     permit read-write  feature      security
+  2     permit read        feature      snmp
+  3     permit read        feature      logging

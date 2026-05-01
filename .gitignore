@@ -1,0 +1,22 @@
+# Terraform state (may contain secrets)
+terraform.tfstate
+terraform.tfstate.*
+terraform.tfstate.*.backup
+
+# Terraform variable overrides (contains SSH keys, SNMP communities)
+terraform.tfvars
+
+# Terraform provider cache
+.terraform/
+.terraform.lock.hcl
+
+# VM images and disks (multi-GB, regeneratable)
+images/
+*.qcow2
+
+# UEFI NVRAM (regeneratable)
+netutil-lab-windows-vars.fd
+
+# Test results (regeneratable)
+results/
+testing-results.tar.gz

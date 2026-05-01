@@ -1,0 +1,19 @@
+
+Port Security per-port Address Table
+
+  Port  MAC Address       VLAN  Type
+  ----- ----------------- ----- --------
+  1     aabbcc-112233     20    Learned
+  2     aabbcc-112244     20    Learned
+  5     aabbcc-334455     20    Learned
+  6     aabbcc-556677     20    Learned
+  9     aabbcc-778899     20    Learned
+  10    aabbcc-99aabb     20    Learned
+  13    ccdd00-112233     20    Learned
+  14    ccdd00-334455     20    Learned
+  17    ccdd00-556677     20    Learned
+  18    ccdd00-778899     20    Learned
+  21    ccdd00-99aabb     20    Learned
+  22    ccdd00-aabbcc     20    Learned
+
+Total secured addresses: 12

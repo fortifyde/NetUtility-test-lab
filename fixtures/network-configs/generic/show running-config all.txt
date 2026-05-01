@@ -1,0 +1,90 @@
+# NetOS Running Configuration (Full)
+# Device: net-gw-01
+# Generated: 2024-11-15 09:23:01 UTC
+#
+hostname net-gw-01
+domain example.net
+
+# Interfaces
+interface eth0
+  description Uplink to ISP
+  ip address 203.0.113.2/30
+  ip gateway 203.0.113.1
+  mtu 1500
+  enabled yes
+  link-speed auto
+  duplex auto
+  rx-queue-len 1000
+  tx-queue-len 1000
+
+interface eth1
+  description Internal LAN
+  ip address 10.10.0.1/24
+  mtu 1500
+  enabled yes
+  link-speed auto
+  duplex auto
+  rx-queue-len 1000
+  tx-queue-len 1000
+
+interface eth2
+  description DMZ
+  ip address 172.16.50.1/24
+  mtu 1500
+  enabled yes
+  link-speed auto
+  duplex auto
+  rx-queue-len 1000
+  tx-queue-len 1000
+
+interface lo
+  ip address 127.0.0.1/8
+  enabled yes
+
+# DNS
+dns server 10.10.0.10
+dns server 10.10.0.11
+dns domain example.net
+dns search example.net internal.example.net
+
+# Routing
+route 0.0.0.0/0 via 203.0.113.1 dev eth0
+route 10.0.0.0/8 via 10.10.0.254 dev eth1
+route 172.16.0.0/16 via 172.16.50.254 dev eth2
+
+# Firewall defaults
+firewall default-policy-input drop
+firewall default-policy-forward drop
+firewall default-policy-output accept
+firewall conntrack-tcp-timeout-established 86400
+firewall log-level info
+
+# Services
+service ssh enabled
+service ssh port 22
+service ssh permit-root-login no
+service ssh max-auth-retries 3
+service ntp enabled
+service ntp server time.example.net
+service ntp server time2.example.net
+service syslog enabled
+service syslog server 10.10.0.5
+service syslog facility local0
+service snmp enabled
+service snmp community public ro
+service dhcp-server enabled
+service dhcp-server interface eth1
+service dhcp-server range 10.10.0.100 10.10.0.200
+
+# Access
+user admin group admin ssh-key "ssh-rsa AAAA..."
+user monitor group readonly password-hash "$6$..."
+
+# System
+timezone UTC
+logging level info
+kernel.modules-load none
+kernel.parameter net.ipv4.ip_forward=1
+kernel.parameter net.ipv6.conf.all.disable_ipv6=1
+
+# End of configuration

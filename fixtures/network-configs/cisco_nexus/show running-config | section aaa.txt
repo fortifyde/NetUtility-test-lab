@@ -1,0 +1,8 @@
+aaa new-model
+aaa authentication login default group tacacs+ local
+aaa authentication login console local
+aaa authentication enable default group tacacs+ enable
+aaa authorization commands default local
+aaa authorization exec default if-authenticated
+aaa accounting exec default start-stop group tacacs+
+aaa accounting commands default start-stop group tacacs+

@@ -1,0 +1,42 @@
+VLAN Status
+-----------
+
+VLAN  Name               Status  Reason            Type     Interfaces
+----  -----------------  ------  ----------------  -------  ----------
+1     DEFAULT_VLAN       Up      Up                Default  --
+10    MGMT               Up      Up                Static   1/1/1,1/1/2
+20    USERS              Up      Up                Static   1/1/5-1/1/24,1/1/27-1/1/44
+30    SERVERS            Up      Up                Static   1/1/25,1/1/26
+40    VOICE              Up      Up                Static   1/1/45,1/1/46
+99    NATIVE             Up      Up                Static   1/1/45,1/1/46,lag1
+100   GUEST              Up      Up                Static   1/1/48
+200   SECURITY           Up      Up                Static   1/1/47
+
+VLAN 10 - MGMT
+  Interfaces:
+    1/1/1 (Tagged - Trunk)
+    1/1/2 (Tagged - Trunk)
+
+VLAN 20 - USERS
+  Interfaces:
+    1/1/5 (Untagged - Access)
+    1/1/6 (Untagged - Access)
+    1/1/7 (Untagged - Access)
+    1/1/8 (Untagged - Access)
+    1/1/9 (Untagged - Access)
+    1/1/10 (Untagged - Access)
+    1/1/13 (Untagged - Access)
+    1/1/16 (Untagged - Access)
+    1/1/21 (Untagged - Access)
+
+VLAN 30 - SERVERS
+  Interfaces:
+    1/1/25 (Untagged - Access)
+    1/1/26 (Untagged - Access)
+
+VLAN 40 - VOICE
+  Interfaces:
+    1/1/45 (Tagged - Trunk)
+    1/1/46 (Tagged - Trunk)
+
+Total VLANs: 7

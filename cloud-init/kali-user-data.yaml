@@ -1,0 +1,155 @@
+#cloud-config
+# Kali scanner VM — NetUtility assessment platform
+# Template variables: ${ssh_public_key}
+
+bootcmd:
+  - modprobe 8021q || true
+  - echo '8021q' > /etc/modules-load.d/vlan.conf
+  - |
+    TRUNK=$(ip -br link show | grep 52:54:00:0a:01:01 | awk '{print $1}')
+    if [ -n "$TRUNK" ]; then
+      ip link set $TRUNK up
+      ip link add link $TRUNK name $TRUNK.10 type vlan id 10
+      ip addr add ${kali_ip}/24 dev $TRUNK.10
+      ip link set $TRUNK.10 up
+      ip link add link $TRUNK name $TRUNK.20 type vlan id 20
+      ip addr add ${kali_vlan20_ip}/24 dev $TRUNK.20
+      ip link set $TRUNK.20 up
+      ip link add link $TRUNK name $TRUNK.30 type vlan id 30
+      ip addr add ${kali_vlan30_ip}/24 dev $TRUNK.30
+      ip link set $TRUNK.30 up
+    fi
+hostname: kali-scanner
+manage_etc_hosts: true
+timezone: UTC
+
+users:
+  - name: kali
+    sudo: ALL=(ALL) NOPASSWD:ALL
+    groups: sudo, adm
+    shell: /bin/bash
+    lock_passwd: false
+    ssh_authorized_keys:
+      - ${ssh_public_key}
+
+package_update: true
+package_upgrade: true
+packages:
+  # Scanning and enumeration
+  - nmap
+  - masscan
+  # Packet capture
+  - tshark
+  - wireshark-common
+  # SNMP
+  - snmp
+  - snmpd
+  - snmp-mibs-downloader
+  # SSL/TLS testing
+  - testssl.sh
+  - sslscan
+  # Web vulnerability scanning
+  - nikto
+  # Exploit database
+  - exploitdb
+  # Passive fingerprinting
+  - p0f
+  # Credential testing and config gathering
+  - sshpass
+  - expect
+  # Network configuration
+  - iproute2
+  - vlan
+  - bridge-utils
+  # General network tools
+  - curl
+  - wget
+  - dnsutils
+  - whois
+  - netcat-openbsd
+  - socat
+  # Runtime
+  - python3
+  - python3-pip
+  - jq
+  - fping
+  - arp-scan
+  # Discovery dependencies
+  - arping              # ARP ping (router MAC detection)
+  - lldpd               # LLDP daemon (lldpctl fallback)
+  - ndisc6              # IPv6 neighbor discovery (rdisc6)
+  - ipcalc              # IP subnet calculation
+  - net-tools           # Legacy net-tools (arp command)
+  - gawk                # GNU awk (pattern scanning)
+  # SMB/CIFS enumeration
+  - smbclient           # SMB client (smbclient, nmblookup)
+  # SSL/TLS crypto
+  - openssl             # Certificate inspection
+  # Web screenshot capture
+  - gowitness           # Headless Chrome web screenshot
+
+write_files:
+  - path: /etc/network/interfaces.d/vlans.cfg
+    content: |
+      auto eth1
+      iface eth1 inet manual
+
+      auto eth1.10
+      iface eth1.10 inet static
+          address ${kali_ip}
+          netmask 255.255.255.0
+          vlan-raw-device eth1
+
+      auto eth1.20
+      iface eth1.20 inet static
+          address ${kali_vlan20_ip}
+          netmask 255.255.255.0
+          vlan-raw-device eth1
+
+      auto eth1.30
+      iface eth1.30 inet static
+          address ${kali_vlan30_ip}
+          netmask 255.255.255.0
+          vlan-raw-device eth1
+    owner: root:root
+    permissions: '0644'
+  - path: /etc/dhcp/dhclient.conf
+    content: |
+      timeout 10;
+      retry 10;
+      select-timeout 5;
+      initial-interval 1;
+      backoff-cutoff 10;
+    owner: root:root
+    permissions: '0644'
+
+runcmd:
+  # Ensure /opt/netutil exists with correct ownership
+  - mkdir -p /opt/netutil
+  - chown kali:kali /opt/netutil
+  # Enable IP forwarding for routing between VLANs
+  - sysctl -w net.ipv4.ip_forward=1
+  - echo 'net.ipv4.ip_forward=1' > /etc/sysctl.d/99-ip-forward.conf
+  # Ensure VLAN subinterfaces exist (bootcmd may have already created them)
+  - |
+    TRUNK=$(ip -br link show | grep 52:54:00:0a:01:01 | awk '{print $1}')
+    if [ -n "$TRUNK" ]; then
+      ip link set $TRUNK up
+      ip link add link $TRUNK name $TRUNK.10 type vlan id 10 2>/dev/null || true
+      ip addr add ${kali_ip}/24 dev $TRUNK.10 2>/dev/null || true
+      ip link set $TRUNK.10 up
+      ip link add link $TRUNK name $TRUNK.20 type vlan id 20 2>/dev/null || true
+      ip addr add ${kali_vlan20_ip}/24 dev $TRUNK.20 2>/dev/null || true
+      ip link set $TRUNK.20 up
+      ip link add link $TRUNK name $TRUNK.30 type vlan id 30 2>/dev/null || true
+      ip addr add ${kali_vlan30_ip}/24 dev $TRUNK.30 2>/dev/null || true
+      ip link set $TRUNK.30 up
+    fi
+  # Install gowitness from GitHub releases (not in Kali repos)
+  - |
+    GOWITNESS_VER="2.4.2"
+    curl -fSL -o /tmp/gowitness.zip \
+      "https://github.com/sensepost/gowitness/releases/download/$${GOWITNESS_VER}/gowitness-$${GOWITNESS_VER}-linux-amd64.zip"
+    cd /tmp && unzip -o gowitness.zip gowitness && mv gowitness /usr/local/bin/ && chmod +x /usr/local/bin/gowitness
+    rm -f /tmp/gowitness.zip
+  - ifup eth1.10 eth1.20 eth1.30

@@ -1,0 +1,8 @@
+Control Plane Host Path:
+  Feature               Packets Processed/Dropped
+  -----                 -----------------------
+  ARP                   45231/0
+  ICMP                  1234/0
+  IP Input              89234/0
+  TCP                   23456/0
+  UDP                   15678/0

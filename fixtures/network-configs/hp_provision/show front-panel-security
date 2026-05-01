@@ -1,0 +1,14 @@
+
+Front Panel Security Configuration
+
+  Front Panel Security : Locked
+  Clear Password Recovery : Disabled
+  Factory Reset Protection : Enabled
+
+  USB Port Status    : Disabled
+  Reset Button Status: Disabled
+
+  Configuration:
+    front-panel-security lock
+    front-panel-security clear-password-recovery
+    front-panel-security factory-reset-protection

@@ -1,0 +1,7 @@
+Telnet server: Enable
+Telnet server port: 23
+Telnet server ipv4 dscp priority: 48
+Telnet server ipv6 dscp priority: 48
+Telnet server source interface: --
+Telnet server login-timeout: 300 seconds
+Telnet server max-session: 32

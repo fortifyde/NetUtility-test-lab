@@ -1,0 +1,65 @@
+Spanning Tree Status and Counters
+
+Spanning Tree Mode : Rapid PVST+
+Spanning Tree State : Enabled
+
+VLAN 10 (MGMT)
+  STP Status      : Enabled
+  Root Priority   : 32768
+  Root Path Cost  : 0
+  Root Port       : This bridge is root
+  Bridge Priority : 32768
+  Bridge MAC      : a0-d3-c1-b2-f4-e0
+  Hello Time      : 2 sec
+  Max Age         : 20 sec
+  Forward Delay   : 15 sec
+
+  Port     Type     Cost   Priority  Role       State
+  -------  -------  -----  --------  ---------  --------
+  1        100/1000T 4     128       Designated Forwarding
+  Trk1     Trunk    4      128       Designated Forwarding
+
+VLAN 20 (SERVERS)
+  STP Status      : Enabled
+  Root Priority   : 16384
+  Root Path Cost  : 0
+  Root Port       : This bridge is root
+  Bridge Priority : 16384
+  Bridge MAC      : a0-d3-c1-b2-f4-e0
+  Hello Time      : 2 sec
+  Max Age         : 20 sec
+  Forward Delay   : 15 sec
+
+  Port     Type     Cost   Priority  Role       State
+  -------  -------  -----  --------  ---------  --------
+  2        100/1000T 4     128       Designated Forwarding
+  3        100/1000T 4     128       Designated Forwarding
+  Trk1     Trunk    4      128       Designated Forwarding
+
+VLAN 30 (USERS)
+  STP Status      : Enabled
+  Root Priority   : 32768
+  Root Path Cost  : 4
+  Root Port       : Trk1
+  Bridge Priority : 32768
+  Bridge MAC      : a0-d3-c1-b2-f4-e0
+
+  Port     Type     Cost   Priority  Role       State
+  -------  -------  -----  --------  ---------  --------
+  4-10     100/1000T 4     128       Designated Forwarding
+  11-24    100/1000T 4     128       Designated Discarding
+  Trk1     Trunk    4      128       Root       Forwarding
+
+VLAN 40 (GUEST)
+  STP Status      : Enabled
+  Root Priority   : 32768
+  Root Path Cost  : 4
+  Root Port       : Trk1
+  Bridge Priority : 32768
+  Bridge MAC      : a0-d3-c1-b2-f4-e0
+
+  Port     Type     Cost   Priority  Role       State
+  -------  -------  -----  --------  ---------  --------
+  25-26    100/1000T 4     128       Designated Forwarding
+  27-48    100/1000T 4     128       Designated Discarding
+  Trk1     Trunk    4      128       Root       Forwarding

@@ -1,0 +1,21 @@
+DHCP snooping is enabled
+DHCP snooping is configured on the following VLANs: 10,20,30,40
+DHCP snooping is operational on the following VLANs: 10,20,30,40
+Insertion of option 82 is disabled
+Option 82 on untrusted ports is disabled
+Verification of MAC address in DHCP packets is enabled
+
+Trusted ports:
+  Port-channel10
+  Port-channel20
+  Ethernet1/48
+
+DHCP Snooping Binding Table:
+MAC Address     IP Address     Lease   VLAN  Interface
+--------------  -------------  ------  ----  ----------------
+aabb.cc00.1000  10.10.10.5     86400   10    Ethernet1/5
+aabb.cc00.1001  10.10.10.6     86400   10    Ethernet1/6
+aabb.cc00.2001  10.10.20.10    86400   20    Ethernet1/7
+aabb.cc00.2002  10.10.20.11    86400   20    Ethernet1/8
+aabb.cc00.4001  10.10.40.10    86400   40    Ethernet1/9
+aabb.cc00.4002  10.10.40.11    86400   40    Ethernet1/10

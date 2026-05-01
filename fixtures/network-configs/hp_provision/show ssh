@@ -1,0 +1,11 @@
+
+SSH Status
+
+  SSH Server : Enabled (v2)
+
+  Active SSH Sessions:
+    Session  User    Client IP      Version  Cipher       MAC           State
+    -------- ------- -------------- -------- ------------ ------------- ---------
+    1        admin   10.10.10.100   2.0      aes256-ctr   hmac-sha2-256 Established
+
+Total SSH sessions: 1

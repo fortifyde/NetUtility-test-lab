@@ -1,0 +1,548 @@
+
+!Command: show running-config
+!Running configuration last done at: Sun Mar 24 14:22:31 2026
+!Time: Mon Mar 25 08:45:12 2026
+
+version 10.2(3)
+
+hostname N9K-CORE-01
+vdc N9K-CORE-01 id 1
+  limit-resource vlan minimum 16 maximum 4094
+  limit-resource vrf minimum 2 maximum 4096
+  limit-resource port-channel minimum 0 maximum 511
+  limit-resource u4route-mem minimum 248 maximum 248
+  limit-resource u6route-mem minimum 96 maximum 96
+  limit-resource m4route-mem minimum 58 maximum 58
+  limit-resource m6route-mem minimum 8 maximum 8
+
+feature telnet
+feature ospf
+feature bgp
+feature interface-vlan
+feature vn-segment-vlan-based
+feature dhcp
+feature vpc
+feature lacp
+feature bfd
+feature eigrp
+feature pim
+feature igmp
+feature nv overlay
+feature netflow
+
+no password strength-check
+password expiry 0
+password complexity-check
+
+username admin password 5 $5$SALT$rounds=535000$KrGpMDdBLjFvA3QGJBzTqNr9lxAJB1/ hash
+username admin role network-admin
+username admin passphrase lifetime 99999 warntime 14
+username netop password 5 $5$SALT$rounds=535000$2vKnTZwLxNpMr4hJLT3qG  hash
+username netop role network-operator
+username secadmin password 5 $5$SALT$rounds=535000$qHnF8rYKcjwmLBD4K  hash
+username secadmin role priv-5
+
+banner exec #
+**********************************************************************
+* WARNING: You are accessing a U.S. Government (USG) Information     *
+* System (IS) that is provided for USG-authorized use only.          *
+* By using this IS (which includes any device attached to this       *
+* IS), you consent to the following conditions:                      *
+*                                                                    *
+* - The USG routinely intercepts and monitors communications on      *
+*   this IS for purposes including, but not limited to, penetration  *
+*   testing, COMSEC monitoring, network operations and defense,      *
+*   personnel misconduct (PM), law enforcement (LE), and             *
+*   counterintelligence (CI) investigations.                         *
+**********************************************************************
+#
+
+banner login #
+**********************************************************************
+* AUTHORIZED ACCESS ONLY                                             *
+* Unauthorized access to this system is prohibited and will be       *
+* prosecuted to the fullest extent of the law.                       *
+**********************************************************************
+#
+banner motd #
+**********************************************************************
+* NOTICE: This system is the property of the U.S. Department of     *
+* Defense. Unauthorized use is subject to criminal prosecution      *
+* under UCMJ and federal law.                                        *
+**********************************************************************
+#
+
+no system default switchport
+system jumbomtu 9216
+
+logging level local0 2
+logging level local1 2
+logging level local2 2
+logging level local3 2
+logging level local4 2
+logging level local5 2
+logging level local6 2
+logging level local7 2
+logging timestamp milliseconds
+logging logfile messages 6 size 4194304
+logging server 10.10.10.50
+logging server 10.10.10.51
+no logging console
+logging monitor 4
+
+snmp-server contact "NetOps Team - DOD NETWORK OPERATIONS"
+snmp-server location "Building 2400 - MDF Room 101"
+snmp-server user admin network-admin auth md5 0x3b7e2c4a1f priv 0x9d4e2c7b localizedkey
+snmp-server community S3cur3Str!ng ro network-operator
+snmp-server community Pr1vat3K3y rw network-admin
+snmp-server host 10.10.10.50 traps version 2c S3cur3Str!ng
+snmp-server host 10.10.10.51 traps version 2c S3cur3Str!ng
+snmp-server enable traps
+
+ntp server 10.10.10.100 prefer
+ntp server 10.10.10.101
+ntp authenticate
+ntp authentication-key 1 md5 0x0822455d080f4a264556 hash
+ntp trusted-key 1
+ntp source-interface Vlan1
+
+clock timezone EST -5 0
+clock summer-time EDT 2 Sunday March 02:00 1 Sunday November 02:00 60
+
+vrf context management
+  ip name-server 10.10.10.200
+  ip name-server 10.10.10.201
+  ip route 0.0.0.0/0 10.10.10.1
+vrf context default
+  ip name-server 10.10.10.200
+
+vlan 1
+vlan 10
+  name MANAGEMENT
+vlan 20
+  name SERVERS
+vlan 30
+  name USERS
+vlan 40
+  name DATABASE
+vlan 50
+  name DMZ
+vlan 99
+  name NATIVE
+vlan 100
+  name MGMT_NATIVE
+vlan 200
+  name BACKUP_NET
+vlan 999
+  name QUARANTINE
+
+vpc domain 10
+  role priority 10
+  peer-keepalive destination 10.10.10.3 source 10.10.10.2 vrf management
+  peer-gateway
+  auto-recovery
+  delay restore 150
+  peer-link port-channel10
+
+spanning-tree mode rapid-pvst
+spanning-tree port type network default
+spanning-tree port type edge bpduguard default
+spanning-tree port type edge bpdufilter default
+spanning-tree vlan 1-4094 priority 4096
+
+class-map type qos match-all CM_VOICE
+  match dscp ef
+class-map type qos match-all CM_VIDEO
+  match dscp af41
+class-map type qos match-all CM_SIGNALING
+  match dscp cs3
+
+policy-map type qos PM_QOS
+  class CM_VOICE
+    set qos-group 5
+  class CM_VIDEO
+    set qos-group 4
+  class CM_SIGNALING
+    set qos-group 3
+
+port-channel load-balance src-dst ip-l4port
+
+interface Vlan1
+  no shutdown
+  ip address 10.10.1.1/24
+
+interface Vlan10
+  no shutdown
+  description MANAGEMENT VLAN
+  ip address 10.10.10.2/24
+
+interface Vlan20
+  no shutdown
+  description SERVERS VLAN
+  ip address 10.10.20.1/24
+
+interface Vlan30
+  no shutdown
+  description USERS VLAN
+  ip address 10.10.30.1/24
+
+interface Vlan40
+  no shutdown
+  description DATABASE VLAN
+  ip address 10.10.40.1/24
+
+interface Vlan50
+  no shutdown
+  description DMZ VLAN
+  ip address 10.10.50.1/24
+
+interface port-channel10
+  description VPC PEER-LINK
+  switchport mode trunk
+  switchport trunk allowed vlan 1,10,20,30,40,50,99,100,200
+  spanning-tree port type network
+  vpc peer-link
+
+interface port-channel20
+  description UPLINK TO CORE-02
+  switchport mode trunk
+  switchport trunk allowed vlan 1,10,20,30,40,50,99,100,200
+  vpc 20
+
+interface Ethernet1/1
+  description UPLINK-TO-CORE-02-ETH1/1
+  switchport mode trunk
+  switchport trunk allowed vlan 1,10,20,30,40,50,99,100,200
+  channel-group 20 mode active
+  no shutdown
+
+interface Ethernet1/2
+  description UPLINK-TO-CORE-02-ETH1/2
+  switchport mode trunk
+  switchport trunk allowed vlan 1,10,20,30,40,50,99,100,200
+  channel-group 20 mode active
+  no shutdown
+
+interface Ethernet1/3
+  description VPC-PEER-LINK-TO-CORE-02
+  switchport mode trunk
+  switchport trunk allowed vlan 1,10,20,30,40,50,99,100,200
+  channel-group 10 mode active
+  no shutdown
+
+interface Ethernet1/4
+  description VPC-PEER-LINK-TO-CORE-02
+  switchport mode trunk
+  switchport trunk allowed vlan 1,10,20,30,40,50,99,100,200
+  channel-group 10 mode active
+  no shutdown
+
+interface Ethernet1/5
+  description MGMT-SERVER-01
+  switchport access vlan 10
+  switchport mode access
+  spanning-tree port type edge
+  no shutdown
+
+interface Ethernet1/6
+  description MGMT-SERVER-02
+  switchport access vlan 10
+  switchport mode access
+  spanning-tree port type edge
+  no shutdown
+
+interface Ethernet1/7
+  description WEB-SERVER-01
+  switchport access vlan 20
+  switchport mode access
+  spanning-tree port type edge
+  no shutdown
+
+interface Ethernet1/8
+  description WEB-SERVER-02
+  switchport access vlan 20
+  switchport mode access
+  spanning-tree port type edge
+  no shutdown
+
+interface Ethernet1/9
+  description DB-SERVER-01
+  switchport access vlan 40
+  switchport mode access
+  spanning-tree port type edge
+  no shutdown
+
+interface Ethernet1/10
+  description DB-SERVER-02
+  switchport access vlan 40
+  switchport mode access
+  spanning-tree port type edge
+  no shutdown
+
+interface Ethernet1/11
+  description USER-WORKSTATION
+  switchport access vlan 30
+  switchport mode access
+  spanning-tree port type edge
+  no shutdown
+
+interface Ethernet1/12
+  description USER-WORKSTATION
+  switchport access vlan 30
+  switchport mode access
+  spanning-tree port type edge
+  no shutdown
+
+interface Ethernet1/13
+  description DMZ-FIREWALL-01
+  switchport access vlan 50
+  switchport mode access
+  no shutdown
+
+interface Ethernet1/14
+  description DMZ-PROXY-01
+  switchport access vlan 50
+  switchport mode access
+  no shutdown
+
+interface Ethernet1/15
+  description BACKUP-SERVER
+  switchport access vlan 200
+  switchport mode access
+  spanning-tree port type edge
+  no shutdown
+
+interface Ethernet1/16
+  description QUARANTINE-PORT
+  switchport access vlan 999
+  switchport mode access
+  shutdown
+
+interface Ethernet1/17
+  description ACCESS-POINT-01
+  switchport mode trunk
+  switchport trunk native vlan 99
+  switchport trunk allowed vlan 30,99
+  no shutdown
+
+interface Ethernet1/18
+  description ACCESS-POINT-02
+  switchport mode trunk
+  switchport trunk native vlan 99
+  switchport trunk allowed vlan 30,99
+  no shutdown
+
+interface Ethernet1/19
+  description IPS-SENSOR-01
+  switchport mode trunk
+  switchport trunk allowed vlan 1,10,20,30,40,50
+  spanning-tree port type network
+  no shutdown
+
+interface Ethernet1/20
+  description NETWORK-MONITOR
+  switchport mode trunk
+  switchport trunk allowed vlan 1,10,20,30,40,50
+  no shutdown
+
+interface Ethernet1/21
+  shutdown
+
+interface Ethernet1/22
+  shutdown
+
+interface Ethernet1/23
+  shutdown
+
+interface Ethernet1/24
+  shutdown
+
+interface Ethernet1/25
+  shutdown
+
+interface Ethernet1/26
+  shutdown
+
+interface Ethernet1/27
+  shutdown
+
+interface Ethernet1/28
+  shutdown
+
+interface Ethernet1/29
+  shutdown
+
+interface Ethernet1/30
+  shutdown
+
+interface Ethernet1/31
+  shutdown
+
+interface Ethernet1/32
+  shutdown
+
+interface Ethernet1/33
+  shutdown
+
+interface Ethernet1/34
+  shutdown
+
+interface Ethernet1/35
+  shutdown
+
+interface Ethernet1/36
+  shutdown
+
+interface Ethernet1/37
+  shutdown
+
+interface Ethernet1/38
+  shutdown
+
+interface Ethernet1/39
+  shutdown
+
+interface Ethernet1/40
+  shutdown
+
+interface Ethernet1/41
+  shutdown
+
+interface Ethernet1/42
+  shutdown
+
+interface Ethernet1/43
+  shutdown
+
+interface Ethernet1/44
+  shutdown
+
+interface Ethernet1/45
+  shutdown
+
+interface Ethernet1/46
+  shutdown
+
+interface Ethernet1/47
+  description SPAN-DEST-PORT
+  switchport mode access
+  shutdown
+
+interface Ethernet1/48
+  description UPLINK-TO-ROUTER
+  no switchport
+  ip address 10.10.254.1/30
+  ip ospf 1 area 0.0.0.0
+  no shutdown
+
+interface mgmt0
+  description MANAGEMENT INTERFACE
+  vrf member management
+  ip address 10.10.10.2/24
+
+interface loopback0
+  description ROUTER-ID
+  ip address 10.10.255.1/32
+  ip router ospf 1 area 0.0.0.0
+
+router ospf 1
+  router-id 10.10.255.1
+  log-adjacency-changes detail
+  passive-interface default
+  no passive-interface Ethernet1/48
+  no passive-interface port-channel20
+  redistribute connected route-map RM_CONNECTED_TO_OSPF
+  max-metric router-lsa on-startup 120
+
+route-map RM_CONNECTED_TO_OSPF permit 10
+  match tag 0
+
+router bgp 65100
+  router-id 10.10.255.1
+  address-family ipv4 unicast
+    network 10.10.0.0/16
+    redistribute ospf 1 route-map RM_OSPF_TO_BGP
+  neighbor 10.10.254.2 remote-as 65200
+    description EBGP-TO-BORDER-01
+    address-family ipv4 unicast
+      send-community
+      maximum-prefix 10000 80
+      route-map RM_BGP_IN in
+      route-map RM_BGP_OUT out
+
+ip route 0.0.0.0/0 10.10.254.2 name DEFAULT_ROUTE
+ip route 10.10.0.0/16 Null0 name BLACKHOLE_SUMMARY
+
+ip access-list ACL_MANAGEMENT
+  10 permit ip 10.10.10.0/24 any
+  20 permit ip 10.10.200.0/24 any
+  30 deny ip any any log
+
+ip access-list ACL_SNMP
+  10 permit udp 10.10.10.50/32 any eq 161
+  20 permit udp 10.10.10.51/32 any eq 161
+  30 deny ip any any log
+
+line console
+  exec-timeout 10
+  session-limit 1
+  transport input ssh telnet
+line vty
+  exec-timeout 10
+  session-limit 5
+  transport input ssh
+
+ssh key rsa 2048 force
+ssh key dsa 1024 force
+ssh key ecdsa 521 force
+ssh key ed25519 force
+no telnet server enable
+ssh server enable
+ssh server login-attempts 3
+ssh server authentication-retries 3
+ssh server timeout 60
+ssh server rate-limit 60
+
+aaa new-model
+aaa authentication login default group tacacs+ local
+aaa authentication login console local
+aaa authentication enable default group tacacs+ enable
+aaa authorization commands default local
+aaa authorization exec default if-authenticated
+aaa accounting exec default start-stop group tacacs+
+aaa accounting commands default start-stop group tacacs+
+
+tacacs-server host 10.10.10.100 key 7 "060506324F41584B564247" timeout 5
+tacacs-server host 10.10.10.101 key 7 "060506324F41584B564247" timeout 5
+tacacs-server directed-request
+tacacs-server timeout 5
+
+ip dhcp snooping
+ip dhcp snooping vlan 10,20,30,40
+no ip dhcp snooping information option
+ip arp inspection vlan 10,20,30,40
+ip arp inspection validate src-mac dst-mac ip
+ip verify source vlan 10,20,30
+
+flow exporter FE_NETFLOW
+  destination 10.10.10.200
+  source Vlan10
+  transport udp 2055
+  version 9
+
+flow monitor FM_NETFLOW
+  record netflow-original
+  exporter FE_NETFLOW
+  timeout active 60
+  timeout inactive 15
+
+ip domain-lookup
+ip domain-name mil
+ip name-server 10.10.10.200
+ip name-server 10.10.10.201
+
+copp profile strict
+
+no ip igmp snooping vpc
+
+end

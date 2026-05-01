@@ -1,0 +1,28 @@
+Crypto Key Information
+----------------------
+
+RSA Keys:
+  Key Label: ssh_host_rsa_key
+  Key Type: RSA
+  Key Size: 4096 bits
+  Created: 2025-06-15 10:30:00
+  Fingerprint: SHA256:xK8vQmN2jH5gRfSuW9bN0pQ8vR2gMfT1yL6hK4jP7a
+  Usage: SSH Host Key
+
+ECDSA Keys:
+  Key Label: ssh_host_ecdsa_key
+  Key Type: ECDSA
+  Curve: P-256
+  Created: 2025-06-15 10:30:01
+  Fingerprint: SHA256:mN2oP6qR8sT4vW1xB3cY5fD8gH0jK3lM6nP2qR4sT1wX
+  Usage: SSH Host Key
+
+HTTPS Certificate:
+  Key Label: https_server_cert
+  Key Type: RSA
+  Key Size: 2048 bits
+  Created: 2025-06-15 10:30:02
+  Expires: 2027-06-15 10:30:02
+  Issuer: CN=ARUBA-CX-01.mil.local
+  Subject: CN=ARUBA-CX-01.mil.local
+  Fingerprint: SHA256:R4sT1wX8yB5dG7hF3kL9mN2oP6qR8sT4vW1xB3cY5fD

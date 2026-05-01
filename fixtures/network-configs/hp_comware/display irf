@@ -1,0 +1,10 @@
+Member  Role    Priority  CPU-MAC            Description
+  1     Master  32        001a-2b3c-4d50    HP-ACCESS-01-MBR1
+  2     Standby 1         001a-2b3c-4d60    HP-ACCESS-01-MBR2
+
+IRF domain: 10
+IRF mode: Normal
+IRF MAC persistence: Timer (8 minutes)
+IRF auto-update: Enabled
+IRF link-delay: 0 ms
+IRF MAD: Disabled

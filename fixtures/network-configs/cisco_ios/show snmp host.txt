@@ -1,0 +1,4 @@
+Notification host: 10.10.30.10
+    UDP-port: 162  Type: inform
+    User: snmpv3user  Security model: v3
+    Security level: priv

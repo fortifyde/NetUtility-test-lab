@@ -1,0 +1,21 @@
+Server: 10.10.30.20/1645, 10.10.30.20/1646
+  State: current UP, Type: auth+acct
+  Last auth: 00:00:12
+  Time to next retransmit: No retransmit
+  Round trip time: 3ms
+  Auth. Responses: 52341  Auth. Retransmits: 231  Auth. Timeouts: 45
+  Acct. Responses: 38901  Acct. Retransmits: 123  Acct. Timeouts: 12
+  Queue size: 0
+  Authen context id: 0x00000001
+  Shared secret: xxxxxxxxxx
+
+Server: 10.10.30.21/1645, 10.10.30.21/1646
+  State: current UP, Type: auth+acct
+  Last auth: 00:00:08
+  Time to next retransmit: No retransmit
+  Round trip time: 4ms
+  Auth. Responses: 41230  Auth. Retransmits: 189  Auth. Timeouts: 32
+  Acct. Responses: 32145  Acct. Retransmits: 98  Acct. Timeouts: 8
+  Queue size: 0
+  Authen context id: 0x00000002
+  Shared secret: xxxxxxxxxx

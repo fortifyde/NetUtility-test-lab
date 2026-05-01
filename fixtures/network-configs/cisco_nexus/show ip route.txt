@@ -1,0 +1,35 @@
+IP Route Table for VRF "default"
+'*' denotes best ucast next-hop
+'**' denotes best mcast next-hop
+'[x/y]' denotes [preference/metric]
+
+0.0.0.0/0, ubest/mbest: 1/0
+    *via 10.10.254.2, Eth1/48, [1/0], 2w1d, static
+10.10.0.0/16, ubest/mbest: 1/0, attached
+    *via 10.10.0.0, Null0, [200/0], 2w1d, static
+10.10.1.0/24, ubest/mbest: 1/0, attached
+    *via 10.10.1.1, Vlan1, [0/0], 2w1d, direct
+10.10.1.1/32, ubest/mbest: 1/0, attached
+    *via 10.10.1.1, Vlan1, [0/0], 2w1d, local
+10.10.10.0/24, ubest/mbest: 1/0, attached
+    *via 10.10.10.2, Vlan10, [0/0], 2w1d, direct
+10.10.10.2/32, ubest/mbest: 1/0, attached
+    *via 10.10.10.2, Vlan10, [0/0], 2w1d, local
+10.10.20.0/24, ubest/mbest: 1/0, attached
+    *via 10.10.20.1, Vlan20, [0/0], 2w1d, direct
+10.10.20.1/32, ubest/mbest: 1/0, attached
+    *via 10.10.20.1, Vlan20, [0/0], 2w1d, local
+10.10.30.0/24, ubest/mbest: 1/0, attached
+    *via 10.10.30.1, Vlan30, [0/0], 2w1d, direct
+10.10.40.0/24, ubest/mbest: 1/0, attached
+    *via 10.10.40.1, Vlan40, [0/0], 2w1d, direct
+10.10.50.0/24, ubest/mbest: 1/0, attached
+    *via 10.10.50.1, Vlan50, [0/0], 2w1d, direct
+10.10.254.0/30, ubest/mbest: 1/0, attached
+    *via 10.10.254.1, Eth1/48, [0/0], 2w1d, direct
+10.10.255.1/32, ubest/mbest: 1/0, attached
+    *via 10.10.255.1, Lo0, [0/0], 2w1d, local
+172.16.0.0/16, ubest/mbest: 1/0
+    *via 10.10.254.2, Eth1/48, [20/0], 1w3d, bgp-65200, external, tag 65200
+192.168.1.0/24, ubest/mbest: 1/0
+    *via 10.10.254.2, Eth1/48, [110/2], 2w1d, ospf-1, intra

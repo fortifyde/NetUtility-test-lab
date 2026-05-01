@@ -1,0 +1,7 @@
+Active Users
+
+Session  User    From              Type     Idle     Connected
+-------  ------  ---------------   ------   -------- -------------------
+1        admin   10.10.10.100      SSH      0:02:15  Mon Apr 28 10:30:00
+
+Total Active Users: 1

@@ -1,0 +1,13 @@
+SNMPv3 User Configuration
+-------------------------
+User: snmpv3admin
+  Auth Protocol: SHA-256
+  Priv Protocol: AES-256
+  Engine ID: 0x80001f888059c1ab23c50
+  Status: Active
+
+User: snmpv3readonly
+  Auth Protocol: SHA-256
+  Priv Protocol: AES-128
+  Engine ID: 0x80001f888059c1ab23c50
+  Status: Active

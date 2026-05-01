@@ -1,0 +1,6 @@
+Author Type=DEFAULT, List="default"
+  Method=group radius (fallback to local)
+  0 authorization requests made, 0 succeeded
+Author Type=COMMANDS, List="default"
+  Method=group radius (fallback to local)
+  0 authorization requests made, 0 succeeded

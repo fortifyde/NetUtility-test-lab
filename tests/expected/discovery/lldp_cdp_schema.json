@@ -1,0 +1,143 @@
+{
+  "description": "Expected output schema for lldp_cdp_discovery.sh — LLDP/CDP neighbor discovery",
+  "type": "object",
+  "required": ["session_dir", "pcap_file"],
+  "properties": {
+    "session_dir": {
+      "type": "string",
+      "pattern": "^lldp_cdp_\\d{8}_\\d{6}$",
+      "description": "Timestamped session directory under discovery/lldp_cdp/"
+    },
+    "pcap_file": {
+      "type": "object",
+      "required": ["filename"],
+      "properties": {
+        "filename": {
+          "type": "string",
+          "const": "lldp_cdp_capture.pcap"
+        },
+        "description": {
+          "type": "string",
+          "description": "Filtered capture containing only LLDP (0x88cc) and CDP (multicast 01:00:0c:cc:cc:cc) frames"
+        }
+      }
+    },
+    "lldp_neighbors": {
+      "type": "object",
+      "properties": {
+        "filename": {
+          "type": "string",
+          "const": "lldp_neighbors.txt"
+        },
+        "entries": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["chassis_id"],
+            "properties": {
+              "chassis_id": {
+                "type": "string",
+                "description": "LLDP chassis identifier (MAC or IP)"
+              },
+              "port_id": {
+                "type": "string",
+                "description": "LLDP port identifier"
+              },
+              "system_name": {
+                "type": "string",
+                "description": "LLDP system name (hostname)"
+              },
+              "system_description": {
+                "type": "string"
+              },
+              "management_ip": {
+                "type": "string"
+              },
+              "capabilities": {
+                "type": "string"
+              },
+              "vlan_id": {
+                "type": "string"
+              },
+              "vlan_name": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "cdp_neighbors": {
+      "type": "object",
+      "properties": {
+        "filename": {
+          "type": "string",
+          "const": "cdp_neighbors.txt"
+        },
+        "entries": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["device_id"],
+            "properties": {
+              "device_id": {
+                "type": "string",
+                "description": "CDP device identifier"
+              },
+              "address": {
+                "type": "string",
+                "description": "CDP address (IP)"
+              },
+              "port_id": {
+                "type": "string",
+                "description": "CDP port identifier"
+              },
+              "platform": {
+                "type": "string"
+              },
+              "capabilities": {
+                "type": "string"
+              },
+              "version": {
+                "type": "string"
+              },
+              "vlan_id": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "xml_output": {
+      "type": "object",
+      "properties": {
+        "filename": {
+          "type": "string",
+          "const": "lldp_cdp_results.xml"
+        },
+        "root_element": {
+          "type": "string",
+          "const": "lldp_cdp_results"
+        },
+        "description": {
+          "type": "string",
+          "description": "Structured XML with neighbor elements containing all parsed LLDP/CDP fields"
+        }
+      }
+    },
+    "combined_summary": {
+      "type": "object",
+      "properties": {
+        "filename": {
+          "type": "string",
+          "const": "neighbors_combined.txt"
+        },
+        "description": {
+          "type": "string",
+          "description": "Combined summary report of all LLDP and CDP neighbors"
+        }
+      }
+    }
+  }
+}

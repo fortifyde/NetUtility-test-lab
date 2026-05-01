@@ -1,0 +1,7 @@
+Log Buffer (4096 bytes):
+Apr 28 14:20:01.234: %LINEPROTO-5-UPDOWN: Line protocol on Interface GigabitEthernet1/0/3, changed state to up
+Apr 28 14:19:58.123: %LINK-3-UPDOWN: Interface GigabitEthernet1/0/3, changed state to up
+Apr 28 14:15:02.456: %SEC_LOGIN-5-LOGIN_SUCCESS: Login Success [user: admin] [Source: 10.10.30.100] [localport: 22] at 14:15:02 UTC Mon Apr 28 2026
+Apr 28 13:45:00.789: %SYS-5-CONFIG_I: Configured from console by admin on vty0 (10.10.30.100)
+Apr 28 12:00:01.001: %SNMP-5-LINK_DOWN: Link Down: Interface GigabitEthernet1/0/7
+Apr 28 11:30:22.112: %CDP-4-NATIVE_VLAN_MISMATCH: Native VLAN mismatch discovered on GigabitEthernet1/0/1 (99), with DIST-SW-01 GigabitEthernet1/0/1 (1).

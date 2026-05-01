@@ -1,0 +1,31 @@
+Legend:
+        Type 1: vPC will be suspended in case of mismatch
+        Type 2: vPC will not be suspended in case of mismatch
+
+vPC domain ID: 10
+
+vPC Peer-link: Port-channel10
+
+Type-1 Consistency Parameters:
+  Port Mode                         : consistent
+  Speed                             : consistent
+  MTU                               : consistent
+  Allowed VLANs                     : consistent
+  STP Port Type                     : consistent
+  STP Port Guard                    : consistent
+  STP MST Simulate PVST            : consistent
+  STP Port State                    : consistent
+  Trunk Native VLAN                 : consistent
+  Duplex                            : consistent
+  Port Type                         : consistent
+  SPAN Port                         : consistent
+
+Type-2 Consistency Parameters:
+  STP Port Priority                 : consistent
+  STP Cost                          : consistent
+  STP Port Cost                     : consistent
+  Lacp Port-Priority                : consistent
+  Lacp Rate                         : consistent
+  Lacp Graceful Convergence         : consistent
+
+Consistency Status: success

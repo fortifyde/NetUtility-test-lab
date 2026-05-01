@@ -1,0 +1,11 @@
+SNMP is enabled
+SNMP UDP port: 161
+SNMP v3: enabled
+SNMP community: configured (2 communities)
+SNMP traps: enabled
+SNMP system contact: NetOps Team - DOD NETWORK OPERATIONS
+SNMP system location: Building 2400 - MDF Room 101
+SNMP engineID: 80:00:1F:26:98:00:00:00:0A:00:00:01
+SNMP trap receivers:
+  10.10.10.50 (v2c, UP)
+  10.10.10.51 (v2c, UP)

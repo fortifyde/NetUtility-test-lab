@@ -1,0 +1,10 @@
+DHCP snooping binding table:
+  MAC address       IP address      Lease    VLAN  Interface
+  002c-3d4e-5f6c   10.10.20.100    86400    20    GE1/0/3
+  002c-3d4e-5f6d   10.10.20.101    86400    20    GE1/0/9
+  002c-3d4e-5f6e   10.10.20.102    86400    20    GE1/0/10
+  002c-3d4e-5f6f   10.10.20.150    43200    20    GE1/0/13
+  004e-5f6a-7b8c   10.10.100.10    3600     100   GE1/0/2
+  004e-5f6a-7b8d   10.10.100.20    3600     100   GE1/0/2
+
+Total entries: 6

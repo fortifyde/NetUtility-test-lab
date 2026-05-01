@@ -1,0 +1,18 @@
+
+IP DNS Configuration
+
+  DNS Client       : Enabled
+  DNS Domain Name  : mil.local
+  DNS Cache        : Enabled
+  DNS Timeout      : 3 seconds
+
+  DNS Server Addresses:
+    Server Address    Priority  Status
+    ----------------- --------- --------
+    10.10.10.100      1         OK
+    10.10.10.101      2         OK
+
+  DNS Host Entries:
+    Host Name              IP Address
+    ---------------------- ---------------
+    (No static host entries configured)

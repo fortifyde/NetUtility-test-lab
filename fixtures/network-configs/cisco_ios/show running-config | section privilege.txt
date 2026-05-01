@@ -1,0 +1,4 @@
+privilege exec level 5 show running-config
+privilege exec level 5 show startup-config
+privilege exec level 3 show interfaces
+privilege exec level 3 show ip interface brief

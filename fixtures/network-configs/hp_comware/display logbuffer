@@ -1,0 +1,28 @@
+Log buffer size: 1024
+Log buffer current entries: 247
+
+Seq Num  Time                   Level  Category  Content
+0001     Apr 28 09:15:03 2026   Info   SNMP      SNMP notification sent: coldStart
+0002     Apr 28 09:15:04 2026   Info   IFNET     Interface Vlan-interface10 link status: UP
+0003     Apr 28 09:15:05 2026   Info   IFNET     Interface Vlan-interface20 link status: UP
+0004     Apr 28 09:15:05 2026   Info   IFNET     Interface Vlan-interface30 link status: UP
+0005     Apr 28 09:15:06 2026   Info   STP       RSTP: Port GE1/0/1 has been set to forwarding state
+0006     Apr 28 09:15:06 2026   Info   STP       RSTP: Port GE2/0/1 has been set to discarding state
+0007     Apr 28 09:15:08 2026   Info   IRF       IRF port 1/2 is up
+0008     Apr 28 09:15:08 2026   Info   IRF       IRF merge
+0009     Apr 28 09:15:10 2026   Info   NTP       NTP clock synchronized to 10.10.10.2
+0010     Apr 28 09:15:12 2026   Info   SSH       SSH server enabled
+0011     Apr 28 09:20:33 2026   Info   IFNET     Interface GigabitEthernet1/0/3 link status: UP
+0012     Apr 28 09:25:45 2026   Info   IFNET     Interface GigabitEthernet1/0/5 link status: UP
+0013     Apr 28 09:30:12 2026   Info   LLDP      LLDP neighbor added on GE1/0/1: CORE-SWITCH-01
+0014     Apr 28 09:30:15 2026   Info   LLDP      LLDP neighbor added on GE1/0/2: AP-FLOOR1-01
+0015     Apr 28 10:05:22 2026   Info   SHELL     User admin logged in from 10.10.10.100 via SSH
+0016     Apr 28 10:45:33 2026   Info   ARP       ARP entry learned: 10.10.20.100 on GE1/0/3
+0017     Apr 28 11:15:44 2026   Info   IFNET     Interface GigabitEthernet1/0/4 link status: DOWN
+0018     Apr 28 11:30:55 2026   Info   STP       RSTP: Topology change detected on GE1/0/4
+0019     Apr 28 12:00:00 2026   Info   NTP       Clock sync check: offset 0.003ms
+0020     Apr 28 13:15:22 2026   Warn   DHCP      DHCP snooping binding entry expired for 10.10.20.101
+0021     Apr 28 14:30:11 2026   Info   SHELL     User admin logged out from 10.10.10.100
+0022     Apr 28 15:05:33 2026   Info   IFNET     Interface GigabitEthernet1/0/9 link status: UP
+0023     Apr 28 15:10:44 2026   Info   ARP       ARP entry learned: 10.10.20.101 on GE1/0/9
+0024     Apr 28 15:45:00 2026   Info   NTP       Clock sync check: offset 0.001ms

@@ -1,0 +1,14 @@
+banner login ^C
+******************************************************************
+*  WARNING: This is a U.S. Government computing system.          *
+*  Unauthorized access is prohibited by Public Law 99-474.       *
+*  Use of this system constitutes consent to monitoring.         *
+******************************************************************
+^C
+banner motd ^C
+******************************************************************
+*  AUTHORIZED ACCESS ONLY                                        *
+*  All activity is logged and monitored.                         *
+*  Disconnect IMMEDIATELY if you are not an authorized user.     *
+******************************************************************
+^C

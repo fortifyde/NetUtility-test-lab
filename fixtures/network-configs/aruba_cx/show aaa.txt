@@ -1,0 +1,30 @@
+AAA Configuration
+-----------------
+
+Authentication:
+  Login: default group radius local
+  Enable: default group radius local
+
+Authorization:
+  Commands: default group radius local
+
+Accounting:
+  Exec: default start-stop group radius
+  Commands: default start-stop group radius
+  System: default start-stop group radius
+
+RADIUS Servers:
+  Host: 10.10.10.50
+    Auth Port: 1812
+    Acct Port: 1813
+    Timeout: 5 seconds
+    Retransmit: 3
+    Deadtime: 15 minutes
+    Status: Up
+
+TACACS+ Servers:
+  Host: 10.10.10.51
+    Port: 49
+    Timeout: 5 seconds
+    Deadtime: 15 minutes
+    Status: Up

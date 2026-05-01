@@ -1,0 +1,14 @@
+Flow Monitor: FM_NETFLOW
+  Description:              --
+  Record:                   netflow-original
+  Exporter:                 FE_NETFLOW
+  Cache timeout active:     60 seconds
+  Cache timeout inactive:   15 seconds
+  Cache type:               Normal
+
+  Cache entries:            2345
+  Cache size:               65536
+  Flows added:              5891234
+  Flows aged:               5888889
+    Active timeout:         123456
+    Inactive timeout:       5765433

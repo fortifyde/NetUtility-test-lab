@@ -1,0 +1,1 @@
+Running and Startup configurations are identical.

@@ -1,0 +1,15 @@
+Syslog Configuration
+
+Remote Syslog Servers:
+  10.10.10.250 (UDP/514)
+
+Facility: local6
+Severity: warning
+Timestamp Format: Standard
+
+Message Categories:
+  System     : Enabled
+  Port       : Enabled
+  Security   : Enabled
+  STP        : Enabled
+  SNMP       : Enabled

@@ -1,0 +1,25 @@
+NTP Status
+----------
+NTP Client: Enabled
+NTP Authentication: Enabled
+NTP Stratum: 3
+NTP Precision: -23
+NTP Reference ID: 10.10.10.1
+NTP Reference Type: Unicast
+Clock Source: NTP
+Clock State: Synchronized
+
+Poll Interval: 64 seconds
+Root Delay: 0.001234 seconds
+Root Dispersion: 0.005678 seconds
+Offset: +0.000234 seconds
+Jitter: 0.000456 seconds
+
+NTP Associations
+----------------
+Remote           Ref ID          St  T  When  Poll  Reach  Delay     Offset    Jitter
+---------------  --------------  --  -  ----  ----  -----  --------  ---------  -------
+*10.10.10.1      .GPS.            1  u  32    64    377    0.001234  +0.000234  0.000456
++10.10.10.2      .GPS.            1  u  45    64    377    0.002345  +0.001234  0.000567
+
+* = synchronized, + = candidate, - = outlier, x = false tick

@@ -1,0 +1,11 @@
+RSA   key pair is present (2048 bits)
+  Fingerprint: 4b:91:a2:5c:33:8f:7d:12:ab:56:cd:78:ef:90:12:34
+
+DSA   key pair is present (1024 bits)
+  Fingerprint: 7c:3b:29:4d:88:5e:6f:21:ba:45:cd:67:ef:89:01:23
+
+ECDSA key pair is present (521 bits)
+  Fingerprint: a1:b2:c3:d4:e5:f6:07:18:29:3a:4b:5c:6d:7e:8f:90
+
+ED25519 key pair is present
+  Fingerprint: d2:e3:f4:05:16:27:38:49:5a:6b:7c:8d:9e:af:b0:c1

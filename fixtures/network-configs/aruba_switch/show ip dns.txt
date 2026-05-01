@@ -1,0 +1,12 @@
+DNS Configuration
+
+DNS Client: Enabled
+
+Name Servers:
+  10.10.10.200
+  10.10.10.201
+
+Default Domain: example.mil
+DNS Cache: Enabled
+
+DNS Server Mode: Disabled (not acting as DNS server)
