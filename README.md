@@ -74,7 +74,7 @@ scanner against Linux and Windows targets.
 - Terraform >= 1.5
 - Open vSwitch (`openvswitch-switch` or equivalent)
 - `curl`, `sha256sum`
-- [NetUtility](https://github.com/user/NetUtility) — cloned separately (see `netutil_source_dir`)
+- [NetUtility](https://github.com/fortifyde/NetUtility) — cloned separately (see `netutil_source_dir`)
 
 ### Prerequisites Check
 
