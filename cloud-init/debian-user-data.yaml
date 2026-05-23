@@ -33,6 +33,7 @@ packages:
   - bind9utils
   - dnsutils
   - vlan
+  - arping
 
 write_files:
   # --- SNMP configuration ---
@@ -156,7 +157,7 @@ write_files:
 
   # --- Bind9: test.local zone ---
   - path: /etc/bind/zones/db.${domain}
-    owner: root:bind
+    owner: root:root
     permissions: "0644"
     content: |
       $TTL 300
@@ -178,7 +179,7 @@ write_files:
 
   # --- Bind9: named.conf.local with zone declaration ---
   - path: /etc/bind/named.conf.local
-    owner: root:bind
+    owner: root:root
     permissions: "0644"
     content: |
       zone "${domain}" {
@@ -216,7 +217,47 @@ write_files:
             addresses:
               - ${vlan20_ip}/24
 
+  - path: /usr/local/bin/netlab-traffic.sh
+    owner: root:root
+    permissions: "0755"
+    content: |
+      #!/bin/sh
+      # Sends gratuitous ARP on all VLAN interfaces every 30 seconds so
+      # NetUtility auto-discovery sees this host without requiring a prior scan.
+      while true; do
+          for iface in $(ip -o -4 addr show | awk '{print $2}' | grep -v '^lo$' | sort -u); do
+              ip_addr=$(ip -4 addr show dev "$iface" 2>/dev/null \
+                  | grep -oP '(?<=inet )[0-9.]+' | head -1)
+              if [ -n "$ip_addr" ]; then
+                  arping -c 1 -A -I "$iface" "$ip_addr" >/dev/null 2>&1 || true
+              fi
+          done
+          sleep 30
+      done
+
+  - path: /etc/systemd/system/netlab-traffic.service
+    owner: root:root
+    permissions: "0644"
+    content: |
+      [Unit]
+      Description=NetUtility lab traffic generator
+      After=network-online.target
+      Wants=network-online.target
+
+      [Service]
+      ExecStart=/usr/local/bin/netlab-traffic.sh
+      Restart=always
+      RestartSec=5
+
+      [Install]
+      WantedBy=multi-user.target
+
 runcmd:
+  # --- Traffic generation ---
+  - systemctl daemon-reload
+  - systemctl enable netlab-traffic.service
+  - systemctl start netlab-traffic.service
+
   # --- SNMP ---
   - sed -i 's/^SNMPDOPTS=.*/SNMPDOPTS="-Lf /var/log/snmpd.log -u Debian-snmp -g Debian-snmp -I -smux -p /var/run/snmpd.sock"/' /etc/default/snmpd || true
   - systemctl restart snmpd
@@ -230,6 +271,7 @@ runcmd:
 
   # --- Bind9 ---
   - mkdir -p /etc/bind/zones
+  - chown root:bind /etc/bind/zones/db.${domain} /etc/bind/named.conf.local
   - named-checkzone ${domain} /etc/bind/zones/db.${domain}
   - systemctl restart bind9
   - systemctl enable bind9

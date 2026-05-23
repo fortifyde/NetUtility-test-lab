@@ -1,0 +1,224 @@
+#cloud-config
+# Cisco IOS device simulator — fake SSH server serving fixture content
+# Template variables: ${ssh_public_key}, ${cisco_ios_ip}, $${fixtures}
+
+hostname: cisco-ios-sim
+manage_etc_hosts: true
+
+bootcmd:
+  - modprobe 8021q || true
+  - echo '8021q' > /etc/modules-load.d/vlan.conf
+  - |
+    TRUNK=$(ip -br link show | grep 52:54:00:10:01:01 | awk '{print $1}')
+    if [ -n "$TRUNK" ]; then
+      ip link set $TRUNK up
+      ip link add link $TRUNK name $TRUNK.10 type vlan id 10
+      ip addr add ${cisco_ios_ip}/24 dev $TRUNK.10
+      ip link set $TRUNK.10 up
+    fi
+
+users:
+  - name: admin
+    sudo: ALL=(ALL) NOPASSWD:ALL
+    shell: /bin/bash
+    lock_passwd: false
+    ssh_authorized_keys:
+      - ${ssh_public_key}
+
+packages:
+  - python3
+  - python3-asyncssh
+  - python3-cryptography
+
+write_files:
+  - path: /opt/device-sim/server.py
+    owner: root:root
+    permissions: "0755"
+    content: |
+      #!/usr/bin/env python3
+      """Fake SSH device simulator — serves fixture content for NetUtility demo."""
+
+      import asyncio
+      import asyncssh
+      import glob
+      import os
+
+      FIXTURES_DIR = '/opt/device-sim/fixtures'
+      DEVICE_TYPE  = os.environ.get('DEVICE_TYPE', 'ios')
+      BIND_IP      = os.environ.get('BIND_IP', '')
+      HOST_KEY     = '/opt/device-sim/host_key'
+
+      PROMPT = {'ios': 'Router# ', 'nexus': 'switch# '}.get(DEVICE_TYPE, 'Router# ')
+      ERROR  = {
+          'ios':   "% Invalid input detected at '^' marker.",
+          'nexus': "% Invalid command at '^' marker.",
+      }.get(DEVICE_TYPE, '% Invalid command.')
+
+
+      def lookup(command):
+          cmd = ' '.join(command.strip().lower().split())
+          exact = os.path.join(FIXTURES_DIR, cmd + '.txt')
+          if os.path.isfile(exact):
+              return open(exact).read()
+          for path in sorted(glob.glob(os.path.join(FIXTURES_DIR, '*.txt'))):
+              name = os.path.basename(path)[:-4].lower()
+              if cmd == name or cmd.startswith(name + ' ') or name.startswith(cmd):
+                  return open(path).read()
+          return None
+
+
+      class Session(asyncssh.SSHServerSession):
+          def __init__(self):
+              self._exec = None
+              self._buf  = ''
+              self._chan = None
+
+          def connection_made(self, chan):
+              self._chan = chan
+
+          def exec_requested(self, command):
+              self._exec = command
+              return True
+
+          def shell_requested(self):
+              return True
+
+          def session_started(self):
+              if self._exec is not None:
+                  out = lookup(self._exec)
+                  if out:
+                      self._chan.write(out)
+                      if not out.endswith('\n'):
+                          self._chan.write('\n')
+                  else:
+                      self._chan.write(ERROR + '\n')
+                  self._chan.exit(0)
+              else:
+                  self._chan.write(PROMPT)
+
+          def data_received(self, data, datatype):
+              self._buf += data
+              while True:
+                  for sep in ('\r\n', '\n', '\r'):
+                      if sep in self._buf:
+                          line, self._buf = self._buf.split(sep, 1)
+                          self._process(line.strip())
+                          break
+                  else:
+                      break
+
+          def _process(self, line):
+              if not line:
+                  self._chan.write(PROMPT)
+                  return
+              if line in ('exit', 'quit', 'logout', 'end'):
+                  self._chan.write('\r\n')
+                  self._chan.exit(0)
+                  return
+              out = lookup(line)
+              if out:
+                  self._chan.write('\r\n' + out)
+                  if not out.endswith('\n'):
+                      self._chan.write('\n')
+              else:
+                  self._chan.write('\r\n' + ERROR + '\n')
+              self._chan.write(PROMPT)
+
+          def eof_received(self):
+              self._chan.exit(0)
+
+
+      class Server(asyncssh.SSHServer):
+          def begin_auth(self, username):
+              return False
+
+          def password_auth_supported(self):
+              return True
+
+          def validate_password(self, username, password):
+              return True
+
+          def session_requested(self):
+              return Session()
+
+
+      async def main():
+          await asyncssh.create_server(
+              Server,
+              host=BIND_IP,
+              port=22,
+              server_host_keys=[HOST_KEY],
+          )
+          await asyncio.get_event_loop().create_future()
+
+
+      if __name__ == '__main__':
+          asyncio.run(main())
+
+  - path: /etc/systemd/system/device-sim.service
+    owner: root:root
+    permissions: "0644"
+    content: |
+      [Unit]
+      Description=NetUtility Cisco IOS device simulator
+      After=network-online.target
+      Wants=network-online.target
+
+      [Service]
+      Type=simple
+      Environment=DEVICE_TYPE=ios
+      Environment=BIND_IP=${cisco_ios_ip}
+      ExecStart=/usr/bin/python3 /opt/device-sim/server.py
+      Restart=always
+      RestartSec=5
+
+      [Install]
+      WantedBy=multi-user.target
+
+  - path: /etc/netplan/51-vlans.yaml
+    owner: root:root
+    permissions: "0600"
+    content: |
+      network:
+        version: 2
+        ethernets:
+          ens4:
+            dhcp4: false
+        vlans:
+          ens4.10:
+            id: 10
+            link: ens4
+            addresses:
+              - ${cisco_ios_ip}/24
+
+%{ for filename, content_b64 in fixtures ~}
+  - path: /opt/device-sim/fixtures/${filename}
+    content: ${content_b64}
+    encoding: b64
+    permissions: "0644"
+%{ endfor ~}
+
+runcmd:
+  - mkdir -p /opt/device-sim/fixtures
+  - ssh-keygen -t ed25519 -f /opt/device-sim/host_key -N "" -C "cisco-ios-sim"
+  - |
+    TRUNK=$(ip -br link show | grep 52:54:00:10:01:01 | awk '{print $1}')
+    if [ -n "$TRUNK" ]; then
+      ip link set $TRUNK up
+      ip link add link $TRUNK name $TRUNK.10 type vlan id 10 2>/dev/null || true
+      ip addr add ${cisco_ios_ip}/24 dev $TRUNK.10 2>/dev/null || true
+      ip link set $TRUNK.10 up
+    fi
+  - netplan apply
+  # netplan apply ensures DHCP is up; now restrict sshd to management IP so asyncssh can bind VLAN port 22
+  - |
+    MGMT_IFACE=$(ip route 2>/dev/null | awk '/^default/{print $5; exit}')
+    MGMT_IP=$(ip -4 addr show dev "$MGMT_IFACE" 2>/dev/null | grep -oP '(?<=inet )[0-9.]+' | head -1 || true)
+    if [ -n "$MGMT_IP" ]; then
+      mkdir -p /etc/ssh/sshd_config.d
+      printf 'ListenAddress %s\n' "$MGMT_IP" > /etc/ssh/sshd_config.d/00-mgmt-only.conf
+      systemctl restart ssh
+    fi
+  - systemctl daemon-reload
+  - systemctl enable device-sim.service
+  - systemctl start device-sim.service

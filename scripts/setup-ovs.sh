@@ -46,10 +46,13 @@ VLAN Layout:
   VLAN 30 (DMZ):       10.10.30.0/24
 
 Port Configuration (--post-deploy):
-  kali-scanner:    tag=10, trunks=10,20,30  (native VLAN 10, trunk all)
-  debian-target:   trunks=10,20
-  ubuntu-target:   trunks=10,20
-  dmz-web:         tag=30
+  kali-scanner:    trunk (VM does own 802.1q tagging)
+  debian-target:   trunk (VM does own 802.1q tagging)
+  ubuntu-target:   trunk (VM does own 802.1q tagging)
+  dmz-web:         tag=30 (access port, VLAN 30 only)
+  windows-target:  tag=10 (access port, Windows can't do 802.1q)
+  cisco-ios-sim:   trunk (VM does own 802.1q tagging, MAC 52:54:00:10:01:01)
+  cisco-nexus-sim: trunk (VM does own 802.1q tagging, MAC 52:54:00:0f:01:01)
 
 Note: VMs tag their own traffic via cloud-init 802.1q subinterfaces.
 The --post-deploy step adds OVS-side enforcement for defense-in-depth.
@@ -287,6 +290,13 @@ configure_all_ports() {
 
     # Windows target: access port on VLAN 10 (Windows doesn't do 802.1q tagging)
     configure_port_by_mac "52:54:00:0e:01:01" "10" ""
+
+    # Cisco IOS sim: VM does its own 802.1q tagging, no OVS config needed
+    # configure_port_by_mac "52:54:00:10:01:01" "" ""
+
+    # Cisco Nexus sim: VM does its own 802.1q tagging, no OVS config needed
+    # configure_port_by_mac "52:54:00:0f:01:01" "" ""
+
     log "All ports configured"
 }
 

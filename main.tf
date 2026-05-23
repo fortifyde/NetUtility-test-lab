@@ -2,12 +2,13 @@ provider "libvirt" {
   uri = "qemu:///system"
 }
 
-# Storage pool for VM disk images
-resource "libvirt_pool" "lab" {
-  name = "${var.lab_name}-pool"
+# Storage pool for Terraform-managed VM volumes and cloud-init disks.
+# Separate from ./images/ so terraform destroy can always empty and delete
+# this pool cleanly. Base images in ./images/ are referenced by file path only.
+resource "libvirt_pool" "volumes" {
+  name = "${var.lab_name}-volumes"
   type = "dir"
-
-  path = abspath("${path.module}/${var.images_dir}")
+  path = "/var/lib/libvirt/images/${var.lab_name}"
 }
 # Auto-generate an SSH key pair when no public key is provided
 resource "tls_private_key" "lab" {

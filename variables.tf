@@ -143,3 +143,15 @@ variable "enable_windows" {
   type        = bool
   default     = false
 }
+
+variable "cisco_ios_ip" {
+  description = "Cisco IOS simulator IP on VLAN 10"
+  type        = string
+  default     = "10.10.10.40"
+}
+
+variable "cisco_nexus_ip" {
+  description = "Cisco Nexus simulator IP on VLAN 10"
+  type        = string
+  default     = "10.10.10.41"
+}

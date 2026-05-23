@@ -132,6 +132,53 @@ free -h
 df -h
 ```
 
+## Demo Workflow
+
+The lab supports clean-slate end-to-end demos of all NetUtility workflows.
+
+### Demo Lab Components
+
+In addition to the standard scan targets, the lab provisions two simulated network
+devices that respond to SSH commands with realistic fixture output:
+
+| Device | IP | Credentials | Simulates |
+|---|---|---|---|
+| Cisco IOS sim | `10.10.10.40` | any user / any password | Cisco IOS router |
+| Cisco Nexus sim | `10.10.10.41` | any user / any password | Cisco Nexus switch |
+
+Target VMs automatically generate gratuitous ARP traffic on each VLAN interface
+at boot, so NetUtility auto-discovery finds all hosts without requiring prior
+traffic to be present.
+
+### Running a Demo
+
+```bash
+# 1. Start the lab
+./lab-up.sh
+
+# 2. Run pre-flight checks (validates all VMs and services are ready)
+./scripts/demo-prep.sh
+
+# 3. SSH to Kali and start NetUtility
+ssh kali@$(terraform output -raw kali_mgmt_ip)
+netutil
+
+# 4. Work through the full workflow in the TUI:
+#    - Host configuration
+#    - Auto-discovery      (VLAN 10: .10, .20, .30, .40, .41 / VLAN 20 / VLAN 30)
+#    - Manual categorization
+#    - Hostfile package creation
+#    - Network device config gathering (.40 = IOS, .41 = Nexus)
+#    - Vuln assessment scans
+#    - Topology HTML creation
+
+# 5. Collect results to local host
+./scripts/collect-outputs.sh --auto
+
+# 6. Tear down
+./lab-down.sh
+```
+
 ## Quick Start
 
 ### 1. Clone the Repository

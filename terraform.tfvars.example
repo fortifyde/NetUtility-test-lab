@@ -47,3 +47,7 @@ domain = "test.local"
 
 # Windows target (requires manual ISO + virtio drivers)
 enable_windows = false
+
+# Cisco device simulator IPs (VLAN 10)
+# cisco_ios_ip   = "10.10.10.40"
+# cisco_nexus_ip = "10.10.10.41"

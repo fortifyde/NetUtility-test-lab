@@ -7,11 +7,11 @@ resource "libvirt_volume" "windows_os" {
   count = var.enable_windows ? 1 : 0
 
   name   = "${var.lab_name}-windows-os.qcow2"
-  pool   = libvirt_pool.lab.name
+  pool   = libvirt_pool.volumes.name
   format = "qcow2"
   size   = 42949672960 # 40 GiB
 
-  depends_on = [libvirt_pool.lab]
+  depends_on = [libvirt_pool.volumes]
 }
 
 # ── Windows target domain ──────────────────────────────────────────────

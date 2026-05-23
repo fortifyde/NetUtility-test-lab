@@ -23,11 +23,24 @@ data "cloudinit_config" "ubuntu" {
 # Cloud-init disk
 resource "libvirt_cloudinit_disk" "ubuntu" {
   name           = "${var.lab_name}-ubuntu-init.iso"
-  pool           = libvirt_pool.lab.name
+  pool           = libvirt_pool.volumes.name
   user_data      = data.cloudinit_config.ubuntu.rendered
   meta_data      = ""
 
-  depends_on = [libvirt_pool.lab]
+  # Prevents cloud-init from generating an IPv6 DHCP stanza for ens4 (OVS trunk),
+  # which would cause networking.service to hang on DHCPv6 Solicit until timeout.
+  network_config = <<-EOT
+  version: 2
+  ethernets:
+    ens3:
+      dhcp4: true
+      dhcp6: false
+    ens4:
+      dhcp4: false
+      dhcp6: false
+  EOT
+
+  depends_on = [libvirt_pool.volumes]
 }
 
 # Ubuntu 22.04 target VM — corporate + server VLANs
@@ -87,9 +100,9 @@ resource "libvirt_domain" "ubuntu" {
 # Root disk cloned from the cloud image so the base stays pristine
 resource "libvirt_volume" "ubuntu" {
   name   = "${var.lab_name}-ubuntu.qcow2"
-  pool   = libvirt_pool.lab.name
+  pool   = libvirt_pool.volumes.name
   source = abspath("${path.module}/${var.images_dir}/jammy-server-cloudimg-amd64.img")
   format = "qcow2"
 
-  depends_on = [libvirt_pool.lab]
+  depends_on = [libvirt_pool.volumes]
 }

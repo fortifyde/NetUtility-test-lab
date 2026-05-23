@@ -24,7 +24,7 @@ data "cloudinit_config" "kali" {
 # Cloud-init disk
 resource "libvirt_cloudinit_disk" "kali" {
   name           = "${var.lab_name}-kali-init.iso"
-  pool           = libvirt_pool.lab.name
+  pool           = libvirt_pool.volumes.name
   user_data      = data.cloudinit_config.kali.rendered
   meta_data      = ""
 
@@ -43,7 +43,7 @@ resource "libvirt_cloudinit_disk" "kali" {
       dhcp6: false
   EOT
 
-  depends_on = [libvirt_pool.lab]
+  depends_on = [libvirt_pool.volumes]
 }
 
 resource "libvirt_domain" "kali" {
@@ -102,11 +102,11 @@ resource "libvirt_domain" "kali" {
 # Kali root disk — cloned from the cloud image so the base stays pristine
 resource "libvirt_volume" "kali" {
   name   = "${var.lab_name}-kali.qcow2"
-  pool   = libvirt_pool.lab.name
+  pool   = libvirt_pool.volumes.name
   source = abspath("${path.module}/${var.images_dir}/kali-linux-last-amd64.qcow2")
   format = "qcow2"
 
-  depends_on = [libvirt_pool.lab]
+  depends_on = [libvirt_pool.volumes]
 }
 
 
@@ -134,11 +134,6 @@ resource "null_resource" "deploy_netutil" {
   provisioner "file" {
     source      = "${var.netutil_source_dir}/netutil"
     destination = "/opt/netutil/netutil"
-  }
-
-  provisioner "file" {
-    source      = "${var.netutil_source_dir}/netutil-config.json"
-    destination = "/opt/netutil/netutil-config.json"
   }
 
   provisioner "file" {
@@ -171,8 +166,6 @@ resource "null_resource" "deploy_netutil" {
   }
 
   triggers = {
-    # Redeploy when the binary or config changes
     netutil_binary = filemd5("${var.netutil_source_dir}/netutil")
-    config_file    = filemd5("${var.netutil_source_dir}/netutil-config.json")
   }
 }

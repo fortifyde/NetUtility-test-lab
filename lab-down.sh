@@ -2,8 +2,6 @@
 # lab-down.sh - Tear down all VMs and optionally clean up OVS bridge
 # One command to shut down the full test lab.
 
-set -e
-
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 
 # ── Colors (terminal only) ──────────────────────────────────────────────
@@ -105,14 +103,16 @@ for net in "netutil-lab-mgmt" "netutil-lab-ovs"; do
 done
 
 # Storage pool
-if virsh -c qemu:///system pool-info "netutil-lab-pool" >/dev/null 2>&1; then
-    info "Destroying storage pool: netutil-lab-pool"
-    virsh -c qemu:///system pool-destroy "netutil-lab-pool" 2>/dev/null || true
-    virsh -c qemu:///system pool-undefine "netutil-lab-pool" 2>/dev/null || true
-fi
+for pool in "netutil-lab-volumes" "netutil-lab-pool"; do
+    if virsh -c qemu:///system pool-info "$pool" >/dev/null 2>&1; then
+        info "Destroying storage pool: $pool"
+        virsh -c qemu:///system pool-destroy "$pool" 2>/dev/null || true
+        virsh -c qemu:///system pool-undefine "$pool" 2>/dev/null || true
+    fi
+done
 
 # Domains (VMs)
-for domain in "netutil-lab-debian" "netutil-lab-dmz" "netutil-lab-kali" "netutil-lab-ubuntu" "netutil-lab-windows"; do
+for domain in "netutil-lab-debian" "netutil-lab-dmz" "netutil-lab-kali" "netutil-lab-ubuntu" "netutil-lab-windows" "netutil-lab-cisco-ios" "netutil-lab-cisco-nexus"; do
     if virsh -c qemu:///system dominfo "$domain" >/dev/null 2>&1; then
         info "Undefining domain: $domain"
         # Try regular undefine first, then with --nvram for UEFI VMs

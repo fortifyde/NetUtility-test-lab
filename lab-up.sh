@@ -126,11 +126,7 @@ if [ $DEPLOY_ONLY -eq 1 ]; then
     log "Copying netutil binary..."
     scp -i "$SSH_KEY" -o StrictHostKeyChecking=no \
         "$NETUTIL_DIR/netutil" "kali@$KALI_IP:/opt/netutil/netutil"
-    
-    log "Copying netutil-config.json..."
-    scp -i "$SSH_KEY" -o StrictHostKeyChecking=no \
-        "$NETUTIL_DIR/netutil-config.json" "kali@$KALI_IP:/opt/netutil/netutil-config.json"
-    
+
     log "Copying bin/ directory..."
     scp -i "$SSH_KEY" -o StrictHostKeyChecking=no -r \
         "$NETUTIL_DIR/bin" "kali@$KALI_IP:/opt/netutil/"
@@ -253,8 +249,9 @@ else
     info "Connect to Kali:"
     echo "  ssh kali@$KALI_IP"
     echo ""
-    info "Run NetUtility tests:"
-    echo "  ssh kali@$KALI_IP 'cd /opt/netutil && sudo ./netutil scan --config netutil-config.json'"
+    info "Run NetUtility:"
+    echo "  ssh kali@$KALI_IP"
+    echo "  netutil"
 fi
 
 log "Done!"
