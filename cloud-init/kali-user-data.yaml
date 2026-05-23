@@ -115,11 +115,14 @@ write_files:
     permissions: '0644'
   - path: /etc/dhcp/dhclient.conf
     content: |
-      timeout 10;
-      retry 10;
-      select-timeout 5;
-      initial-interval 1;
-      backoff-cutoff 10;
+      timeout 30;
+      retry 60;
+      select-timeout 15;
+      initial-interval 2;
+      backoff-cutoff 120;
+      # Keep trying to renew indefinitely (default behavior)
+      # This ensures the management interface retains its lease
+      # across long-running sessions and reboots.
     owner: root:root
     permissions: '0644'
 

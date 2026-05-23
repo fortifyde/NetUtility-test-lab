@@ -28,6 +28,21 @@ resource "libvirt_cloudinit_disk" "kali" {
   user_data      = data.cloudinit_config.kali.rendered
   meta_data      = ""
 
+  # Explicit network config prevents cloud-init from generating
+  # "iface eth0 inet6 dhcp" in 50-cloud-init, which causes
+  # networking.service to hang on DHCPv6 Solicit until timeout.
+  # eth0 = management (IPv4 DHCP only), eth1 = OVS trunk (manual).
+  network_config = <<-EOT
+  version: 2
+  ethernets:
+    eth0:
+      dhcp4: true
+      dhcp6: false
+    eth1:
+      dhcp4: false
+      dhcp6: false
+  EOT
+
   depends_on = [libvirt_pool.lab]
 }
 

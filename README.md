@@ -66,30 +66,66 @@ scanner against Linux and Windows targets.
 - 16 GB RAM minimum (32 GB recommended)
 - 100 GB free disk space for images and VM disks
 
-### Software
+### Software (Fedora)
 
-- Linux host with KVM enabled
-- QEMU/KVM (`qemu-kvm` or `qemu-system-x86`)
-- libvirt (`libvirtd`) with the `libvirt` Terraform provider
+```bash
+# Install required packages
+sudo dnf install -y \
+    qemu-kvm libvirt libvirt-daemon-kvm \
+    openvswitch \
+    terraform \
+    go \
+    curl sha256sum
+
+# Enable and start services
+sudo systemctl enable --now libvirtd
+sudo systemctl enable --now ovsdb-server
+sudo systemctl enable --now ovs-vswitchd
+
+# Add user to libvirt group (log out and back in)
+sudo usermod -aG libvirt $(whoami)
+
+# Verify KVM acceleration
+virt-host-validate qemu
+```
+
+### Software (Debian/Ubuntu)
+
+```bash
+# Install required packages
+sudo apt update
+sudo apt install -y \
+    qemu-kvm libvirt-daemon-system libvirt-clients \
+    openvswitch-switch \
+    terraform \
+    golang-go \
+    curl \
+    cpu-checker
+
+# Verify KVM acceleration
+kvm-ok
+```
+
+### Software (Common)
+
 - Terraform >= 1.5
-- Open vSwitch (`openvswitch-switch` or equivalent)
-- `curl`, `sha256sum`
+- Open vSwitch utilities
 - [NetUtility](https://github.com/fortifyde/NetUtility) — cloned separately (see `netutil_source_dir`)
 
 ### Prerequisites Check
 
 ```bash
-# Verify KVM acceleration
-kvm-ok
-
 # Verify Open vSwitch
-ovs-vsctl --version
+sudo ovs-vsctl --version
 
 # Verify Terraform
 terraform version
 
 # Verify libvirt is running
 virsh --connect qemu:///system list --all
+
+# Verify Go (for building NetUtility)
+go version
 
 # Verify available resources
 free -h
@@ -98,40 +134,117 @@ df -h
 
 ## Quick Start
 
+### 1. Clone the Repository
+
 ```bash
-# 1. Download cloud images
+git clone https://github.com/fortifyde/NetUtility-test-lab.git
+cd NetUtility-test-lab
+
+# Clone NetUtility alongside the lab (for auto-deploy)
+git clone https://github.com/fortifyde/NetUtility.git ../NetUtility
+```
+
+### 2. Download Cloud Images
+
+```bash
 ./scripts/download-images.sh all
+```
 
-# 2. Set up Open vSwitch bridge (pre-deploy: creates bridge only)
-sudo ./scripts/setup-ovs.sh
+This downloads:
+- Kali Linux cloud image
+- Debian 12 cloud image
+- Ubuntu 22.04 cloud image
+- VirtIO Windows drivers (for optional Windows target)
 
-# 3. Deploy the lab
-terraform init
-terraform apply -auto-approve
+Images are saved to `images/` and are not tracked in git.
 
-# 4. Configure VLAN tagging on OVS ports (post-deploy)
-sudo ./scripts/setup-ovs.sh --post-deploy
+### 3. Start the Lab
 
-# 5. Wait for cloud-init and auto-deploy (5-10 minutes)
-#    The NetUtility project is automatically deployed to /opt/netutil on the Kali VM.
-#    SSH into the Kali scanner to verify:
+```bash
+./lab-up.sh
+```
+
+This single command:
+- Builds NetUtility binaries from `../NetUtility`
+- Creates the OVS bridge
+- Provisions all VMs with Terraform
+- Configures VLAN tagging on OVS ports
+- Waits for Kali SSH to be ready
+- Displays connection information
+
+**Flags:**
+- `--skip-build` — Skip NetUtility build (use existing binaries)
+- `--skip-ovs` — Skip OVS setup (bridge already exists + ports configured)
+- `--deploy-only` — Fast iteration: build + SCP to running Kali, no Terraform
+
+### 4. Connect to Kali
+
+```bash
 ssh kali@$(terraform output -raw kali_mgmt_ip)
+```
 
-# 6. (Optional) Redeploy NetUtility after a hotfix (without rebuilding the lab):
-KALI_IP=$(terraform output -raw kali_mgmt_ip)
-scp -i ~/.ssh/id_rsa -r \
-  ${NETUTIL_SRC:-../NetUtility}/netutil ${NETUTIL_SRC:-../NetUtility}/netutil-config.json \
-  ${NETUTIL_SRC:-../NetUtility}/bin ${NETUTIL_SRC:-../NetUtility}/scripts \
-  kali@$KALI_IP:/opt/netutil/
+The NetUtility project is automatically deployed to `/opt/netutil` on the Kali VM.
 
-# 7. Run the full test suite (from the Kali VM)
-cd /opt/netutil && sudo ./lab/tests/run_all.sh
+### 5. Run Tests
 
-# 8. Collect test outputs and results
+From the Kali VM:
+
+```bash
+cd /opt/netutil
+
+# Full test suite
+sudo ./lab/tests/run_all.sh
+
+# Specific categories only
+sudo ./lab/tests/run_all.sh --only discovery --only scanning
+
+# Skip slow categories
+sudo ./lab/tests/run_all.sh --skip config_gathering
+```
+
+### 6. Collect Results
+
+```bash
 ./scripts/collect-outputs.sh
+```
 
-# 9. Tear down the lab
-terraform destroy -auto-approve
+This gathers test outputs from all VMs into a local directory.
+
+### 7. Stop the Lab
+
+```bash
+./lab-down.sh
+```
+
+This destroys all VMs and removes the OVS bridge.
+
+**Flags:**
+- `--keep-bridge` — Keep the OVS bridge (don't delete ovs-br0)
+
+### Fast Iteration
+
+For rapid development cycles, use `--deploy-only`:
+
+```bash
+# Make changes to NetUtility code
+cd ../NetUtility
+# ... edit code ...
+
+# Push to running Kali VM without reprovisioning
+cd ../NetUtility-test-lab
+./lab-up.sh --deploy-only
+```
+
+This skips Terraform entirely and only:
+- Builds NetUtility binaries
+- SCPs `netutil`, `netutil-config.json`, `bin/`, `scripts/` to Kali
+- Exits
+
+Combine with `--skip-build` for the fastest iteration when binaries are already built:
+
+```bash
+./lab-up.sh --skip-build --deploy-only
+```
 
 ## VM Details
 
@@ -281,7 +394,7 @@ enable_windows = true
 
 Then apply:
 ```bash
-terraform apply -auto-approve
+./lab-up.sh
 ```
 
 ### 5. Verify
@@ -314,13 +427,13 @@ against the lab targets.
 cd /opt/netutil && sudo ./lab/tests/run_all.sh
 
 # Specific categories only
-./lab/tests/run_all.sh --only discovery --only scanning
+sudo ./lab/tests/run_all.sh --only discovery --only scanning
 
 # Skip slow categories
-./lab/tests/run_all.sh --skip config_gathering
+sudo ./lab/tests/run_all.sh --skip config_gathering
 
 # Individual test script
-./lab/tests/test_discovery.sh
+sudo ./lab/tests/test_discovery.sh
 ```
 
 ### Interpreting Results
@@ -370,7 +483,7 @@ cat /var/log/cloud-init-output.log
 cloud-init status
 ```
 
-Wait 5-10 minutes after `terraform apply`. The first boot runs package installs
+Wait 5-10 minutes after `lab-up.sh`. The first boot runs package installs
 and service configuration.
 
 ### OVS Bridge Not Working
@@ -379,8 +492,8 @@ Verify the bridge and port configuration:
 
 ```bash
 sudo ./scripts/setup-ovs.sh --status
-ovs-vsctl show
-ovs-vsctl list-ports ovs-br0
+sudo ovs-vsctl show
+sudo ovs-vsctl list-ports ovs-br0
 ```
 
 Re-create the bridge if needed:
@@ -403,14 +516,14 @@ ping -c 3 10.10.10.10
 2. Check the OVS trunk port is passing tagged frames:
 
 ```bash
-ovs-vsctl show
+sudo ovs-vsctl show
 ```
 
 3. Verify no host firewall is blocking traffic:
 
 ```bash
 # On the target:
-iptables -L -n
+sudo iptables -L -n
 ```
 
 ### Terraform Provider Issues
@@ -425,22 +538,42 @@ Check the provider version constraint in `versions.tf` and ensure libvirtd is
 running:
 
 ```bash
-systemctl status libvirtd
+sudo systemctl status libvirtd
 ```
+
+### Moving the Repository
+
+If you move the repository to a different directory, you must delete the
+Terraform state file before running `lab-up.sh` again:
+
+```bash
+rm -f terraform.tfstate terraform.tfstate.backup
+rm -rf .terraform/
+./lab-up.sh
+```
+
+Terraform state stores absolute paths, so moving the repo invalidates the state.
 
 ## Cleanup
 
 ```bash
 # Destroy all VMs and libvirt resources
-terraform destroy -auto-approve
-
-# Remove the OVS bridge and ports
-sudo ./scripts/setup-ovs.sh --force
+./lab-down.sh
 
 # Remove downloaded images (optional)
 rm -rf images/
+```
 
-# Remove Terraform state
+For manual cleanup (if `lab-down.sh` fails):
+
+```bash
+# Destroy VMs
+terraform destroy -auto-approve
+
+# Remove OVS bridge
+sudo ovs-vsctl del-br ovs-br0
+
+# Remove state
 rm -f terraform.tfstate terraform.tfstate.backup
 rm -rf .terraform/
 ```
@@ -449,6 +582,8 @@ rm -rf .terraform/
 
 ```
 ├── README.md                          This file
+├── lab-up.sh                          Start the lab (builds, provisions, deploys)
+├── lab-down.sh                        Stop the lab (destroys VMs, cleans up)
 ├── main.tf                            Root Terraform module
 ├── variables.tf                       Variable definitions
 ├── outputs.tf                         Output values
@@ -462,13 +597,9 @@ rm -rf .terraform/
 ├── terraform.tfvars.example           Example variable overrides
 ├── cloud-init/
 │   ├── kali-user-data.yaml            Kali cloud-init user data
-│   ├── kali-network-config.yaml       Kali network interfaces
 │   ├── debian-user-data.yaml          Debian cloud-init user data
-│   ├── debian-network.yaml            Debian network interfaces
 │   ├── ubuntu-user-data.yaml          Ubuntu cloud-init user data
-│   ├── ubuntu-network.yaml            Ubuntu network interfaces
 │   ├── dmz-user-data.yaml             DMZ web server cloud-init user data
-│   ├── dmz-network.yaml               DMZ network interfaces
 │   └── windows/
 │       ├── autounattend.xml           Windows unattended install answer file
 │       └── setup-services.ps1         Windows post-install service setup
@@ -501,3 +632,7 @@ rm -rf .terraform/
 │       └── config/
 └── images/                            Downloaded cloud images (not in repo)
 ```
+
+## License
+
+MIT
