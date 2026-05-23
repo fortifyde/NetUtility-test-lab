@@ -204,7 +204,7 @@ copy_remote_dir() {
 
     echo "  - ${_name}..."
     $SSH_CMD "tar czf - -C ${REMOTE_WORKDIR} ${_remote_subdir} 2>/dev/null" \
-        | tar xzf - -C "${OUTPUT_DIR}/${_local_subdir}" 2>/dev/null \
+        | tar xzf - -C "${OUTPUT_DIR}" 2>/dev/null \
         || echo "    (no ${_name} results)"
 }
 
