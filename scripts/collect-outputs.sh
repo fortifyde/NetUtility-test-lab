@@ -182,7 +182,7 @@ echo "Remote workdir: ${REMOTE_WORKDIR}"
 if [ "$MODE" = "workspace" ]; then
     OUTPUT_DIR="$WORKSPACE_DIR"
     # Create workspace subdirectories matching what scripts expect
-    mkdir -p "$OUTPUT_DIR"/{scans,discovery,analysis,recon,configs,captures,reports,logs}
+    mkdir -p "$OUTPUT_DIR/scans" "$OUTPUT_DIR/discovery" "$OUTPUT_DIR/analysis" "$OUTPUT_DIR/recon" "$OUTPUT_DIR/configs" "$OUTPUT_DIR/captures" "$OUTPUT_DIR/reports" "$OUTPUT_DIR/logs"
 else
     TIMESTAMP=$(date +%Y%m%d_%H%M%S)
     OUTPUT_DIR="${ARCHIVE_DIR}/collect_${TIMESTAMP}"
@@ -226,10 +226,12 @@ $SSH_CMD "tar czf - -C ${REMOTE_WORKDIR} screenshots 2>/dev/null" \
     | tar xzf - -C "${OUTPUT_DIR}" 2>/dev/null \
     || echo "    (no screenshot database)"
 
-# Copy correlations.json if present (stored alongside the binary on Kali)
+# Copy correlations.json if present (stored in /opt/netutil/correlations/ on Kali)
 echo "  - Correlation data..."
-$SSH_CMD "cat /opt/netutil/correlations.json 2>/dev/null" \
+    $SSH_CMD "cat /opt/netutil/correlations/correlations.json 2>/dev/null" \
     > "${OUTPUT_DIR}/correlations.json" 2>/dev/null || true
+    $SSH_CMD "cat /opt/netutil/correlations/manual_categories.json 2>/dev/null" \
+        > "${OUTPUT_DIR}/manual_categories.json" 2>/dev/null || true
 
 echo
 echo "=== Collection Complete ==="
