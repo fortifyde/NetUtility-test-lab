@@ -119,7 +119,7 @@ resource "null_resource" "deploy_netutil" {
     type        = "ssh"
     user        = "kali"
     host        = try(libvirt_domain.kali.network_interface[0].addresses[0], "")
-    private_key = file(var.ssh_private_key_path)
+    private_key = var.ssh_public_key != "" ? file(var.ssh_private_key_path) : tls_private_key.lab[0].private_key_openssh
     timeout     = "15m"
   }
 
@@ -165,6 +165,12 @@ resource "null_resource" "deploy_netutil" {
     destination = "/opt/netutil/lab"
   }
 
+  provisioner "remote-exec" {
+    inline = [
+      "chmod +x /opt/netutil/netutil /opt/netutil/bin/*",
+      "chown -R kali:kali /opt/netutil",
+    ]
+  }
   triggers = {
     netutil_binary = filemd5("${var.netutil_source_dir}/netutil")
   }

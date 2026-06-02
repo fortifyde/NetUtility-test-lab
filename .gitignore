@@ -16,6 +16,7 @@ images/
 
 # UEFI NVRAM (regeneratable)
 netutil-lab-windows-vars.fd
+.lab-ssh-key
 
 # Test results (regeneratable)
 results/

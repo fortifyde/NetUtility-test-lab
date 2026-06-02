@@ -25,6 +25,7 @@ users:
     ssh_authorized_keys:
       - ${ssh_public_key}
 
+package_update: true
 packages:
   - python3
   - python3-asyncssh
@@ -200,7 +201,7 @@ write_files:
 
 runcmd:
   - mkdir -p /opt/device-sim/fixtures
-  - ssh-keygen -t ed25519 -f /opt/device-sim/host_key -N "" -C "cisco-nexus-sim"
+  - ssh-keygen -t ed25519 -q -f /opt/device-sim/host_key -N "" -C "cisco-nexus-sim" || true
   - |
     TRUNK=$(ip -br link show | grep 52:54:00:0f:01:01 | awk '{print $1}')
     if [ -n "$TRUNK" ]; then
@@ -210,10 +211,14 @@ runcmd:
       ip link set $TRUNK.10 up
     fi
   - netplan apply
-  # netplan apply ensures DHCP is up; now restrict sshd to management IP so asyncssh can bind VLAN port 22
+  # Wait for DHCP to assign management IP, then restrict sshd so device-sim can bind VLAN port 22
   - |
-    MGMT_IFACE=$(ip route 2>/dev/null | awk '/^default/{print $5; exit}')
-    MGMT_IP=$(ip -4 addr show dev "$MGMT_IFACE" 2>/dev/null | grep -oP '(?<=inet )[0-9.]+' | head -1 || true)
+    for i in $(seq 1 30); do
+      MGMT_IFACE=$(ip route 2>/dev/null | awk '/^default/{print $5; exit}')
+      MGMT_IP=$(ip -4 addr show dev "$MGMT_IFACE" 2>/dev/null | grep -oP '(?<=inet )[0-9.]+' | head -1 || true)
+      [ -n "$MGMT_IP" ] && break
+      sleep 2
+    done
     if [ -n "$MGMT_IP" ]; then
       mkdir -p /etc/ssh/sshd_config.d
       printf 'ListenAddress %s\n' "$MGMT_IP" > /etc/ssh/sshd_config.d/00-mgmt-only.conf

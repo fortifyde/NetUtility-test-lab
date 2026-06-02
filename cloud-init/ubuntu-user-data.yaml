@@ -24,6 +24,11 @@ users:
     ssh_authorized_keys:
       - ${ssh_public_key}
     lock_passwd: false
+package_upgrade: false
+apt:
+  conf: |
+    APT::Get::Fix-Broken "true";
+    APT::Acquire::Retries "3";
 
 packages:
   - openssh-server
@@ -239,25 +244,25 @@ write_files:
 runcmd:
   # --- Traffic generation ---
   - systemctl daemon-reload
-  - systemctl enable netlab-traffic.service
-  - systemctl start netlab-traffic.service
+  - systemctl enable netlab-traffic.service || true
+  - systemctl start netlab-traffic.service || true
 
   # ── Generate intentionally weak SSL certificates ────────────
-  - mkdir -p /etc/apache2/ssl
+  - mkdir -p /etc/apache2/ssl || true
 
   # Weak MD5-signed certificate (valid)
   - |
     openssl req -x509 -newkey rsa:2048 -keyout /etc/apache2/ssl/server-md5.key \
       -out /etc/apache2/ssl/server-md5.crt -days 365 -nodes \
       -subj "/C=US/ST=Test/L=Test/O=NetUtility/CN=ubuntu.${domain}" \
-      -md md5
+      -md md5 || true
 
   # Small 512-bit RSA key certificate (weak key size)
   - |
     openssl req -x509 -newkey rsa:512 -keyout /etc/apache2/ssl/server-weak.key \
       -out /etc/apache2/ssl/server-weak.crt -days 365 -nodes \
       -subj "/C=US/ST=Test/L=Test/O=NetUtility/CN=ubuntu.${domain}" \
-      -md sha256
+      -md sha256 || true
 
   # Expired certificate
   - |
@@ -267,22 +272,22 @@ runcmd:
       -md sha256 || true
 
   # ── Configure and enable Apache ─────────────────────────────
-  - a2enmod ssl
-  - a2ensite default-ssl.conf
-  - systemctl restart apache2
+  - a2enmod ssl || true
+  - a2ensite default-ssl.conf || true
+  - systemctl restart apache2 || true
 
   # ── Configure SNMP agent ────────────────────────────────────
-  - systemctl restart snmpd
-  - systemctl enable snmpd
+  - systemctl restart snmpd || true
+  - systemctl enable snmpd || true
 
   # ── Setup FTP directories and start vsftpd ──────────────────
-  - mkdir -p /var/ftp/pub/upload
-  - chown root:root /var/ftp
-  - chmod 755 /var/ftp
-  - chown ftp:ftp /var/ftp/pub/upload
-  - chmod 755 /var/ftp/pub/upload
-  - systemctl restart vsftpd
-  - systemctl enable vsftpd
+  - mkdir -p /var/ftp/pub/upload || true
+  - chown root:root /var/ftp || true
+  - chmod 755 /var/ftp || true
+  - chown ftp:ftp /var/ftp/pub/upload || true
+  - chmod 755 /var/ftp/pub/upload || true
+  - systemctl restart vsftpd || true
+  - systemctl enable vsftpd || true
 
   # --- Ensure VLAN interfaces (fallback if bootcmd failed) ---
   - |
@@ -296,4 +301,4 @@ runcmd:
       ip addr add ${vlan20_ip}/24 dev $TRUNK.20 2>/dev/null || true
       ip link set $TRUNK.20 up
     fi
-  - netplan apply
+  - netplan apply || true

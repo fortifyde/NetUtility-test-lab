@@ -14,6 +14,47 @@ function Write-Log {
 }
 
 Write-Log "=== Starting post-install service setup ==="
+# ── 0. Install VirtIO drivers from ISO ────────────────────────────────
+# The VirtIO drivers ISO is attached as a CDROM. With the OS disk on
+# SATA, WinPE can see the disk natively, but the network adapter is
+# still virtio and needs NetKVM. Install all VirtIO drivers here using
+# pnputil so the network and other virtio devices work.
+Write-Log "Installing VirtIO drivers..."
+$virtioRoot = $null
+foreach ($vol in (Get-Volume | Where-Object { $_.DriveType -eq 'CD-ROM' -and $_.DriveLetter })) {
+    $testPath = "$($vol.DriveLetter):\NetKVM"
+    if (Test-Path $testPath) {
+        $virtioRoot = "$($vol.DriveLetter):"
+        break
+    }
+}
+if ($virtioRoot) {
+    Write-Log "Found VirtIO ISO at $virtioRoot"
+    $driverDirs = @(
+        "NetKVM\2k22\amd64", "NetKVM\2k25\amd64",
+        "Balloon\2k22\amd64", "Balloon\2k25\amd64",
+        "vioserial\2k22\amd64", "vioserial\2k25\amd64",
+        "pvpanic\2k22\amd64", "pvpanic\2k25\amd64"
+    )
+    foreach ($dir in $driverDirs) {
+        $infPath = Join-Path $virtioRoot $dir
+        $infFiles = Get-ChildItem -Path $infPath -Filter "*.inf" -ErrorAction SilentlyContinue
+        foreach ($inf in $infFiles) {
+            Write-Log "  Installing driver: $($inf.FullName)"
+            $result = pnputil /add-driver $inf.FullName /install 2>&1
+            Write-Log "  $result"
+        }
+    }
+    # Force Windows to re-enumerate devices so newly installed drivers bind
+    Write-Log "Scanning for new hardware..."
+    pnputil /scan-devices 2>&1 | ForEach-Object { Write-Log "  $_" }
+    # Brief pause to let driver binding settle
+    Start-Sleep -Seconds 5
+    Write-Log "VirtIO drivers installed."
+} else {
+    Write-Log "WARN: VirtIO ISO not found on any CDROM drive. Network may not work."
+}
+
 
 # ── 1. Enable RDP ──────────────────────────────────────────────────────
 Write-Log "Enabling RDP..."

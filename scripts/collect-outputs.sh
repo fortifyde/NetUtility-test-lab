@@ -122,6 +122,19 @@ while [ $# -gt 0 ]; do
                 exit 1
             fi
             shift
+            # Auto-detect SSH key when --auto is used without --key
+            if [ -z "$SSH_KEY" ]; then
+                if [ -f "${LAB_DIR}/terraform.tfvars" ]; then
+                    SSH_KEY=$(grep -E '^ssh_private_key_path' "${LAB_DIR}/terraform.tfvars" 2>/dev/null \
+                         | sed 's/.*"\(.*\)".*/\1/' | sed "s|^~|$HOME|" || true)
+                fi
+                if [ -z "$SSH_KEY" ] && [ -f "${LAB_DIR}/.lab-ssh-key" ]; then
+                    SSH_KEY="${LAB_DIR}/.lab-ssh-key"
+                fi
+                if [ -z "$SSH_KEY" ] && [ -f "$HOME/.ssh/id_rsa" ]; then
+                    SSH_KEY="$HOME/.ssh/id_rsa"
+                fi
+            fi
             ;;
         -h|--help)
             usage
@@ -171,9 +184,9 @@ echo "Connected."
 
 # Auto-detect remote NETUTIL_WORKDIR
 if [ -z "$REMOTE_WORKDIR" ]; then
-    REMOTE_WORKDIR=$($SSH_CMD "cat /opt/netutil/netutil-config.json 2>/dev/null | grep workspace_dir | head -1 | sed 's/.*: *\"//;s/\".*//'" 2>/dev/null) || true
+    REMOTE_WORKDIR=$($SSH_CMD "python3 -c \"import json; print(json.load(open('/opt/netutil/netutil-config.json'))['workspace_dir'])\" 2>/dev/null" 2>/dev/null) || true
     if [ -z "$REMOTE_WORKDIR" ]; then
-        REMOTE_WORKDIR="/tmp/netutil-test"
+        REMOTE_WORKDIR="/tmp/testing"
     fi
 fi
 echo "Remote workdir: ${REMOTE_WORKDIR}"
@@ -182,38 +195,35 @@ echo "Remote workdir: ${REMOTE_WORKDIR}"
 if [ "$MODE" = "workspace" ]; then
     OUTPUT_DIR="$WORKSPACE_DIR"
     # Create workspace subdirectories matching what scripts expect
-    mkdir -p "$OUTPUT_DIR/scans" "$OUTPUT_DIR/discovery" "$OUTPUT_DIR/analysis" "$OUTPUT_DIR/recon" "$OUTPUT_DIR/configs" "$OUTPUT_DIR/captures" "$OUTPUT_DIR/reports" "$OUTPUT_DIR/logs"
+    mkdir -p "$OUTPUT_DIR/scans" "$OUTPUT_DIR/discovery" "$OUTPUT_DIR/analysis" "$OUTPUT_DIR/configs" "$OUTPUT_DIR/captures" "$OUTPUT_DIR/reports" "$OUTPUT_DIR/logs" "$OUTPUT_DIR/topology"
 else
     TIMESTAMP=$(date +%Y%m%d_%H%M%S)
     OUTPUT_DIR="${ARCHIVE_DIR}/collect_${TIMESTAMP}"
     mkdir -p "$OUTPUT_DIR"
 fi
-
 echo "Local output: ${OUTPUT_DIR}"
 echo
-
 # Copy each category's results from remote to local.
 # For --mode workspace, files go directly into the workspace subdirs
 # so the TUI's recursive scanner finds them.
 # For --mode archive, same structure under a timestamped directory.
-
 copy_remote_dir() {
     _name="$1"
     _remote_subdir="$2"
     _local_subdir="$3"
-
     echo "  - ${_name}..."
     $SSH_CMD "tar czf - -C ${REMOTE_WORKDIR} ${_remote_subdir} 2>/dev/null" \
         | tar xzf - -C "${OUTPUT_DIR}" 2>/dev/null \
         || echo "    (no ${_name} results)"
 }
-
 copy_remote_dir "Scans (port/service/vuln)" "scans" "scans"
 copy_remote_dir "Discovery (ARP, LLDP, SNMP)" "discovery" "discovery"
 copy_remote_dir "Analysis (packet, MAC, fingerprint)" "analysis" "analysis"
-copy_remote_dir "Recon (screenshots, SNMP, exploits)" "recon" "recon"
 copy_remote_dir "Config gathering" "configs" "configs"
 copy_remote_dir "Packet captures" "captures" "captures"
+copy_remote_dir "Topology (network maps)" "topology" "topology"
+copy_remote_dir "Reports" "reports" "reports"
+copy_remote_dir "Logs" "logs" "logs"
 
 # Copy TAP test output if available
 echo "  - Test results..."

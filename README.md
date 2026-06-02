@@ -75,12 +75,18 @@ sudo dnf install -y \
     openvswitch \
     terraform \
     go \
-    curl sha256sum
+    genisoimage \
+    net-snmp-utils \
+    virt-viewer \
+    curl
 
 # Enable and start services
 sudo systemctl enable --now libvirtd
 sudo systemctl enable --now ovsdb-server
 sudo systemctl enable --now ovs-vswitchd
+
+# For Windows VM support (optional)
+sudo dnf install -y edk2-ovmf
 
 # Add user to libvirt group (log out and back in)
 sudo usermod -aG libvirt $(whoami)
@@ -99,8 +105,14 @@ sudo apt install -y \
     openvswitch-switch \
     terraform \
     golang-go \
+    genisoimage \
+    snmp \
+    virt-viewer \
     curl \
     cpu-checker
+
+# For Windows VM support (optional)
+sudo apt install -y ovmf
 
 # Verify KVM acceleration
 kvm-ok
@@ -110,7 +122,14 @@ kvm-ok
 
 - Terraform >= 1.5
 - Open vSwitch utilities
+- `genisoimage` or `mkisofs` (for cloud-init ISO generation)
 - [NetUtility](https://github.com/fortifyde/NetUtility) — cloned separately (see `netutil_source_dir`)
+
+### Optional
+
+- `net-snmp-utils` / `snmp` — required for `demo-prep.sh` SNMP pre-flight checks
+- `virt-viewer` — graphical console for Windows VM
+- `edk2-ovmf` / `ovmf` — UEFI firmware, required when `enable_windows = true`
 
 ### Prerequisites Check
 
@@ -126,6 +145,12 @@ virsh --connect qemu:///system list --all
 
 # Verify Go (for building NetUtility)
 go version
+
+# Verify cloud-init ISO tool
+genisoimage --version 2>&1 | head -1
+
+# Verify SNMP tools (for demo-prep.sh)
+snmpget -V 2>&1 | head -1
 
 # Verify available resources
 free -h
@@ -257,16 +282,33 @@ sudo ./lab/tests/run_all.sh --skip config_gathering
 
 This gathers test outputs from all VMs into a local directory.
 
-### 7. Stop the Lab
+### 7. Stop and Restart the Lab
+
+To destroy all VMs and remove the OVS bridge:
 
 ```bash
 ./lab-down.sh
 ```
 
-This destroys all VMs and removes the OVS bridge.
-
 **Flags:**
 - `--keep-bridge` — Keep the OVS bridge (don't delete ovs-br0)
+- `--stop` — Shut off VMs without destroying them (preserves disk state)
+
+To restart stopped VMs without rebuilding:
+
+```bash
+./lab-up.sh --start
+```
+
+This boots all existing VMs, re-applies OVS VLAN tagging, and waits for Kali SSH.
+No Terraform or NetUtility build steps run.
+
+Full stop/start cycle (preserves VM disks and state):
+
+```bash
+./lab-down.sh --stop     # Shut off VMs without destroying
+./lab-up.sh --start      # Restart VMs and wait for Kali
+```
 
 ### Fast Iteration
 

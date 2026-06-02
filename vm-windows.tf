@@ -25,11 +25,24 @@ resource "libvirt_domain" "windows_target" {
   autostart = true
 
   # Firmware: UEFI required for Server 2022+
-  firmware = "/usr/share/edk2/x64/OVMF_CODE.4m.fd"
+  # Auto-detect OVMF paths: var.ovmf_code_path override > Fedora/RHEL > Debian/Ubuntu > Arch
+  firmware = coalesce(
+    var.ovmf_code_path,
+    fileexists("/usr/share/edk2/ovmf/OVMF_CODE.fd") ? "/usr/share/edk2/ovmf/OVMF_CODE.fd" : "",
+    fileexists("/usr/share/OVMF/OVMF_CODE.fd") ? "/usr/share/OVMF/OVMF_CODE.fd" : "",
+    fileexists("/usr/share/edk2/x64/OVMF_CODE.4m.fd") ? "/usr/share/edk2/x64/OVMF_CODE.4m.fd" : "",
+    fileexists("/usr/share/qemu/OVMF_CODE.fd") ? "/usr/share/qemu/OVMF_CODE.fd" : "",
+  )
 
   nvram {
     file     = "${path.module}/${var.lab_name}-windows-vars.fd"
-    template = "/usr/share/edk2/x64/OVMF_VARS.4m.fd"
+    template = coalesce(
+      var.ovmf_vars_path,
+      fileexists("/usr/share/edk2/ovmf/OVMF_VARS.fd") ? "/usr/share/edk2/ovmf/OVMF_VARS.fd" : "",
+      fileexists("/usr/share/OVMF/OVMF_VARS.fd") ? "/usr/share/OVMF/OVMF_VARS.fd" : "",
+      fileexists("/usr/share/edk2/x64/OVMF_VARS.4m.fd") ? "/usr/share/edk2/x64/OVMF_VARS.4m.fd" : "",
+      fileexists("/usr/share/qemu/OVMF_VARS.fd") ? "/usr/share/qemu/OVMF_VARS.fd" : "",
+    )
   }
 
   # Boot from the Windows installation ISO first
@@ -37,7 +50,14 @@ resource "libvirt_domain" "windows_target" {
     dev = ["cdrom"]
   }
 
-  # Suppress OVMF boot menu so install is fully unattended
+  # XSLT customisations: suppress OVMF boot menu for fully unattended
+  # install, and switch the OS disk from virtio to SATA.  Windows PE
+  # includes built-in AHCI drivers, so the disk is visible without
+  # needing PnpCustomizationsWinPE to load viostor.  There is a known
+  # issue with UEFI (OVMF) + IDE CDROM that prevents virtio driver
+  # loading via DriverPaths in WinPE.  After Windows is installed and
+  # VirtIO drivers are loaded via FirstLogonCommands the bus can be
+  # switched back to virtio for performance.
   xml {
     xslt = <<-EOT
     <xsl:stylesheet version="1.0"
@@ -52,6 +72,9 @@ resource "libvirt_domain" "windows_target" {
           <xsl:apply-templates select="@*|node()"/>
           <bootmenu enable='no'/>
         </xsl:copy>
+      </xsl:template>
+      <xsl:template match="disk[target[@dev='vda']]/target">
+        <target dev="sda" bus="sata"/>
       </xsl:template>
     </xsl:stylesheet>
     EOT

@@ -1,8 +1,9 @@
 #cloud-config
 hostname: dmz-web
 manage_etc_hosts: true
-
 bootcmd:
+  - modprobe 8021q || true
+  - echo '8021q' > /etc/modules-load.d/vlan.conf || true
   - |
     TRUNK=$(ip -br link show | grep 52:54:00:0d:01:01 | awk '{print $1}')
     if [ -n "$TRUNK" ]; then
@@ -317,17 +318,18 @@ write_files:
 runcmd:
   # --- Traffic generation ---
   - systemctl daemon-reload
-  - systemctl enable netlab-traffic.service
-  - systemctl start netlab-traffic.service
+  - systemctl enable netlab-traffic.service || true
+  - systemctl start netlab-traffic.service || true
 
-  # Generate SSL certificates
+  # Generate SSL certificates (non-critical — nginx still serves HTTP without them)
   - |
+    mkdir -p /etc/nginx/ssl || true
     # Valid self-signed cert (CN=dmz.${domain}, 2048-bit RSA, SHA-256, 365 days)
     openssl req -x509 -nodes -days 365 -newkey rsa:2048 \
       -keyout /etc/nginx/ssl/valid.key \
       -out /etc/nginx/ssl/valid.crt \
       -subj "/CN=dmz.${domain}/O=Test Lab/C=US" \
-      -sha256
+      -sha256 || true
 
   - |
     # Expired self-signed cert (already expired)
@@ -335,7 +337,7 @@ runcmd:
       -keyout /etc/nginx/ssl/expired.key \
       -out /etc/nginx/ssl/expired.crt \
       -subj "/CN=dmz.${domain}/O=Test Lab/C=US" \
-      -sha256
+      -sha256 || true
 
   - |
     # Weak cert (512-bit RSA, MD5 signing)
@@ -343,7 +345,7 @@ runcmd:
       -keyout /etc/nginx/ssl/weak.key \
       -out /etc/nginx/ssl/weak.crt \
       -subj "/CN=dmz.${domain}/O=Test Lab/C=US" \
-      -md5
+      -md5 || true
 
   - |
     # Mismatched cert (CN=wrong.${domain})
@@ -351,22 +353,22 @@ runcmd:
       -keyout /etc/nginx/ssl/mismatched.key \
       -out /etc/nginx/ssl/mismatched.crt \
       -subj "/CN=wrong.${domain}/O=Wrong Host/C=US" \
-      -sha256
+      -sha256 || true
 
   # Remove default nginx site and enable custom configs
-  - rm -f /etc/nginx/sites-enabled/default
-  - ln -sf /etc/nginx/sites-available/http-default.conf /etc/nginx/sites-enabled/
-  - ln -sf /etc/nginx/sites-available/https-valid.conf /etc/nginx/sites-enabled/
-  - ln -sf /etc/nginx/sites-available/https-expired.conf /etc/nginx/sites-enabled/
-  - ln -sf /etc/nginx/sites-available/http-vuln-headers.conf /etc/nginx/sites-enabled/
+  - rm -f /etc/nginx/sites-enabled/default || true
+  - ln -sf /etc/nginx/sites-available/http-default.conf /etc/nginx/sites-enabled/ || true
+  - ln -sf /etc/nginx/sites-available/https-valid.conf /etc/nginx/sites-enabled/ || true
+  - ln -sf /etc/nginx/sites-available/https-expired.conf /etc/nginx/sites-enabled/ || true
+  - ln -sf /etc/nginx/sites-available/http-vuln-headers.conf /etc/nginx/sites-enabled/ || true
 
   # Fix ownership of web content
-  - chown -R www-data:www-data /var/www/html
-  - chmod -R 755 /var/www/html
+  - chown -R www-data:www-data /var/www/html || true
+  - chmod -R 755 /var/www/html || true
 
   # Test nginx config and restart
-  - nginx -t && systemctl restart nginx
-  - systemctl enable nginx
+  - nginx -t && systemctl restart nginx || true
+  - systemctl enable nginx || true
 
   # --- Ensure static IP on trunk (fallback if bootcmd failed) ---
   - |
@@ -375,4 +377,4 @@ runcmd:
       ip link set $TRUNK up
       ip addr add ${dmz_ip}/24 dev $TRUNK 2>/dev/null || true
     fi
-  - netplan apply
+  - netplan apply || true

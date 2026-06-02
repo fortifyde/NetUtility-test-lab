@@ -16,6 +16,7 @@ PASS=0; FAIL=0
 ok()   { printf "${GRN}[PASS]${RST} %s\n" "$*"; PASS=$((PASS+1)); }
 fail() { printf "${RED}[FAIL]${RST} %s\n" "$*"; FAIL=$((FAIL+1)); }
 info() { printf "${CYN}[INFO]${RST} %s\n" "$*"; }
+warn() { printf "${YEL}[WARN]${RST} %s\n" "$*"; }
 
 cd "$LAB_DIR"
 
@@ -45,6 +46,10 @@ if [ -f terraform.tfvars ]; then
     _k=$(grep -E '^ssh_private_key_path' terraform.tfvars 2>/dev/null \
          | sed 's/.*"\(.*\)".*/\1/' | sed "s|^~|$HOME|" || true)
     [ -n "$_k" ] && SSH_KEY="$_k"
+fi
+# Use auto-generated key if no user key configured
+if [ "$SSH_KEY" = "$HOME/.ssh/id_rsa" ] && [ ! -f "$SSH_KEY" ] && [ -f .lab-ssh-key ]; then
+    SSH_KEY=".lab-ssh-key"
 fi
 
 SSH_OPTS="-o StrictHostKeyChecking=no -o ConnectTimeout=5 -o BatchMode=yes"
@@ -122,15 +127,17 @@ _sim_ok() {
                  admin@${_sim_ip} 'show version' 2>/dev/null" 2>/dev/null || true
     }
     _result=$(_sim_try)
-    # Retry once — device-sim may be mid-restart (RestartSec=5)
-    if [ -z "$_result" ]; then
+    # Retry up to 3 times — device-sim may be mid-restart (RestartSec=5)
+    _retry=0
+    while [ -z "$_result" ] && [ "$_retry" -lt 3 ]; do
+        _retry=$((_retry + 1))
         sleep 6
         _result=$(_sim_try)
-    fi
+    done
     if [ -n "$_result" ]; then
         ok "$_label responds to 'show version' (${_sim_ip})"
     else
-        fail "$_label did not respond — check device-sim.service on ${_sim_ip}"
+        fail "$_label did not respond after 3 retries — check device-sim.service on ${_sim_ip}"
     fi
 }
 
@@ -140,10 +147,20 @@ _sim_ok "cisco-nexus-sim" "$CISCO_NEXUS_IP"
 # ── 4. SNMP (management IPs — snmpd listens on all interfaces) ──────────
 info "Checking SNMP on targets..."
 
+if ! command -v snmpget >/dev/null 2>&1; then
+    warn "snmpget not found — install net-snmp-utils for SNMP checks"
+    warn "  Fedora: sudo dnf install net-snmp-utils"
+    warn "  Debian/Ubuntu: sudo apt install snmp"
+fi
+
 _snmp_ok() {
     _host="$1"; _label="$2"
     if [ -z "$_host" ] || echo "$_host" | grep -q "^DHCP"; then
         fail "SNMP — management IP not available for $_label"
+        return
+    fi
+    if ! command -v snmpget >/dev/null 2>&1; then
+        warn "SNMP check skipped for $_label (snmpget not available)"
         return
     fi
     if snmpget -v2c -c public -t 2 -r 1 "$_host" \
@@ -157,6 +174,21 @@ _snmp_ok() {
 _snmp_ok "$DEBIAN_IP" "debian-target"
 _snmp_ok "$UBUNTU_IP" "ubuntu-target"
 
+# ── 5. Windows (WinRM probe, only if enabled) ────────────────────────────
+if grep -q 'enable_windows[[:space:]]*=[[:space:]]*true' terraform.tfvars 2>/dev/null; then
+    if [ -n "$WINDOWS_IP" ] && ! echo "$WINDOWS_IP" | grep -q "^DHCP"; then
+        info "Checking Windows target ($WINDOWS_IP)..."
+        # WinRM HTTP listener on port 5985 — probe with curl (no auth needed to detect the endpoint)
+        if ssh $SSH_OPTS "kali@$KALI_IP" \
+                "code=\$(curl -s -o /dev/null -w '%{http_code}' -m 5 --connect-timeout 5 http://${WINDOWS_IP}:5985/wsman) && [ \"\$code\" -ge 200 ] && [ \"\$code\" -lt 500 ]" \
+                2>/dev/null; then
+            ok "Windows WinRM endpoint reachable on ${WINDOWS_IP}:5985"
+        else
+            warn "Windows WinRM not reachable on ${WINDOWS_IP}:5985 — may still be installing"
+            warn "Windows unattended install takes 20-30 minutes"
+        fi
+    fi
+fi
 # ── Summary ──────────────────────────────────────────────────────────────
 echo ""
 printf "=== Results: ${GRN}%d passed${RST}, ${RED}%d failed${RST} ===\n" "$PASS" "$FAIL"

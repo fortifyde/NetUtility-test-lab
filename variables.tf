@@ -155,3 +155,15 @@ variable "cisco_nexus_ip" {
   type        = string
   default     = "10.10.10.41"
 }
+
+variable "ovmf_code_path" {
+  description = "Path to OVMF code firmware file. Leave empty to auto-detect."
+  type        = string
+  default     = ""
+}
+
+variable "ovmf_vars_path" {
+  description = "Path to OVMF vars template file. Leave empty to auto-detect."
+  type        = string
+  default     = ""
+}

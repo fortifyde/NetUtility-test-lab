@@ -92,32 +92,6 @@
 
     </component>
 
-    <!-- VirtIO drivers from F:\ (virtio-win ISO). Point to specific 2k22\amd64
-         subdirs to avoid scanning incompatible drivers on the ISO root. -->
-    <component name="Microsoft-Windows-PnpCustomizationsWinPE"
-               language="neutral"
-               processorArchitecture="amd64"
-               publicKeyToken="31bf3856ad364e35"
-               versionScope="nonSxS"
-               xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State">
-      <DriverPaths>
-        <PathAndCredentials wcm:action="add" wcm:keyValue="1">
-          <Path>F:\viostor\2k22\amd64</Path>
-        </PathAndCredentials>
-        <PathAndCredentials wcm:action="add" wcm:keyValue="2">
-          <Path>F:\NetKVM\2k22\amd64</Path>
-        </PathAndCredentials>
-        <PathAndCredentials wcm:action="add" wcm:keyValue="3">
-          <Path>F:\vioserial\2k22\amd64</Path>
-        </PathAndCredentials>
-        <PathAndCredentials wcm:action="add" wcm:keyValue="4">
-          <Path>F:\Balloon\2k22\amd64</Path>
-        </PathAndCredentials>
-        <PathAndCredentials wcm:action="add" wcm:keyValue="5">
-          <Path>F:\pvpanic\2k22\amd64</Path>
-        </PathAndCredentials>
-      </DriverPaths>
-    </component>
   </settings>
 
   <!-- ═══════════════════════════════════════════════════════════════════

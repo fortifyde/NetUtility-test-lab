@@ -255,29 +255,29 @@ write_files:
 runcmd:
   # --- Traffic generation ---
   - systemctl daemon-reload
-  - systemctl enable netlab-traffic.service
-  - systemctl start netlab-traffic.service
+  - systemctl enable netlab-traffic.service || true
+  - systemctl start netlab-traffic.service || true
 
   # --- SNMP ---
   - sed -i 's/^SNMPDOPTS=.*/SNMPDOPTS="-Lf /var/log/snmpd.log -u Debian-snmp -g Debian-snmp -I -smux -p /var/run/snmpd.sock"/' /etc/default/snmpd || true
-  - systemctl restart snmpd
-  - systemctl enable snmpd
+  - systemctl restart snmpd || true
+  - systemctl enable snmpd || true
 
   # --- Nginx ---
-  - ln -sf /etc/nginx/sites-available/api /etc/nginx/sites-enabled/api
-  - nginx -t
-  - systemctl restart nginx
-  - systemctl enable nginx
+  - ln -sf /etc/nginx/sites-available/api /etc/nginx/sites-enabled/api || true
+  - nginx -t || true
+  - systemctl restart nginx || true
+  - systemctl enable nginx || true
 
   # --- Bind9 ---
   - mkdir -p /etc/bind/zones
   - chown root:bind /etc/bind/zones/db.${domain} /etc/bind/named.conf.local
-  - named-checkzone ${domain} /etc/bind/zones/db.${domain}
-  - systemctl restart bind9
-  - systemctl enable bind9
+  - named-checkzone ${domain} /etc/bind/zones/db.${domain} || true
+  - systemctl restart bind9 || true
+  - systemctl enable bind9 || true
 
   # --- IP forwarding ---
-  - sysctl --system
+  - sysctl --system || true
 
   # --- Ensure VLAN interfaces (fallback if bootcmd failed) ---
   - |
@@ -291,4 +291,4 @@ runcmd:
       ip addr add ${vlan20_ip}/24 dev $TRUNK.20 2>/dev/null || true
       ip link set $TRUNK.20 up
     fi
-  - netplan apply
+  - netplan apply || true

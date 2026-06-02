@@ -33,7 +33,7 @@ users:
       - ${ssh_public_key}
 
 package_update: true
-package_upgrade: true
+package_upgrade: false
 packages:
   # Scanning and enumeration
   - nmap
@@ -132,8 +132,8 @@ runcmd:
   - mkdir -p /opt/netutil
   - chown kali:kali /opt/netutil
   # Enable IP forwarding for routing between VLANs
-  - sysctl -w net.ipv4.ip_forward=1
-  - echo 'net.ipv4.ip_forward=1' > /etc/sysctl.d/99-ip-forward.conf
+  - sysctl -w net.ipv4.ip_forward=1 || true
+  - echo 'net.ipv4.ip_forward=1' > /etc/sysctl.d/99-ip-forward.conf || true
   # Ensure VLAN subinterfaces exist (bootcmd may have already created them)
   - |
     TRUNK=$(ip -br link show | grep 52:54:00:0a:01:01 | awk '{print $1}')
@@ -149,11 +149,11 @@ runcmd:
       ip addr add ${kali_vlan30_ip}/24 dev $TRUNK.30 2>/dev/null || true
       ip link set $TRUNK.30 up
     fi
-  # Install gowitness from GitHub releases (not in Kali repos)
+  # Install gowitness from GitHub releases (not in Kali repos) — non-critical
   - |
     GOWITNESS_VER="2.4.2"
     curl -fSL -o /tmp/gowitness.zip \
-      "https://github.com/sensepost/gowitness/releases/download/$${GOWITNESS_VER}/gowitness-$${GOWITNESS_VER}-linux-amd64.zip"
-    cd /tmp && unzip -o gowitness.zip gowitness && mv gowitness /usr/local/bin/ && chmod +x /usr/local/bin/gowitness
-    rm -f /tmp/gowitness.zip
+      "https://github.com/sensepost/gowitness/releases/download/$${GOWITNESS_VER}/gowitness-$${GOWITNESS_VER}-linux-amd64.zip" \
+      && cd /tmp && unzip -o gowitness.zip gowitness && mv gowitness /usr/local/bin/ && chmod +x /usr/local/bin/gowitness \
+      && rm -f /tmp/gowitness.zip || echo "WARNING: gowitness download failed (non-critical)"
   - ifup eth1.10 eth1.20 eth1.30
