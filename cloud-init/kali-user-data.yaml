@@ -64,7 +64,7 @@ packages:
   # General network tools
   - curl
   - wget
-  - dnsutils
+  - bind9-dnsutils       # dig/nslookup ("dnsutils" no longer exists in Kali repos)
   - whois
   - netcat-openbsd
   - socat
@@ -149,11 +149,6 @@ runcmd:
       ip addr add ${kali_vlan30_ip}/24 dev $TRUNK.30 2>/dev/null || true
       ip link set $TRUNK.30 up
     fi
-  # Install gowitness from GitHub releases (not in Kali repos) — non-critical
-  - |
-    GOWITNESS_VER="2.4.2"
-    curl -fSL -o /tmp/gowitness.zip \
-      "https://github.com/sensepost/gowitness/releases/download/$${GOWITNESS_VER}/gowitness-$${GOWITNESS_VER}-linux-amd64.zip" \
-      && cd /tmp && unzip -o gowitness.zip gowitness && mv gowitness /usr/local/bin/ && chmod +x /usr/local/bin/gowitness \
-      && rm -f /tmp/gowitness.zip || echo "WARNING: gowitness download failed (non-critical)"
-  - ifup eth1.10 eth1.20 eth1.30
+  # ifup is best-effort: bootcmd + write_files already created/configured the
+  # VLAN subinterfaces; this only reconciles state and can race interface naming.
+  - ifup eth1.10 eth1.20 eth1.30 || true

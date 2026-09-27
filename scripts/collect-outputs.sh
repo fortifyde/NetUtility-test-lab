@@ -117,6 +117,15 @@ while [ $# -gt 0 ]; do
             if [ -f "${LAB_DIR}/terraform.tfstate" ]; then
                 KALI_HOST=$(cd "$LAB_DIR" && terraform output -raw kali_mgmt_ip 2>/dev/null) || true
             fi
+            # Validate: terraform output may be a placeholder string, not an IP
+            case "$KALI_HOST" in
+                *[!0-9.]*) KALI_HOST="" ;;   # not an IP — clear and fall through
+                "")         ;;               # empty — fall through
+            esac
+            if [ -z "$KALI_HOST" ]; then
+                KALI_HOST=$(virsh -c qemu:///system domifaddr netutil-lab-kali 2>/dev/null \
+                            | awk '/ipv4/ { split($4, a, "/"); print a[1] }') || true
+            fi
             if [ -z "$KALI_HOST" ]; then
                 echo "ERROR: Could not auto-detect Kali IP. Use --host or run from lab/ with terraform apply." >&2
                 exit 1
@@ -225,10 +234,6 @@ copy_remote_dir "Topology (network maps)" "topology" "topology"
 copy_remote_dir "Reports" "reports" "reports"
 copy_remote_dir "Logs" "logs" "logs"
 
-# Copy TAP test output if available
-echo "  - Test results..."
-$SSH_CMD "cat /tmp/netutil-test-results.tap 2>/dev/null" \
-    > "${OUTPUT_DIR}/test_results.tap" 2>/dev/null || echo "    (no TAP output)"
 
 # Copy gowitness database if present (screenshots DB)
 echo "  - Screenshot database..."

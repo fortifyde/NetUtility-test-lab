@@ -21,12 +21,20 @@ warn() { printf "${YEL}[WARN]${RST} %s\n" "$*"; }
 cd "$LAB_DIR"
 
 info "Reading Terraform outputs..."
-if ! terraform output -raw kali_mgmt_ip >/dev/null 2>&1; then
-    printf "${RED}ERROR:${RST} Cannot read Terraform outputs. Is the lab running?\n"
+
+KALI_IP=$(terraform output -raw kali_mgmt_ip 2>/dev/null || true)
+# Validate: terraform output may be a placeholder string, not an IP
+case "$KALI_IP" in
+    *[!0-9.]*) KALI_IP="" ;;
+esac
+if [ -z "$KALI_IP" ]; then
+    KALI_IP=$(virsh -c qemu:///system domifaddr netutil-lab-kali 2>/dev/null \
+              | awk '/ipv4/ { split($4, a, "/"); print a[1] }') || true
+fi
+if [ -z "$KALI_IP" ]; then
+    printf "${RED}ERROR:${RST} Cannot determine Kali IP. Is the lab running?\n"
     exit 1
 fi
-
-KALI_IP=$(terraform output -raw kali_mgmt_ip)
 DEBIAN_IP=$(terraform output -raw debian_mgmt_ip 2>/dev/null || true)
 UBUNTU_IP=$(terraform output -raw ubuntu_mgmt_ip 2>/dev/null || true)
 DMZ_IP=$(terraform output -raw dmz_mgmt_ip 2>/dev/null || true)

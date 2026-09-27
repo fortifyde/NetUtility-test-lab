@@ -142,9 +142,14 @@ if [ $START_ONLY -eq 0 ] && [ $DEPLOY_ONLY -eq 1 ]; then
     fi
     
     KALI_IP=$(terraform output -raw kali_mgmt_ip 2>/dev/null || true)
+    case "$KALI_IP" in *[!0-9.]*) KALI_IP="" ;; esac
+    if [ -z "$KALI_IP" ]; then
+        KALI_IP=$(virsh -c qemu:///system domifaddr netutil-lab-kali 2>/dev/null \
+                  | awk '/ipv4/ { split($4, a, "/"); print a[1] }') || true
+    fi
     if [ -z "$KALI_IP" ] || [ "$KALI_IP" = "null" ]; then
-        err "Failed to resolve Kali IP from Terraform state"
-        err "Ensure the lab is running and Terraform state is available"
+        err "Failed to resolve Kali IP — neither Terraform state nor virsh returned an address"
+        err "Ensure the lab is running"
         exit 1
     fi
     
@@ -306,6 +311,11 @@ fi
 # If cloud-init was still running during the Terraform deploy_netutil step,
 # the binary may not have landed. Retry once.
 KALI_IP_VERIFY=$(terraform output -raw kali_mgmt_ip 2>/dev/null || true)
+case "$KALI_IP_VERIFY" in *[!0-9.]*) KALI_IP_VERIFY="" ;; esac
+if [ -z "$KALI_IP_VERIFY" ]; then
+    KALI_IP_VERIFY=$(virsh -c qemu:///system domifaddr netutil-lab-kali 2>/dev/null \
+                     | awk '/ipv4/ { split($4, a, "/"); print a[1] }') || true
+fi
 SSH_KEY_VERIFY=$(_resolve_ssh_key)
 [ -z "$SSH_KEY_VERIFY" ] && SSH_KEY_VERIFY="$HOME/.ssh/id_rsa"
 _SSH_OPTS="-o StrictHostKeyChecking=no -o ConnectTimeout=10 -o BatchMode=yes"
@@ -322,10 +332,33 @@ fi
 fi
 # end full provisioning block
 
-# ── Wait for Kali SSH ────────────────────────────────────────────────────
+# ── Resolve Kali IP ─────────────────────────────────────────────────────
+# Terraform output is preferred but can be empty or stale after a partial
+# re-provision.  Fall back to querying libvirt directly via virsh.
+_resolve_kali_ip() {
+    _tf_ip=$(terraform output -raw kali_mgmt_ip 2>/dev/null || true)
+    # A valid IP contains only digits and dots
+    case "$_tf_ip" in
+        *[!0-9.]*) ;;          # not an IP — fall through
+        "")           ;;        # empty — fall through
+        *)  echo "$_tf_ip"; return ;;
+    esac
+
+    # Fallback: ask libvirt for the VM's address on the management network
+    _addr=$(virsh -c qemu:///system domifaddr netutil-lab-kali 2>/dev/null \
+            | awk '/ipv4/ { split($4, a, "/"); print a[1] }')
+    if [ -n "$_addr" ]; then
+        echo "$_addr"
+        return
+    fi
+
+    # Nothing available yet
+    echo ""
+}
+
 log "Waiting for Kali VM to become reachable (up to 5 min)..."
 
-KALI_IP=$(terraform output -raw kali_mgmt_ip)
+KALI_IP=$(_resolve_kali_ip)
 TIMEOUT=300
 ELAPSED=0
 INTERVAL=10
@@ -334,7 +367,9 @@ _SSH_WAIT_OPTS="-o StrictHostKeyChecking=no -o ConnectTimeout=5 -o BatchMode=yes
 [ -n "$SSH_KEY" ] && _SSH_WAIT_OPTS="$_SSH_WAIT_OPTS -i $SSH_KEY"
 
 while [ $ELAPSED -lt $TIMEOUT ]; do
-    if ssh $_SSH_WAIT_OPTS "kali@$KALI_IP" "echo >/dev/null" 2>/dev/null; then
+    # Re-resolve IP on each attempt — VM may still be booting / getting DHCP
+    [ -z "$KALI_IP" ] && KALI_IP=$(_resolve_kali_ip)
+    if [ -n "$KALI_IP" ] && ssh $_SSH_WAIT_OPTS "kali@$KALI_IP" "echo >/dev/null" 2>/dev/null; then
         log "Kali VM is reachable at $KALI_IP"
         break
     fi
